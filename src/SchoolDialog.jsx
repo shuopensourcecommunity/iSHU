@@ -125,6 +125,7 @@ var SchoolDialog= React.createClass({
       <FlatButton
         label={this.state.username==undefined? "登陆":"报名"}
         primary={true}
+        keyboardFocused={true}
         onTouchTap={this.state.username==undefined? this._handleLogin:this._handleDialogSubmit} />
     ];
     let styles = {
