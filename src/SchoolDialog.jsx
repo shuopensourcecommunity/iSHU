@@ -79,7 +79,7 @@ var SchoolDialog= React.createClass({
       'username': this.state.username,
     };
     $.ajax({
-      url: 'applyforcampusaction',
+      url: 'apply_for_campus_action',
       dataType: 'json',
       method: 'post',
       data: data,

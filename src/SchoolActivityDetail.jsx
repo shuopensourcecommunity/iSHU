@@ -28,7 +28,7 @@ var SchoolActivityDetail= React.createClass({
       };
     setTimeout(function() {
       $.ajax({
-        url: 'getcampusactionbyid',
+        url: 'get_campus_action_by_id',
         dataType: 'json',
         method: 'post',
         data: data,
@@ -38,8 +38,6 @@ var SchoolActivityDetail= React.createClass({
             'All': data.All,
             'ActiveTime': data.ActiveTime,
             'Title': data.Title,
-            'Url': data.Url,
-            'Address': data.Address,
             'Auth': data.Auth,
             'Mark': data.Mark,
             'Current': data.Current,

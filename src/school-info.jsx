@@ -108,9 +108,9 @@ var InfoMessage = React.createClass({
 var InfoTable= React.createClass({
   getInitialState: function() {
     var url;
-    if (this.props.url == 'get_msg/jwc/') {url='getjwcmessagebyid';}
-    else if (this.props.url == 'get_msg/campus/') {url='getcampusmessagebyid';}
-    else if (this.props.url == 'get_msg/xgb/') {url='getxgbmessagebyid';}
+    if (this.props.url == 'get_msg/jwc/') {url='getJWCMessageById';}
+    else if (this.props.url == 'get_msg/campus/') {url='getCampusMessageById';}
+    else if (this.props.url == 'get_msg/xgb/') {url='getXGBMessageById';}
     return {
       messages: [],
       pagecount: 0,
