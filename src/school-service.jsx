@@ -1,5 +1,5 @@
 'use strict'
-require("../style/css/Service.css");
+require("../style/css/main.css");
 var React = require("react");
 const Mui = require('material-ui');
 const Card = Mui.Card;

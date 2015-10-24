@@ -1,6 +1,5 @@
 'use strict'
 require("../style/css/main.css");
-require("../style/css/Query.css");
 var React = require("react");
 const Mui = require('material-ui');
 const Tabs = Mui.Tabs;
