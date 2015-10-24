@@ -1,0 +1,30 @@
+body {
+  margin: 0px;
+}
+
+.app-bar {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  position: fixed;
+}
+
+.container {
+  padding-top: 64px;
+}
+
+.home-table {
+  width: 100%;
+  height: 85%;
+  text-align: center;
+}
+
+.home-table img {
+  border-radius:50%;
+}
+/* // show table border
+.home-table, table, tr, td {
+  border: 1px dashed red;
+    border-spacing: 0px;
+}
+*/
