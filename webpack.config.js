@@ -1,14 +1,19 @@
 var webpack = require('webpack');
 var path = require('path');
 module.exports ={
-    entry: path.resolve(__dirname,'src/entry.js'),
+    entry: path.resolve(__dirname,'src/entry.jsx'),
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: "bundle.js"
     },
     module: {
         loaders: [
-            {test: /\.css$/, loader: "style!css"}
+            {test: /\.css$/, loader: "style!css"},
+            {
+              test: /\.jsx?$/,
+              exclude: /(node_modules|bower_components)/,
+              loader: 'babel'
+            }
         ]
     },
     resolve:{
