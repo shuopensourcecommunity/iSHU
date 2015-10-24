@@ -3,15 +3,15 @@
 var React = require('react');
 var {render} = require('react-dom');
 var Mui = require('material-ui');
-var AppBar = Mui.AppBar;
+var AppBarComponent = Mui.AppBar;
 require("../public/css/main.css");
 
-const App = React.createClass({
+const AppBar = React.createClass({
   render() {
     return (
-      <AppBar title="上海大学" />
+      <AppBarComponent className="app-bar" title="上海大学" />
     )
   }
 })
 
-module.exports = App;
+module.exports = AppBar;
