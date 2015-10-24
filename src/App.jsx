@@ -35,7 +35,7 @@ let HomeTable = React.createClass({
       </div>
     )
   }
-})
+});
 
 const App = React.createClass({
   render() {
@@ -46,6 +46,6 @@ const App = React.createClass({
       </div>
     )
   }
-})
+});
 
 module.exports = App;
