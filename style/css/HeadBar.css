@@ -1,0 +1,39 @@
+.container {
+    margin-top: 55px;
+}
+.form-search {
+    width:100%;
+}
+.navbar-form {
+    border-top: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+}
+.navbar-brand {
+    font-size: 16px;
+}
+.navbar-toggle {
+    float:left;
+    margin-left:15px;
+    border:none;
+    border-radius:0;
+    margin-right: 0;
+}
+.navbar-btn {
+    background:none;
+    border-radius:0px;
+}
+/*search button in navbar*/
+.toggle-search {
+    float: right;
+    margin-right: 15px;
+    margin-top: 13px;
+}
+.toggle-search:focus, .toggle-search:active:focus, .toggle-search.active:focus {
+    outline: 0 none;
+}
+.toggle-search:hover, .toggle-search:focus, .toggle-search:active, .toggle-search.active {
+    background: #DDD;
+}
+.toggle-search:active {
+    box-shadow: none;
+}

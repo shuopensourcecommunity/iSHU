@@ -14,8 +14,8 @@ var {Router, Route, Link, History, Lifecycle } = require('react-router');
 render((
   <Router>
     <Route path="/" component={App}/>
-    <Route path="/info" component={SchoolInfo} ></Route>
-    <Route path="/query" component={SchoolQuery}/>
+    <Route path="info" component={SchoolInfo} ></Route>
+    <Route path="query" component={SchoolQuery}/>
     <Route path="service" component={SchoolService}/>
     <Route path="askbar" component={SchoolAskBar} />
     <Route path="activity" component={SchoolActivity}/>
