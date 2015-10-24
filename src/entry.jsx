@@ -1,4 +1,3 @@
-/** @jsx React.DON */
 'use strict';
 var App = require('./App.jsx');
 var SchoolInfo = require('./school-info.jsx');
@@ -18,8 +17,7 @@ render((
     <Route path="/info" component={SchoolInfo} ></Route>
     <Route path="/query" component={SchoolQuery}/>
     <Route path="service" component={SchoolService}/>
-    <Route path="askbar" component={Schoolcomponent} />
+    <Route path="askbar" component={SchoolAskBar} />
     <Route path="activity" component={SchoolActivity}/>
-    <NotFoundRoute component={NotFound} />
   </Router>
 ),document.getElementById('app-container'))
