@@ -8,3 +8,24 @@ body {
   right: 0px;
   position: fixed;
 }
+
+.container {
+  margin: 8px;
+  padding-top: 64px;
+}
+
+.home-table {
+  width: 100%;
+  height: 85%;
+  text-align: center;
+}
+
+.home-table img {
+  border-radius:50%;
+}
+/* // show table border
+.home-table, table, tr, td {
+  border: 1px dashed red;
+    border-spacing: 0px;
+}
+*/
