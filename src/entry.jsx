@@ -8,25 +8,18 @@ var SchoolAskBar = require('./school-askbar.jsx');
 var SchoolActivity = require('./school-activity.jsx');
 var NotFound = require('./NotFound.jsx');
 
-var Router = require('react-router');
 var React = require('react')
-var {DefaultRoute, Route, Routes, NotFoundRoute} = Router;
+var {render} = require('react-dom');
+var {Router, Route, Link, History, Lifecycle } = require('react-router');
 
 render((
   <Router>
-    <Route path="/" handler={App}/>
-    <Route path="/info" handler={SchoolInfo} />
-    <Route path="/query" handler={SchoolQuery}/>
-    <Route path="service" handler={SchoolService}/>
-    <Route path="askbar" handler={SchoolHandler} />
-    <Route path="activity" handler={SchoolActivity}/>
-    <NotFoundRoute handler={NotFound} />
+    <Route path="/" component={App}/>
+    <Route path="/info" component={SchoolInfo} ></Route>
+    <Route path="/query" component={SchoolQuery}/>
+    <Route path="service" component={SchoolService}/>
+    <Route path="askbar" component={Schoolcomponent} />
+    <Route path="activity" component={SchoolActivity}/>
+    <NotFoundRoute component={NotFound} />
   </Router>
-
-),document.body)
-
-Router.run(routes, Router.HashLocation, (Root) => {
-  React.render(
-    <Root/>, document.body
-  )
-});
+),document.getElementById('app-container'))
