@@ -9,9 +9,7 @@ require("../public/css/main.css");
 const App = React.createClass({
   render() {
     return (
-      <AppBar
-        title="Title"
-        iconClassNameRight="muidocs-icon-navigation-expand-more" />
+      <AppBar title="上海大学" />
     )
   }
 })
