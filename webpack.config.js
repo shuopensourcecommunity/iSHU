@@ -13,6 +13,14 @@ module.exports ={
               test: /\.jsx?$/,
               exclude: /(node_modules|bower_components)/,
               loader: 'babel'
+            },
+            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }, // use ! to chain loaders
+            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }, // inline base64 URLs for <=8k images, direct URLs for the rest
+            { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'url-loader?limit=8192' }, // inline base64 URLs for <=8k images, direct URLs for the rest
+            { test: /\.json$/,loader: 'json-loader'},
+            {
+              test: require.resolve("jquery"),
+              loader: "imports?$=jquery"
             }
         ]
     },

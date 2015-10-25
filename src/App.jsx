@@ -8,8 +8,8 @@ let {CardMedia, CardTitle} = require('material-ui');
 let HomeTable = React.createClass({
   render: function(){
     return (
-      <div className="container">
-        <table className="home-table">
+      <div>
+        <table>
           <tbody>
             <tr>
               <td>
