@@ -135,10 +135,10 @@ var SchoolInfo= React.createClass({
             <MessageTable url='messages'/>
           </Tab>
           <Tab label="学生事务" value='b'>
-
+            <MessageTable url='messages'/>
           </Tab>
           <Tab label="教务信息" value='c'>
-            
+            <MessageTable url='messages'/>
           </Tab>
         </Tabs>
       </div>
