@@ -9,7 +9,7 @@ require("../style/css/main.css");
 const AppBar = React.createClass({
   render() {
     return (
-      <AppBarComponent className="app-bar" title="上海大学" />
+      <AppBarComponent title="上海大学" />
     )
   }
 })
