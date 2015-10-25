@@ -8,9 +8,42 @@ injectTapEventPlugin();
 var {render} = require('react-dom');
 var InfiniteScroll = require('react-infinite-scroll')(React);
 
+var MessageText= React.createClass({
+  getInitialState: function() {
+    return {
+      messageText: 'abc'
+    };
+  },
+  loadMessageFromServer: function() {
+    $.ajax({
+      MsgID: this.props.MsgID,
+      url: this.props.url,
+      dataType: 'json',
+      methods: 'get',
+      success: function(data) {
+        var t_messageText = [];
+        t_messageText.push(data.Summary);
+        this.setState({messageText: t_messageText});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  componentDidMount: function(){
+    this.loadMessageFromServer();
+  },
+  render: function() {
+    return (
+      <div>
+        {this.state.messageText}
+      </div>
+    );
+  }
+});
+
 var MessageTable= React.createClass({
   getInitialState: function() {
-
     return {
       messages: [],
       keyword: 1,
@@ -50,7 +83,6 @@ var MessageTable= React.createClass({
                 'Auth': data.messagelist[obj].Auth
               });
             }
-            console.log(t_message);
             this.setState({
               messages: t_message,
               currentPage: this.state.currentPage + 1,
@@ -63,7 +95,7 @@ var MessageTable= React.createClass({
         });
       }.bind(this), 1000);
   },
-  render: function() {
+  render: function() {  
     var messageNodes = this.state.messages.map(function (message) {
       var subtitle="时间："+message.Time+" 发布来源："+message.Auth;
       return (
@@ -75,10 +107,7 @@ var MessageTable= React.createClass({
             showExpandableButton={true}>
           </CardTitle>
           <CardText expandable={true}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+            <MessageText url='messageText' MsgID={message.MsgID} />
           </CardText>
         </Card>
       );
@@ -103,7 +132,7 @@ var SchoolInfo= React.createClass({
         <AppBar />
         <Tabs>
           <Tab label="上大新闻" value='a'>
-            <MessageTable url='messages' />
+            <MessageTable url='messages'/>
           </Tab>
           <Tab label="学生事务" value='b'>
 
