@@ -9,11 +9,10 @@ const AppBar = require('./AppBar.jsx');
 let injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 var {render} = require('react-dom');
-var SchoolService = React.createClass({
+var ServiceCards = React.createClass({
   render: function(){
     return (
-      <div >
-        <AppBar />
+      <div className="container">
         <Card><a href="http://cj.shu.edu.cn" >
           <CardMedia className="service-img" overlay={<CardTitle title="成就系统" />}>
             <img src="./style/imgs/cj.png"/>
@@ -24,6 +23,16 @@ var SchoolService = React.createClass({
             <img src="./style/imgs/zy.png"/>
           </CardMedia>
         </a></Card>
+      </div>
+    )
+  }
+})
+var SchoolService = React.createClass({
+  render: function(){
+    return (
+      <div >
+        <AppBar />
+        <ServiceCards />
       </div>
     )
   }

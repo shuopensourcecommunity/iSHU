@@ -1,4 +1,5 @@
 'use strict'
+require("../style/css/main.css");
 require("../style/css/Query.css");
 var React = require("react");
 const Mui = require('material-ui');
@@ -9,11 +10,11 @@ const AppBar = require('./AppBar.jsx');
 let injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 var {render} = require('react-dom');
-var SchoolQuery = React.createClass({
+
+var QueryTabs = React.createClass({
   render: function(){
     return (
-      <div>
-        <AppBar />
+      <div className="container">
         <Tabs>
           <Tab label="校车查询" value='a'>
             <div className="query-img">
@@ -34,6 +35,16 @@ var SchoolQuery = React.createClass({
             </div>
           </Tab>
         </Tabs>
+      </div>
+    )
+  }
+})
+var SchoolQuery = React.createClass({
+  render: function(){
+    return (
+      <div>
+       <AppBar />
+       <QueryTabs />
       </div>
     );
   }
