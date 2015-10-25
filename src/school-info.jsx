@@ -1,10 +1,119 @@
 'use strict'
+require("../style/css/Info.css");
 var React = require("react");
-
+let {Card, CardTitle, CardText, CardActions, CircularProgress, Tabs, Tab } = require('material-ui');
+const AppBar = require('./AppBar.jsx');
+let injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 var {render} = require('react-dom');
+var InfiniteScroll = require('react-infinite-scroll')(React);
+
+var MessageTable= React.createClass({
+  getInitialState: function() {
+
+    return {
+      messages: [],
+      keyword: 1,
+      type: 203,
+      limit: 10,
+      currentPage: 1,
+      startTime: "10:01",
+      endTime: "12:01",
+      hasMoreMessages: true
+      // if has more questions, continue loading.
+    };
+  },
+  loadMessageFromServer: function(page) {
+      console.log('loadMessageFromServer - page ' + this.state.currentPage);
+      // fake an async. ajax call with setTimeout
+      setTimeout(function() {
+        // add data
+        $.ajax({
+          url: this.props.url,
+          dataType: 'json',
+          methods: 'get',
+          success: function(data) {
+            console.log(data);
+            var t_message = this.state.messages;
+            for (var obj in data.messagelist){
+              console.log('loadQestionCard ' + obj);
+              if(data.messagelist[obj] == null){
+                // when no more questions, stop loading.
+                this.setState({ hasMoreMessages:false });
+                break;
+              }
+              t_message.push({
+                'MsgID': data.messagelist[obj].MsgID,
+                'Title': data.messagelist[obj].Title,
+                'Time': data.messagelist[obj].Time,
+                'ActiveTime': data.messagelist[obj].ActiveTime,
+                'Auth': data.messagelist[obj].Auth
+              });
+            }
+            console.log(t_message);
+            this.setState({
+              messages: t_message,
+              currentPage: this.state.currentPage + 1,
+              // current page is loaded, ready to load next page (currentPage+1)
+            });
+          }.bind(this),
+          error: function(xhr, status, err) {
+            console.error(this.props.url, status, err.toString());
+          }.bind(this)
+        });
+      }.bind(this), 1000);
+  },
+  render: function() {
+    var messageNodes = this.state.messages.map(function (message) {
+      var subtitle="时间："+message.Time+" 发布来源："+message.Auth;
+      return (
+        <Card initiallyExpanded={false}>
+          <CardTitle
+            title={message.Title} 
+            subtitle={subtitle}
+            actAsExpander={true}
+            showExpandableButton={true}>
+          </CardTitle>
+          <CardText expandable={true}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+          </CardText>
+        </Card>
+      );
+    });
+    return (
+      <div>
+      <InfiniteScroll
+        loadMore={this.loadMessageFromServer}
+        hasMore={this.state.hasMoreMessages}
+        loader={<CircularProgress className="circular-progress" mode="indeterminate" />}>
+        {messageNodes}
+      </InfiniteScroll>
+      </div>
+    );
+  }
+});
+
 var SchoolInfo= React.createClass({
   render: function(){
+    return (
+      <div>
+        <AppBar />
+        <Tabs>
+          <Tab label="上大新闻" value='a'>
+            <MessageTable url='messages' />
+          </Tab>
+          <Tab label="学生事务" value='b'>
 
+          </Tab>
+          <Tab label="教务信息" value='c'>
+            
+          </Tab>
+        </Tabs>
+      </div>
+    );
   }
 });
 
