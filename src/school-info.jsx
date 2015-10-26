@@ -98,9 +98,16 @@ var MessageTable= React.createClass({
   render: function() {  
     var messageNodes = this.state.messages.map(function (message) {
       var subtitle="时间："+message.Time+" 发布来源："+message.Auth;
+      let styles={
+        cardtitle: {
+          fontSize: '17px',
+          lineHeight: '25px'
+        }
+      };
       return (
         <Card initiallyExpanded={false}>
           <CardTitle
+            titleStyle={styles.cardtitle}
             title={message.Title} 
             subtitle={subtitle}
             actAsExpander={true}
