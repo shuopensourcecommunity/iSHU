@@ -61,7 +61,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        <AppBar />
+        <AppBar title="上海大学" />
         <HomeTable />
       </div>
     )

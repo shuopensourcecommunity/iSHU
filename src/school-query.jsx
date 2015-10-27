@@ -42,7 +42,7 @@ var SchoolQuery = React.createClass({
   render: function(){
     return (
       <div>
-       <AppBar />
+       <AppBar title="校园查询"/>
        <QueryTabs />
       </div>
     );

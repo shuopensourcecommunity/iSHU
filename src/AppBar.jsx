@@ -6,13 +6,20 @@ let mui = require('material-ui');
 let AppBarComponent = mui.AppBar;
 let IconButton = mui.IconButton;
 let Colors = mui.Styles.Colors;
-//let Colors = require('../public/js/colors.js');
-let ActionHome = require('../public/js/svg-icons/action-home.jsx');
+//let Colors = require('../public/mui/colors.js');
+let ActionHome = require('../public/mui/svg-icons/action-home.jsx');
 let {Link, RouteHandler} = require('react-router');
 
 const AppBar = React.createClass({
+  getInitialState: function(){
+    return{
+      AppBarTitle: '上海大学'
+    };
+  },
+  componentDidMount: function(){
+    this.setState({AppBarTitle: this.props.title});
+  },
   render() {
-    let appBarTitle = '上海大学';
     return (
       <AppBarComponent
         showMenuIconButton={true}
@@ -21,7 +28,7 @@ const AppBar = React.createClass({
             <ActionHome color={Colors.white} hoverColor={Colors.cyan900} />
           </IconButton>
         </Link>}
-        title={appBarTitle} />
+        title={this.state.AppBarTitle} />
     )
   }
 })
