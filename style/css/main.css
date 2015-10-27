@@ -1,6 +1,8 @@
 @import url('Home.css');
 @import url('Query.css');
 @import url('Service.css');
+@import url('Info.css');
+@import url('Activity.css');
 
 body {
   margin: 0px;

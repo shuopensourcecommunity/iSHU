@@ -9,7 +9,7 @@ let HomeTable = React.createClass({
   render: function(){
     return (
       <div>
-        <table>
+        <table className="home-table">
           <tbody>
             <tr>
               <td>
