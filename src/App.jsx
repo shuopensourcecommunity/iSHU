@@ -3,7 +3,6 @@
 let React = require('react');
 let {render} = require('react-dom');
 let AppBar = require('./AppBar.jsx');
-let {CardMedia, CardTitle} = require('material-ui');
 var {Link, RouteHandler} = require('react-router');
 
 let HomeTable = React.createClass({
