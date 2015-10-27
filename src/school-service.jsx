@@ -31,7 +31,7 @@ var SchoolService = React.createClass({
   render: function(){
     return (
       <div >
-        <AppBar />
+        <AppBar title="校园服务"/>
         <ServiceCards />
       </div>
     )

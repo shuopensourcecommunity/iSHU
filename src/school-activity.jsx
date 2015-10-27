@@ -95,7 +95,7 @@ var MessageTable= React.createClass({
         });
       }.bind(this), 1000);
   },
-  render: function() {  
+  render: function() {
     var messageNodes = this.state.messages.map(function (message) {
       var subtitle="时间："+message.Time+" 发布来源："+message.Auth;
       let styles={
@@ -108,7 +108,7 @@ var MessageTable= React.createClass({
         <Card initiallyExpanded={false}>
           <CardTitle
             titleStyle={styles.cardtitle}
-            title={message.Title} 
+            title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
             showExpandableButton={true}>
@@ -154,11 +154,11 @@ var SchoolActivity= React.createClass({
     };
     return (
       <div>
-        <AppBar />
+        <AppBar title="校园活动"/>
         <div className='activity-tabs'>
-        <Tabs 
-        tabItemContainerStyle={styles.tabs} 
-        contentContainerStyle={styles.content} 
+        <Tabs
+        tabItemContainerStyle={styles.tabs}
+        contentContainerStyle={styles.content}
         inkBarStyle={styles.inkBar}>
           <Tab style={styles.tab} label="全部" value='a'>
             <MessageTable url='messages'/>
