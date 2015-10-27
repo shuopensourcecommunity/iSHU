@@ -4,25 +4,46 @@ let React = require('react');
 let {render} = require('react-dom');
 let AppBar = require('./AppBar.jsx');
 let {CardMedia, CardTitle} = require('material-ui');
+var {Link, RouteHandler} = require('react-router');
 
 let HomeTable = React.createClass({
   render: function(){
+    let link2info = "/info";
+    let link2activity = "/activity";
+    let link2query = "/query";
+    let link2service = "/service";
+    //let link2ask = "";
     return (
       <div>
         <table className="home-table">
           <tbody>
             <tr>
               <td>
-                <img src="http://lorempixel.com/100/100/animals/"/>
-                <p>校园资讯</p></td>
-              <td><img src="http://lorempixel.com/100/100/food/"/>
-              <p>校园活动</p></td>
+                <Link to={link2info}>
+                  <img src="http://lorempixel.com/100/100/animals/"/>
+                  <p>校园资讯</p>
+              </Link>
+            </td>
+              <td>
+                <Link to={link2activity}>
+                  <img src="http://lorempixel.com/100/100/food/"/>
+                  <p>校园活动</p>
+              </Link>
+            </td>
             </tr>
             <tr>
-              <td><img src="http://lorempixel.com/100/100/cats/"/>
-              <p>校园查询</p></td>
-              <td><img src="http://lorempixel.com/100/100/abstract/"/>
-              <p>校园服务</p></td>
+              <td>
+                <Link to={link2query}>
+                  <img src="http://lorempixel.com/100/100/cats/"/>
+                  <p>校园查询</p>
+                </Link>
+              </td>
+              <td>
+                <Link to={link2service}>
+                  <img src="http://lorempixel.com/100/100/abstract/"/>
+                  <p>校园服务</p>
+                </Link>
+              </td>
             </tr>
             <tr>
               <td><img src="http://lorempixel.com/100/100/nature/"/>
