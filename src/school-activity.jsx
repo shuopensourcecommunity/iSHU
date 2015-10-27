@@ -155,7 +155,6 @@ var SchoolActivity= React.createClass({
     return (
       <div>
         <AppBar />
-        <div className='activity-tabs'>
         <Tabs 
         tabItemContainerStyle={styles.tabs} 
         contentContainerStyle={styles.content} 
@@ -185,7 +184,6 @@ var SchoolActivity= React.createClass({
             <MessageTable url='messages'/>
           </Tab>
         </Tabs>
-        </div>
       </div>
     );
   }

@@ -17,20 +17,20 @@ var QueryTabs = React.createClass({
         <Tabs>
           <Tab label="校车查询" value='a'>
             <div className="query-img">
-              <img src='/static//style/imgs/schoolbus.png' height="500px" />
+              <img src='./style/imgs/schoolbus.png' height="500px" />
             </div>
           </Tab>
           <Tab label="校园地图" value='b'>
             <div className="query-img">
-              <img src='/static//style/imgs/map.jpg' height="500px" />
+              <img src='./style/imgs/map.jpg' height="500px" />
             </div>
           </Tab>
           <Tab label="校车查询" value='c'>
             <div className="query-img">
-              <img src='/static//style/imgs/xl151.jpg' alt='xl1' height="500px" />
+              <img src='./style/imgs/xl151.jpg' alt='xl1' height="500px" />
             </div>
             <div className="query-img">
-              <img src='/static//style/imgs/xl152.jpg' alt='xl2' height="500px" />
+              <img src='./style/imgs/xl152.jpg' alt='xl2' height="500px" />
             </div>
           </Tab>
         </Tabs>
