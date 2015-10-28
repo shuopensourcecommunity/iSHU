@@ -15,12 +15,12 @@ var ServiceCards = React.createClass({
       <div>
         <Card><a href="http://cj.shu.edu.cn" >
           <CardMedia className="service-img" overlay={<CardTitle title="成就系统" />}>
-            <img src="/static//style/imgs/cj.png"/>
+            <img src="./style/imgs/cj.png"/>
           </CardMedia>
         </a></Card>
         <Card ><a href="http://202.120.127.129/Shulvms/Login.aspx" >
           <CardMedia className="service-img" overlay={<CardTitle title="志愿者报名" />}>
-            <img src="/static//style/imgs/zy.png"/>
+            <img src="./style/imgs/zy.png"/>
           </CardMedia>
         </a></Card>
       </div>
