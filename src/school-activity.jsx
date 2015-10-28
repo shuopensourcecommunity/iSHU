@@ -135,55 +135,48 @@ var MessageTable= React.createClass({
 var SchoolActivity= React.createClass({
   render: function(){
     let styles = {
-      tabs:{
-        overflowX:'scroll',
-        width:'100%',
-      },
       content: {
         left: '0',
         right: '0',
         position: 'absolute',
       },
-      inkBar:{
-        overflowX:'scroll',
-        minWidth: '70px',
-      },
       tab:{
-        minWidth: '70px',
+        width: '560px',
       }
     };
     return (
       <div>
         <AppBar />
-        <Tabs 
-        tabItemContainerStyle={styles.tabs} 
-        contentContainerStyle={styles.content} 
-        inkBarStyle={styles.inkBar}>
-          <Tab style={styles.tab} label="全部" value='a'>
-            <MessageTable url='messages'/>
-          </Tab>
-          <Tab style={styles.tab} label="专题活动" value='b'>
-            <MessageTable url='messages'/>
-          </Tab>
-          <Tab style={styles.tab} label="社团活动" value='c'>
-            <MessageTable url='messages'/>
-          </Tab>
-          <Tab style={styles.tab} label="招聘实习" value='d'>
-            <MessageTable url='messages'/>
-          </Tab>
-          <Tab style={styles.tab} label="公益活动" value='e'>
-            <MessageTable url='messages'/>
-          </Tab>
-          <Tab style={styles.tab} label="比赛活动" value='f'>
-            <MessageTable url='messages'/>
-          </Tab>
-          <Tab style={styles.tab} label="讲座报告" value='g'>
-            <MessageTable url='messages'/>
-          </Tab>
-          <Tab style={styles.tab} label="其它" value='h'>
-            <MessageTable url='messages'/>
-          </Tab>
-        </Tabs>
+        <div className='activity-tabs'>
+          <Tabs 
+          tabItemContainerStyle={styles.tab}
+          contentContainerStyle={styles.content} >
+            <Tab label="全部" value='a'>
+              <MessageTable url='messages'/>
+            </Tab>
+            <Tab label="专题活动" value='b'>
+              <MessageTable url='messages'/>
+            </Tab>
+            <Tab label="社团活动" value='c'>
+              <MessageTable url='messages'/>
+            </Tab>
+            <Tab label="招聘实习" value='d'>
+              <MessageTable url='messages'/>
+            </Tab>
+            <Tab label="公益活动" value='e'>
+              <MessageTable url='messages'/>
+            </Tab>
+            <Tab label="比赛活动" value='f'>
+              <MessageTable url='messages'/>
+            </Tab>
+            <Tab label="讲座报告" value='g'>
+              <MessageTable url='messages'/>
+            </Tab>
+            <Tab label="其它" value='h'>
+              <MessageTable url='messages'/>
+            </Tab>
+          </Tabs>
+        </div>
       </div>
     );
   }
