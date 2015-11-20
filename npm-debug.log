@@ -1,0 +1,2761 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@2.1.8
+3 info using node@v0.10.33
+4 verbose node symlink /usr/local/bin/node
+5 warn package.json iSHU@0.1.0 No repository field.
+6 warn package.json iSHU@0.1.0 No README data
+7 verbose install where, deps [ '/Users/mac/ishu/iSHU',
+7 verbose install   [ 'react',
+7 verbose install     'react-router',
+7 verbose install     'react-dom',
+7 verbose install     'babel-core',
+7 verbose install     'babel-loader',
+7 verbose install     'bundle-loader',
+7 verbose install     'css-loader',
+7 verbose install     'file-loader',
+7 verbose install     'jsx-loader',
+7 verbose install     'less',
+7 verbose install     'less-loader',
+7 verbose install     'react-hot-loader',
+7 verbose install     'style-loader',
+7 verbose install     'url-loader',
+7 verbose install     'imports-loader',
+7 verbose install     'webpack',
+7 verbose install     'webpack-dev-server',
+7 verbose install     'bootstrap',
+7 verbose install     'jquery',
+7 verbose install     'json-loader',
+7 verbose install     'material-ui',
+7 verbose install     'react-infinite-scroll' ] ]
+8 verbose install where, peers [ '/Users/mac/ishu/iSHU', [] ]
+9 info preinstall iSHU@0.1.0
+10 silly cache add args [ 'babel-loader@^5.3.2', null ]
+11 verbose cache add spec babel-loader@^5.3.2
+12 silly cache add args [ 'bundle-loader@^0.5.4', null ]
+13 verbose cache add spec bundle-loader@^0.5.4
+14 silly cache add args [ 'css-loader@^0.15.4', null ]
+15 verbose cache add spec css-loader@^0.15.4
+16 silly cache add args [ 'file-loader@^0.8.4', null ]
+17 verbose cache add spec file-loader@^0.8.4
+18 silly cache add args [ 'jsx-loader@^0.13.2', null ]
+19 verbose cache add spec jsx-loader@^0.13.2
+20 silly cache add parsed spec { raw: 'babel-loader@^5.3.2',
+20 silly cache add   scope: null,
+20 silly cache add   name: 'babel-loader',
+20 silly cache add   rawSpec: '^5.3.2',
+20 silly cache add   spec: '>=5.3.2 <6.0.0',
+20 silly cache add   type: 'range' }
+21 verbose addNamed babel-loader@>=5.3.2 <6.0.0
+22 silly addNamed semver.valid null
+23 silly addNamed semver.validRange >=5.3.2 <6.0.0
+24 silly addNameRange { name: 'babel-loader', range: '>=5.3.2 <6.0.0', hasData: false }
+25 silly mapToRegistry name babel-loader
+26 silly mapToRegistry using default registry
+27 silly mapToRegistry registry https://registry.npmjs.org/
+28 silly mapToRegistry uri https://registry.npmjs.org/babel-loader
+29 verbose addNameRange registry:https://registry.npmjs.org/babel-loader not in flight; fetching
+30 silly cache add parsed spec { raw: 'bundle-loader@^0.5.4',
+30 silly cache add   scope: null,
+30 silly cache add   name: 'bundle-loader',
+30 silly cache add   rawSpec: '^0.5.4',
+30 silly cache add   spec: '>=0.5.4 <0.6.0',
+30 silly cache add   type: 'range' }
+31 verbose addNamed bundle-loader@>=0.5.4 <0.6.0
+32 silly addNamed semver.valid null
+33 silly addNamed semver.validRange >=0.5.4 <0.6.0
+34 silly addNameRange { name: 'bundle-loader',
+34 silly addNameRange   range: '>=0.5.4 <0.6.0',
+34 silly addNameRange   hasData: false }
+35 silly mapToRegistry name bundle-loader
+36 silly mapToRegistry using default registry
+37 silly mapToRegistry registry https://registry.npmjs.org/
+38 silly mapToRegistry uri https://registry.npmjs.org/bundle-loader
+39 verbose addNameRange registry:https://registry.npmjs.org/bundle-loader not in flight; fetching
+40 silly cache add parsed spec { raw: 'css-loader@^0.15.4',
+40 silly cache add   scope: null,
+40 silly cache add   name: 'css-loader',
+40 silly cache add   rawSpec: '^0.15.4',
+40 silly cache add   spec: '>=0.15.4 <0.16.0',
+40 silly cache add   type: 'range' }
+41 verbose addNamed css-loader@>=0.15.4 <0.16.0
+42 silly addNamed semver.valid null
+43 silly addNamed semver.validRange >=0.15.4 <0.16.0
+44 silly addNameRange { name: 'css-loader', range: '>=0.15.4 <0.16.0', hasData: false }
+45 silly mapToRegistry name css-loader
+46 silly mapToRegistry using default registry
+47 silly mapToRegistry registry https://registry.npmjs.org/
+48 silly mapToRegistry uri https://registry.npmjs.org/css-loader
+49 verbose addNameRange registry:https://registry.npmjs.org/css-loader not in flight; fetching
+50 silly cache add parsed spec { raw: 'file-loader@^0.8.4',
+50 silly cache add   scope: null,
+50 silly cache add   name: 'file-loader',
+50 silly cache add   rawSpec: '^0.8.4',
+50 silly cache add   spec: '>=0.8.4 <0.9.0',
+50 silly cache add   type: 'range' }
+51 verbose addNamed file-loader@>=0.8.4 <0.9.0
+52 silly addNamed semver.valid null
+53 silly addNamed semver.validRange >=0.8.4 <0.9.0
+54 silly addNameRange { name: 'file-loader', range: '>=0.8.4 <0.9.0', hasData: false }
+55 silly mapToRegistry name file-loader
+56 silly mapToRegistry using default registry
+57 silly mapToRegistry registry https://registry.npmjs.org/
+58 silly mapToRegistry uri https://registry.npmjs.org/file-loader
+59 verbose addNameRange registry:https://registry.npmjs.org/file-loader not in flight; fetching
+60 silly cache add parsed spec { raw: 'jsx-loader@^0.13.2',
+60 silly cache add   scope: null,
+60 silly cache add   name: 'jsx-loader',
+60 silly cache add   rawSpec: '^0.13.2',
+60 silly cache add   spec: '>=0.13.2 <0.14.0',
+60 silly cache add   type: 'range' }
+61 verbose addNamed jsx-loader@>=0.13.2 <0.14.0
+62 silly addNamed semver.valid null
+63 silly addNamed semver.validRange >=0.13.2 <0.14.0
+64 silly addNameRange { name: 'jsx-loader', range: '>=0.13.2 <0.14.0', hasData: false }
+65 silly mapToRegistry name jsx-loader
+66 silly mapToRegistry using default registry
+67 silly mapToRegistry registry https://registry.npmjs.org/
+68 silly mapToRegistry uri https://registry.npmjs.org/jsx-loader
+69 verbose addNameRange registry:https://registry.npmjs.org/jsx-loader not in flight; fetching
+70 silly cache add args [ 'less@^2.5.1', null ]
+71 verbose cache add spec less@^2.5.1
+72 silly cache add args [ 'less-loader@^2.2.0', null ]
+73 verbose cache add spec less-loader@^2.2.0
+74 silly cache add args [ 'react-hot-loader@^1.2.8', null ]
+75 verbose cache add spec react-hot-loader@^1.2.8
+76 silly cache add args [ 'style-loader@^0.12.3', null ]
+77 verbose cache add spec style-loader@^0.12.3
+78 silly cache add args [ 'url-loader@^0.5.6', null ]
+79 verbose cache add spec url-loader@^0.5.6
+80 silly cache add args [ 'imports-loader@^0.6.4', null ]
+81 verbose cache add spec imports-loader@^0.6.4
+82 verbose already installed skipping webpack@^1.10.1 /Users/mac/ishu/iSHU
+83 silly cache add args [ 'webpack-dev-server@^1.10.1', null ]
+84 verbose cache add spec webpack-dev-server@^1.10.1
+85 silly cache add args [ 'bootstrap@^3.3.5', null ]
+86 verbose cache add spec bootstrap@^3.3.5
+87 verbose already installed skipping jquery@^2.1.4 /Users/mac/ishu/iSHU
+88 silly cache add args [ 'json-loader@0.5.2', null ]
+89 verbose cache add spec json-loader@0.5.2
+90 silly cache add args [ 'material-ui@0.12.4', null ]
+91 verbose cache add spec material-ui@0.12.4
+92 verbose request uri https://registry.npmjs.org/babel-loader
+93 verbose request no auth needed
+94 info attempt registry request try #1 at 10:54:18
+95 verbose request id 42ff36d4dc379d2a
+96 http request GET https://registry.npmjs.org/babel-loader
+97 verbose request uri https://registry.npmjs.org/bundle-loader
+98 verbose request no auth needed
+99 info attempt registry request try #1 at 10:54:18
+100 http request GET https://registry.npmjs.org/bundle-loader
+101 verbose request uri https://registry.npmjs.org/css-loader
+102 verbose request no auth needed
+103 info attempt registry request try #1 at 10:54:18
+104 http request GET https://registry.npmjs.org/css-loader
+105 verbose request uri https://registry.npmjs.org/file-loader
+106 verbose request no auth needed
+107 info attempt registry request try #1 at 10:54:18
+108 http request GET https://registry.npmjs.org/file-loader
+109 verbose request uri https://registry.npmjs.org/jsx-loader
+110 verbose request no auth needed
+111 info attempt registry request try #1 at 10:54:18
+112 http request GET https://registry.npmjs.org/jsx-loader
+113 silly cache add parsed spec { raw: 'less@^2.5.1',
+113 silly cache add   scope: null,
+113 silly cache add   name: 'less',
+113 silly cache add   rawSpec: '^2.5.1',
+113 silly cache add   spec: '>=2.5.1 <3.0.0',
+113 silly cache add   type: 'range' }
+114 verbose addNamed less@>=2.5.1 <3.0.0
+115 silly addNamed semver.valid null
+116 silly addNamed semver.validRange >=2.5.1 <3.0.0
+117 silly addNameRange { name: 'less', range: '>=2.5.1 <3.0.0', hasData: false }
+118 silly mapToRegistry name less
+119 silly mapToRegistry using default registry
+120 silly mapToRegistry registry https://registry.npmjs.org/
+121 silly mapToRegistry uri https://registry.npmjs.org/less
+122 verbose addNameRange registry:https://registry.npmjs.org/less not in flight; fetching
+123 silly cache add parsed spec { raw: 'less-loader@^2.2.0',
+123 silly cache add   scope: null,
+123 silly cache add   name: 'less-loader',
+123 silly cache add   rawSpec: '^2.2.0',
+123 silly cache add   spec: '>=2.2.0 <3.0.0',
+123 silly cache add   type: 'range' }
+124 verbose addNamed less-loader@>=2.2.0 <3.0.0
+125 silly addNamed semver.valid null
+126 silly addNamed semver.validRange >=2.2.0 <3.0.0
+127 silly addNameRange { name: 'less-loader', range: '>=2.2.0 <3.0.0', hasData: false }
+128 silly mapToRegistry name less-loader
+129 silly mapToRegistry using default registry
+130 silly mapToRegistry registry https://registry.npmjs.org/
+131 silly mapToRegistry uri https://registry.npmjs.org/less-loader
+132 verbose addNameRange registry:https://registry.npmjs.org/less-loader not in flight; fetching
+133 silly cache add parsed spec { raw: 'react-hot-loader@^1.2.8',
+133 silly cache add   scope: null,
+133 silly cache add   name: 'react-hot-loader',
+133 silly cache add   rawSpec: '^1.2.8',
+133 silly cache add   spec: '>=1.2.8 <2.0.0',
+133 silly cache add   type: 'range' }
+134 verbose addNamed react-hot-loader@>=1.2.8 <2.0.0
+135 silly addNamed semver.valid null
+136 silly addNamed semver.validRange >=1.2.8 <2.0.0
+137 silly addNameRange { name: 'react-hot-loader',
+137 silly addNameRange   range: '>=1.2.8 <2.0.0',
+137 silly addNameRange   hasData: false }
+138 silly mapToRegistry name react-hot-loader
+139 silly mapToRegistry using default registry
+140 silly mapToRegistry registry https://registry.npmjs.org/
+141 silly mapToRegistry uri https://registry.npmjs.org/react-hot-loader
+142 verbose addNameRange registry:https://registry.npmjs.org/react-hot-loader not in flight; fetching
+143 silly cache add parsed spec { raw: 'style-loader@^0.12.3',
+143 silly cache add   scope: null,
+143 silly cache add   name: 'style-loader',
+143 silly cache add   rawSpec: '^0.12.3',
+143 silly cache add   spec: '>=0.12.3 <0.13.0',
+143 silly cache add   type: 'range' }
+144 verbose addNamed style-loader@>=0.12.3 <0.13.0
+145 silly addNamed semver.valid null
+146 silly addNamed semver.validRange >=0.12.3 <0.13.0
+147 silly addNameRange { name: 'style-loader',
+147 silly addNameRange   range: '>=0.12.3 <0.13.0',
+147 silly addNameRange   hasData: false }
+148 silly mapToRegistry name style-loader
+149 silly mapToRegistry using default registry
+150 silly mapToRegistry registry https://registry.npmjs.org/
+151 silly mapToRegistry uri https://registry.npmjs.org/style-loader
+152 verbose addNameRange registry:https://registry.npmjs.org/style-loader not in flight; fetching
+153 silly cache add parsed spec { raw: 'url-loader@^0.5.6',
+153 silly cache add   scope: null,
+153 silly cache add   name: 'url-loader',
+153 silly cache add   rawSpec: '^0.5.6',
+153 silly cache add   spec: '>=0.5.6 <0.6.0',
+153 silly cache add   type: 'range' }
+154 verbose addNamed url-loader@>=0.5.6 <0.6.0
+155 silly addNamed semver.valid null
+156 silly addNamed semver.validRange >=0.5.6 <0.6.0
+157 silly addNameRange { name: 'url-loader', range: '>=0.5.6 <0.6.0', hasData: false }
+158 silly mapToRegistry name url-loader
+159 silly mapToRegistry using default registry
+160 silly mapToRegistry registry https://registry.npmjs.org/
+161 silly mapToRegistry uri https://registry.npmjs.org/url-loader
+162 verbose addNameRange registry:https://registry.npmjs.org/url-loader not in flight; fetching
+163 silly cache add parsed spec { raw: 'imports-loader@^0.6.4',
+163 silly cache add   scope: null,
+163 silly cache add   name: 'imports-loader',
+163 silly cache add   rawSpec: '^0.6.4',
+163 silly cache add   spec: '>=0.6.4 <0.7.0',
+163 silly cache add   type: 'range' }
+164 verbose addNamed imports-loader@>=0.6.4 <0.7.0
+165 silly addNamed semver.valid null
+166 silly addNamed semver.validRange >=0.6.4 <0.7.0
+167 silly addNameRange { name: 'imports-loader',
+167 silly addNameRange   range: '>=0.6.4 <0.7.0',
+167 silly addNameRange   hasData: false }
+168 silly mapToRegistry name imports-loader
+169 silly mapToRegistry using default registry
+170 silly mapToRegistry registry https://registry.npmjs.org/
+171 silly mapToRegistry uri https://registry.npmjs.org/imports-loader
+172 verbose addNameRange registry:https://registry.npmjs.org/imports-loader not in flight; fetching
+173 silly cache add parsed spec { raw: 'webpack-dev-server@^1.10.1',
+173 silly cache add   scope: null,
+173 silly cache add   name: 'webpack-dev-server',
+173 silly cache add   rawSpec: '^1.10.1',
+173 silly cache add   spec: '>=1.10.1 <2.0.0',
+173 silly cache add   type: 'range' }
+174 verbose addNamed webpack-dev-server@>=1.10.1 <2.0.0
+175 silly addNamed semver.valid null
+176 silly addNamed semver.validRange >=1.10.1 <2.0.0
+177 silly addNameRange { name: 'webpack-dev-server',
+177 silly addNameRange   range: '>=1.10.1 <2.0.0',
+177 silly addNameRange   hasData: false }
+178 silly mapToRegistry name webpack-dev-server
+179 silly mapToRegistry using default registry
+180 silly mapToRegistry registry https://registry.npmjs.org/
+181 silly mapToRegistry uri https://registry.npmjs.org/webpack-dev-server
+182 verbose addNameRange registry:https://registry.npmjs.org/webpack-dev-server not in flight; fetching
+183 silly cache add parsed spec { raw: 'bootstrap@^3.3.5',
+183 silly cache add   scope: null,
+183 silly cache add   name: 'bootstrap',
+183 silly cache add   rawSpec: '^3.3.5',
+183 silly cache add   spec: '>=3.3.5 <4.0.0',
+183 silly cache add   type: 'range' }
+184 verbose addNamed bootstrap@>=3.3.5 <4.0.0
+185 silly addNamed semver.valid null
+186 silly addNamed semver.validRange >=3.3.5 <4.0.0
+187 silly addNameRange { name: 'bootstrap', range: '>=3.3.5 <4.0.0', hasData: false }
+188 silly mapToRegistry name bootstrap
+189 silly mapToRegistry using default registry
+190 silly mapToRegistry registry https://registry.npmjs.org/
+191 silly mapToRegistry uri https://registry.npmjs.org/bootstrap
+192 verbose addNameRange registry:https://registry.npmjs.org/bootstrap not in flight; fetching
+193 silly cache add parsed spec { raw: 'json-loader@0.5.2',
+193 silly cache add   scope: null,
+193 silly cache add   name: 'json-loader',
+193 silly cache add   rawSpec: '0.5.2',
+193 silly cache add   spec: '0.5.2',
+193 silly cache add   type: 'version' }
+194 verbose addNamed json-loader@0.5.2
+195 silly addNamed semver.valid 0.5.2
+196 silly addNamed semver.validRange 0.5.2
+197 silly mapToRegistry name json-loader
+198 silly mapToRegistry using default registry
+199 silly mapToRegistry registry https://registry.npmjs.org/
+200 silly mapToRegistry uri https://registry.npmjs.org/json-loader
+201 verbose addNameVersion registry:https://registry.npmjs.org/json-loader not in flight; fetching
+202 silly cache add parsed spec { raw: 'material-ui@0.12.4',
+202 silly cache add   scope: null,
+202 silly cache add   name: 'material-ui',
+202 silly cache add   rawSpec: '0.12.4',
+202 silly cache add   spec: '0.12.4',
+202 silly cache add   type: 'version' }
+203 verbose addNamed material-ui@0.12.4
+204 silly addNamed semver.valid 0.12.4
+205 silly addNamed semver.validRange 0.12.4
+206 silly mapToRegistry name material-ui
+207 silly mapToRegistry using default registry
+208 silly mapToRegistry registry https://registry.npmjs.org/
+209 silly mapToRegistry uri https://registry.npmjs.org/material-ui
+210 verbose addNameVersion registry:https://registry.npmjs.org/material-ui not in flight; fetching
+211 silly cache add args [ 'react-infinite-scroll@0.1.5', null ]
+212 verbose cache add spec react-infinite-scroll@0.1.5
+213 silly cache add args [ 'react@0.14.0', null ]
+214 verbose cache add spec react@0.14.0
+215 silly cache add args [ 'react-router@1.0.0-rc3', null ]
+216 verbose cache add spec react-router@1.0.0-rc3
+217 silly cache add args [ 'react-dom@^0.14.0', null ]
+218 verbose cache add spec react-dom@^0.14.0
+219 silly cache add args [ 'babel-core@^5.7.2', null ]
+220 verbose cache add spec babel-core@^5.7.2
+221 verbose request uri https://registry.npmjs.org/less
+222 verbose request no auth needed
+223 info attempt registry request try #1 at 10:54:18
+224 http request GET https://registry.npmjs.org/less
+225 verbose request uri https://registry.npmjs.org/less-loader
+226 verbose request no auth needed
+227 info attempt registry request try #1 at 10:54:18
+228 http request GET https://registry.npmjs.org/less-loader
+229 verbose request uri https://registry.npmjs.org/react-hot-loader
+230 verbose request no auth needed
+231 info attempt registry request try #1 at 10:54:18
+232 http request GET https://registry.npmjs.org/react-hot-loader
+233 verbose request uri https://registry.npmjs.org/style-loader
+234 verbose request no auth needed
+235 info attempt registry request try #1 at 10:54:18
+236 http request GET https://registry.npmjs.org/style-loader
+237 verbose request uri https://registry.npmjs.org/url-loader
+238 verbose request no auth needed
+239 info attempt registry request try #1 at 10:54:18
+240 http request GET https://registry.npmjs.org/url-loader
+241 verbose request uri https://registry.npmjs.org/imports-loader
+242 verbose request no auth needed
+243 info attempt registry request try #1 at 10:54:18
+244 http request GET https://registry.npmjs.org/imports-loader
+245 verbose request uri https://registry.npmjs.org/webpack-dev-server
+246 verbose request no auth needed
+247 info attempt registry request try #1 at 10:54:18
+248 http request GET https://registry.npmjs.org/webpack-dev-server
+249 verbose request uri https://registry.npmjs.org/bootstrap
+250 verbose request no auth needed
+251 info attempt registry request try #1 at 10:54:18
+252 http request GET https://registry.npmjs.org/bootstrap
+253 verbose request uri https://registry.npmjs.org/json-loader
+254 verbose request no auth needed
+255 info attempt registry request try #1 at 10:54:18
+256 http request GET https://registry.npmjs.org/json-loader
+257 verbose request uri https://registry.npmjs.org/material-ui
+258 verbose request no auth needed
+259 info attempt registry request try #1 at 10:54:18
+260 http request GET https://registry.npmjs.org/material-ui
+261 silly cache add parsed spec { raw: 'react-infinite-scroll@0.1.5',
+261 silly cache add   scope: null,
+261 silly cache add   name: 'react-infinite-scroll',
+261 silly cache add   rawSpec: '0.1.5',
+261 silly cache add   spec: '0.1.5',
+261 silly cache add   type: 'version' }
+262 verbose addNamed react-infinite-scroll@0.1.5
+263 silly addNamed semver.valid 0.1.5
+264 silly addNamed semver.validRange 0.1.5
+265 silly mapToRegistry name react-infinite-scroll
+266 silly mapToRegistry using default registry
+267 silly mapToRegistry registry https://registry.npmjs.org/
+268 silly mapToRegistry uri https://registry.npmjs.org/react-infinite-scroll
+269 verbose addNameVersion registry:https://registry.npmjs.org/react-infinite-scroll not in flight; fetching
+270 silly cache add parsed spec { raw: 'react@0.14.0',
+270 silly cache add   scope: null,
+270 silly cache add   name: 'react',
+270 silly cache add   rawSpec: '0.14.0',
+270 silly cache add   spec: '0.14.0',
+270 silly cache add   type: 'version' }
+271 verbose addNamed react@0.14.0
+272 silly addNamed semver.valid 0.14.0
+273 silly addNamed semver.validRange 0.14.0
+274 silly mapToRegistry name react
+275 silly mapToRegistry using default registry
+276 silly mapToRegistry registry https://registry.npmjs.org/
+277 silly mapToRegistry uri https://registry.npmjs.org/react
+278 verbose addNameVersion registry:https://registry.npmjs.org/react not in flight; fetching
+279 silly cache add parsed spec { raw: 'react-router@1.0.0-rc3',
+279 silly cache add   scope: null,
+279 silly cache add   name: 'react-router',
+279 silly cache add   rawSpec: '1.0.0-rc3',
+279 silly cache add   spec: '1.0.0-rc3',
+279 silly cache add   type: 'version' }
+280 verbose addNamed react-router@1.0.0-rc3
+281 silly addNamed semver.valid 1.0.0-rc3
+282 silly addNamed semver.validRange 1.0.0-rc3
+283 silly mapToRegistry name react-router
+284 silly mapToRegistry using default registry
+285 silly mapToRegistry registry https://registry.npmjs.org/
+286 silly mapToRegistry uri https://registry.npmjs.org/react-router
+287 verbose addNameVersion registry:https://registry.npmjs.org/react-router not in flight; fetching
+288 silly cache add parsed spec { raw: 'react-dom@^0.14.0',
+288 silly cache add   scope: null,
+288 silly cache add   name: 'react-dom',
+288 silly cache add   rawSpec: '^0.14.0',
+288 silly cache add   spec: '>=0.14.0 <0.15.0',
+288 silly cache add   type: 'range' }
+289 verbose addNamed react-dom@>=0.14.0 <0.15.0
+290 silly addNamed semver.valid null
+291 silly addNamed semver.validRange >=0.14.0 <0.15.0
+292 silly addNameRange { name: 'react-dom', range: '>=0.14.0 <0.15.0', hasData: false }
+293 silly mapToRegistry name react-dom
+294 silly mapToRegistry using default registry
+295 silly mapToRegistry registry https://registry.npmjs.org/
+296 silly mapToRegistry uri https://registry.npmjs.org/react-dom
+297 verbose addNameRange registry:https://registry.npmjs.org/react-dom not in flight; fetching
+298 silly cache add parsed spec { raw: 'babel-core@^5.7.2',
+298 silly cache add   scope: null,
+298 silly cache add   name: 'babel-core',
+298 silly cache add   rawSpec: '^5.7.2',
+298 silly cache add   spec: '>=5.7.2 <6.0.0',
+298 silly cache add   type: 'range' }
+299 verbose addNamed babel-core@>=5.7.2 <6.0.0
+300 silly addNamed semver.valid null
+301 silly addNamed semver.validRange >=5.7.2 <6.0.0
+302 silly addNameRange { name: 'babel-core', range: '>=5.7.2 <6.0.0', hasData: false }
+303 silly mapToRegistry name babel-core
+304 silly mapToRegistry using default registry
+305 silly mapToRegistry registry https://registry.npmjs.org/
+306 silly mapToRegistry uri https://registry.npmjs.org/babel-core
+307 verbose addNameRange registry:https://registry.npmjs.org/babel-core not in flight; fetching
+308 verbose request uri https://registry.npmjs.org/react-infinite-scroll
+309 verbose request no auth needed
+310 info attempt registry request try #1 at 10:54:18
+311 http request GET https://registry.npmjs.org/react-infinite-scroll
+312 verbose request uri https://registry.npmjs.org/react
+313 verbose request no auth needed
+314 info attempt registry request try #1 at 10:54:18
+315 http request GET https://registry.npmjs.org/react
+316 verbose request uri https://registry.npmjs.org/react-router
+317 verbose request no auth needed
+318 info attempt registry request try #1 at 10:54:18
+319 http request GET https://registry.npmjs.org/react-router
+320 verbose request uri https://registry.npmjs.org/react-dom
+321 verbose request no auth needed
+322 info attempt registry request try #1 at 10:54:18
+323 http request GET https://registry.npmjs.org/react-dom
+324 verbose request uri https://registry.npmjs.org/babel-core
+325 verbose request no auth needed
+326 info attempt registry request try #1 at 10:54:18
+327 http request GET https://registry.npmjs.org/babel-core
+328 http 200 https://registry.npmjs.org/jsx-loader
+329 silly get cb [ 200,
+329 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+329 silly get     etag: '"EKJR85Y1CRIH75SC3XW1YR3IM"',
+329 silly get     'content-type': 'application/json',
+329 silly get     'cache-control': 'max-age=60',
+329 silly get     'content-length': '11554',
+329 silly get     'accept-ranges': 'bytes',
+329 silly get     date: 'Fri, 20 Nov 2015 02:54:20 GMT',
+329 silly get     via: '1.1 varnish',
+329 silly get     age: '0',
+329 silly get     connection: 'keep-alive',
+329 silly get     'x-served-by': 'cache-lhr6323-LHR',
+329 silly get     'x-cache': 'MISS',
+329 silly get     'x-cache-hits': '0',
+329 silly get     'x-timer': 'S1447988060.209331,VS0,VE97',
+329 silly get     vary: 'Accept' } ]
+330 silly addNameRange number 2 { name: 'jsx-loader', range: '>=0.13.2 <0.14.0', hasData: true }
+331 silly addNameRange versions [ 'jsx-loader',
+331 silly addNameRange   [ '0.0.0',
+331 silly addNameRange     '0.9.0',
+331 silly addNameRange     '0.10.0',
+331 silly addNameRange     '0.10.1',
+331 silly addNameRange     '0.10.2',
+331 silly addNameRange     '0.11.0',
+331 silly addNameRange     '0.11.2',
+331 silly addNameRange     '0.12.0',
+331 silly addNameRange     '0.12.1',
+331 silly addNameRange     '0.12.2',
+331 silly addNameRange     '0.13.1',
+331 silly addNameRange     '0.13.2' ] ]
+332 verbose addNamed jsx-loader@0.13.2
+333 silly addNamed semver.valid 0.13.2
+334 silly addNamed semver.validRange 0.13.2
+335 silly mapToRegistry name jsx-loader
+336 silly mapToRegistry using default registry
+337 silly mapToRegistry registry https://registry.npmjs.org/
+338 silly mapToRegistry uri https://registry.npmjs.org/jsx-loader
+339 verbose addRemoteTarball https://registry.npmjs.org/jsx-loader/-/jsx-loader-0.13.2.tgz not in flight; adding
+340 verbose addRemoteTarball [ 'https://registry.npmjs.org/jsx-loader/-/jsx-loader-0.13.2.tgz',
+340 verbose addRemoteTarball   '9767f643975c78f5e5abeba9bc57885297e732d4' ]
+341 info retry fetch attempt 1 at 10:54:20
+342 info attempt registry request try #1 at 10:54:20
+343 http fetch GET https://registry.npmjs.org/jsx-loader/-/jsx-loader-0.13.2.tgz
+344 http 200 https://registry.npmjs.org/file-loader
+345 silly get cb [ 200,
+345 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+345 silly get     etag: '"CDKB98HKD14AY9Z4YHNQ4HW3R"',
+345 silly get     'content-type': 'application/json',
+345 silly get     'cache-control': 'max-age=60',
+345 silly get     'content-length': '16350',
+345 silly get     'accept-ranges': 'bytes',
+345 silly get     date: 'Fri, 20 Nov 2015 02:54:20 GMT',
+345 silly get     via: '1.1 varnish',
+345 silly get     age: '0',
+345 silly get     connection: 'keep-alive',
+345 silly get     'x-served-by': 'cache-lhr6329-LHR',
+345 silly get     'x-cache': 'MISS',
+345 silly get     'x-cache-hits': '0',
+345 silly get     'x-timer': 'S1447988060.210979,VS0,VE89',
+345 silly get     vary: 'Accept' } ]
+346 silly addNameRange number 2 { name: 'file-loader', range: '>=0.8.4 <0.9.0', hasData: true }
+347 silly addNameRange versions [ 'file-loader',
+347 silly addNameRange   [ '0.1.0',
+347 silly addNameRange     '0.1.1',
+347 silly addNameRange     '0.1.2',
+347 silly addNameRange     '0.5.0',
+347 silly addNameRange     '0.5.1',
+347 silly addNameRange     '0.6.1',
+347 silly addNameRange     '0.7.0',
+347 silly addNameRange     '0.7.1',
+347 silly addNameRange     '0.7.2',
+347 silly addNameRange     '0.8.0',
+347 silly addNameRange     '0.8.1',
+347 silly addNameRange     '0.8.2',
+347 silly addNameRange     '0.8.3',
+347 silly addNameRange     '0.8.4' ] ]
+348 verbose addNamed file-loader@0.8.4
+349 silly addNamed semver.valid 0.8.4
+350 silly addNamed semver.validRange 0.8.4
+351 silly mapToRegistry name file-loader
+352 silly mapToRegistry using default registry
+353 silly mapToRegistry registry https://registry.npmjs.org/
+354 silly mapToRegistry uri https://registry.npmjs.org/file-loader
+355 verbose addRemoteTarball https://registry.npmjs.org/file-loader/-/file-loader-0.8.4.tgz not in flight; adding
+356 verbose addRemoteTarball [ 'https://registry.npmjs.org/file-loader/-/file-loader-0.8.4.tgz',
+356 verbose addRemoteTarball   '36cb91a1e07fb59817432a76b8408d66fbaa69c6' ]
+357 info retry fetch attempt 1 at 10:54:20
+358 info attempt registry request try #1 at 10:54:20
+359 http fetch GET https://registry.npmjs.org/file-loader/-/file-loader-0.8.4.tgz
+360 http 200 https://registry.npmjs.org/bundle-loader
+361 silly get cb [ 200,
+361 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+361 silly get     etag: '"6LU3IAQBJ1ZEBMNXDSW2XDOFW"',
+361 silly get     'content-type': 'application/json',
+361 silly get     'cache-control': 'max-age=60',
+361 silly get     'content-length': '10864',
+361 silly get     'accept-ranges': 'bytes',
+361 silly get     date: 'Fri, 20 Nov 2015 02:54:20 GMT',
+361 silly get     via: '1.1 varnish',
+361 silly get     age: '0',
+361 silly get     connection: 'keep-alive',
+361 silly get     'x-served-by': 'cache-lhr6334-LHR',
+361 silly get     'x-cache': 'MISS',
+361 silly get     'x-cache-hits': '0',
+361 silly get     'x-timer': 'S1447988060.207140,VS0,VE647',
+361 silly get     vary: 'Accept' } ]
+362 silly addNameRange number 2 { name: 'bundle-loader', range: '>=0.5.4 <0.6.0', hasData: true }
+363 silly addNameRange versions [ 'bundle-loader',
+363 silly addNameRange   [ '0.1.0',
+363 silly addNameRange     '0.1.1',
+363 silly addNameRange     '0.1.2',
+363 silly addNameRange     '0.1.3',
+363 silly addNameRange     '0.2.0',
+363 silly addNameRange     '0.3.0',
+363 silly addNameRange     '0.5.0',
+363 silly addNameRange     '0.5.1',
+363 silly addNameRange     '0.5.2',
+363 silly addNameRange     '0.5.3',
+363 silly addNameRange     '0.5.4' ] ]
+364 verbose addNamed bundle-loader@0.5.4
+365 silly addNamed semver.valid 0.5.4
+366 silly addNamed semver.validRange 0.5.4
+367 silly mapToRegistry name bundle-loader
+368 silly mapToRegistry using default registry
+369 silly mapToRegistry registry https://registry.npmjs.org/
+370 silly mapToRegistry uri https://registry.npmjs.org/bundle-loader
+371 verbose addRemoteTarball https://registry.npmjs.org/bundle-loader/-/bundle-loader-0.5.4.tgz not in flight; adding
+372 verbose addRemoteTarball [ 'https://registry.npmjs.org/bundle-loader/-/bundle-loader-0.5.4.tgz',
+372 verbose addRemoteTarball   '07c38ee906e0a0e700fd476a21834701ea7066f3' ]
+373 info retry fetch attempt 1 at 10:54:21
+374 info attempt registry request try #1 at 10:54:21
+375 http fetch GET https://registry.npmjs.org/bundle-loader/-/bundle-loader-0.5.4.tgz
+376 http 200 https://registry.npmjs.org/css-loader
+377 silly get cb [ 200,
+377 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+377 silly get     etag: '"9KOWUIZYN5LB6W700QTPKBOK1"',
+377 silly get     'content-type': 'application/json',
+377 silly get     'cache-control': 'max-age=60',
+377 silly get     'content-length': '79355',
+377 silly get     'accept-ranges': 'bytes',
+377 silly get     date: 'Fri, 20 Nov 2015 02:54:20 GMT',
+377 silly get     via: '1.1 varnish',
+377 silly get     age: '0',
+377 silly get     connection: 'keep-alive',
+377 silly get     'x-served-by': 'cache-lhr6323-LHR',
+377 silly get     'x-cache': 'HIT',
+377 silly get     'x-cache-hits': '1',
+377 silly get     'x-timer': 'S1447988060.207744,VS0,VE352',
+377 silly get     vary: 'Accept' } ]
+378 http 200 https://registry.npmjs.org/babel-loader
+379 silly get cb [ 200,
+379 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+379 silly get     etag: '"1PC79FULJOGU0KHDLXBODD246"',
+379 silly get     'content-type': 'application/json',
+379 silly get     'cache-control': 'max-age=60',
+379 silly get     'content-length': '39554',
+379 silly get     'accept-ranges': 'bytes',
+379 silly get     date: 'Fri, 20 Nov 2015 02:54:20 GMT',
+379 silly get     via: '1.1 varnish',
+379 silly get     age: '0',
+379 silly get     connection: 'keep-alive',
+379 silly get     'x-served-by': 'cache-lhr6330-LHR',
+379 silly get     'x-cache': 'HIT',
+379 silly get     'x-cache-hits': '1',
+379 silly get     'x-timer': 'S1447988060.210832,VS0,VE354',
+379 silly get     vary: 'Accept' } ]
+380 silly addNameRange number 2 { name: 'css-loader', range: '>=0.15.4 <0.16.0', hasData: true }
+381 silly addNameRange versions [ 'css-loader',
+381 silly addNameRange   [ '0.1.0',
+381 silly addNameRange     '0.1.1',
+381 silly addNameRange     '0.1.2',
+381 silly addNameRange     '0.2.0',
+381 silly addNameRange     '0.2.1',
+381 silly addNameRange     '0.2.2',
+381 silly addNameRange     '0.2.3',
+381 silly addNameRange     '0.2.4',
+381 silly addNameRange     '0.5.0',
+381 silly addNameRange     '0.5.1',
+381 silly addNameRange     '0.5.2',
+381 silly addNameRange     '0.6.0',
+381 silly addNameRange     '0.6.1',
+381 silly addNameRange     '0.6.2',
+381 silly addNameRange     '0.6.3',
+381 silly addNameRange     '0.6.4',
+381 silly addNameRange     '0.6.5',
+381 silly addNameRange     '0.6.6',
+381 silly addNameRange     '0.6.7',
+381 silly addNameRange     '0.6.8',
+381 silly addNameRange     '0.6.9',
+381 silly addNameRange     '0.6.10',
+381 silly addNameRange     '0.6.11',
+381 silly addNameRange     '0.6.12',
+381 silly addNameRange     '0.7.0',
+381 silly addNameRange     '0.7.1',
+381 silly addNameRange     '0.8.0',
+381 silly addNameRange     '0.9.0',
+381 silly addNameRange     '0.9.1',
+381 silly addNameRange     '0.10.0',
+381 silly addNameRange     '0.10.1',
+381 silly addNameRange     '0.11.0',
+381 silly addNameRange     '0.11.1',
+381 silly addNameRange     '0.11.2',
+381 silly addNameRange     '0.12.0',
+381 silly addNameRange     '0.12.1',
+381 silly addNameRange     '0.13.0',
+381 silly addNameRange     '0.13.1',
+381 silly addNameRange     '0.14.0',
+381 silly addNameRange     '0.14.1',
+381 silly addNameRange     '0.14.2',
+381 silly addNameRange     '0.14.3',
+381 silly addNameRange     '0.14.4',
+381 silly addNameRange     '0.14.5',
+381 silly addNameRange     '0.15.0',
+381 silly addNameRange     '0.15.1',
+381 silly addNameRange     '0.15.2',
+381 silly addNameRange     '0.15.3',
+381 silly addNameRange     '0.15.4',
+381 silly addNameRange     '0.15.5',
+381 silly addNameRange     '0.15.6',
+381 silly addNameRange     '0.16.0',
+381 silly addNameRange     '0.17.0',
+381 silly addNameRange     '0.18.0',
+381 silly addNameRange     '0.19.0',
+381 silly addNameRange     '0.20.0',
+381 silly addNameRange     '0.20.1',
+381 silly addNameRange     '0.20.2',
+381 silly addNameRange     '0.21.0',
+381 silly addNameRange     '0.22.0',
+381 silly addNameRange     '0.23.0' ] ]
+382 verbose addNamed css-loader@0.15.6
+383 silly addNamed semver.valid 0.15.6
+384 silly addNamed semver.validRange 0.15.6
+385 silly mapToRegistry name css-loader
+386 silly mapToRegistry using default registry
+387 silly mapToRegistry registry https://registry.npmjs.org/
+388 silly mapToRegistry uri https://registry.npmjs.org/css-loader
+389 verbose addRemoteTarball https://registry.npmjs.org/css-loader/-/css-loader-0.15.6.tgz not in flight; adding
+390 verbose addRemoteTarball [ 'https://registry.npmjs.org/css-loader/-/css-loader-0.15.6.tgz',
+390 verbose addRemoteTarball   '2287dee284829ebfb81fac0b294da729b3bfa144' ]
+391 silly addNameRange number 2 { name: 'babel-loader', range: '>=5.3.2 <6.0.0', hasData: true }
+392 silly addNameRange versions [ 'babel-loader',
+392 silly addNameRange   [ '4.0.0',
+392 silly addNameRange     '4.1.0',
+392 silly addNameRange     '4.2.0',
+392 silly addNameRange     '4.3.0',
+392 silly addNameRange     '5.0.0',
+392 silly addNameRange     '5.1.0',
+392 silly addNameRange     '5.1.2',
+392 silly addNameRange     '5.1.3',
+392 silly addNameRange     '5.1.4',
+392 silly addNameRange     '5.2.0',
+392 silly addNameRange     '5.2.1',
+392 silly addNameRange     '5.2.2',
+392 silly addNameRange     '5.3.0',
+392 silly addNameRange     '5.3.1',
+392 silly addNameRange     '5.3.2',
+392 silly addNameRange     '5.3.3',
+392 silly addNameRange     '6.0.0',
+392 silly addNameRange     '6.0.1',
+392 silly addNameRange     '6.1.0',
+392 silly addNameRange     '5.4.0',
+392 silly addNameRange     '6.2.0' ] ]
+393 verbose addNamed babel-loader@5.4.0
+394 silly addNamed semver.valid 5.4.0
+395 silly addNamed semver.validRange 5.4.0
+396 silly mapToRegistry name babel-loader
+397 silly mapToRegistry using default registry
+398 silly mapToRegistry registry https://registry.npmjs.org/
+399 silly mapToRegistry uri https://registry.npmjs.org/babel-loader
+400 verbose addRemoteTarball https://registry.npmjs.org/babel-loader/-/babel-loader-5.4.0.tgz not in flight; adding
+401 verbose addRemoteTarball [ 'https://registry.npmjs.org/babel-loader/-/babel-loader-5.4.0.tgz',
+401 verbose addRemoteTarball   '363c53b4fba68a28c54f3ca0bcc99bb7f5c4cf58' ]
+402 info retry fetch attempt 1 at 10:54:21
+403 info attempt registry request try #1 at 10:54:21
+404 http fetch GET https://registry.npmjs.org/css-loader/-/css-loader-0.15.6.tgz
+405 info retry fetch attempt 1 at 10:54:21
+406 info attempt registry request try #1 at 10:54:21
+407 http fetch GET https://registry.npmjs.org/babel-loader/-/babel-loader-5.4.0.tgz
+408 http 200 https://registry.npmjs.org/less
+409 silly get cb [ 200,
+409 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+409 silly get     etag: '"40N7XCZW73BD6AFM3TXMKGTWV"',
+409 silly get     'content-type': 'application/json',
+409 silly get     'cache-control': 'max-age=60',
+409 silly get     'content-length': '98537',
+409 silly get     'accept-ranges': 'bytes',
+409 silly get     date: 'Fri, 20 Nov 2015 02:54:20 GMT',
+409 silly get     via: '1.1 varnish',
+409 silly get     age: '0',
+409 silly get     connection: 'keep-alive',
+409 silly get     'x-served-by': 'cache-lhr6323-LHR',
+409 silly get     'x-cache': 'HIT',
+409 silly get     'x-cache-hits': '1',
+409 silly get     'x-timer': 'S1447988060.635335,VS0,VE90',
+409 silly get     vary: 'Accept' } ]
+410 silly addNameRange number 2 { name: 'less', range: '>=2.5.1 <3.0.0', hasData: true }
+411 silly addNameRange versions [ 'less',
+411 silly addNameRange   [ '1.0.10',
+411 silly addNameRange     '1.0.11',
+411 silly addNameRange     '1.0.14',
+411 silly addNameRange     '1.0.18',
+411 silly addNameRange     '1.0.19',
+411 silly addNameRange     '1.0.21',
+411 silly addNameRange     '1.0.32',
+411 silly addNameRange     '1.0.36',
+411 silly addNameRange     '1.0.5',
+411 silly addNameRange     '1.0.40',
+411 silly addNameRange     '1.0.41',
+411 silly addNameRange     '1.0.44',
+411 silly addNameRange     '1.1.0',
+411 silly addNameRange     '1.1.1',
+411 silly addNameRange     '1.1.2',
+411 silly addNameRange     '1.1.4',
+411 silly addNameRange     '1.1.5',
+411 silly addNameRange     '1.1.6',
+411 silly addNameRange     '1.2.0',
+411 silly addNameRange     '1.2.1',
+411 silly addNameRange     '1.2.2',
+411 silly addNameRange     '1.3.0',
+411 silly addNameRange     '1.3.1',
+411 silly addNameRange     '1.3.2',
+411 silly addNameRange     '1.3.3',
+411 silly addNameRange     '1.4.0-b1',
+411 silly addNameRange     '1.4.0-b2',
+411 silly addNameRange     '1.4.0-b3',
+411 silly addNameRange     '1.4.0-b4',
+411 silly addNameRange     '1.4.0',
+411 silly addNameRange     '1.4.1',
+411 silly addNameRange     '1.4.2',
+411 silly addNameRange     '1.5.0-b1',
+411 silly addNameRange     '1.5.0-b2',
+411 silly addNameRange     '1.5.0-b3',
+411 silly addNameRange     '1.5.0-b4',
+411 silly addNameRange     '1.5.0',
+411 silly addNameRange     '1.5.1',
+411 silly addNameRange     '1.6.0',
+411 silly addNameRange     '1.6.1',
+411 silly addNameRange     '1.6.2',
+411 silly addNameRange     '1.6.3',
+411 silly addNameRange     '1.7.0',
+411 silly addNameRange     '1.7.1',
+411 silly addNameRange     '1.7.3',
+411 silly addNameRange     '1.7.4',
+411 silly addNameRange     '1.7.5',
+411 silly addNameRange     '2.0.0-b1',
+411 silly addNameRange     '2.0.0-b2',
+411 silly addNameRange     '2.0.0-b3',
+411 silly addNameRange     '2.0.0',
+411 silly addNameRange     '2.1.0',
+411 silly addNameRange     '2.1.1',
+411 silly addNameRange     '2.1.2',
+411 silly addNameRange     '2.2.0',
+411 silly addNameRange     '2.3.0',
+411 silly addNameRange     '2.3.1',
+411 silly addNameRange     '2.4.0',
+411 silly addNameRange     '2.5.0',
+411 silly addNameRange     '2.5.1',
+411 silly addNameRange     '2.5.2',
+411 silly addNameRange     '2.5.3' ] ]
+412 verbose addNamed less@2.5.3
+413 silly addNamed semver.valid 2.5.3
+414 silly addNamed semver.validRange 2.5.3
+415 silly mapToRegistry name less
+416 silly mapToRegistry using default registry
+417 silly mapToRegistry registry https://registry.npmjs.org/
+418 silly mapToRegistry uri https://registry.npmjs.org/less
+419 verbose addRemoteTarball https://registry.npmjs.org/less/-/less-2.5.3.tgz not in flight; adding
+420 verbose addRemoteTarball [ 'https://registry.npmjs.org/less/-/less-2.5.3.tgz',
+420 verbose addRemoteTarball   '9ff586e8a703515fc18dc99c7bc498d2f3ad4849' ]
+421 info retry fetch attempt 1 at 10:54:21
+422 info attempt registry request try #1 at 10:54:21
+423 http fetch GET https://registry.npmjs.org/less/-/less-2.5.3.tgz
+424 http 200 https://registry.npmjs.org/style-loader
+425 silly get cb [ 200,
+425 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+425 silly get     etag: '"5VLG799WX3C6BF00PFT26FZ7L"',
+425 silly get     'content-type': 'application/json',
+425 silly get     'cache-control': 'max-age=60',
+425 silly get     'content-length': '31733',
+425 silly get     'accept-ranges': 'bytes',
+425 silly get     date: 'Fri, 20 Nov 2015 02:54:21 GMT',
+425 silly get     via: '1.1 varnish',
+425 silly get     age: '0',
+425 silly get     connection: 'keep-alive',
+425 silly get     'x-served-by': 'cache-lhr6323-LHR',
+425 silly get     'x-cache': 'HIT',
+425 silly get     'x-cache-hits': '1',
+425 silly get     'x-timer': 'S1447988061.571021,VS0,VE97',
+425 silly get     vary: 'Accept' } ]
+426 silly addNameRange number 2 { name: 'style-loader',
+426 silly addNameRange   range: '>=0.12.3 <0.13.0',
+426 silly addNameRange   hasData: true }
+427 silly addNameRange versions [ 'style-loader',
+427 silly addNameRange   [ '0.1.0',
+427 silly addNameRange     '0.1.1',
+427 silly addNameRange     '0.1.2',
+427 silly addNameRange     '0.1.3',
+427 silly addNameRange     '0.2.0',
+427 silly addNameRange     '0.2.1',
+427 silly addNameRange     '0.5.0',
+427 silly addNameRange     '0.5.1',
+427 silly addNameRange     '0.5.2',
+427 silly addNameRange     '0.6.0',
+427 silly addNameRange     '0.6.1',
+427 silly addNameRange     '0.6.2',
+427 silly addNameRange     '0.6.3',
+427 silly addNameRange     '0.6.4',
+427 silly addNameRange     '0.6.5',
+427 silly addNameRange     '0.7.0',
+427 silly addNameRange     '0.7.1',
+427 silly addNameRange     '0.8.0',
+427 silly addNameRange     '0.8.1',
+427 silly addNameRange     '0.8.2',
+427 silly addNameRange     '0.8.3',
+427 silly addNameRange     '0.9.0',
+427 silly addNameRange     '0.10.0',
+427 silly addNameRange     '0.10.1',
+427 silly addNameRange     '0.10.2',
+427 silly addNameRange     '0.11.0',
+427 silly addNameRange     '0.12.0',
+427 silly addNameRange     '0.12.1',
+427 silly addNameRange     '0.12.2',
+427 silly addNameRange     '0.12.3',
+427 silly addNameRange     '0.12.4',
+427 silly addNameRange     '0.13.0' ] ]
+428 verbose addNamed style-loader@0.12.4
+429 silly addNamed semver.valid 0.12.4
+430 silly addNamed semver.validRange 0.12.4
+431 silly mapToRegistry name style-loader
+432 silly mapToRegistry using default registry
+433 silly mapToRegistry registry https://registry.npmjs.org/
+434 silly mapToRegistry uri https://registry.npmjs.org/style-loader
+435 verbose addRemoteTarball https://registry.npmjs.org/style-loader/-/style-loader-0.12.4.tgz not in flight; adding
+436 verbose addRemoteTarball [ 'https://registry.npmjs.org/style-loader/-/style-loader-0.12.4.tgz',
+436 verbose addRemoteTarball   'ae7d0665dc4dc653daa2fe97bb90914bc1d22d9b' ]
+437 info retry fetch attempt 1 at 10:54:21
+438 info attempt registry request try #1 at 10:54:21
+439 http fetch GET https://registry.npmjs.org/style-loader/-/style-loader-0.12.4.tgz
+440 http 200 https://registry.npmjs.org/less-loader
+441 silly get cb [ 200,
+441 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+441 silly get     etag: '"BBQEL17QXUSVAFEBLXAV26GLB"',
+441 silly get     'content-type': 'application/json',
+441 silly get     'cache-control': 'max-age=60',
+441 silly get     'content-length': '28016',
+441 silly get     'accept-ranges': 'bytes',
+441 silly get     date: 'Fri, 20 Nov 2015 02:54:21 GMT',
+441 silly get     via: '1.1 varnish',
+441 silly get     age: '0',
+441 silly get     connection: 'keep-alive',
+441 silly get     'x-served-by': 'cache-lhr6329-LHR',
+441 silly get     'x-cache': 'MISS',
+441 silly get     'x-cache-hits': '0',
+441 silly get     'x-timer': 'S1447988060.946084,VS0,VE621',
+441 silly get     vary: 'Accept' } ]
+442 silly addNameRange number 2 { name: 'less-loader', range: '>=2.2.0 <3.0.0', hasData: true }
+443 silly addNameRange versions [ 'less-loader',
+443 silly addNameRange   [ '0.1.0',
+443 silly addNameRange     '0.1.1',
+443 silly addNameRange     '0.1.2',
+443 silly addNameRange     '0.1.3',
+443 silly addNameRange     '0.2.0',
+443 silly addNameRange     '0.2.1',
+443 silly addNameRange     '0.2.2',
+443 silly addNameRange     '0.5.0',
+443 silly addNameRange     '0.5.1',
+443 silly addNameRange     '0.6.0',
+443 silly addNameRange     '0.6.1',
+443 silly addNameRange     '0.6.2',
+443 silly addNameRange     '0.7.0',
+443 silly addNameRange     '0.7.1',
+443 silly addNameRange     '0.7.2',
+443 silly addNameRange     '0.7.3',
+443 silly addNameRange     '0.7.4',
+443 silly addNameRange     '0.7.5',
+443 silly addNameRange     '0.7.6',
+443 silly addNameRange     '0.7.7',
+443 silly addNameRange     '0.7.8',
+443 silly addNameRange     '2.0.0',
+443 silly addNameRange     '2.1.0',
+443 silly addNameRange     '2.2.0',
+443 silly addNameRange     '2.2.1' ] ]
+444 verbose addNamed less-loader@2.2.1
+445 silly addNamed semver.valid 2.2.1
+446 silly addNamed semver.validRange 2.2.1
+447 silly mapToRegistry name less-loader
+448 silly mapToRegistry using default registry
+449 silly mapToRegistry registry https://registry.npmjs.org/
+450 silly mapToRegistry uri https://registry.npmjs.org/less-loader
+451 verbose addRemoteTarball https://registry.npmjs.org/less-loader/-/less-loader-2.2.1.tgz not in flight; adding
+452 verbose addRemoteTarball [ 'https://registry.npmjs.org/less-loader/-/less-loader-2.2.1.tgz',
+452 verbose addRemoteTarball   'b8571c9b62bae889c93cdd2c21ae6945d6571e46' ]
+453 info retry fetch attempt 1 at 10:54:22
+454 info attempt registry request try #1 at 10:54:22
+455 http fetch GET https://registry.npmjs.org/less-loader/-/less-loader-2.2.1.tgz
+456 http 200 https://registry.npmjs.org/imports-loader
+457 silly get cb [ 200,
+457 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+457 silly get     etag: '"3MF0B4MX8O9QAE40B080WCK63"',
+457 silly get     'content-type': 'application/json',
+457 silly get     'cache-control': 'max-age=60',
+457 silly get     'content-length': '10666',
+457 silly get     'accept-ranges': 'bytes',
+457 silly get     date: 'Fri, 20 Nov 2015 02:54:22 GMT',
+457 silly get     via: '1.1 varnish',
+457 silly get     age: '0',
+457 silly get     connection: 'keep-alive',
+457 silly get     'x-served-by': 'cache-lhr6323-LHR',
+457 silly get     'x-cache': 'MISS',
+457 silly get     'x-cache-hits': '0',
+457 silly get     'x-timer': 'S1447988061.693192,VS0,VE358',
+457 silly get     vary: 'Accept' } ]
+458 silly addNameRange number 2 { name: 'imports-loader',
+458 silly addNameRange   range: '>=0.6.4 <0.7.0',
+458 silly addNameRange   hasData: true }
+459 silly addNameRange versions [ 'imports-loader',
+459 silly addNameRange   [ '0.1.0',
+459 silly addNameRange     '0.1.1',
+459 silly addNameRange     '0.1.2',
+459 silly addNameRange     '0.5.0',
+459 silly addNameRange     '0.6.0',
+459 silly addNameRange     '0.6.1',
+459 silly addNameRange     '0.6.2',
+459 silly addNameRange     '0.6.3',
+459 silly addNameRange     '0.6.4',
+459 silly addNameRange     '0.6.5' ] ]
+460 verbose addNamed imports-loader@0.6.5
+461 silly addNamed semver.valid 0.6.5
+462 silly addNamed semver.validRange 0.6.5
+463 silly mapToRegistry name imports-loader
+464 silly mapToRegistry using default registry
+465 silly mapToRegistry registry https://registry.npmjs.org/
+466 silly mapToRegistry uri https://registry.npmjs.org/imports-loader
+467 verbose addRemoteTarball https://registry.npmjs.org/imports-loader/-/imports-loader-0.6.5.tgz not in flight; adding
+468 verbose addRemoteTarball [ 'https://registry.npmjs.org/imports-loader/-/imports-loader-0.6.5.tgz',
+468 verbose addRemoteTarball   'ae74653031d59e37b3c2fb2544ac61aeae3530a6' ]
+469 info retry fetch attempt 1 at 10:54:22
+470 info attempt registry request try #1 at 10:54:22
+471 http fetch GET https://registry.npmjs.org/imports-loader/-/imports-loader-0.6.5.tgz
+472 http 200 https://registry.npmjs.org/url-loader
+473 silly get cb [ 200,
+473 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+473 silly get     etag: '"63HEIARF3UJM9DAVRUBCRN063"',
+473 silly get     'content-type': 'application/json',
+473 silly get     'cache-control': 'max-age=60',
+473 silly get     'content-length': '10151',
+473 silly get     'accept-ranges': 'bytes',
+473 silly get     date: 'Fri, 20 Nov 2015 02:54:22 GMT',
+473 silly get     via: '1.1 varnish',
+473 silly get     age: '0',
+473 silly get     connection: 'keep-alive',
+473 silly get     'x-served-by': 'cache-lhr6330-LHR',
+473 silly get     'x-cache': 'MISS',
+473 silly get     'x-cache-hits': '0',
+473 silly get     'x-timer': 'S1447988061.574683,VS0,VE627',
+473 silly get     vary: 'Accept' } ]
+474 silly addNameRange number 2 { name: 'url-loader', range: '>=0.5.6 <0.6.0', hasData: true }
+475 silly addNameRange versions [ 'url-loader',
+475 silly addNameRange   [ '0.1.0',
+475 silly addNameRange     '0.1.1',
+475 silly addNameRange     '0.1.2',
+475 silly addNameRange     '0.1.3',
+475 silly addNameRange     '0.5.0',
+475 silly addNameRange     '0.5.1',
+475 silly addNameRange     '0.5.2',
+475 silly addNameRange     '0.5.3',
+475 silly addNameRange     '0.5.4',
+475 silly addNameRange     '0.5.5',
+475 silly addNameRange     '0.5.6' ] ]
+476 verbose addNamed url-loader@0.5.6
+477 silly addNamed semver.valid 0.5.6
+478 silly addNamed semver.validRange 0.5.6
+479 silly mapToRegistry name url-loader
+480 silly mapToRegistry using default registry
+481 silly mapToRegistry registry https://registry.npmjs.org/
+482 silly mapToRegistry uri https://registry.npmjs.org/url-loader
+483 verbose addRemoteTarball https://registry.npmjs.org/url-loader/-/url-loader-0.5.6.tgz not in flight; adding
+484 verbose addRemoteTarball [ 'https://registry.npmjs.org/url-loader/-/url-loader-0.5.6.tgz',
+484 verbose addRemoteTarball   '644521a5dc66b8729caab1b6ba9e580e021ded45' ]
+485 info retry fetch attempt 1 at 10:54:22
+486 info attempt registry request try #1 at 10:54:22
+487 http fetch GET https://registry.npmjs.org/url-loader/-/url-loader-0.5.6.tgz
+488 http 200 https://registry.npmjs.org/react-hot-loader
+489 silly get cb [ 200,
+489 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+489 silly get     etag: '"5R9ZKIYLFRGPP4ULB42LWA3SA"',
+489 silly get     'content-type': 'application/json',
+489 silly get     'cache-control': 'max-age=60',
+489 silly get     'content-length': '75276',
+489 silly get     'accept-ranges': 'bytes',
+489 silly get     date: 'Fri, 20 Nov 2015 02:54:21 GMT',
+489 silly get     via: '1.1 varnish',
+489 silly get     age: '0',
+489 silly get     connection: 'keep-alive',
+489 silly get     'x-served-by': 'cache-lhr6334-LHR',
+489 silly get     'x-cache': 'HIT',
+489 silly get     'x-cache-hits': '1',
+489 silly get     'x-timer': 'S1447988061.172972,VS0,VE656',
+489 silly get     vary: 'Accept' } ]
+490 http 200 https://registry.npmjs.org/json-loader
+491 silly get cb [ 200,
+491 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+491 silly get     etag: '"6W083R2KK75PB4ESLA7FSGOWQ"',
+491 silly get     'content-type': 'application/json',
+491 silly get     'cache-control': 'max-age=60',
+491 silly get     'content-length': '11455',
+491 silly get     'accept-ranges': 'bytes',
+491 silly get     date: 'Fri, 20 Nov 2015 02:54:22 GMT',
+491 silly get     via: '1.1 varnish',
+491 silly get     age: '0',
+491 silly get     connection: 'keep-alive',
+491 silly get     'x-served-by': 'cache-lhr6323-LHR',
+491 silly get     'x-cache': 'HIT',
+491 silly get     'x-cache-hits': '1',
+491 silly get     'x-timer': 'S1447988062.373675,VS0,VE92',
+491 silly get     vary: 'Accept' } ]
+492 silly addNameRange number 2 { name: 'react-hot-loader',
+492 silly addNameRange   range: '>=1.2.8 <2.0.0',
+492 silly addNameRange   hasData: true }
+493 silly addNameRange versions [ 'react-hot-loader',
+493 silly addNameRange   [ '0.1.0',
+493 silly addNameRange     '0.1.2',
+493 silly addNameRange     '0.1.3',
+493 silly addNameRange     '0.1.4',
+493 silly addNameRange     '0.1.5',
+493 silly addNameRange     '0.1.6',
+493 silly addNameRange     '0.1.7',
+493 silly addNameRange     '0.1.8',
+493 silly addNameRange     '0.1.9',
+493 silly addNameRange     '0.1.10',
+493 silly addNameRange     '0.1.11',
+493 silly addNameRange     '0.2.0',
+493 silly addNameRange     '0.3.0',
+493 silly addNameRange     '0.3.1',
+493 silly addNameRange     '0.4.0',
+493 silly addNameRange     '0.4.1',
+493 silly addNameRange     '0.4.2',
+493 silly addNameRange     '0.4.3',
+493 silly addNameRange     '0.4.4',
+493 silly addNameRange     '0.4.5',
+493 silly addNameRange     '0.5.0',
+493 silly addNameRange     '1.0.0-alpha',
+493 silly addNameRange     '1.0.0-alpha.1',
+493 silly addNameRange     '1.0.0-alpha.2',
+493 silly addNameRange     '1.0.0-alpha.3',
+493 silly addNameRange     '1.0.0',
+493 silly addNameRange     '1.0.1',
+493 silly addNameRange     '1.0.2',
+493 silly addNameRange     '1.0.3',
+493 silly addNameRange     '1.0.4',
+493 silly addNameRange     '1.0.5',
+493 silly addNameRange     '1.0.6',
+493 silly addNameRange     '1.0.7',
+493 silly addNameRange     '1.1.0',
+493 silly addNameRange     '1.1.1',
+493 silly addNameRange     '1.1.2',
+493 silly addNameRange     '1.1.3',
+493 silly addNameRange     '1.1.4',
+493 silly addNameRange     '1.1.5',
+493 silly addNameRange     '1.1.6',
+493 silly addNameRange     '1.1.7',
+493 silly addNameRange     '1.2.0',
+493 silly addNameRange     '1.2.1',
+493 silly addNameRange     '1.2.2',
+493 silly addNameRange     '1.2.3',
+493 silly addNameRange     '1.2.4',
+493 silly addNameRange     '1.2.5',
+493 silly addNameRange     '1.2.6',
+493 silly addNameRange     '1.2.7',
+493 silly addNameRange     '1.2.8',
+493 silly addNameRange     '1.2.9',
+493 silly addNameRange     '2.0.0-alpha',
+493 silly addNameRange     '2.0.0-alpha-1',
+493 silly addNameRange     '2.0.0-alpha-2',
+493 silly addNameRange     '2.0.0-alpha-3',
+493 silly addNameRange     '1.3.0',
+493 silly addNameRange     '2.0.0-alpha-4' ] ]
+494 verbose addNamed react-hot-loader@1.3.0
+495 silly addNamed semver.valid 1.3.0
+496 silly addNamed semver.validRange 1.3.0
+497 silly mapToRegistry name react-hot-loader
+498 silly mapToRegistry using default registry
+499 silly mapToRegistry registry https://registry.npmjs.org/
+500 silly mapToRegistry uri https://registry.npmjs.org/react-hot-loader
+501 verbose addRemoteTarball https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-1.3.0.tgz not in flight; adding
+502 verbose addRemoteTarball [ 'https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-1.3.0.tgz',
+502 verbose addRemoteTarball   '7701658d02108b5bbc407e200dde591cb7a6ed69' ]
+503 silly mapToRegistry name json-loader
+504 silly mapToRegistry using default registry
+505 silly mapToRegistry registry https://registry.npmjs.org/
+506 silly mapToRegistry uri https://registry.npmjs.org/json-loader
+507 verbose addRemoteTarball https://registry.npmjs.org/json-loader/-/json-loader-0.5.2.tgz not in flight; adding
+508 verbose addRemoteTarball [ 'https://registry.npmjs.org/json-loader/-/json-loader-0.5.2.tgz',
+508 verbose addRemoteTarball   'ed79019c4f3778422eccd62427eb526612c6ef40' ]
+509 info retry fetch attempt 1 at 10:54:22
+510 info attempt registry request try #1 at 10:54:22
+511 http fetch GET https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-1.3.0.tgz
+512 info retry fetch attempt 1 at 10:54:22
+513 info attempt registry request try #1 at 10:54:22
+514 http fetch GET https://registry.npmjs.org/json-loader/-/json-loader-0.5.2.tgz
+515 http 200 https://registry.npmjs.org/bootstrap
+516 silly get cb [ 200,
+516 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+516 silly get     etag: '"6QT9EMU5MWCMKUKJW7N4E2FMI"',
+516 silly get     'content-type': 'application/json',
+516 silly get     'cache-control': 'max-age=60',
+516 silly get     'content-length': '26197',
+516 silly get     'accept-ranges': 'bytes',
+516 silly get     date: 'Fri, 20 Nov 2015 02:54:22 GMT',
+516 silly get     via: '1.1 varnish',
+516 silly get     age: '45',
+516 silly get     connection: 'keep-alive',
+516 silly get     'x-served-by': 'cache-lhr6329-LHR',
+516 silly get     'x-cache': 'HIT',
+516 silly get     'x-cache-hits': '1',
+516 silly get     'x-timer': 'S1447988062.211876,VS0,VE0',
+516 silly get     vary: 'Accept' } ]
+517 silly addNameRange number 2 { name: 'bootstrap', range: '>=3.3.5 <4.0.0', hasData: true }
+518 silly addNameRange versions [ 'bootstrap',
+518 silly addNameRange   [ '0.0.1',
+518 silly addNameRange     '0.0.2',
+518 silly addNameRange     '3.1.1',
+518 silly addNameRange     '3.2.0',
+518 silly addNameRange     '3.3.0',
+518 silly addNameRange     '3.3.1',
+518 silly addNameRange     '3.3.2',
+518 silly addNameRange     '3.3.4',
+518 silly addNameRange     '3.3.5' ] ]
+519 verbose addNamed bootstrap@3.3.5
+520 silly addNamed semver.valid 3.3.5
+521 silly addNamed semver.validRange 3.3.5
+522 silly mapToRegistry name bootstrap
+523 silly mapToRegistry using default registry
+524 silly mapToRegistry registry https://registry.npmjs.org/
+525 silly mapToRegistry uri https://registry.npmjs.org/bootstrap
+526 verbose addRemoteTarball https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz not in flight; adding
+527 verbose addRemoteTarball [ 'https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz',
+527 verbose addRemoteTarball   '1777ab79299b128d87dce7cbd86fdc46ac69c0b1' ]
+528 info retry fetch attempt 1 at 10:54:22
+529 info attempt registry request try #1 at 10:54:22
+530 http fetch GET https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz
+531 http 200 https://registry.npmjs.org/webpack-dev-server
+532 silly get cb [ 200,
+532 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+532 silly get     etag: '"EQN6KA2K5OH3ELQH5SOQB0IGL"',
+532 silly get     'content-type': 'application/json',
+532 silly get     'cache-control': 'max-age=60',
+532 silly get     'content-length': '93379',
+532 silly get     'accept-ranges': 'bytes',
+532 silly get     date: 'Fri, 20 Nov 2015 02:54:22 GMT',
+532 silly get     via: '1.1 varnish',
+532 silly get     age: '0',
+532 silly get     connection: 'keep-alive',
+532 silly get     'x-served-by': 'cache-lhr6323-LHR',
+532 silly get     'x-cache': 'HIT',
+532 silly get     'x-cache-hits': '1',
+532 silly get     'x-timer': 'S1447988061.994089,VS0,VE621',
+532 silly get     vary: 'Accept' } ]
+533 silly addNameRange number 2 { name: 'webpack-dev-server',
+533 silly addNameRange   range: '>=1.10.1 <2.0.0',
+533 silly addNameRange   hasData: true }
+534 silly addNameRange versions [ 'webpack-dev-server',
+534 silly addNameRange   [ '0.6.0',
+534 silly addNameRange     '0.6.1',
+534 silly addNameRange     '0.6.2',
+534 silly addNameRange     '0.7.0',
+534 silly addNameRange     '0.7.1',
+534 silly addNameRange     '0.7.2',
+534 silly addNameRange     '0.8.0',
+534 silly addNameRange     '0.8.1',
+534 silly addNameRange     '0.8.2',
+534 silly addNameRange     '0.9.0',
+534 silly addNameRange     '0.9.1',
+534 silly addNameRange     '0.9.2',
+534 silly addNameRange     '0.9.3',
+534 silly addNameRange     '0.9.4',
+534 silly addNameRange     '0.10.0',
+534 silly addNameRange     '0.10.1',
+534 silly addNameRange     '0.11.0',
+534 silly addNameRange     '0.11.1',
+534 silly addNameRange     '1.0.0',
+534 silly addNameRange     '1.0.1',
+534 silly addNameRange     '1.0.2',
+534 silly addNameRange     '1.1.0',
+534 silly addNameRange     '1.2.0',
+534 silly addNameRange     '1.2.1',
+534 silly addNameRange     '1.2.2',
+534 silly addNameRange     '1.2.3',
+534 silly addNameRange     '1.2.4',
+534 silly addNameRange     '1.2.5',
+534 silly addNameRange     '1.2.6',
+534 silly addNameRange     '1.2.7',
+534 silly addNameRange     '1.2.8',
+534 silly addNameRange     '1.2.9',
+534 silly addNameRange     '1.3.0',
+534 silly addNameRange     '1.3.1',
+534 silly addNameRange     '1.3.2',
+534 silly addNameRange     '1.4.0',
+534 silly addNameRange     '1.4.1',
+534 silly addNameRange     '1.4.2',
+534 silly addNameRange     '1.4.3',
+534 silly addNameRange     '1.4.4',
+534 silly addNameRange     '1.4.5',
+534 silly addNameRange     '1.4.6',
+534 silly addNameRange     '1.4.7',
+534 silly addNameRange     '1.4.9',
+534 silly addNameRange     '1.4.10',
+534 silly addNameRange     '1.5.0',
+534 silly addNameRange     '1.6.0',
+534 silly addNameRange     '1.6.1',
+534 silly addNameRange     '1.6.2',
+534 silly addNameRange     '1.6.3',
+534 silly addNameRange     '1.6.4',
+534 silly addNameRange     '1.6.5',
+534 silly addNameRange     '1.6.6',
+534 silly addNameRange     '1.7.0',
+534 silly addNameRange     '1.8.0',
+534 silly addNameRange     '1.8.1',
+534 silly addNameRange     '1.8.2',
+534 silly addNameRange     '1.9.0',
+534 silly addNameRange     '1.10.0',
+534 silly addNameRange     '1.10.1',
+534 silly addNameRange     '1.11.0',
+534 silly addNameRange     '1.12.0',
+534 silly addNameRange     '1.12.1' ] ]
+535 verbose addNamed webpack-dev-server@1.12.1
+536 silly addNamed semver.valid 1.12.1
+537 silly addNamed semver.validRange 1.12.1
+538 silly mapToRegistry name webpack-dev-server
+539 silly mapToRegistry using default registry
+540 silly mapToRegistry registry https://registry.npmjs.org/
+541 silly mapToRegistry uri https://registry.npmjs.org/webpack-dev-server
+542 verbose addRemoteTarball https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.12.1.tgz not in flight; adding
+543 verbose addRemoteTarball [ 'https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.12.1.tgz',
+543 verbose addRemoteTarball   'c6dc855520c8ee9cba9256241b3390c1348b0d5c' ]
+544 info retry fetch attempt 1 at 10:54:23
+545 info attempt registry request try #1 at 10:54:23
+546 http fetch GET https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.12.1.tgz
+547 http 200 https://registry.npmjs.org/react-infinite-scroll
+548 silly get cb [ 200,
+548 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+548 silly get     etag: '"27H21VIPPD39FTGXTBLGRQ7HJ"',
+548 silly get     'content-type': 'application/json',
+548 silly get     'cache-control': 'max-age=60',
+548 silly get     'content-length': '17609',
+548 silly get     'accept-ranges': 'bytes',
+548 silly get     date: 'Fri, 20 Nov 2015 02:54:23 GMT',
+548 silly get     via: '1.1 varnish',
+548 silly get     age: '0',
+548 silly get     connection: 'keep-alive',
+548 silly get     'x-served-by': 'cache-lhr6334-LHR',
+548 silly get     'x-cache': 'MISS',
+548 silly get     'x-cache-hits': '0',
+548 silly get     'x-timer': 'S1447988062.784599,VS0,VE471',
+548 silly get     vary: 'Accept' } ]
+549 http 200 https://registry.npmjs.org/react
+550 silly get cb [ 200,
+550 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+550 silly get     etag: '"BZSN93PSLVI5KWZYF3OWTFU8I"',
+550 silly get     'content-type': 'application/json',
+550 silly get     'cache-control': 'max-age=60',
+550 silly get     'content-length': '74081',
+550 silly get     'accept-ranges': 'bytes',
+550 silly get     date: 'Fri, 20 Nov 2015 02:54:22 GMT',
+550 silly get     via: '1.1 varnish',
+550 silly get     age: '0',
+550 silly get     connection: 'keep-alive',
+550 silly get     'x-served-by': 'cache-lhr6323-LHR',
+550 silly get     'x-cache': 'HIT',
+550 silly get     'x-cache-hits': '1',
+550 silly get     'x-timer': 'S1447988062.787594,VS0,VE159',
+550 silly get     vary: 'Accept' } ]
+551 silly mapToRegistry name react-infinite-scroll
+552 silly mapToRegistry using default registry
+553 silly mapToRegistry registry https://registry.npmjs.org/
+554 silly mapToRegistry uri https://registry.npmjs.org/react-infinite-scroll
+555 verbose addRemoteTarball https://registry.npmjs.org/react-infinite-scroll/-/react-infinite-scroll-0.1.5.tgz not in flight; adding
+556 verbose addRemoteTarball [ 'https://registry.npmjs.org/react-infinite-scroll/-/react-infinite-scroll-0.1.5.tgz',
+556 verbose addRemoteTarball   '18204e4a238b1a69cabd43c2b26db94a5941f81a' ]
+557 info retry fetch attempt 1 at 10:54:23
+558 info attempt registry request try #1 at 10:54:23
+559 http fetch GET https://registry.npmjs.org/react-infinite-scroll/-/react-infinite-scroll-0.1.5.tgz
+560 silly mapToRegistry name react
+561 silly mapToRegistry using default registry
+562 silly mapToRegistry registry https://registry.npmjs.org/
+563 silly mapToRegistry uri https://registry.npmjs.org/react
+564 verbose addRemoteTarball https://registry.npmjs.org/react/-/react-0.14.0.tgz not in flight; adding
+565 verbose addRemoteTarball [ 'https://registry.npmjs.org/react/-/react-0.14.0.tgz',
+565 verbose addRemoteTarball   '72e7c69233b082e37e1bbd3674a943db72d8f407' ]
+566 info retry fetch attempt 1 at 10:54:23
+567 info attempt registry request try #1 at 10:54:23
+568 http fetch GET https://registry.npmjs.org/react/-/react-0.14.0.tgz
+569 http 200 https://registry.npmjs.org/react-dom
+570 silly get cb [ 200,
+570 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+570 silly get     etag: '"9OJ2K9EXV8M3J537XMKG56ZWE"',
+570 silly get     'content-type': 'application/json',
+570 silly get     'cache-control': 'max-age=60',
+570 silly get     'content-length': '11427',
+570 silly get     'accept-ranges': 'bytes',
+570 silly get     date: 'Fri, 20 Nov 2015 02:54:23 GMT',
+570 silly get     via: '1.1 varnish',
+570 silly get     age: '0',
+570 silly get     connection: 'keep-alive',
+570 silly get     'x-served-by': 'cache-lhr6323-LHR',
+570 silly get     'x-cache': 'HIT',
+570 silly get     'x-cache-hits': '1',
+570 silly get     'x-timer': 'S1447988063.267573,VS0,VE159',
+570 silly get     vary: 'Accept' } ]
+571 silly addNameRange number 2 { name: 'react-dom', range: '>=0.14.0 <0.15.0', hasData: true }
+572 silly addNameRange versions [ 'react-dom',
+572 silly addNameRange   [ '0.1.0',
+572 silly addNameRange     '0.14.0-beta1',
+572 silly addNameRange     '0.14.0-beta2',
+572 silly addNameRange     '0.14.0-beta3',
+572 silly addNameRange     '0.14.0-rc1',
+572 silly addNameRange     '0.14.0',
+572 silly addNameRange     '0.14.1',
+572 silly addNameRange     '0.14.2',
+572 silly addNameRange     '0.14.3' ] ]
+573 verbose addNamed react-dom@0.14.3
+574 silly addNamed semver.valid 0.14.3
+575 silly addNamed semver.validRange 0.14.3
+576 silly mapToRegistry name react-dom
+577 silly mapToRegistry using default registry
+578 silly mapToRegistry registry https://registry.npmjs.org/
+579 silly mapToRegistry uri https://registry.npmjs.org/react-dom
+580 verbose addRemoteTarball https://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz not in flight; adding
+581 verbose addRemoteTarball [ 'https://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz',
+581 verbose addRemoteTarball   'b3f0aeeed1a433b20c5458e34439a51916818628' ]
+582 info retry fetch attempt 1 at 10:54:23
+583 info attempt registry request try #1 at 10:54:23
+584 http fetch GET https://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz
+585 http 200 https://registry.npmjs.org/material-ui
+586 silly get cb [ 200,
+586 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+586 silly get     etag: '"DGVE6QULAC3JOC2V1JF20LHC6"',
+586 silly get     'content-type': 'application/json',
+586 silly get     'cache-control': 'max-age=60',
+586 silly get     'content-length': '93524',
+586 silly get     'accept-ranges': 'bytes',
+586 silly get     date: 'Fri, 20 Nov 2015 02:54:22 GMT',
+586 silly get     via: '1.1 varnish',
+586 silly get     age: '0',
+586 silly get     connection: 'keep-alive',
+586 silly get     'x-served-by': 'cache-lhr6330-LHR',
+586 silly get     'x-cache': 'MISS',
+586 silly get     'x-cache-hits': '0',
+586 silly get     'x-timer': 'S1447988062.525109,VS0,VE363',
+586 silly get     vary: 'Accept' } ]
+587 http 200 https://registry.npmjs.org/react-router
+588 silly get cb [ 200,
+588 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+588 silly get     etag: '"595JQALLPE4MP0VH4JF0OCCXP"',
+588 silly get     'content-type': 'application/json',
+588 silly get     'cache-control': 'max-age=60',
+588 silly get     'content-length': '93118',
+588 silly get     'accept-ranges': 'bytes',
+588 silly get     date: 'Fri, 20 Nov 2015 02:54:22 GMT',
+588 silly get     via: '1.1 varnish',
+588 silly get     age: '0',
+588 silly get     connection: 'keep-alive',
+588 silly get     'x-served-by': 'cache-lhr6329-LHR',
+588 silly get     'x-cache': 'MISS',
+588 silly get     'x-cache-hits': '0',
+588 silly get     'x-timer': 'S1447988062.856968,VS0,VE88',
+588 silly get     vary: 'Accept' } ]
+589 http fetch 200 https://registry.npmjs.org/jsx-loader/-/jsx-loader-0.13.2.tgz
+590 silly fetchAndShaCheck shasum 9767f643975c78f5e5abeba9bc57885297e732d4
+591 silly mapToRegistry name material-ui
+592 silly mapToRegistry using default registry
+593 silly mapToRegistry registry https://registry.npmjs.org/
+594 silly mapToRegistry uri https://registry.npmjs.org/material-ui
+595 verbose addRemoteTarball https://registry.npmjs.org/material-ui/-/material-ui-0.12.4.tgz not in flight; adding
+596 verbose addRemoteTarball [ 'https://registry.npmjs.org/material-ui/-/material-ui-0.12.4.tgz',
+596 verbose addRemoteTarball   'bddc2d53382a742457414be02b1e07dbecd5b787' ]
+597 silly mapToRegistry name react-router
+598 silly mapToRegistry using default registry
+599 silly mapToRegistry registry https://registry.npmjs.org/
+600 silly mapToRegistry uri https://registry.npmjs.org/react-router
+601 verbose addRemoteTarball https://registry.npmjs.org/react-router/-/react-router-1.0.0-rc3.tgz not in flight; adding
+602 verbose addRemoteTarball [ 'https://registry.npmjs.org/react-router/-/react-router-1.0.0-rc3.tgz',
+602 verbose addRemoteTarball   'b511f1f1b873e6db0af2d8bd6cb10b6aca479002' ]
+603 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/jsx-loader/-/jsx-loader-0.13.2.tgz not in flight; adding
+604 verbose addTmpTarball already have metadata; skipping unpack for jsx-loader@0.13.2
+605 info retry fetch attempt 1 at 10:54:23
+606 info attempt registry request try #1 at 10:54:23
+607 http fetch GET https://registry.npmjs.org/material-ui/-/material-ui-0.12.4.tgz
+608 info retry fetch attempt 1 at 10:54:23
+609 info attempt registry request try #1 at 10:54:23
+610 http fetch GET https://registry.npmjs.org/react-router/-/react-router-1.0.0-rc3.tgz
+611 silly cache afterAdd jsx-loader@0.13.2
+612 verbose afterAdd /Users/mac/.npm/jsx-loader/0.13.2/package/package.json not in flight; writing
+613 verbose afterAdd /Users/mac/.npm/jsx-loader/0.13.2/package/package.json written
+614 http fetch 200 https://registry.npmjs.org/file-loader/-/file-loader-0.8.4.tgz
+615 silly fetchAndShaCheck shasum 36cb91a1e07fb59817432a76b8408d66fbaa69c6
+616 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/file-loader/-/file-loader-0.8.4.tgz not in flight; adding
+617 verbose addTmpTarball already have metadata; skipping unpack for file-loader@0.8.4
+618 silly cache afterAdd file-loader@0.8.4
+619 verbose afterAdd /Users/mac/.npm/file-loader/0.8.4/package/package.json not in flight; writing
+620 verbose afterAdd /Users/mac/.npm/file-loader/0.8.4/package/package.json written
+621 http fetch 200 https://registry.npmjs.org/css-loader/-/css-loader-0.15.6.tgz
+622 silly fetchAndShaCheck shasum 2287dee284829ebfb81fac0b294da729b3bfa144
+623 http fetch 200 https://registry.npmjs.org/babel-loader/-/babel-loader-5.4.0.tgz
+624 silly fetchAndShaCheck shasum 363c53b4fba68a28c54f3ca0bcc99bb7f5c4cf58
+625 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/css-loader/-/css-loader-0.15.6.tgz not in flight; adding
+626 verbose addTmpTarball already have metadata; skipping unpack for css-loader@0.15.6
+627 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/babel-loader/-/babel-loader-5.4.0.tgz not in flight; adding
+628 verbose addTmpTarball already have metadata; skipping unpack for babel-loader@5.4.0
+629 silly cache afterAdd css-loader@0.15.6
+630 verbose afterAdd /Users/mac/.npm/css-loader/0.15.6/package/package.json not in flight; writing
+631 silly cache afterAdd babel-loader@5.4.0
+632 verbose afterAdd /Users/mac/.npm/babel-loader/5.4.0/package/package.json not in flight; writing
+633 verbose afterAdd /Users/mac/.npm/babel-loader/5.4.0/package/package.json written
+634 verbose afterAdd /Users/mac/.npm/css-loader/0.15.6/package/package.json written
+635 http fetch 200 https://registry.npmjs.org/bundle-loader/-/bundle-loader-0.5.4.tgz
+636 silly fetchAndShaCheck shasum 07c38ee906e0a0e700fd476a21834701ea7066f3
+637 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/bundle-loader/-/bundle-loader-0.5.4.tgz not in flight; adding
+638 verbose addTmpTarball already have metadata; skipping unpack for bundle-loader@0.5.4
+639 silly cache afterAdd bundle-loader@0.5.4
+640 verbose afterAdd /Users/mac/.npm/bundle-loader/0.5.4/package/package.json not in flight; writing
+641 verbose afterAdd /Users/mac/.npm/bundle-loader/0.5.4/package/package.json written
+642 http fetch 200 https://registry.npmjs.org/less/-/less-2.5.3.tgz
+643 http fetch 200 https://registry.npmjs.org/style-loader/-/style-loader-0.12.4.tgz
+644 http fetch 200 https://registry.npmjs.org/less-loader/-/less-loader-2.2.1.tgz
+645 silly fetchAndShaCheck shasum ae7d0665dc4dc653daa2fe97bb90914bc1d22d9b
+646 silly fetchAndShaCheck shasum b8571c9b62bae889c93cdd2c21ae6945d6571e46
+647 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/style-loader/-/style-loader-0.12.4.tgz not in flight; adding
+648 verbose addTmpTarball already have metadata; skipping unpack for style-loader@0.12.4
+649 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/less-loader/-/less-loader-2.2.1.tgz not in flight; adding
+650 verbose addTmpTarball already have metadata; skipping unpack for less-loader@2.2.1
+651 silly cache afterAdd style-loader@0.12.4
+652 verbose afterAdd /Users/mac/.npm/style-loader/0.12.4/package/package.json not in flight; writing
+653 silly cache afterAdd less-loader@2.2.1
+654 verbose afterAdd /Users/mac/.npm/less-loader/2.2.1/package/package.json not in flight; writing
+655 verbose afterAdd /Users/mac/.npm/style-loader/0.12.4/package/package.json written
+656 verbose afterAdd /Users/mac/.npm/less-loader/2.2.1/package/package.json written
+657 http fetch 200 https://registry.npmjs.org/imports-loader/-/imports-loader-0.6.5.tgz
+658 silly fetchAndShaCheck shasum ae74653031d59e37b3c2fb2544ac61aeae3530a6
+659 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/imports-loader/-/imports-loader-0.6.5.tgz not in flight; adding
+660 verbose addTmpTarball already have metadata; skipping unpack for imports-loader@0.6.5
+661 silly cache afterAdd imports-loader@0.6.5
+662 verbose afterAdd /Users/mac/.npm/imports-loader/0.6.5/package/package.json not in flight; writing
+663 verbose afterAdd /Users/mac/.npm/imports-loader/0.6.5/package/package.json written
+664 http 200 https://registry.npmjs.org/babel-core
+665 silly get cb [ 200,
+665 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+665 silly get     etag: '"1U3E44N9HR24US1KBJAQUMUAE"',
+665 silly get     'content-type': 'application/json',
+665 silly get     'cache-control': 'max-age=60',
+665 silly get     'content-length': '384718',
+665 silly get     'accept-ranges': 'bytes',
+665 silly get     date: 'Fri, 20 Nov 2015 02:54:23 GMT',
+665 silly get     via: '1.1 varnish',
+665 silly get     age: '15',
+665 silly get     connection: 'keep-alive',
+665 silly get     'x-served-by': 'cache-lhr6334-LHR',
+665 silly get     'x-cache': 'HIT',
+665 silly get     'x-cache-hits': '1',
+665 silly get     'x-timer': 'S1447988063.590391,VS0,VE1',
+665 silly get     vary: 'Accept' } ]
+666 http fetch 200 https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-1.3.0.tgz
+667 http fetch 200 https://registry.npmjs.org/url-loader/-/url-loader-0.5.6.tgz
+668 silly fetchAndShaCheck shasum 7701658d02108b5bbc407e200dde591cb7a6ed69
+669 silly fetchAndShaCheck shasum 644521a5dc66b8729caab1b6ba9e580e021ded45
+670 silly addNameRange number 2 { name: 'babel-core', range: '>=5.7.2 <6.0.0', hasData: true }
+671 silly addNameRange versions [ 'babel-core',
+671 silly addNameRange   [ '4.0.1',
+671 silly addNameRange     '4.0.2',
+671 silly addNameRange     '4.1.1',
+671 silly addNameRange     '4.2.0',
+671 silly addNameRange     '4.2.1',
+671 silly addNameRange     '4.3.0',
+671 silly addNameRange     '4.4.1',
+671 silly addNameRange     '4.4.2',
+671 silly addNameRange     '4.4.3',
+671 silly addNameRange     '4.4.4',
+671 silly addNameRange     '4.4.5',
+671 silly addNameRange     '4.4.6',
+671 silly addNameRange     '4.5.0',
+671 silly addNameRange     '4.5.1',
+671 silly addNameRange     '4.5.2',
+671 silly addNameRange     '4.5.3',
+671 silly addNameRange     '4.5.4',
+671 silly addNameRange     '4.5.5',
+671 silly addNameRange     '4.6.0',
+671 silly addNameRange     '4.6.1',
+671 silly addNameRange     '4.6.3',
+671 silly addNameRange     '4.6.4',
+671 silly addNameRange     '4.6.5',
+671 silly addNameRange     '4.6.6',
+671 silly addNameRange     '4.7.0',
+671 silly addNameRange     '4.7.1',
+671 silly addNameRange     '4.7.2',
+671 silly addNameRange     '4.7.3',
+671 silly addNameRange     '4.7.4',
+671 silly addNameRange     '4.7.5',
+671 silly addNameRange     '4.7.6',
+671 silly addNameRange     '4.7.7',
+671 silly addNameRange     '4.7.8',
+671 silly addNameRange     '4.7.9',
+671 silly addNameRange     '4.7.10',
+671 silly addNameRange     '4.7.11',
+671 silly addNameRange     '4.7.12',
+671 silly addNameRange     '4.7.13',
+671 silly addNameRange     '4.7.14',
+671 silly addNameRange     '4.7.15',
+671 silly addNameRange     '4.7.16',
+671 silly addNameRange     '5.0.0-beta2',
+671 silly addNameRange     '5.0.0-beta3',
+671 silly addNameRange     '5.0.0-beta4',
+671 silly addNameRange     '5.0.0',
+671 silly addNameRange     '5.0.1',
+671 silly addNameRange     '5.0.2',
+671 silly addNameRange     '5.0.3',
+671 silly addNameRange     '5.0.4',
+671 silly addNameRange     '5.0.5',
+671 silly addNameRange     '5.0.6',
+671 silly addNameRange     '5.0.7',
+671 silly addNameRange     '5.0.8',
+671 silly addNameRange     '5.0.9',
+671 silly addNameRange     '5.0.10',
+671 silly addNameRange     '5.0.11',
+671 silly addNameRange     '5.0.12',
+671 silly addNameRange     '5.0.13',
+671 silly addNameRange     '5.1.0',
+671 silly addNameRange     '5.1.1',
+671 silly addNameRange     '5.1.2',
+671 silly addNameRange     '5.1.3',
+671 silly addNameRange     '5.1.4',
+671 silly addNameRange     '5.1.5',
+671 silly addNameRange     '5.1.6',
+671 silly addNameRange     '5.1.7',
+671 silly addNameRange     '5.1.8',
+671 silly addNameRange     '5.1.9',
+671 silly addNameRange     '5.1.10',
+671 silly addNameRange     '5.1.11',
+671 silly addNameRange     '5.1.12',
+671 silly addNameRange     '5.1.13',
+671 silly addNameRange     '5.2.0',
+671 silly addNameRange     '5.2.1',
+671 silly addNameRange     '5.2.2',
+671 silly addNameRange     '5.2.3',
+671 silly addNameRange     '5.2.4',
+671 silly addNameRange     '5.2.5',
+671 silly addNameRange     '5.2.6',
+671 silly addNameRange     '5.2.7',
+671 silly addNameRange     '5.2.9',
+671 silly addNameRange     '5.2.10',
+671 silly addNameRange     '5.2.11',
+671 silly addNameRange     '5.2.12',
+671 silly addNameRange     '5.2.13',
+671 silly addNameRange     '5.2.14',
+671 silly addNameRange     '5.2.15',
+671 silly addNameRange     '5.2.16',
+671 silly addNameRange     '5.2.17',
+671 silly addNameRange     '5.3.0',
+671 silly addNameRange     '5.3.1',
+671 silly addNameRange     '5.3.2',
+671 silly addNameRange     '5.3.3',
+671 silly addNameRange     '5.4.0',
+671 silly addNameRange     '5.4.1',
+671 silly addNameRange     '5.4.2',
+671 silly addNameRange     '5.4.3',
+671 silly addNameRange     '5.4.4',
+671 silly addNameRange     '5.4.5',
+671 silly addNameRange     '5.4.6',
+671 silly addNameRange     '5.4.7',
+671 silly addNameRange     '5.5.0',
+671 silly addNameRange     '5.5.1',
+671 silly addNameRange     '5.5.2',
+671 silly addNameRange     '5.5.3',
+671 silly addNameRange     '5.5.4',
+671 silly addNameRange     '5.5.5',
+671 silly addNameRange     '5.5.6',
+671 silly addNameRange     '5.5.7',
+671 silly addNameRange     '5.5.8',
+671 silly addNameRange     '5.6.1',
+671 silly addNameRange     '5.6.2',
+671 silly addNameRange     '5.6.3',
+671 silly addNameRange     '5.6.4',
+671 silly addNameRange     '5.6.5',
+671 silly addNameRange     '5.6.6',
+671 silly addNameRange     '5.6.7',
+671 silly addNameRange     '5.6.10',
+671 silly addNameRange     '5.6.11',
+671 silly addNameRange     '5.6.12',
+671 silly addNameRange     '5.6.14',
+671 silly addNameRange     '5.6.15',
+671 silly addNameRange     '5.6.16',
+671 silly addNameRange     '5.6.18',
+671 silly addNameRange     '5.6.19',
+671 silly addNameRange     '5.6.20',
+671 silly addNameRange     '5.7.0',
+671 silly addNameRange     '5.7.1',
+671 silly addNameRange     '5.7.2',
+671 silly addNameRange     '5.7.3',
+671 silly addNameRange     '5.7.4',
+671 silly addNameRange     '5.8.1',
+671 silly addNameRange     '5.8.2',
+671 silly addNameRange     '5.8.3',
+671 silly addNameRange     '5.8.5',
+671 silly addNameRange     '5.8.6',
+671 silly addNameRange     '5.8.8',
+671 silly addNameRange     '5.8.9',
+671 silly addNameRange     '5.8.12',
+671 silly addNameRange     '5.8.14',
+671 silly addNameRange     '5.8.19',
+671 silly addNameRange     '5.8.20',
+671 silly addNameRange     '5.8.21',
+671 silly addNameRange     '5.8.22',
+671 silly addNameRange     '5.8.23',
+671 silly addNameRange     '5.8.24',
+671 silly addNameRange     '5.8.25',
+671 silly addNameRange     '5.8.29',
+671 silly addNameRange     '5.8.30',
+671 silly addNameRange     '5.8.31',
+671 silly addNameRange     '5.8.32',
+671 silly addNameRange     '5.8.33',
+671 silly addNameRange     '6.0.0',
+671 silly addNameRange     '6.0.1',
+671 silly addNameRange     '6.0.2',
+671 silly addNameRange     '6.0.12',
+671 silly addNameRange     '6.0.14',
+671 silly addNameRange     '6.0.15',
+671 silly addNameRange     '6.0.16',
+671 silly addNameRange     '6.0.17',
+671 silly addNameRange     '6.0.18',
+671 silly addNameRange     '6.0.19',
+671 silly addNameRange     '6.0.20',
+671 silly addNameRange     '6.1.2',
+671 silly addNameRange     '6.1.4',
+671 silly addNameRange     '5.8.34',
+671 silly addNameRange     '6.1.5',
+671 silly addNameRange     '6.1.6',
+671 silly addNameRange     '6.1.7',
+671 silly addNameRange     '6.1.8',
+671 silly addNameRange     '6.1.9',
+671 silly addNameRange     '6.1.10',
+671 silly addNameRange     '6.1.11',
+671 silly addNameRange     '6.1.12',
+671 silly addNameRange     '6.1.13',
+671 silly addNameRange     '6.1.14',
+671 silly addNameRange     '6.1.15',
+671 silly addNameRange     '6.1.16',
+671 silly addNameRange     '6.1.17',
+671 silly addNameRange     '6.1.18',
+671 silly addNameRange     '6.1.19',
+671 silly addNameRange     '6.1.20',
+671 silly addNameRange     '6.1.21',
+671 silly addNameRange     '6.2.0',
+671 silly addNameRange     '6.2.1' ] ]
+672 verbose addNamed babel-core@5.8.34
+673 silly addNamed semver.valid 5.8.34
+674 silly addNamed semver.validRange 5.8.34
+675 silly mapToRegistry name babel-core
+676 silly mapToRegistry using default registry
+677 silly mapToRegistry registry https://registry.npmjs.org/
+678 silly mapToRegistry uri https://registry.npmjs.org/babel-core
+679 verbose addRemoteTarball https://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz not in flight; adding
+680 verbose addRemoteTarball [ 'https://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz',
+680 verbose addRemoteTarball   '0396370458772774041e5dbbef57ae0282ee61c2' ]
+681 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/url-loader/-/url-loader-0.5.6.tgz not in flight; adding
+682 verbose addTmpTarball already have metadata; skipping unpack for url-loader@0.5.6
+683 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/react-hot-loader/-/react-hot-loader-1.3.0.tgz not in flight; adding
+684 verbose addTmpTarball already have metadata; skipping unpack for react-hot-loader@1.3.0
+685 info retry fetch attempt 1 at 10:54:24
+686 info attempt registry request try #1 at 10:54:24
+687 http fetch GET https://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz
+688 silly cache afterAdd url-loader@0.5.6
+689 verbose afterAdd /Users/mac/.npm/url-loader/0.5.6/package/package.json not in flight; writing
+690 silly cache afterAdd react-hot-loader@1.3.0
+691 verbose afterAdd /Users/mac/.npm/react-hot-loader/1.3.0/package/package.json not in flight; writing
+692 verbose afterAdd /Users/mac/.npm/url-loader/0.5.6/package/package.json written
+693 verbose afterAdd /Users/mac/.npm/react-hot-loader/1.3.0/package/package.json written
+694 http fetch 200 https://registry.npmjs.org/json-loader/-/json-loader-0.5.2.tgz
+695 silly fetchAndShaCheck shasum ed79019c4f3778422eccd62427eb526612c6ef40
+696 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/json-loader/-/json-loader-0.5.2.tgz not in flight; adding
+697 verbose addTmpTarball already have metadata; skipping unpack for json-loader@0.5.2
+698 silly cache afterAdd json-loader@0.5.2
+699 verbose afterAdd /Users/mac/.npm/json-loader/0.5.2/package/package.json not in flight; writing
+700 verbose afterAdd /Users/mac/.npm/json-loader/0.5.2/package/package.json written
+701 http fetch 200 https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz
+702 http fetch 200 https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.12.1.tgz
+703 http fetch 200 https://registry.npmjs.org/react-infinite-scroll/-/react-infinite-scroll-0.1.5.tgz
+704 silly fetchAndShaCheck shasum 18204e4a238b1a69cabd43c2b26db94a5941f81a
+705 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/react-infinite-scroll/-/react-infinite-scroll-0.1.5.tgz not in flight; adding
+706 verbose addTmpTarball already have metadata; skipping unpack for react-infinite-scroll@0.1.5
+707 silly cache afterAdd react-infinite-scroll@0.1.5
+708 verbose afterAdd /Users/mac/.npm/react-infinite-scroll/0.1.5/package/package.json not in flight; writing
+709 verbose afterAdd /Users/mac/.npm/react-infinite-scroll/0.1.5/package/package.json written
+710 http fetch 200 https://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz
+711 silly fetchAndShaCheck shasum b3f0aeeed1a433b20c5458e34439a51916818628
+712 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz not in flight; adding
+713 verbose addTmpTarball already have metadata; skipping unpack for react-dom@0.14.3
+714 silly cache afterAdd react-dom@0.14.3
+715 verbose afterAdd /Users/mac/.npm/react-dom/0.14.3/package/package.json not in flight; writing
+716 verbose afterAdd /Users/mac/.npm/react-dom/0.14.3/package/package.json written
+717 http fetch 200 https://registry.npmjs.org/material-ui/-/material-ui-0.12.4.tgz
+718 silly fetchAndShaCheck shasum 1777ab79299b128d87dce7cbd86fdc46ac69c0b1
+719 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz not in flight; adding
+720 verbose addTmpTarball already have metadata; skipping unpack for bootstrap@3.3.5
+721 silly cache afterAdd bootstrap@3.3.5
+722 verbose afterAdd /Users/mac/.npm/bootstrap/3.3.5/package/package.json not in flight; writing
+723 verbose afterAdd /Users/mac/.npm/bootstrap/3.3.5/package/package.json written
+724 silly fetchAndShaCheck shasum 9ff586e8a703515fc18dc99c7bc498d2f3ad4849
+725 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/less/-/less-2.5.3.tgz not in flight; adding
+726 verbose addTmpTarball already have metadata; skipping unpack for less@2.5.3
+727 silly cache afterAdd less@2.5.3
+728 verbose afterAdd /Users/mac/.npm/less/2.5.3/package/package.json not in flight; writing
+729 verbose afterAdd /Users/mac/.npm/less/2.5.3/package/package.json written
+730 http fetch 200 https://registry.npmjs.org/react/-/react-0.14.0.tgz
+731 http fetch 200 https://registry.npmjs.org/react-router/-/react-router-1.0.0-rc3.tgz
+732 http fetch 200 https://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz
+733 silly fetchAndShaCheck shasum b511f1f1b873e6db0af2d8bd6cb10b6aca479002
+734 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/react-router/-/react-router-1.0.0-rc3.tgz not in flight; adding
+735 verbose addTmpTarball already have metadata; skipping unpack for react-router@1.0.0-rc3
+736 silly cache afterAdd react-router@1.0.0-rc3
+737 verbose afterAdd /Users/mac/.npm/react-router/1.0.0-rc3/package/package.json not in flight; writing
+738 verbose afterAdd /Users/mac/.npm/react-router/1.0.0-rc3/package/package.json written
+739 silly fetchAndShaCheck shasum c6dc855520c8ee9cba9256241b3390c1348b0d5c
+740 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.12.1.tgz not in flight; adding
+741 verbose addTmpTarball already have metadata; skipping unpack for webpack-dev-server@1.12.1
+742 silly cache afterAdd webpack-dev-server@1.12.1
+743 verbose afterAdd /Users/mac/.npm/webpack-dev-server/1.12.1/package/package.json not in flight; writing
+744 verbose afterAdd /Users/mac/.npm/webpack-dev-server/1.12.1/package/package.json written
+745 silly fetchAndShaCheck shasum bddc2d53382a742457414be02b1e07dbecd5b787
+746 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/material-ui/-/material-ui-0.12.4.tgz not in flight; adding
+747 verbose addTmpTarball already have metadata; skipping unpack for material-ui@0.12.4
+748 silly cache afterAdd material-ui@0.12.4
+749 verbose afterAdd /Users/mac/.npm/material-ui/0.12.4/package/package.json not in flight; writing
+750 verbose afterAdd /Users/mac/.npm/material-ui/0.12.4/package/package.json written
+751 silly fetchAndShaCheck shasum 72e7c69233b082e37e1bbd3674a943db72d8f407
+752 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/react/-/react-0.14.0.tgz not in flight; adding
+753 verbose addTmpTarball already have metadata; skipping unpack for react@0.14.0
+754 silly cache afterAdd react@0.14.0
+755 verbose afterAdd /Users/mac/.npm/react/0.14.0/package/package.json not in flight; writing
+756 verbose afterAdd /Users/mac/.npm/react/0.14.0/package/package.json written
+757 silly fetchAndShaCheck shasum 0396370458772774041e5dbbef57ae0282ee61c2
+758 verbose addTmpTarball /var/folders/x2/q03g7_9x09v242qbb18f55340000gn/T/npm-17574-3b2647d6/registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz not in flight; adding
+759 verbose addTmpTarball already have metadata; skipping unpack for babel-core@5.8.34
+760 silly cache afterAdd babel-core@5.8.34
+761 verbose afterAdd /Users/mac/.npm/babel-core/5.8.34/package/package.json not in flight; writing
+762 verbose afterAdd /Users/mac/.npm/babel-core/5.8.34/package/package.json written
+763 silly install resolved [ { name: 'jsx-loader',
+763 silly install resolved     version: '0.13.2',
+763 silly install resolved     description: 'JSX loader for webpack',
+763 silly install resolved     main: 'index.js',
+763 silly install resolved     dependencies: { jstransform: '11', 'loader-utils': '^0.2.2' },
+763 silly install resolved     scripts: { test: 'echo "Error: no test specified" && exit 1' },
+763 silly install resolved     repository: { type: 'git', url: 'https://github.com/petehunt/jsx-loader' },
+763 silly install resolved     keywords: [ 'webpack', 'jsx' ],
+763 silly install resolved     author: { name: 'Pete Hunt' },
+763 silly install resolved     license: 'Apache 2',
+763 silly install resolved     gitHead: '11b790a11cd5456b799c4c27f727fcaa86c274fe',
+763 silly install resolved     bugs: { url: 'https://github.com/petehunt/jsx-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/petehunt/jsx-loader',
+763 silly install resolved     _id: 'jsx-loader@0.13.2',
+763 silly install resolved     _shasum: '9767f643975c78f5e5abeba9bc57885297e732d4',
+763 silly install resolved     _from: 'jsx-loader@>=0.13.2 <0.14.0',
+763 silly install resolved     _npmVersion: '1.4.23',
+763 silly install resolved     _npmUser: { name: 'floydophone', email: 'floydophone@gmail.com' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '9767f643975c78f5e5abeba9bc57885297e732d4',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/jsx-loader/-/jsx-loader-0.13.2.tgz' },
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/jsx-loader/-/jsx-loader-0.13.2.tgz' },
+763 silly install resolved   { name: 'file-loader',
+763 silly install resolved     version: '0.8.4',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'file loader module for webpack',
+763 silly install resolved     files: [ 'index.js' ],
+763 silly install resolved     dependencies: { 'loader-utils': '~0.2.5' },
+763 silly install resolved     devDependencies: { should: '~4.0.4', mocha: '~1.21.3' },
+763 silly install resolved     scripts: { test: 'mocha -R spec' },
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/webpack/file-loader.git' },
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/file-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/webpack/file-loader',
+763 silly install resolved     main: 'index.js',
+763 silly install resolved     directories: { test: 'test' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     gitHead: '9cda561d2497c2e0668b2a797733b6d8fcc402ca',
+763 silly install resolved     _id: 'file-loader@0.8.4',
+763 silly install resolved     _shasum: '36cb91a1e07fb59817432a76b8408d66fbaa69c6',
+763 silly install resolved     _from: 'file-loader@>=0.8.4 <0.9.0',
+763 silly install resolved     _npmVersion: '2.10.0',
+763 silly install resolved     _nodeVersion: '0.12.2',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '36cb91a1e07fb59817432a76b8408d66fbaa69c6',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/file-loader/-/file-loader-0.8.4.tgz' },
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/file-loader/-/file-loader-0.8.4.tgz' },
+763 silly install resolved   { name: 'babel-loader',
+763 silly install resolved     version: '5.4.0',
+763 silly install resolved     description: 'babel module loader for webpack',
+763 silly install resolved     main: 'index.js',
+763 silly install resolved     dependencies:
+763 silly install resolved      { 'babel-core': '^5.4.0',
+763 silly install resolved        'loader-utils': '^0.2.9',
+763 silly install resolved        'object-assign': '^3.0.0' },
+763 silly install resolved     peerDependencies: { 'babel-core': '^5.0.0', webpack: '*' },
+763 silly install resolved     devDependencies:
+763 silly install resolved      { 'babel-core': '^5.5.8',
+763 silly install resolved        'expect.js': '^0.3.1',
+763 silly install resolved        istanbul: '^0.3.15',
+763 silly install resolved        jscs: '^1.13.1',
+763 silly install resolved        jshint: '^2.8.0',
+763 silly install resolved        mkdirp: '^0.5.1',
+763 silly install resolved        mocha: '^2.2.5',
+763 silly install resolved        rimraf: '^2.4.0',
+763 silly install resolved        webpack: '^1.9.11' },
+763 silly install resolved     scripts:
+763 silly install resolved      { test: 'npm run hint && npm run cs && npm run cov',
+763 silly install resolved        cov: 'istanbul cover ./node_modules/.bin/_mocha -- test/*.test.js',
+763 silly install resolved        hint: 'jshint --config .jshintrc index.js lib/* test/*',
+763 silly install resolved        cs: 'jscs --config .jscsrc index.js lib/* test/*' },
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/babel/babel-loader.git' },
+763 silly install resolved     keywords:
+763 silly install resolved      [ 'webpack',
+763 silly install resolved        'loader',
+763 silly install resolved        '6to5',
+763 silly install resolved        'babel',
+763 silly install resolved        'es6',
+763 silly install resolved        'transpiler',
+763 silly install resolved        'module' ],
+763 silly install resolved     author: { name: 'Luis Couto', email: 'couto@15minuteslate.net' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     bugs: { url: 'https://github.com/babel/babel-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/babel/babel-loader',
+763 silly install resolved     gitHead: 'f40dee5ee850a7aa12862c9c634d5b090c7e1141',
+763 silly install resolved     _id: 'babel-loader@5.4.0',
+763 silly install resolved     _shasum: '363c53b4fba68a28c54f3ca0bcc99bb7f5c4cf58',
+763 silly install resolved     _from: 'babel-loader@>=5.3.2 <6.0.0',
+763 silly install resolved     _npmVersion: '3.3.6',
+763 silly install resolved     _nodeVersion: '5.0.0',
+763 silly install resolved     _npmUser: { name: 'couto', email: 'couto@15minuteslate.net' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '363c53b4fba68a28c54f3ca0bcc99bb7f5c4cf58',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/babel-loader/-/babel-loader-5.4.0.tgz' },
+763 silly install resolved     maintainers: [ [Object], [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/babel-loader/-/babel-loader-5.4.0.tgz' },
+763 silly install resolved   { name: 'css-loader',
+763 silly install resolved     version: '0.15.6',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'css loader module for webpack',
+763 silly install resolved     dependencies:
+763 silly install resolved      { 'css-selector-tokenizer': '^0.5.1',
+763 silly install resolved        cssnano: '^2.1.0',
+763 silly install resolved        'loader-utils': '~0.2.2',
+763 silly install resolved        postcss: '^4.1.11',
+763 silly install resolved        'postcss-modules-extract-imports': '0.0.5',
+763 silly install resolved        'postcss-modules-local-by-default': '0.0.11',
+763 silly install resolved        'postcss-modules-scope': '0.0.8',
+763 silly install resolved        'source-list-map': '^0.1.4' },
+763 silly install resolved     devDependencies:
+763 silly install resolved      { 'codecov.io': '^0.1.2',
+763 silly install resolved        coveralls: '^2.11.2',
+763 silly install resolved        istanbul: '^0.3.13',
+763 silly install resolved        mocha: '^2.2.4',
+763 silly install resolved        should: '^7.0.1' },
+763 silly install resolved     scripts:
+763 silly install resolved      { test: 'mocha',
+763 silly install resolved        travis: 'npm run cover -- --report lcovonly',
+763 silly install resolved        cover: 'istanbul cover node_modules/mocha/bin/_mocha',
+763 silly install resolved        'publish-patch': 'mocha && npm version patch && git push && git push --tags && npm publish' },
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+ssh://git@github.com/webpack/css-loader.git' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     gitHead: '5bf1893a980144b4a2ab88b387914f332a0c0bf7',
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/css-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/webpack/css-loader#readme',
+763 silly install resolved     _id: 'css-loader@0.15.6',
+763 silly install resolved     _shasum: '2287dee284829ebfb81fac0b294da729b3bfa144',
+763 silly install resolved     _from: 'css-loader@>=0.15.4 <0.16.0',
+763 silly install resolved     _npmVersion: '2.10.1',
+763 silly install resolved     _nodeVersion: '0.12.4',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     maintainers: [ [Object], [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '2287dee284829ebfb81fac0b294da729b3bfa144',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/css-loader/-/css-loader-0.15.6.tgz' },
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/css-loader/-/css-loader-0.15.6.tgz' },
+763 silly install resolved   { name: 'bundle-loader',
+763 silly install resolved     version: '0.5.4',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'bundle loader module for webpack',
+763 silly install resolved     dependencies: { 'loader-utils': '0.2.x' },
+763 silly install resolved     licenses: [ [Object] ],
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git://github.com/webpack/bundle-loader.git' },
+763 silly install resolved     gitHead: '1e4d2a4875afe64901e098aeae4f9bda46c0eec0',
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/bundle-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/webpack/bundle-loader',
+763 silly install resolved     _id: 'bundle-loader@0.5.4',
+763 silly install resolved     scripts: {},
+763 silly install resolved     _shasum: '07c38ee906e0a0e700fd476a21834701ea7066f3',
+763 silly install resolved     _from: 'bundle-loader@>=0.5.4 <0.6.0',
+763 silly install resolved     _npmVersion: '2.7.4',
+763 silly install resolved     _nodeVersion: '0.12.2',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '07c38ee906e0a0e700fd476a21834701ea7066f3',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/bundle-loader/-/bundle-loader-0.5.4.tgz' },
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/bundle-loader/-/bundle-loader-0.5.4.tgz' },
+763 silly install resolved   { name: 'style-loader',
+763 silly install resolved     version: '0.12.4',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'style loader module for webpack',
+763 silly install resolved     devDependencies: { 'css-loader': '~0.8.0' },
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+ssh://git@github.com/webpack/style-loader.git' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     dependencies: { 'loader-utils': '^0.2.7' },
+763 silly install resolved     gitHead: '6d76315710e215692eba3c228a75b819ece71fc9',
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/style-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/webpack/style-loader#readme',
+763 silly install resolved     _id: 'style-loader@0.12.4',
+763 silly install resolved     scripts: {},
+763 silly install resolved     _shasum: 'ae7d0665dc4dc653daa2fe97bb90914bc1d22d9b',
+763 silly install resolved     _from: 'style-loader@>=0.12.3 <0.13.0',
+763 silly install resolved     _npmVersion: '2.14.2',
+763 silly install resolved     _nodeVersion: '4.0.0',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: 'ae7d0665dc4dc653daa2fe97bb90914bc1d22d9b',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/style-loader/-/style-loader-0.12.4.tgz' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/style-loader/-/style-loader-0.12.4.tgz' },
+763 silly install resolved   { name: 'less-loader',
+763 silly install resolved     version: '2.2.1',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'less loader module for webpack',
+763 silly install resolved     scripts:
+763 silly install resolved      { test: 'mocha -R spec',
+763 silly install resolved        'test-source-map': 'webpack --config test/sourceMap/webpack.config.js && open ./test/sourceMap/index.html' },
+763 silly install resolved     peerDependencies: { less: '^2.3.1' },
+763 silly install resolved     devDependencies:
+763 silly install resolved      { 'css-loader': '^0.9.1',
+763 silly install resolved        'enhanced-require': '^0.5.0-beta6',
+763 silly install resolved        'extract-text-webpack-plugin': '^0.5.0',
+763 silly install resolved        less: '^2.3.1',
+763 silly install resolved        mocha: '^2.0.1',
+763 silly install resolved        'raw-loader': '^0.5.1',
+763 silly install resolved        should: '^5.2.0',
+763 silly install resolved        webpack: '^1.1.8' },
+763 silly install resolved     repository: { type: 'git', url: 'git://github.com/webpack/less-loader.git' },
+763 silly install resolved     licenses: [ [Object] ],
+763 silly install resolved     dependencies: { 'loader-utils': '^0.2.5' },
+763 silly install resolved     gitHead: '41c6caf2d20afea537a7202858bdff5a17728ef1',
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/less-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/webpack/less-loader#readme',
+763 silly install resolved     _id: 'less-loader@2.2.1',
+763 silly install resolved     _shasum: 'b8571c9b62bae889c93cdd2c21ae6945d6571e46',
+763 silly install resolved     _from: 'less-loader@>=2.2.0 <3.0.0',
+763 silly install resolved     _npmVersion: '2.14.2',
+763 silly install resolved     _nodeVersion: '4.0.0',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: 'b8571c9b62bae889c93cdd2c21ae6945d6571e46',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/less-loader/-/less-loader-2.2.1.tgz' },
+763 silly install resolved     maintainers: [ [Object], [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/less-loader/-/less-loader-2.2.1.tgz' },
+763 silly install resolved   { name: 'imports-loader',
+763 silly install resolved     version: '0.6.5',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'imports loader module for webpack',
+763 silly install resolved     dependencies: { 'loader-utils': '0.2.x', 'source-map': '0.1.x' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/webpack/imports-loader.git' },
+763 silly install resolved     gitHead: '8e51c89a52b8cfb1fd5b46ee7c884e6f0350d050',
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/imports-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/webpack/imports-loader#readme',
+763 silly install resolved     _id: 'imports-loader@0.6.5',
+763 silly install resolved     scripts: {},
+763 silly install resolved     _shasum: 'ae74653031d59e37b3c2fb2544ac61aeae3530a6',
+763 silly install resolved     _from: 'imports-loader@>=0.6.4 <0.7.0',
+763 silly install resolved     _npmVersion: '3.3.3',
+763 silly install resolved     _nodeVersion: '4.0.0',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: 'ae74653031d59e37b3c2fb2544ac61aeae3530a6',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/imports-loader/-/imports-loader-0.6.5.tgz' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/imports-loader/-/imports-loader-0.6.5.tgz' },
+763 silly install resolved   { name: 'url-loader',
+763 silly install resolved     version: '0.5.6',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'url loader module for webpack',
+763 silly install resolved     dependencies: { 'loader-utils': '0.2.x', mime: '1.2.x' },
+763 silly install resolved     peerDependencies: { 'file-loader': '*' },
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+ssh://git@github.com/webpack/url-loader.git' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     gitHead: '5615a4c60b02240bd4dd54f390da8a83e29bd501',
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/url-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/webpack/url-loader#readme',
+763 silly install resolved     _id: 'url-loader@0.5.6',
+763 silly install resolved     scripts: {},
+763 silly install resolved     _shasum: '644521a5dc66b8729caab1b6ba9e580e021ded45',
+763 silly install resolved     _from: 'url-loader@>=0.5.6 <0.6.0',
+763 silly install resolved     _npmVersion: '2.10.0',
+763 silly install resolved     _nodeVersion: '0.12.2',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '644521a5dc66b8729caab1b6ba9e580e021ded45',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/url-loader/-/url-loader-0.5.6.tgz' },
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/url-loader/-/url-loader-0.5.6.tgz' },
+763 silly install resolved   { name: 'react-hot-loader',
+763 silly install resolved     version: '1.3.0',
+763 silly install resolved     description: 'Tweak React components in real time.',
+763 silly install resolved     main: 'index.js',
+763 silly install resolved     dependencies: { 'react-hot-api': '^0.4.5', 'source-map': '^0.4.4' },
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/gaearon/react-hot-loader.git' },
+763 silly install resolved     keywords:
+763 silly install resolved      [ 'react',
+763 silly install resolved        'javascript',
+763 silly install resolved        'webpack',
+763 silly install resolved        'hmr',
+763 silly install resolved        'livereload',
+763 silly install resolved        'live',
+763 silly install resolved        'edit',
+763 silly install resolved        'hot',
+763 silly install resolved        'loader',
+763 silly install resolved        'reload' ],
+763 silly install resolved     author: { name: 'Dan Abramov' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     bugs: { url: 'https://github.com/gaearon/react-hot-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/gaearon/react-hot-loader',
+763 silly install resolved     gitHead: '9fe87befadbeeab69c01840d29c8d2f5c29c43fd',
+763 silly install resolved     _id: 'react-hot-loader@1.3.0',
+763 silly install resolved     scripts: {},
+763 silly install resolved     _shasum: '7701658d02108b5bbc407e200dde591cb7a6ed69',
+763 silly install resolved     _from: 'react-hot-loader@>=1.2.8 <2.0.0',
+763 silly install resolved     _npmVersion: '2.11.0',
+763 silly install resolved     _nodeVersion: '2.2.1',
+763 silly install resolved     _npmUser: { name: 'gaearon', email: 'dan.abramov@gmail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '7701658d02108b5bbc407e200dde591cb7a6ed69',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/react-hot-loader/-/react-hot-loader-1.3.0.tgz' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-1.3.0.tgz' },
+763 silly install resolved   { name: 'json-loader',
+763 silly install resolved     version: '0.5.2',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'json loader module for webpack',
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/webpack/json-loader.git' },
+763 silly install resolved     gitHead: 'aac80d2bcdc90cb8c81e828e773933bfcdac9091',
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/json-loader/issues' },
+763 silly install resolved     homepage: 'https://github.com/webpack/json-loader#readme',
+763 silly install resolved     _id: 'json-loader@0.5.2',
+763 silly install resolved     scripts: {},
+763 silly install resolved     _shasum: 'ed79019c4f3778422eccd62427eb526612c6ef40',
+763 silly install resolved     _from: 'json-loader@0.5.2',
+763 silly install resolved     _npmVersion: '2.10.0',
+763 silly install resolved     _nodeVersion: '0.12.2',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: 'ed79019c4f3778422eccd62427eb526612c6ef40',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/json-loader/-/json-loader-0.5.2.tgz' },
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/json-loader/-/json-loader-0.5.2.tgz' },
+763 silly install resolved   { name: 'react-infinite-scroll',
+763 silly install resolved     version: '0.1.5',
+763 silly install resolved     description: 'React Infinite Scroll =====================',
+763 silly install resolved     main: 'src/react-infinite-scroll.js',
+763 silly install resolved     scripts: { test: 'grunt lint' },
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git://github.com/guillaumervls/react-infinite-scroll.git' },
+763 silly install resolved     keywords: [ 'infinite', 'scroll', 'react' ],
+763 silly install resolved     author: { name: 'guillaumervls' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     bugs: { url: 'https://github.com/guillaumervls/react-infinite-scroll/issues' },
+763 silly install resolved     devDependencies:
+763 silly install resolved      { grunt: '~0.4.1',
+763 silly install resolved        'grunt-contrib-jshint': '~0.7.0',
+763 silly install resolved        'grunt-contrib-uglify': '~0.2.4',
+763 silly install resolved        'grunt-contrib-clean': '~0.5.0',
+763 silly install resolved        browserify: '~2.35.0',
+763 silly install resolved        'grunt-browserify': '~1.2.9' },
+763 silly install resolved     homepage: 'https://github.com/guillaumervls/react-infinite-scroll',
+763 silly install resolved     _id: 'react-infinite-scroll@0.1.5',
+763 silly install resolved     _shasum: '18204e4a238b1a69cabd43c2b26db94a5941f81a',
+763 silly install resolved     _from: 'react-infinite-scroll@0.1.5',
+763 silly install resolved     _npmVersion: '1.4.9',
+763 silly install resolved     _npmUser: { name: 'guillaumervls', email: 'guillaumervls@server.fake' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '18204e4a238b1a69cabd43c2b26db94a5941f81a',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/react-infinite-scroll/-/react-infinite-scroll-0.1.5.tgz' },
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/react-infinite-scroll/-/react-infinite-scroll-0.1.5.tgz' },
+763 silly install resolved   { name: 'react-dom',
+763 silly install resolved     version: '0.14.3',
+763 silly install resolved     description: 'React package for working with the DOM.',
+763 silly install resolved     main: 'index.js',
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/facebook/react.git' },
+763 silly install resolved     keywords: [ 'react' ],
+763 silly install resolved     license: 'BSD-3-Clause',
+763 silly install resolved     bugs: { url: 'https://github.com/facebook/react/issues' },
+763 silly install resolved     homepage: 'https://github.com/facebook/react/tree/master/npm-react-dom',
+763 silly install resolved     peerDependencies: { react: '^0.14.3' },
+763 silly install resolved     scripts: { start: 'node server.js' },
+763 silly install resolved     _id: 'react-dom@0.14.3',
+763 silly install resolved     _shasum: 'b3f0aeeed1a433b20c5458e34439a51916818628',
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz',
+763 silly install resolved     _from: 'react-dom@>=0.14.0 <0.15.0',
+763 silly install resolved     _npmVersion: '2.14.7',
+763 silly install resolved     _nodeVersion: '4.2.2',
+763 silly install resolved     _npmUser: { name: 'zpao', email: 'paul@oshannessy.com' },
+763 silly install resolved     maintainers: [ [Object], [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: 'b3f0aeeed1a433b20c5458e34439a51916818628',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/react-dom/-/react-dom-0.14.3.tgz' },
+763 silly install resolved     directories: {} },
+763 silly install resolved   { name: 'bootstrap',
+763 silly install resolved     description: 'The most popular front-end framework for developing responsive, mobile first projects on the web.',
+763 silly install resolved     version: '3.3.5',
+763 silly install resolved     keywords:
+763 silly install resolved      [ 'css',
+763 silly install resolved        'less',
+763 silly install resolved        'mobile-first',
+763 silly install resolved        'responsive',
+763 silly install resolved        'front-end',
+763 silly install resolved        'framework',
+763 silly install resolved        'web' ],
+763 silly install resolved     homepage: 'http://getbootstrap.com',
+763 silly install resolved     author: { name: 'Twitter, Inc.' },
+763 silly install resolved     scripts: { test: 'grunt test' },
+763 silly install resolved     style: 'dist/css/bootstrap.css',
+763 silly install resolved     less: 'less/bootstrap.less',
+763 silly install resolved     main: './dist/js/npm',
+763 silly install resolved     repository: { type: 'git', url: 'https://github.com/twbs/bootstrap.git' },
+763 silly install resolved     bugs: { url: 'https://github.com/twbs/bootstrap/issues' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     devDependencies:
+763 silly install resolved      { btoa: '~1.1.2',
+763 silly install resolved        glob: '~5.0.5',
+763 silly install resolved        grunt: '~0.4.5',
+763 silly install resolved        'grunt-autoprefixer': '~3.0.0',
+763 silly install resolved        'grunt-contrib-clean': '~0.6.0',
+763 silly install resolved        'grunt-contrib-compress': '~0.13.0',
+763 silly install resolved        'grunt-contrib-concat': '~0.5.1',
+763 silly install resolved        'grunt-contrib-connect': '~0.10.1',
+763 silly install resolved        'grunt-contrib-copy': '~0.8.0',
+763 silly install resolved        'grunt-contrib-csslint': '~0.4.0',
+763 silly install resolved        'grunt-contrib-cssmin': '~0.12.3',
+763 silly install resolved        'grunt-contrib-htmlmin': '~0.4.0',
+763 silly install resolved        'grunt-contrib-jade': '~0.14.1',
+763 silly install resolved        'grunt-contrib-jshint': '~0.11.2',
+763 silly install resolved        'grunt-contrib-less': '~1.0.1',
+763 silly install resolved        'grunt-contrib-qunit': '~0.7.0',
+763 silly install resolved        'grunt-contrib-uglify': '~0.9.1',
+763 silly install resolved        'grunt-contrib-watch': '~0.6.1',
+763 silly install resolved        'grunt-csscomb': '~3.0.0',
+763 silly install resolved        'grunt-exec': '~0.4.6',
+763 silly install resolved        'grunt-html': '~4.0.3',
+763 silly install resolved        'grunt-jekyll': '~0.4.2',
+763 silly install resolved        'grunt-jscs': '~1.8.0',
+763 silly install resolved        'grunt-saucelabs': '~8.6.1',
+763 silly install resolved        'grunt-sed': 'twbs/grunt-sed#v0.2.0',
+763 silly install resolved        'load-grunt-tasks': '~3.2.0',
+763 silly install resolved        'markdown-it': '^4.2.1',
+763 silly install resolved        'npm-shrinkwrap': '^200.4.0',
+763 silly install resolved        'time-grunt': '^1.2.0' },
+763 silly install resolved     engines: { node: '>=0.10.1' },
+763 silly install resolved     files:
+763 silly install resolved      [ 'dist',
+763 silly install resolved        'fonts',
+763 silly install resolved        'grunt',
+763 silly install resolved        'js/*.js',
+763 silly install resolved        'less/**/*.less',
+763 silly install resolved        'Gruntfile.js',
+763 silly install resolved        'LICENSE' ],
+763 silly install resolved     jspm: { main: 'js/bootstrap', shim: [Object], files: [Object] },
+763 silly install resolved     gitHead: '16b48259a62f576e52c903c476bd42b90ab22482',
+763 silly install resolved     _id: 'bootstrap@3.3.5',
+763 silly install resolved     _shasum: '1777ab79299b128d87dce7cbd86fdc46ac69c0b1',
+763 silly install resolved     _from: 'bootstrap@>=3.3.5 <4.0.0',
+763 silly install resolved     _npmVersion: '1.4.28',
+763 silly install resolved     _npmUser: { name: 'twbs', email: 'getbootstrap@gmail.com' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '1777ab79299b128d87dce7cbd86fdc46ac69c0b1',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz' },
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz' },
+763 silly install resolved   { name: 'less',
+763 silly install resolved     version: '2.5.3',
+763 silly install resolved     description: 'Leaner CSS',
+763 silly install resolved     homepage: 'http://lesscss.org',
+763 silly install resolved     author: { name: 'Alexis Sellier', email: 'self@cloudhead.net' },
+763 silly install resolved     contributors: [ [Object] ],
+763 silly install resolved     bugs: { url: 'https://github.com/less/less.js/issues' },
+763 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/less/less.js.git' },
+763 silly install resolved     license: 'Apache-2.0',
+763 silly install resolved     bin: { lessc: './bin/lessc' },
+763 silly install resolved     main: 'index',
+763 silly install resolved     directories: { test: './test' },
+763 silly install resolved     jam: { main: './dist/less.js' },
+763 silly install resolved     browser: './dist/less.js',
+763 silly install resolved     engines: { node: '>=0.10.0' },
+763 silly install resolved     scripts: { test: 'grunt test' },
+763 silly install resolved     optionalDependencies:
+763 silly install resolved      { errno: '^0.1.1',
+763 silly install resolved        'graceful-fs': '^3.0.5',
+763 silly install resolved        'image-size': '~0.3.5',
+763 silly install resolved        mime: '^1.2.11',
+763 silly install resolved        mkdirp: '^0.5.0',
+763 silly install resolved        promise: '^6.0.1',
+763 silly install resolved        request: '^2.51.0',
+763 silly install resolved        'source-map': '^0.4.2' },
+763 silly install resolved     devDependencies:
+763 silly install resolved      { diff: '^1.0',
+763 silly install resolved        grunt: '^0.4.5',
+763 silly install resolved        'grunt-contrib-clean': '^0.6.0',
+763 silly install resolved        'grunt-contrib-concat': '^0.5.0',
+763 silly install resolved        'grunt-contrib-connect': '^0.9.0',
+763 silly install resolved        'grunt-contrib-jasmine': '^0.8.2',
+763 silly install resolved        'grunt-contrib-jshint': '^0.11.0',
+763 silly install resolved        'grunt-contrib-uglify': '^0.8.0',
+763 silly install resolved        'grunt-jscs': '^1.6.0',
+763 silly install resolved        'grunt-shell': '^1.1.1',
+763 silly install resolved        'grunt-browserify': '~3.5.0',
+763 silly install resolved        'jit-grunt': '^0.9.1',
+763 silly install resolved        'time-grunt': '^1.0.0',
+763 silly install resolved        'grunt-saucelabs': '^8.3.2' },
+763 silly install resolved     keywords:
+763 silly install resolved      [ 'compile less',
+763 silly install resolved        'css nesting',
+763 silly install resolved        'css variable',
+763 silly install resolved        'css',
+763 silly install resolved        'gradients css',
+763 silly install resolved        'gradients css3',
+763 silly install resolved        'less compiler',
+763 silly install resolved        'less css',
+763 silly install resolved        'less mixins',
+763 silly install resolved        'less',
+763 silly install resolved        'less.js',
+763 silly install resolved        'lesscss',
+763 silly install resolved        'mixins',
+763 silly install resolved        'nested css',
+763 silly install resolved        'parser',
+763 silly install resolved        'preprocessor',
+763 silly install resolved        'bootstrap css',
+763 silly install resolved        'bootstrap less',
+763 silly install resolved        'style',
+763 silly install resolved        'styles',
+763 silly install resolved        'stylesheet',
+763 silly install resolved        'variables in css',
+763 silly install resolved        'css less' ],
+763 silly install resolved     gitHead: '33fa72767e7474f3aedbbff83d8343217c08f58a',
+763 silly install resolved     dependencies:
+763 silly install resolved      { errno: '^0.1.1',
+763 silly install resolved        'graceful-fs': '^3.0.5',
+763 silly install resolved        'image-size': '~0.3.5',
+763 silly install resolved        mime: '^1.2.11',
+763 silly install resolved        mkdirp: '^0.5.0',
+763 silly install resolved        promise: '^6.0.1',
+763 silly install resolved        request: '^2.51.0',
+763 silly install resolved        'source-map': '^0.4.2' },
+763 silly install resolved     _id: 'less@2.5.3',
+763 silly install resolved     _shasum: '9ff586e8a703515fc18dc99c7bc498d2f3ad4849',
+763 silly install resolved     _from: 'less@>=2.5.1 <3.0.0',
+763 silly install resolved     _npmVersion: '3.3.3',
+763 silly install resolved     _nodeVersion: '0.12.2',
+763 silly install resolved     _npmUser: { name: 'agatronic', email: 'luke.a.page@gmail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '9ff586e8a703515fc18dc99c7bc498d2f3ad4849',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/less/-/less-2.5.3.tgz' },
+763 silly install resolved     maintainers: [ [Object], [Object] ],
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/less/-/less-2.5.3.tgz' },
+763 silly install resolved   { name: 'react-router',
+763 silly install resolved     version: '1.0.0-rc3',
+763 silly install resolved     description: 'A complete routing library for React.js',
+763 silly install resolved     main: 'lib/index',
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/rackt/react-router.git' },
+763 silly install resolved     homepage: 'https://rackt.github.io/react-router/',
+763 silly install resolved     bugs: { url: 'https://github.com/rackt/react-router/issues' },
+763 silly install resolved     scripts:
+763 silly install resolved      { build: 'babel ./modules -d lib --ignore \'__tests__\'',
+763 silly install resolved        'build-umd': 'NODE_ENV=production webpack modules/index.js umd/ReactRouter.js',
+763 silly install resolved        'build-min': 'NODE_ENV=production webpack -p modules/index.js umd/ReactRouter.min.js',
+763 silly install resolved        lint: 'eslint modules examples',
+763 silly install resolved        start: 'node examples/server.js',
+763 silly install resolved        test: 'npm run lint && karma start',
+763 silly install resolved        postinstall: 'node -e "require(\'fs\').stat(\'lib\', function (e, s) { process.exit(e || !s.isDirectory() ? 1 : 0) })" || npm run build' },
+763 silly install resolved     authors: [ 'Ryan Florence', 'Michael Jackson' ],
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     dependencies: { history: '1.12.3', invariant: '^2.0.0', warning: '^2.0.0' },
+763 silly install resolved     devDependencies:
+763 silly install resolved      { assert: '1.3.0',
+763 silly install resolved        babel: '^5.4.7',
+763 silly install resolved        'babel-core': '^5.4.7',
+763 silly install resolved        'babel-eslint': '^3.1.23',
+763 silly install resolved        'babel-loader': '^5.0.0',
+763 silly install resolved        'bundle-loader': '^0.5.2',
+763 silly install resolved        'css-loader': '^0.19.0',
+763 silly install resolved        eslint: '1.4.0',
+763 silly install resolved        'eslint-plugin-react': '3.3.2',
+763 silly install resolved        expect: '1.10.0',
+763 silly install resolved        express: '^4.13.3',
+763 silly install resolved        'express-urlrewrite': '^1.2.0',
+763 silly install resolved        karma: '^0.13.8',
+763 silly install resolved        'karma-browserstack-launcher': '^0.1.4',
+763 silly install resolved        'karma-chrome-launcher': '^0.2.0',
+763 silly install resolved        'karma-firefox-launcher': '^0.1.6',
+763 silly install resolved        'karma-mocha': '^0.2.0',
+763 silly install resolved        'karma-mocha-reporter': '^1.1.1',
+763 silly install resolved        'karma-sourcemap-loader': '^0.3.5',
+763 silly install resolved        'karma-webpack': '^1.7.0',
+763 silly install resolved        mocha: '^2.0.1',
+763 silly install resolved        qs: '^4.0.0',
+763 silly install resolved        react: '0.13.x',
+763 silly install resolved        'rf-changelog': '^0.4.0',
+763 silly install resolved        'style-loader': '^0.12.4',
+763 silly install resolved        webpack: '^1.4.13',
+763 silly install resolved        'webpack-dev-middleware': '^1.2.0' },
+763 silly install resolved     tags: [ 'react', 'router' ],
+763 silly install resolved     keywords:
+763 silly install resolved      [ 'react',
+763 silly install resolved        'react-component',
+763 silly install resolved        'routing',
+763 silly install resolved        'route',
+763 silly install resolved        'routes',
+763 silly install resolved        'router' ],
+763 silly install resolved     gitHead: 'b17d5c2aee84c21e4f84da6601608ba0d3b2c6a6',
+763 silly install resolved     _id: 'react-router@1.0.0-rc3',
+763 silly install resolved     _shasum: 'b511f1f1b873e6db0af2d8bd6cb10b6aca479002',
+763 silly install resolved     _from: 'react-router@1.0.0-rc3',
+763 silly install resolved     _npmVersion: '2.11.3',
+763 silly install resolved     _nodeVersion: '0.12.7',
+763 silly install resolved     _npmUser: { name: 'mjackson', email: 'mjijackson@gmail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: 'b511f1f1b873e6db0af2d8bd6cb10b6aca479002',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/react-router/-/react-router-1.0.0-rc3.tgz' },
+763 silly install resolved     maintainers: [ [Object], [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/react-router/-/react-router-1.0.0-rc3.tgz' },
+763 silly install resolved   { name: 'webpack-dev-server',
+763 silly install resolved     version: '1.12.1',
+763 silly install resolved     author: { name: 'Tobias Koppers @sokra' },
+763 silly install resolved     description: 'Serves a webpack app. Updates the browser on changes.',
+763 silly install resolved     peerDependencies: { webpack: '^1.3.0' },
+763 silly install resolved     dependencies:
+763 silly install resolved      { compression: '^1.5.2',
+763 silly install resolved        'connect-history-api-fallback': '1.1.0',
+763 silly install resolved        express: '^4.13.3',
+763 silly install resolved        'http-proxy': '^1.11.2',
+763 silly install resolved        optimist: '~0.6.0',
+763 silly install resolved        'serve-index': '^1.7.2',
+763 silly install resolved        'socket.io': '^1.3.6',
+763 silly install resolved        'socket.io-client': '^1.3.6',
+763 silly install resolved        'stream-cache': '~0.0.1',
+763 silly install resolved        'strip-ansi': '^3.0.0',
+763 silly install resolved        'supports-color': '^3.1.1',
+763 silly install resolved        'webpack-dev-middleware': '^1.2.0' },
+763 silly install resolved     devDependencies:
+763 silly install resolved      { 'css-loader': '~0.18.0',
+763 silly install resolved        'file-loader': '~0.8.4',
+763 silly install resolved        jade: '^1.11.0',
+763 silly install resolved        'jade-loader': '~0.7.1',
+763 silly install resolved        less: '^2.5.1',
+763 silly install resolved        'less-loader': '~2.2.0',
+763 silly install resolved        'style-loader': '~0.12.3',
+763 silly install resolved        'url-loader': '~0.5.6',
+763 silly install resolved        webpack: '^1.12.1' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git://github.com/webpack/webpack-dev-server.git' },
+763 silly install resolved     homepage: 'http://github.com/webpack/webpack-dev-server',
+763 silly install resolved     main: 'lib/Server.js',
+763 silly install resolved     bin: { 'webpack-dev-server': 'bin/webpack-dev-server.js' },
+763 silly install resolved     files: [ 'lib/', 'bin', 'client/', 'ssl/' ],
+763 silly install resolved     scripts: { prepublish: 'webpack ./client/live.js client/live.bundle.js --colors --config client/webpack.config.js -p && webpack ./client/index.js client/index.bundle.js --colors --config client/webpack.config.js -p' },
+763 silly install resolved     gitHead: '24b356ec1610ea6d7033b3e01bb7b09429612ba5',
+763 silly install resolved     bugs: { url: 'https://github.com/webpack/webpack-dev-server/issues' },
+763 silly install resolved     _id: 'webpack-dev-server@1.12.1',
+763 silly install resolved     _shasum: 'c6dc855520c8ee9cba9256241b3390c1348b0d5c',
+763 silly install resolved     _from: 'webpack-dev-server@>=1.10.1 <2.0.0',
+763 silly install resolved     _npmVersion: '3.3.3',
+763 silly install resolved     _nodeVersion: '4.0.0',
+763 silly install resolved     _npmUser: { name: 'sokra', email: 'tobias.koppers@googlemail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: 'c6dc855520c8ee9cba9256241b3390c1348b0d5c',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.12.1.tgz' },
+763 silly install resolved     maintainers: [ [Object], [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-1.12.1.tgz' },
+763 silly install resolved   { name: 'material-ui',
+763 silly install resolved     author: { name: 'Call-em-all Engineering Team' },
+763 silly install resolved     version: '0.12.4',
+763 silly install resolved     description: 'Material Design UI components built with React',
+763 silly install resolved     main: './lib',
+763 silly install resolved     scripts:
+763 silly install resolved      { test: 'npm run test-base -- --single-run',
+763 silly install resolved        'test-watch': 'npm run test-base -- --auto-watch',
+763 silly install resolved        'test-base': 'karma start',
+763 silly install resolved        prebuild: 'rimraf lib',
+763 silly install resolved        eslint: 'gulp eslint',
+763 silly install resolved        build: 'npm run eslint && babel --stage 1 ./src --out-dir ./lib',
+763 silly install resolved        prepublish: 'npm run build' },
+763 silly install resolved     keywords:
+763 silly install resolved      [ 'react',
+763 silly install resolved        'react-component',
+763 silly install resolved        'material design',
+763 silly install resolved        'material-ui',
+763 silly install resolved        'material ui' ],
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/callemall/material-ui.git' },
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     bugs: { url: 'https://github.com/callemall/material-ui/issues' },
+763 silly install resolved     homepage: 'http://material-ui.com/',
+763 silly install resolved     peerDependencies:
+763 silly install resolved      { react: '^0.14.0',
+763 silly install resolved        'react-dom': '^0.14.0',
+763 silly install resolved        'react-tap-event-plugin': '^0.2.0',
+763 silly install resolved        'react-addons-transition-group': '^0.14.0',
+763 silly install resolved        'react-addons-update': '^0.14.0',
+763 silly install resolved        'react-addons-create-fragment': '^0.14.0',
+763 silly install resolved        'react-addons-pure-render-mixin': '^0.14.0' },
+763 silly install resolved     devDependencies:
+763 silly install resolved      { babel: '^5.4.3',
+763 silly install resolved        'babel-core': '^5.8.21',
+763 silly install resolved        'babel-eslint': '^4.1.3',
+763 silly install resolved        'babel-loader': '^5.3.2',
+763 silly install resolved        'babel-runtime': '^5.8.25',
+763 silly install resolved        babelify: '^6.1.3',
+763 silly install resolved        'browserify-istanbul': '^0.2.1',
+763 silly install resolved        chai: '^3.2.0',
+763 silly install resolved        eslint: '^1.1.0',
+763 silly install resolved        'eslint-loader': '^1.0.0',
+763 silly install resolved        'eslint-plugin-react': '^3.2.2',
+763 silly install resolved        fbjs: '^0.2.1',
+763 silly install resolved        gulp: '^3.9.0',
+763 silly install resolved        'gulp-eslint': '^1.0.0',
+763 silly install resolved        'html-webpack-plugin': '^1.6.1',
+763 silly install resolved        karma: '^0.13.3',
+763 silly install resolved        'karma-browserify': '^4.2.1',
+763 silly install resolved        'karma-chai-sinon': '^0.1.5',
+763 silly install resolved        'karma-coverage': '^0.4.2',
+763 silly install resolved        'karma-mocha': '^0.2.0',
+763 silly install resolved        'karma-mocha-reporter': '^1.0.4',
+763 silly install resolved        'karma-phantomjs-launcher': '^0.2.0',
+763 silly install resolved        'karma-webpack': '^1.7.0',
+763 silly install resolved        mocha: '^2.2.5',
+763 silly install resolved        phantomjs: '^1.9.17',
+763 silly install resolved        react: '^0.14.0',
+763 silly install resolved        'react-addons-create-fragment': '^0.14.0',
+763 silly install resolved        'react-addons-pure-render-mixin': '^0.14.0',
+763 silly install resolved        'react-addons-transition-group': '^0.14.0',
+763 silly install resolved        'react-addons-update': '^0.14.0',
+763 silly install resolved        'react-dom': '^0.14.0',
+763 silly install resolved        'react-hot-loader': '^1.2.8',
+763 silly install resolved        'react-router': '^1.0.0-rc1',
+763 silly install resolved        'react-tap-event-plugin': '^0.2.0',
+763 silly install resolved        rimraf: '^2.4.3',
+763 silly install resolved        sinon: '^1.15.4',
+763 silly install resolved        'sinon-chai': '^2.8.0',
+763 silly install resolved        'transfer-webpack-plugin': '^0.1.4',
+763 silly install resolved        webpack: '^1.11.0' },
+763 silly install resolved     gitHead: 'd310459476a461e0d29f166de277896026d8f35f',
+763 silly install resolved     _id: 'material-ui@0.12.4',
+763 silly install resolved     _shasum: 'bddc2d53382a742457414be02b1e07dbecd5b787',
+763 silly install resolved     _from: 'material-ui@0.12.4',
+763 silly install resolved     _npmVersion: '2.14.6',
+763 silly install resolved     _nodeVersion: '0.12.7',
+763 silly install resolved     _npmUser: { name: 'shaurya947', email: 'shaurya.arora1@gmail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: 'bddc2d53382a742457414be02b1e07dbecd5b787',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/material-ui/-/material-ui-0.12.4.tgz' },
+763 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/material-ui/-/material-ui-0.12.4.tgz' },
+763 silly install resolved   { name: 'react',
+763 silly install resolved     description: 'React is a JavaScript library for building user interfaces.',
+763 silly install resolved     version: '0.14.0',
+763 silly install resolved     keywords: [ 'react' ],
+763 silly install resolved     homepage: 'https://github.com/facebook/react/tree/master/npm-react',
+763 silly install resolved     bugs: { url: 'https://github.com/facebook/react/issues' },
+763 silly install resolved     license: 'BSD-3-Clause',
+763 silly install resolved     files: [ 'addons.js', 'react.js', 'addons/', 'dist/', 'lib/' ],
+763 silly install resolved     main: 'react.js',
+763 silly install resolved     repository:
+763 silly install resolved      { type: 'git',
+763 silly install resolved        url: 'git+https://github.com/facebook/react.git' },
+763 silly install resolved     engines: { node: '>=0.10.0' },
+763 silly install resolved     dependencies: { envify: '^3.0.0', fbjs: '^0.3.1' },
+763 silly install resolved     browserify: { transform: [Object] },
+763 silly install resolved     _id: 'react@0.14.0',
+763 silly install resolved     _shasum: '72e7c69233b082e37e1bbd3674a943db72d8f407',
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/react/-/react-0.14.0.tgz',
+763 silly install resolved     _from: 'react@0.14.0',
+763 silly install resolved     scripts: {},
+763 silly install resolved     _npmVersion: '2.14.3',
+763 silly install resolved     _nodeVersion: '4.1.0',
+763 silly install resolved     _npmUser: { name: 'zpao', email: 'paul@oshannessy.com' },
+763 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object] ],
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '72e7c69233b082e37e1bbd3674a943db72d8f407',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/react/-/react-0.14.0.tgz' },
+763 silly install resolved     directories: {} },
+763 silly install resolved   { name: 'babel-core',
+763 silly install resolved     version: '5.8.34',
+763 silly install resolved     description: 'A compiler for writing next generation JavaScript',
+763 silly install resolved     author: { name: 'Sebastian McKenzie', email: 'sebmck@gmail.com' },
+763 silly install resolved     homepage: 'https://babeljs.io/',
+763 silly install resolved     license: 'MIT',
+763 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/babel/babel.git' },
+763 silly install resolved     browser: { './lib/api/register/node.js': './lib/api/register/browser.js' },
+763 silly install resolved     keywords:
+763 silly install resolved      [ '6to5',
+763 silly install resolved        'babel',
+763 silly install resolved        'classes',
+763 silly install resolved        'const',
+763 silly install resolved        'es6',
+763 silly install resolved        'harmony',
+763 silly install resolved        'let',
+763 silly install resolved        'modules',
+763 silly install resolved        'transpile',
+763 silly install resolved        'transpiler',
+763 silly install resolved        'var' ],
+763 silly install resolved     scripts: { bench: 'make bench', test: 'make test' },
+763 silly install resolved     dependencies:
+763 silly install resolved      { 'babel-plugin-constant-folding': '^1.0.1',
+763 silly install resolved        'babel-plugin-dead-code-elimination': '^1.0.2',
+763 silly install resolved        'babel-plugin-eval': '^1.0.1',
+763 silly install resolved        'babel-plugin-inline-environment-variables': '^1.0.1',
+763 silly install resolved        'babel-plugin-jscript': '^1.0.4',
+763 silly install resolved        'babel-plugin-member-expression-literals': '^1.0.1',
+763 silly install resolved        'babel-plugin-property-literals': '^1.0.1',
+763 silly install resolved        'babel-plugin-proto-to-assign': '^1.0.3',
+763 silly install resolved        'babel-plugin-react-constant-elements': '^1.0.3',
+763 silly install resolved        'babel-plugin-react-display-name': '^1.0.3',
+763 silly install resolved        'babel-plugin-remove-console': '^1.0.1',
+763 silly install resolved        'babel-plugin-remove-debugger': '^1.0.1',
+763 silly install resolved        'babel-plugin-runtime': '^1.0.7',
+763 silly install resolved        'babel-plugin-undeclared-variables-check': '^1.0.2',
+763 silly install resolved        'babel-plugin-undefined-to-void': '^1.1.6',
+763 silly install resolved        babylon: '^5.8.34',
+763 silly install resolved        bluebird: '^2.9.33',
+763 silly install resolved        chalk: '^1.0.0',
+763 silly install resolved        'convert-source-map': '^1.1.0',
+763 silly install resolved        'core-js': '^1.0.0',
+763 silly install resolved        debug: '^2.1.1',
+763 silly install resolved        'detect-indent': '^3.0.0',
+763 silly install resolved        esutils: '^2.0.0',
+763 silly install resolved        'fs-readdir-recursive': '^0.1.0',
+763 silly install resolved        globals: '^6.4.0',
+763 silly install resolved        'home-or-tmp': '^1.0.0',
+763 silly install resolved        'is-integer': '^1.0.4',
+763 silly install resolved        'js-tokens': '1.0.1',
+763 silly install resolved        json5: '^0.4.0',
+763 silly install resolved        'line-numbers': '0.2.0',
+763 silly install resolved        lodash: '^3.10.0',
+763 silly install resolved        minimatch: '^2.0.3',
+763 silly install resolved        'output-file-sync': '^1.1.0',
+763 silly install resolved        'path-exists': '^1.0.0',
+763 silly install resolved        'path-is-absolute': '^1.0.0',
+763 silly install resolved        private: '^0.1.6',
+763 silly install resolved        regenerator: '0.8.40',
+763 silly install resolved        regexpu: '^1.3.0',
+763 silly install resolved        repeating: '^1.1.2',
+763 silly install resolved        resolve: '^1.1.6',
+763 silly install resolved        'shebang-regex': '^1.0.0',
+763 silly install resolved        slash: '^1.0.0',
+763 silly install resolved        'source-map': '^0.5.0',
+763 silly install resolved        'source-map-support': '^0.2.10',
+763 silly install resolved        'to-fast-properties': '^1.0.0',
+763 silly install resolved        'trim-right': '^1.0.0',
+763 silly install resolved        'try-resolve': '^1.0.0' },
+763 silly install resolved     bugs: { url: 'https://github.com/babel/babel/issues' },
+763 silly install resolved     _id: 'babel-core@5.8.34',
+763 silly install resolved     _shasum: '0396370458772774041e5dbbef57ae0282ee61c2',
+763 silly install resolved     _from: 'babel-core@>=5.7.2 <6.0.0',
+763 silly install resolved     _npmVersion: '2.11.3',
+763 silly install resolved     _nodeVersion: '0.12.7',
+763 silly install resolved     _npmUser: { name: 'sebmck', email: 'sebmck@gmail.com' },
+763 silly install resolved     dist:
+763 silly install resolved      { shasum: '0396370458772774041e5dbbef57ae0282ee61c2',
+763 silly install resolved        tarball: 'http://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz' },
+763 silly install resolved     maintainers: [ [Object] ],
+763 silly install resolved     directories: {},
+763 silly install resolved     _resolved: 'https://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz' } ]
+764 info install jsx-loader@0.13.2 into /Users/mac/ishu/iSHU
+765 info install file-loader@0.8.4 into /Users/mac/ishu/iSHU
+766 info install babel-loader@5.4.0 into /Users/mac/ishu/iSHU
+767 info install css-loader@0.15.6 into /Users/mac/ishu/iSHU
+768 info install bundle-loader@0.5.4 into /Users/mac/ishu/iSHU
+769 info install style-loader@0.12.4 into /Users/mac/ishu/iSHU
+770 info install less-loader@2.2.1 into /Users/mac/ishu/iSHU
+771 info install imports-loader@0.6.5 into /Users/mac/ishu/iSHU
+772 info install url-loader@0.5.6 into /Users/mac/ishu/iSHU
+773 info install react-hot-loader@1.3.0 into /Users/mac/ishu/iSHU
+774 info install json-loader@0.5.2 into /Users/mac/ishu/iSHU
+775 info install react-infinite-scroll@0.1.5 into /Users/mac/ishu/iSHU
+776 info install react-dom@0.14.3 into /Users/mac/ishu/iSHU
+777 info install bootstrap@3.3.5 into /Users/mac/ishu/iSHU
+778 info install less@2.5.3 into /Users/mac/ishu/iSHU
+779 info install react-router@1.0.0-rc3 into /Users/mac/ishu/iSHU
+780 info install webpack-dev-server@1.12.1 into /Users/mac/ishu/iSHU
+781 info install material-ui@0.12.4 into /Users/mac/ishu/iSHU
+782 info install react@0.14.0 into /Users/mac/ishu/iSHU
+783 info install babel-core@5.8.34 into /Users/mac/ishu/iSHU
+784 info installOne jsx-loader@0.13.2
+785 verbose installOne of jsx-loader to /Users/mac/ishu/iSHU not in flight; installing
+786 info installOne file-loader@0.8.4
+787 verbose installOne of file-loader to /Users/mac/ishu/iSHU not in flight; installing
+788 info installOne babel-loader@5.4.0
+789 verbose installOne of babel-loader to /Users/mac/ishu/iSHU not in flight; installing
+790 info installOne css-loader@0.15.6
+791 verbose installOne of css-loader to /Users/mac/ishu/iSHU not in flight; installing
+792 info installOne bundle-loader@0.5.4
+793 verbose installOne of bundle-loader to /Users/mac/ishu/iSHU not in flight; installing
+794 info installOne style-loader@0.12.4
+795 verbose installOne of style-loader to /Users/mac/ishu/iSHU not in flight; installing
+796 info installOne less-loader@2.2.1
+797 verbose installOne of less-loader to /Users/mac/ishu/iSHU not in flight; installing
+798 info installOne imports-loader@0.6.5
+799 verbose installOne of imports-loader to /Users/mac/ishu/iSHU not in flight; installing
+800 info installOne url-loader@0.5.6
+801 verbose installOne of url-loader to /Users/mac/ishu/iSHU not in flight; installing
+802 info installOne react-hot-loader@1.3.0
+803 verbose installOne of react-hot-loader to /Users/mac/ishu/iSHU not in flight; installing
+804 info installOne json-loader@0.5.2
+805 verbose installOne of json-loader to /Users/mac/ishu/iSHU not in flight; installing
+806 info installOne react-infinite-scroll@0.1.5
+807 verbose installOne of react-infinite-scroll to /Users/mac/ishu/iSHU not in flight; installing
+808 info installOne react-dom@0.14.3
+809 verbose installOne of react-dom to /Users/mac/ishu/iSHU not in flight; installing
+810 info installOne bootstrap@3.3.5
+811 verbose installOne of bootstrap to /Users/mac/ishu/iSHU not in flight; installing
+812 info installOne less@2.5.3
+813 verbose installOne of less to /Users/mac/ishu/iSHU not in flight; installing
+814 info installOne react-router@1.0.0-rc3
+815 verbose installOne of react-router to /Users/mac/ishu/iSHU not in flight; installing
+816 info installOne webpack-dev-server@1.12.1
+817 verbose installOne of webpack-dev-server to /Users/mac/ishu/iSHU not in flight; installing
+818 info installOne material-ui@0.12.4
+819 verbose installOne of material-ui to /Users/mac/ishu/iSHU not in flight; installing
+820 info installOne react@0.14.0
+821 verbose installOne of react to /Users/mac/ishu/iSHU not in flight; installing
+822 info installOne babel-core@5.8.34
+823 verbose installOne of babel-core to /Users/mac/ishu/iSHU not in flight; installing
+824 warn locking Error: EACCES, open '/Users/mac/.npm/_locks/jsx-loader-993fdce491854d17.lock'
+824 warn locking  /Users/mac/.npm/_locks/jsx-loader-993fdce491854d17.lock failed { [Error: EACCES, open '/Users/mac/.npm/_locks/jsx-loader-993fdce491854d17.lock']
+824 warn locking   errno: 3,
+824 warn locking   code: 'EACCES',
+824 warn locking   path: '/Users/mac/.npm/_locks/jsx-loader-993fdce491854d17.lock' }
+825 verbose stack Error: Attempt to unlock /Users/mac/ishu/iSHU/node_modules/jsx-loader, which hasn't been locked
+825 verbose stack     at unlock (/usr/local/lib/node_modules/npm/lib/utils/locker.js:66:11)
+825 verbose stack     at cb (/usr/local/lib/node_modules/npm/lib/install.js:929:5)
+825 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:933:20
+825 verbose stack     at /usr/local/lib/node_modules/npm/lib/utils/locker.js:40:9
+825 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+825 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:177:38
+825 verbose stack     at Object.oncomplete (fs.js:107:15)
+826 verbose cwd /Users/mac/ishu/iSHU
+827 error Darwin 14.5.0
+828 error argv "node" "/usr/local/bin/npm" "install"
+829 error node v0.10.33
+830 error npm  v2.1.8
+831 error Attempt to unlock /Users/mac/ishu/iSHU/node_modules/jsx-loader, which hasn't been locked
+832 error If you need help, you may report this error at:
+832 error     <http://github.com/npm/npm/issues>
+833 verbose exit [ 1, true ]
