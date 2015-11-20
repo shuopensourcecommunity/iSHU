@@ -59,14 +59,22 @@ var MessageTable= React.createClass({
   loadMessageFromServer: function(page) {
       console.log('loadMessageFromServer - page ' + this.state.currentPage);
       // fake an async. ajax call with setTimeout
+      var data = {
+              keyword: '',
+              limit: 10,
+              currentPage: 1,
+              startTIme: "2015-10-01T06:31:17+00:00",
+              endTIme: "2015-12-24T06:31:17+00:00"
+          }
       setTimeout(function() {
         // add data
         $.ajax({
           url: this.props.url,
-          dataType: 'json',
-          methods: 'get',
+          dataType: 'xml/html/script/json',
+          data: data,
+          type: 'POST',
           success: function(data) {
-            console.log(data);
+            console.log("xxxxxx" + data);
             var t_message = this.state.messages;
             for (var obj in data.messagelist){
               console.log('loadQestionCard ' + obj);
@@ -139,13 +147,13 @@ var SchoolInfo= React.createClass({
         <AppBar title="校园资讯"/>
         <Tabs>
           <Tab label="上大新闻" value='a'>
-            <MessageTable url='messages'/>
+            <MessageTable url='http://127.0.0.1:8000/ishu/schoolInfo'/>
           </Tab>
           <Tab label="学生事务" value='b'>
-            <MessageTable url='messages'/>
+            <MessageTable url='http://api.shu.edu.cn/Mobile/CampusMessage/GetCampusMessageList'/>
           </Tab>
           <Tab label="教务信息" value='c'>
-            <MessageTable url='messages'/>
+            <MessageTable url='http://api.shu.edu.cn/Mobile/CampusMessage/GetCampusMessageList'/>
           </Tab>
         </Tabs>
       </div>
