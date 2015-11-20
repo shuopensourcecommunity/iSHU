@@ -43,7 +43,7 @@ var ActSignup= React.createClass({
     console.log(this.state.re);
   },
   render: function(){
-    var title="标题："+"ahhh";
+    var title="标题："+this.props.title;
     var phone=this.state.phone;
     var mail=this.state.mail;
     var text=this.state.text;
