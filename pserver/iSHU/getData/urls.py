@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+
 from views import get_campus_message_list,index,userlogin,campuscalendarspring
 urlpatterns = [
     url(r"^index/",index),
