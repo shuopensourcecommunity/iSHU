@@ -1,0 +1,158 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 warn package.json iSHU@0.1.0 No repository field.
+5 warn package.json iSHU@0.1.0 No README data
+6 verbose readDependencies using package.json deps
+7 verbose install where, deps [ '/home/genegi/Desktop/iSHU',
+7 verbose install   [ 'react',
+7 verbose install     'react-router',
+7 verbose install     'react-dom',
+7 verbose install     'babel-core',
+7 verbose install     'babel-loader',
+7 verbose install     'bundle-loader',
+7 verbose install     'css-loader',
+7 verbose install     'file-loader',
+7 verbose install     'jsx-loader',
+7 verbose install     'less',
+7 verbose install     'less-loader',
+7 verbose install     'react-hot-loader',
+7 verbose install     'style-loader',
+7 verbose install     'url-loader',
+7 verbose install     'imports-loader',
+7 verbose install     'webpack',
+7 verbose install     'webpack-dev-server',
+7 verbose install     'bootstrap',
+7 verbose install     'jquery',
+7 verbose install     'json-loader',
+7 verbose install     'material-ui',
+7 verbose install     'react-infinite-scroll' ] ]
+8 info preinstall iSHU@0.1.0
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping react-dom@^0.14.0 /home/genegi/Desktop/iSHU
+11 verbose already installed skipping babel-core@^5.7.2 /home/genegi/Desktop/iSHU
+12 verbose already installed skipping babel-loader@^5.3.2 /home/genegi/Desktop/iSHU
+13 verbose already installed skipping bundle-loader@^0.5.4 /home/genegi/Desktop/iSHU
+14 verbose already installed skipping css-loader@^0.15.4 /home/genegi/Desktop/iSHU
+15 verbose already installed skipping file-loader@^0.8.4 /home/genegi/Desktop/iSHU
+16 verbose already installed skipping jsx-loader@^0.13.2 /home/genegi/Desktop/iSHU
+17 verbose already installed skipping less@^2.5.1 /home/genegi/Desktop/iSHU
+18 verbose already installed skipping less-loader@^2.2.0 /home/genegi/Desktop/iSHU
+19 verbose already installed skipping react-hot-loader@^1.2.8 /home/genegi/Desktop/iSHU
+20 verbose already installed skipping url-loader@^0.5.6 /home/genegi/Desktop/iSHU
+21 verbose already installed skipping style-loader@^0.12.3 /home/genegi/Desktop/iSHU
+22 verbose already installed skipping imports-loader@^0.6.4 /home/genegi/Desktop/iSHU
+23 verbose already installed skipping webpack@^1.10.1 /home/genegi/Desktop/iSHU
+24 verbose already installed skipping webpack-dev-server@^1.10.1 /home/genegi/Desktop/iSHU
+25 verbose already installed skipping bootstrap@^3.3.5 /home/genegi/Desktop/iSHU
+26 verbose already installed skipping jquery@^2.1.4 /home/genegi/Desktop/iSHU
+27 verbose already installed skipping material-ui@0.12.4 /home/genegi/Desktop/iSHU
+28 verbose already installed skipping json-loader@0.5.2 /home/genegi/Desktop/iSHU
+29 verbose already installed skipping react-infinite-scroll@0.1.5 /home/genegi/Desktop/iSHU
+30 verbose already installed skipping react@0.14.0 /home/genegi/Desktop/iSHU
+31 verbose already installed skipping react-router@1.0.0-rc3 /home/genegi/Desktop/iSHU
+32 silly resolved []
+33 info build /home/genegi/Desktop/iSHU
+34 verbose linkStuff [ false, false, false, '/home/genegi/Desktop' ]
+35 info linkStuff iSHU@0.1.0
+36 verbose linkBins iSHU@0.1.0
+37 verbose linkMans iSHU@0.1.0
+38 verbose rebuildBundles iSHU@0.1.0
+39 verbose rebuildBundles [ '.bin',
+39 verbose rebuildBundles   'babel-core',
+39 verbose rebuildBundles   'babel-loader',
+39 verbose rebuildBundles   'bootstrap',
+39 verbose rebuildBundles   'bundle-loader',
+39 verbose rebuildBundles   'css-loader',
+39 verbose rebuildBundles   'file-loader',
+39 verbose rebuildBundles   'imports-loader',
+39 verbose rebuildBundles   'jquery',
+39 verbose rebuildBundles   'json-loader',
+39 verbose rebuildBundles   'jsx-loader',
+39 verbose rebuildBundles   'less',
+39 verbose rebuildBundles   'less-loader',
+39 verbose rebuildBundles   'material-ui',
+39 verbose rebuildBundles   'react',
+39 verbose rebuildBundles   'react-addons-create-fragment',
+39 verbose rebuildBundles   'react-addons-pure-render-mixin',
+39 verbose rebuildBundles   'react-addons-transition-group',
+39 verbose rebuildBundles   'react-addons-update',
+39 verbose rebuildBundles   'react-dom',
+39 verbose rebuildBundles   'react-hot-loader',
+39 verbose rebuildBundles   'react-infinite-scroll',
+39 verbose rebuildBundles   'react-router',
+39 verbose rebuildBundles   'react-tap-event-plugin',
+39 verbose rebuildBundles   'style-loader',
+39 verbose rebuildBundles   'url-loader',
+39 verbose rebuildBundles   'webpack',
+39 verbose rebuildBundles   'webpack-dev-server' ]
+40 verbose rebuild bundle /home/genegi/Desktop/iSHU/node_modules/react-addons-create-fragment
+41 info build /home/genegi/Desktop/iSHU/node_modules/react-addons-create-fragment
+42 info preinstall react-addons-create-fragment@0.14.3
+43 verbose linkStuff [ false, false, false, '/home/genegi/Desktop/iSHU/node_modules' ]
+44 info linkStuff react-addons-create-fragment@0.14.3
+45 verbose linkBins react-addons-create-fragment@0.14.3
+46 verbose linkMans react-addons-create-fragment@0.14.3
+47 verbose rebuildBundles react-addons-create-fragment@0.14.3
+48 info install react-addons-create-fragment@0.14.3
+49 info postinstall react-addons-create-fragment@0.14.3
+50 verbose rebuild bundle /home/genegi/Desktop/iSHU/node_modules/react-addons-pure-render-mixin
+51 info build /home/genegi/Desktop/iSHU/node_modules/react-addons-pure-render-mixin
+52 info preinstall react-addons-pure-render-mixin@0.14.3
+53 verbose linkStuff [ false, false, false, '/home/genegi/Desktop/iSHU/node_modules' ]
+54 info linkStuff react-addons-pure-render-mixin@0.14.3
+55 verbose linkBins react-addons-pure-render-mixin@0.14.3
+56 verbose linkMans react-addons-pure-render-mixin@0.14.3
+57 verbose rebuildBundles react-addons-pure-render-mixin@0.14.3
+58 info install react-addons-pure-render-mixin@0.14.3
+59 info postinstall react-addons-pure-render-mixin@0.14.3
+60 verbose rebuild bundle /home/genegi/Desktop/iSHU/node_modules/react-addons-transition-group
+61 info build /home/genegi/Desktop/iSHU/node_modules/react-addons-transition-group
+62 info preinstall react-addons-transition-group@0.14.3
+63 verbose linkStuff [ false, false, false, '/home/genegi/Desktop/iSHU/node_modules' ]
+64 info linkStuff react-addons-transition-group@0.14.3
+65 verbose linkBins react-addons-transition-group@0.14.3
+66 verbose linkMans react-addons-transition-group@0.14.3
+67 verbose rebuildBundles react-addons-transition-group@0.14.3
+68 info install react-addons-transition-group@0.14.3
+69 info postinstall react-addons-transition-group@0.14.3
+70 verbose rebuild bundle /home/genegi/Desktop/iSHU/node_modules/react-addons-update
+71 info build /home/genegi/Desktop/iSHU/node_modules/react-addons-update
+72 info preinstall react-addons-update@0.14.3
+73 verbose linkStuff [ false, false, false, '/home/genegi/Desktop/iSHU/node_modules' ]
+74 info linkStuff react-addons-update@0.14.3
+75 verbose linkBins react-addons-update@0.14.3
+76 verbose linkMans react-addons-update@0.14.3
+77 verbose rebuildBundles react-addons-update@0.14.3
+78 info install react-addons-update@0.14.3
+79 info postinstall react-addons-update@0.14.3
+80 verbose rebuild bundle /home/genegi/Desktop/iSHU/node_modules/react-tap-event-plugin
+81 info build /home/genegi/Desktop/iSHU/node_modules/react-tap-event-plugin
+82 info preinstall react-tap-event-plugin@0.2.1
+83 verbose linkStuff [ false, false, false, '/home/genegi/Desktop/iSHU/node_modules' ]
+84 info linkStuff react-tap-event-plugin@0.2.1
+85 verbose linkBins react-tap-event-plugin@0.2.1
+86 verbose linkMans react-tap-event-plugin@0.2.1
+87 verbose rebuildBundles react-tap-event-plugin@0.2.1
+88 verbose rebuildBundles [ 'fbjs' ]
+89 info install react-tap-event-plugin@0.2.1
+90 info postinstall react-tap-event-plugin@0.2.1
+91 info install iSHU@0.1.0
+92 info postinstall iSHU@0.1.0
+93 info prepublish iSHU@0.1.0
+94 error peerinvalid The package react does not satisfy its siblings' peerDependencies requirements!
+94 error peerinvalid Peer react-dom@0.14.3 wants react@^0.14.3
+94 error peerinvalid Peer material-ui@0.12.4 wants react@^0.14.0
+94 error peerinvalid Peer react-addons-create-fragment@0.14.3 wants react@^0.14.3
+94 error peerinvalid Peer react-addons-pure-render-mixin@0.14.3 wants react@^0.14.3
+94 error peerinvalid Peer react-addons-transition-group@0.14.3 wants react@^0.14.3
+94 error peerinvalid Peer react-addons-update@0.14.3 wants react@^0.14.3
+94 error peerinvalid Peer react-tap-event-plugin@0.2.1 wants react@^0.14.0
+95 error System Linux 3.19.0-33-generic
+96 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
+97 error cwd /home/genegi/Desktop/iSHU
+98 error node -v v0.10.25
+99 error npm -v 1.3.10
+100 error code EPEERINVALID
+101 verbose exit [ 1, true ]
