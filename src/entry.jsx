@@ -20,6 +20,6 @@ render((
     <Route path="service" component={SchoolService}/>
     <Route path="askbar" component={SchoolAskBar} />
     <Route path="activity" component={SchoolActivity}/>
-    <Route path="signup" params=":id" component={ActSignup}/>
+    <Route path="signup:id" params=":id" component={ActSignup}/>
   </Router>
 ),document.getElementById('app-container'))
