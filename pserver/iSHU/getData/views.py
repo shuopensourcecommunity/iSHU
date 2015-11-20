@@ -16,7 +16,7 @@ def get_info(base_url,  append_url, params):
     print res.text
 
 
-def  get_campus_message_list(request):
+def  get_campus_message_list(request): 
     if request.methods == 'POST':
         print "ok"
         return HttpResponse('ok')
@@ -25,16 +25,20 @@ def  get_campus_message_list(request):
 
 
 def userlogin(request):
-    base_url = 'http://api.shu.edu.cn/Mobile/'
-    append_url = 'User/UserLogin/'
-    data = {'userName':'13122635',
-        'password':'A70920015a'}
-    #get_info(base_url,append_url,data)
-    res = requests.post(base_url+append_url, data = params)
-    return res
-    
+    if request.methods == 'POST':
+        user_number = request.POST['id']
+        user_password = requests.POST['pwd']
+        base_url = 'http://api.shu.edu.cn/Mobile/'
+        append_url = 'User/UserLogin/'
+        data = {'userName':user_number,
+                'password':user_password,
+                }
+        #get_info(base_url,append_url,data)
+        login_status = requests.post(base_url+append_url, data = params)
+        return login_status
+
 def campuscalendarspring(request):
-    c = requests.get("http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarSummer")
+    c = requests.get("http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarSpring")
     return c
 
 def get_jwc_message_list(request):
