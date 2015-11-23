@@ -22,6 +22,6 @@ render((
     <Route path="askbar" component={SchoolAskBar} />
     <Route path="activity" component={SchoolActivity}/>
     <Route path="actlogin" component={ActLogin}/>
-    <Route path="signup:id" params=":id" component={ActSignup}/>
+    <Route path="signup" params=":id" component={ActSignup}/>
   </Router>
 ),document.getElementById('app-container'))
