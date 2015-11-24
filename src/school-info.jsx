@@ -72,19 +72,19 @@ var MessageTable= React.createClass({
           success: function(data) {
             console.log("xxxxxx" + data);
             var t_message = this.state.messages;
-            for (var obj in data.messagelist){
+            for (var obj in data){
               console.log('loadQestionCard ' + obj);
-              if(data.messagelist[obj] == null){
+              if(data[obj] == null){
                 // when no more questions, stop loading.
                 this.setState({ hasMoreMessages:false });
                 break;
               }
               t_message.push({
-                'MsgID': data.messagelist[obj].MsgID,
-                'Title': data.messagelist[obj].Title,
-                'Time': data.messagelist[obj].Time,
-                'ActiveTime': data.messagelist[obj].ActiveTime,
-                'Auth': data.messagelist[obj].Auth
+                'MsgID': data[obj].MsgID,
+                'Title': data[obj].Title,
+                'Time': data[obj].Time,
+                'ActiveTime': data[obj].ActiveTime,
+                'Auth': data[obj].Auth
               });
             }
             this.setState({

@@ -77,21 +77,21 @@ def postcampuscessagelist(request):
         a = message_list.json()
 
         result = {}
-        print "len(a['messagelist']) =",len(a['messagelist'])
+        # print "len(a['messagelist']) =",len(a['messagelist'])
         for i in range(0,len(a['messagelist'])):
             c = {}
-            print "i =",i
-            print "a['messagelist'][i].iteritems() =",a['messagelist'][i]
+            # print "i =",i
+            # print "a['messagelist'][i].iteritems() =",a['messagelist'][i]
             for key, value in a['messagelist'][i].iteritems():
-                print "key =",key,"value =",value
-                if isinstance(value,(str,)):
-                    c[key] = value.encode('utf-8') #['Time']
-                    print "if c[key] =",c[key]
+                # print "key =",key,"value =",value
+                if isinstance(value,(unicode,)):
+                    c[key] = value #['Time']
+                    # print "if c[key] =",c[key]
                 else:
-                    c[key] = str(value).decode('utf-8')
-                    print "else c[key] =",c[key]
-
-            result[str(i)] = c
+                    c[key] = unicode(value)
+                    # print "else c[key] =",c[key]
+            result[unicode(i)] = c
+        result = JsonResponse(result)
         print result
-        return json.dumps(result)
+        return result
 
