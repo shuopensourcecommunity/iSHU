@@ -73,6 +73,6 @@ def postcampuscessagelist(request):
             'currentPage':current_page,
         }
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
-        return json.dumps(list(message_list.content), ensure_ascii=False)
+        print message_list.text
+        return type(message_list.text)
 
