@@ -66,7 +66,7 @@ var MessageTable= React.createClass({
         // add data
         $.ajax({
           url: this.props.url,
-          dataType: 'text',
+          dataType: 'json',
           method: 'post',
           data: data,
           success: function(data) {
@@ -96,7 +96,7 @@ var MessageTable= React.createClass({
           error: function(xhr, status, err) {
             console.error(this.props.url, status, err.toString());
           }.bind(this)
-        });
+        },1000);
       }.bind(this), 1000);
   },
   render: function() {

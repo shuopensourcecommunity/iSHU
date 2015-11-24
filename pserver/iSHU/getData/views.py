@@ -1,7 +1,9 @@
+#-*- encoding: utf-8 -*-
 
 from django.shortcuts import render,loader
 
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 # Create your views here.
 import requests
@@ -20,7 +22,7 @@ def get_info(base_url,  append_url, params):
 @csrf_exempt
 def  get_campus_message_list(request): 
 
-    if request.methods == 'POST':
+    if request.method == 'POST':
         print "ok"
         return HttpResponse('ok')
         base_url = 'http://api.shu.edu.cn/Mobile/'
@@ -29,7 +31,7 @@ def  get_campus_message_list(request):
 
 @csrf_exempt
 def userlogin(request):
-    if request.methods == 'POST':
+    if request.method == 'POST':
         user_number = request.POST['id']
         user_password = requests.POST['pwd']
         base_url = 'http://api.shu.edu.cn/Mobile/'
@@ -56,7 +58,6 @@ def get_xgb_message_list(request):
 def postcampuscessagelist(request):
     print request.method
     if request.method == "POST":
-        print 'ahh'
         import time
         current_page = request.POST['current_page']
         print current_page
@@ -73,6 +74,24 @@ def postcampuscessagelist(request):
             'currentPage':current_page,
         }
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.text
-        return type(message_list.text)
+        a = message_list.json()
+
+        result = {}
+        print "len(a['messagelist']) =",len(a['messagelist'])
+        for i in range(0,len(a['messagelist'])):
+            c = {}
+            print "i =",i
+            print "a['messagelist'][i].iteritems() =",a['messagelist'][i]
+            for key, value in a['messagelist'][i].iteritems():
+                print "key =",key,"value =",value
+                if isinstance(value,(str,)):
+                    c[key] = value.encode('utf-8') #['Time']
+                    print "if c[key] =",c[key]
+                else:
+                    c[key] = str(value).decode('utf-8')
+                    print "else c[key] =",c[key]
+
+            result[str(i)] = c
+        print result
+        return json.dumps(result)
 
