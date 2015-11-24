@@ -5,18 +5,19 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 # Create your views here.
 import requests
-
+@csrf_exempt
 def index(request):
     #t = loader.get_template("index.html") 
     #return HttpResponse(t.render(request))
     return render(request, "index.html")
 #BASE_URL = "http://api.shu.edu.cn/Mobile/"
+@csrf_exempt
 def get_info(base_url,  append_url, params):
     res = requests.post(base_url+append_url, data = params)
     print res.text
 
 
-
+@csrf_exempt
 def  get_campus_message_list(request): 
 
     if request.methods == 'POST':
@@ -26,7 +27,7 @@ def  get_campus_message_list(request):
         append_url = 'CampusMessage/GetCampusMessageList'
 
 
-
+@csrf_exempt
 def userlogin(request):
     if request.methods == 'POST':
         user_number = request.POST['id']
@@ -39,24 +40,25 @@ def userlogin(request):
         #get_info(base_url,append_url,data)
         login_status = requests.post(base_url+append_url, data = params)
         return login_status
-
+@csrf_exempt
 def campuscalendarspring(request):
     c = requests.get("http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarSpring")
     return c
 
-
+@csrf_exempt
 def get_jwc_message_list(request):
     pass
-
+@csrf_exempt
 def get_xgb_message_list(request):
     pass
 
 @csrf_exempt
-def getcampuscessagelist(request):
-    print 'aaaa'
-    if request.methods == 'GET':
+def postcampuscessagelist(request):
+    print request.method
+    if request.method == "POST":
+        print 'ahh'
         import time
-        current_page = request.GET['current_page']
+        current_page = request.POST['current_page']
         print current_page
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusMessage/GetCampusMessageList/'

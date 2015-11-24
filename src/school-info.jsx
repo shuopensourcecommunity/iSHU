@@ -19,7 +19,7 @@ var MessageText= React.createClass({
       MsgID: this.props.MsgID,
       url: this.props.url,
       dataType: 'json',
-      methods: 'get',
+      methods: 'post',
       success: function(data) {
         var t_messageText = [];
         t_messageText.push(data.Summary);
@@ -67,8 +67,8 @@ var MessageTable= React.createClass({
         $.ajax({
           url: this.props.url,
           dataType: 'json',
+          method: 'post',
           data: data,
-          methods: 'GET',
           success: function(data) {
             console.log("xxxxxx" + data);
             var t_message = this.state.messages;
@@ -143,7 +143,7 @@ var SchoolInfo= React.createClass({
         <AppBar title="校园资讯"/>
         <Tabs>
           <Tab label="上大新闻" value='a'>
-            <MessageTable url='getcampuscessagelist'/>
+            <MessageTable url='postcampuscessagelist'/>
           </Tab>
           <Tab label="学生事务" value='b'>
             <MessageTable url=''/>
