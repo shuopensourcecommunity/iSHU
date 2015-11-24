@@ -19,7 +19,7 @@ var MessageText= React.createClass({
       MsgID: this.props.MsgID,
       url: this.props.url,
       dataType: 'json',
-      methods: 'get',
+      methods: 'post',
       success: function(data) {
         var t_messageText = [];
         t_messageText.push(data.Summary);
@@ -60,19 +60,15 @@ var MessageTable= React.createClass({
       console.log('loadMessageFromServer - page ' + this.state.currentPage);
       // fake an async. ajax call with setTimeout
       var data = {
-              keyword: '',
-              limit: 10,
-              currentPage: 1,
-              startTIme: "2015-10-01T06:31:17+00:00",
-              endTIme: "2015-12-24T06:31:17+00:00"
-          }
+        current_page: 1
+      };
       setTimeout(function() {
         // add data
         $.ajax({
           url: this.props.url,
-          dataType: 'xml/html/script/json',
+          dataType: 'json',
+          method: 'post',
           data: data,
-          type: 'POST',
           success: function(data) {
             console.log("xxxxxx" + data);
             var t_message = this.state.messages;
@@ -147,13 +143,13 @@ var SchoolInfo= React.createClass({
         <AppBar title="校园资讯"/>
         <Tabs>
           <Tab label="上大新闻" value='a'>
-            <MessageTable url='http://127.0.0.1:8000/ishu/schoolInfo'/>
+            <MessageTable url='postcampuscessagelist'/>
           </Tab>
           <Tab label="学生事务" value='b'>
-            <MessageTable url='http://api.shu.edu.cn/Mobile/CampusMessage/GetCampusMessageList'/>
+            <MessageTable url=''/>
           </Tab>
           <Tab label="教务信息" value='c'>
-            <MessageTable url='http://api.shu.edu.cn/Mobile/CampusMessage/GetCampusMessageList'/>
+            <MessageTable url=''/>
           </Tab>
         </Tabs>
       </div>
