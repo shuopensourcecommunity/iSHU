@@ -60,7 +60,7 @@ var ActSignup= React.createClass({
             floatingLabelText="邮箱：" type="mail" onChange={this.mailHandleChange}/>
           <br />
           <TextField className="text-field"
-            floatingLabelText="参加理由：" type="text" multiLine="true" onChange={this.textHandleChange}/>
+            floatingLabelText="参加xq理由：" type="text" multiLine="true" onChange={this.textHandleChange}/>
           <br />
           <RaisedButton label="我要报名" secondary={true} onTouchTap={this.signUp}/>
           <Link to="/Activity"><RaisedButton label="返回" /></Link>
