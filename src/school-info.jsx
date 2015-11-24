@@ -49,7 +49,7 @@ var MessageTable= React.createClass({
       keyword: 1,
       type: 203,
       limit: 10,
-      currentPage: 1,
+      current_page: 1,
       startTime: "10:01",
       endTime: "12:01",
       hasMoreMessages: true
@@ -57,10 +57,10 @@ var MessageTable= React.createClass({
     };
   },
   loadMessageFromServer: function(page) {
-      console.log('loadMessageFromServer - page ' + this.state.currentPage);
+      console.log('loadMessageFromServer - page ' + this.state.current_page);
       // fake an async. ajax call with setTimeout
       var data = {
-        current_page: 1
+        current_page: this.state.current_page
       };
       setTimeout(function() {
         // add data
@@ -70,7 +70,6 @@ var MessageTable= React.createClass({
           method: 'post',
           data: data,
           success: function(data) {
-            console.log("xxxxxx" + data);
             var t_message = this.state.messages;
             for (var obj in data){
               console.log('loadQestionCard ' + obj);
@@ -89,7 +88,7 @@ var MessageTable= React.createClass({
             }
             this.setState({
               messages: t_message,
-              currentPage: this.state.currentPage + 1,
+              current_page: this.state.current_page + 1,
               // current page is loaded, ready to load next page (currentPage+1)
             });
           }.bind(this),

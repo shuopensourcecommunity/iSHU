@@ -65,6 +65,7 @@ def postcampuscessagelist(request):
         append_url = 'CampusMessage/GetCampusMessageList/'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
+        print current_page
         data = { 
             'keyword':'',
             'type':203,
@@ -92,6 +93,5 @@ def postcampuscessagelist(request):
                     # print "else c[key] =",c[key]
             result[unicode(i)] = c
         result = JsonResponse(result)
-        print result
         return result
 
