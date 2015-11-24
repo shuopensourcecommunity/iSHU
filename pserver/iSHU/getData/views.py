@@ -74,5 +74,5 @@ def postcampuscessagelist(request):
         }
         message_list = requests.post(base_url+append_url, data = data)
         print message_list.content
-        return message_list.content
+        return json.dumps(list(message_list.content), ensure_ascii=False)
 
