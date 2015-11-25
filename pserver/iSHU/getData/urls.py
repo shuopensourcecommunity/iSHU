@@ -1,11 +1,11 @@
 from django.conf.urls import include, url
 
-
-from views import get_campus_message_list,index,userlogin,campuscalendarspring,postcampuscessagelist
+from views import getxgbmessagelist,getjwcmessagelist
+from views import index,userlogin,postcampuscessagelist
 urlpatterns = [
     url(r"^index/$",index),
-    url(r"^schoolInfo", get_campus_message_list),
     url(r"^userlogin",userlogin),
-    url(r"^campuscalendarspring",campuscalendarspring),
-    url(r"^index/postcampuscessagelist",postcampuscessagelist,name='postcampuscessagelist')
+    url(r"^index/postcampuscessagelist",postcampuscessagelist,name='postcampuscessagelist'),
+    url(r"^index/getxgbmessagelist",getxgbmessagelist,name='getxgbmessagelist'),
+    url(r"^index/getjwcmessagelist",getjwcmessagelist,name='getjwcmessagelist')
 ]
