@@ -64,6 +64,7 @@ def postcampuscessagelist(request):
                     c[key] = unicode(value)
             result[unicode(i)] = c
         result = JsonResponse(result)
+        print result
         return result
 
 @csrf_exempt
@@ -98,7 +99,7 @@ def getxgbmessagelist(request):
         return xgbresult
 
 @csrf_exempt
-def getjwcmessagelist():
+def getjwcmessagelist(request):
     print 'aa'
     if request.method == "POST":
         import time
@@ -126,6 +127,8 @@ def getjwcmessagelist():
                 else:
                     c[key] = unicode(value)
             result[unicode(i)] = c
+        
+        jwcresult ={"1": {"Title": "\u5173\u4e8e2015-2016\u5b66\u5e74\u79cb\u5b63\u5b66\u671f\u6210\u7ee9\u767b\u5f55\u5b89\u6392", "MsgID": "187840", "ActiveTime": "None", "Auth": "None", "Time": "2015/10/27"}}
         jwcresult = JsonResponse(result)
         print jwcresult
         return jwcresult    
