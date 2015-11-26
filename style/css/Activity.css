@@ -7,7 +7,26 @@
   margin-left:50px;
   margin-top:40px;
 }
+
 .activity-tabs{
   overflow-x:scroll;
   width:100%;
+}
+
+.inline {
+  display: inline;
+  line-height: 200%;
+}
+
+.activity-detail-title {
+  font-weight: bold;
+}
+
+.activity-brief {
+  line-height: 150%;
+}
+
+.activity-status {
+  font-weight: bold;
+  color: blue;
 }
