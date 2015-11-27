@@ -55,6 +55,7 @@ def postcampuscessagelist(request):
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messagelist'])):
             c = {}
             for key, value in a['messagelist'][i].iteritems():
@@ -87,6 +88,7 @@ def getxgbmessagelist(request):
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messagelist'])):
             c = {}
             for key, value in a['messagelist'][i].iteritems():
@@ -100,7 +102,6 @@ def getxgbmessagelist(request):
 
 @csrf_exempt
 def getjwcmessagelist(request):
-    print 'aa'
     if request.method == "POST":
         import time
         current_page = request.POST['current_page']
@@ -119,6 +120,7 @@ def getjwcmessagelist(request):
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messagelist'])):
             c = {}
             for key, value in a['messagelist'][i].iteritems():
@@ -154,6 +156,7 @@ def getgampusactionlist(request):
         a = message_list.json()
         #print a
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
@@ -189,6 +192,7 @@ def getzhuanti(request):
         a = message_list.json()
         #print a
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
@@ -224,6 +228,7 @@ def getshetuan(request):
         a = message_list.json()
         #print a
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
@@ -259,6 +264,7 @@ def getzhaopin(request):
         a = message_list.json()
         #print a
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
@@ -295,6 +301,7 @@ def getgongyi(request):
         a = message_list.json()
         #print a
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
@@ -330,6 +337,7 @@ def getbisai(request):
         a = message_list.json()
         #print a
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
@@ -366,6 +374,7 @@ def getjiangzuo(request):
         a = message_list.json()
         #print a
         result = {}
+        result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
@@ -389,4 +398,7 @@ def getcampusactionbyid(request):
         }
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
+        a = JsonResponse(a)
+        print a
         return a
+

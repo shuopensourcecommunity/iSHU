@@ -103,15 +103,20 @@ var MessageTable= React.createClass({
       var subtitle;
       (message.Auth == "None") ? subtitle="时间："+message.Time:subtitle="时间："+message.Time+"     发布来源："+message.Auth;
       let styles={
-        cardtitle: {
-          fontSize: '17px',
-          lineHeight: '25px'
+        title: {
+          fontSize: 18,
+          display: 'block',
+          lineHeight: '24px',
+          whiteSpace: 'nowrap',
+          width: '100%',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
         }
       };
       return (
         <Card initiallyExpanded={false}>
           <CardTitle
-            titleStyle={styles.cardtitle}
+            titleStyle={styles.title}
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
