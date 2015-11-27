@@ -39,7 +39,7 @@ var ActivityDetail= React.createClass({
       MsgID: this.props.MsgID,
       url: this.props.url,
       dataType: 'json',
-      methods: 'get',
+      method: 'get',
       success: function(data) {
         var t_messageText = [];
         t_message.push({
@@ -88,7 +88,7 @@ var ActivityDetail= React.createClass({
     $.ajax({
       url: this.props.url,
       dataType: 'json',
-      methods: 'post',
+      method: 'post',
       data: data,
       success: function(data) {
         this.setState({isJoined: true});
@@ -213,28 +213,11 @@ var ActivityDetail= React.createClass({
 var ActivityTable= React.createClass({
   getInitialState: function() {
     return {
-      messages: [
-        {
-          'MsgID': '1',
-          'Title': '中外文献检索',
-          'Category': '讲座报告',
-          'TimeBegin':'2015-10-09 09:15',
-          'PeopleNumber':'30',
-          'Participated': '30'
-        },
-        {
-          'MsgID': '2',
-          'Title': '跨平台、云端的个人知识管理工具—为知笔记',
-          'Category': '讲座报告',
-          'TimeBegin':'2015-10-09 09:14',
-          'PeopleNumber':'30',
-          'Participated': '30'
-        }
-      ],
+      messages: [],
       keyword: 1,
       type: 203,
       limit: 10,
-      currentPage: 1,
+      current_page: 1,
       startTime: "10:01",
       endTime: "12:01",
       hasMoreMessages: true
@@ -242,36 +225,41 @@ var ActivityTable= React.createClass({
     };
   },
   loadMessageFromServer: function(page) {
-      console.log('loadMessageFromServer - page ' + this.state.currentPage);
+      console.log('loadMessageFromServer - page ' + this.state.current_page);
       // fake an async. ajax call with setTimeout
+      var data = {
+        current_page: this.state.current_page
+      };
       setTimeout(function() {
         // add data
         $.ajax({
           url: this.props.url,
           dataType: 'json',
-          methods: 'get',
+          method: 'post',
+          data: data,
           success: function(data) {
             console.log(data);
             var t_message = this.state.messages;
-            for (var obj in data.messagelist){
+            for (var obj in data){
               console.log('loadQestionCard ' + obj);
-              if(data.messagelist[obj] == null){
+              if(data[obj] == null){
                 // when no more questions, stop loading.
                 this.setState({ hasMoreMessages:false });
                 break;
               }
               t_message.push({
-                'MsgID': data.messagelist[obj].MsgID,
-                'Title': data.messagelist[obj].Title,
-                'Category': data.messagelist[obj].Category,
-                'TimeBegin': data.messagelist[obj].TimeBegin,
-                'PeopleNumber': data.messagelist[obj].PeopleNumber,
-                'Participated': data.messagelist[obj].Participated,
+                'ActionID': data[obj].MsgID,
+                'Title': data[obj].Title,
+                'Time': data[obj].Time,
+                'ActiveTime': data[obj].ActiveTime,
+                'EndTime': data[obj].EndTime,
+                'Auth': data[obj].Auth,
+                'Address': data[obj].Address,
               });
             }
             this.setState({
               messages: t_message,
-              currentPage: this.state.currentPage + 1,
+              current_page: this.state.current_page + 1,
               // current page is loaded, ready to load next page (currentPage+1)
             });
           }.bind(this),
@@ -283,8 +271,8 @@ var ActivityTable= React.createClass({
   },
   render: function() {
     var messageNodes = this.state.messages.map(function (message) {
-      let subtitle=message.Category+" "
-                  +"报名人数："+message.Participated+"/"+message.PeopleNumber;;
+      let subtitle=message.Auth+" "
+                  +"活动时间："+message.ActiveTime;
       let styles = {
         root: {
           padding: 16,
@@ -317,7 +305,7 @@ var ActivityTable= React.createClass({
             showExpandableButton={false}>
           </CardTitle>
           <CardText expandable={true}>
-            <ActivityDetail url='messageText' MsgID={message.MsgID} />
+            <ActivityDetail url='messageText' MsgID={message.ActionID} />
           </CardText>
 
         </Card>
@@ -356,25 +344,25 @@ var SchoolActivity= React.createClass({
         tabItemContainerStyle={styles.tab}
         contentContainerStyle={styles.content}>
           <Tab label="全部" value='a'>
-            <ActivityTable url='messages'/>
+            <ActivityTable url='getgampusactionlist'/>
           </Tab>
           <Tab label="专题活动" value='b'>
-            <ActivityTable url='messages'/>
+            <ActivityTable url='getzhuanti'/>
           </Tab>
           <Tab label="社团活动" value='c'>
-            <ActivityTable url='messages'/>
+            <ActivityTable url='getshetuan'/>
           </Tab>
           <Tab label="招聘实习" value='d'>
-            <ActivityTable url='messages'/>
+            <ActivityTable url='getzhaopin'/>
           </Tab>
           <Tab label="公益活动" value='e'>
-            <ActivityTable url='messages'/>
+            <ActivityTable url='getgongyi'/>
           </Tab>
           <Tab label="比赛活动" value='f'>
-            <ActivityTable url='messages'/>
+            <ActivityTable url='getbisai'/>
           </Tab>
           <Tab label="讲座报告" value='g'>
-            <ActivityTable url='messages'/>
+            <ActivityTable url='getjiangzuo'/>
           </Tab>
           <Tab label="其它" value='h'>
             <ActivityTable url='messages'/>

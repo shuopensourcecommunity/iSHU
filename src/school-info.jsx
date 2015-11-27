@@ -100,7 +100,8 @@ var MessageTable= React.createClass({
   },
   render: function() {
     var messageNodes = this.state.messages.map(function (message) {
-      var subtitle="时间："+message.Time+" 发布来源："+message.Auth;
+      var subtitle;
+      (message.Auth == "None") ? subtitle="时间："+message.Time:subtitle="时间："+message.Time+"     发布来源："+message.Auth;
       let styles={
         cardtitle: {
           fontSize: '17px',

@@ -344,6 +344,7 @@ def getbisai(request):
 @csrf_exempt
 def getjiangzuo(request):
     if request.method == "POST":
+        print "a"
         import time
         current_page = request.POST['current_page']
         base_url = 'http://api.shu.edu.cn/Mobile/'
@@ -374,4 +375,5 @@ def getjiangzuo(request):
                     c[key] = unicode(value)
             result[unicode(i)] = c      
         result = JsonResponse(result)
+        print result
         return result
