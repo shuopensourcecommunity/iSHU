@@ -2,7 +2,7 @@
 from django.conf.urls import include, url
 
 from views import getxgbmessagelist,getjwcmessagelist,getgampusactionlist
-from views import index,userlogin,postcampuscessagelist
+from views import index,userlogin,postcampuscessagelist,getcampusactionbyid
 from views import getzhuanti,getshetuan,getzhaopin,getgongyi,getbisai,getjiangzuo
 urlpatterns = [
     url(r"^index/$",index),
@@ -24,7 +24,8 @@ urlpatterns = [
     url(r'^index/getbisai', getbisai,name = 'getbisai'),
     #讲座报告
     url(r'^index/getjiangzuo',getjiangzuo,name = 'getjiangzuo'),
-
+    #获取活动详细内容,传action_id
+    url(r'^index/getcampusactionbyid',getcampusactionbyid,name = 'getcampusactionbyid'),
 
 
 ]

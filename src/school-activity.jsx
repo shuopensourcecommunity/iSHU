@@ -14,17 +14,7 @@ injectTapEventPlugin();
 var ActivityDetail= React.createClass({
   getInitialState: function() {
     return {
-      messageText:[{
-        'MsgID':'1',
-        'Title':'跨平台、云端的个人知识管理工具—为知笔记',
-        'Category':'讲座报告',
-        'Brief':'为知笔记不仅是一款帮你记录生活、工作点点滴滴的云服务笔记软件，也是一款共享资料...',
-        'TimeBegin':'2015-10-09 09:14',
-        'TimeEnd':'2015-12-01 17:35',
-        'PeopleNumber':'30',
-        //'Participated': '30',
-        'Status':'未报名'
-      }],
+      messageText:[],
       isJoined: false,
       showDialogActions: false,
       autoHideDuration: 5000,
@@ -35,29 +25,41 @@ var ActivityDetail= React.createClass({
     };
   },
   loadMessageFromServer: function() {
-    $.ajax({
-      MsgID: this.props.MsgID,
-      url: this.props.url,
-      dataType: 'json',
-      method: 'get',
-      success: function(data) {
-        var t_messageText = [];
-        t_message.push({
-          'MsgID': data.messageText.MsgID,
-          'Title': data.messageText.Title,
-          'Category': data.messageText.Category,
-          'TimeBegin': data.messageText.TimeBegin,
-          'TimeEnd': data.messageText.TimeEnd,
-          'PeopleNumber': data.messageText.PeopleNumber,
-          'Status':data.messageText.Status
-        });
-        this.setState({messageText: t_messageText});
-        if (data.messageText.Status == '已报名') this.setState({isJoined: true});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    console.log('action_id:'+this.props.ActionID);
+    var data = {
+        action_id: this.props.ActionID
+      };
+    setTimeout(function() {
+      $.ajax({
+        url: 'getcampusactionbyid',
+        dataType: 'json',
+        method: 'post',
+        data: data,
+        success: function(data) {
+          var t_messageText = [];
+          t_messageText.push({
+            'All': data.All,
+            'ActiveTime': data.ActiveTime,
+            'Title': data.Title,
+            'Url': data.Url,
+            'Address': data.Address,
+            'Auth': data.Auth,
+            'Mark': data.Mark,
+            'Current': data.Current,
+            'Summary': data.Summary,
+            'ActionType': data.ActionType,
+            'Url': data.Url,
+            'Address': data.Address,
+            'Time': data.Time,
+            'EndTime': data.EndTime,
+          });
+          this.setState({messageText: t_messageText});
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      },1000);
+    }.bind(this), 1000);
   },
 
   componentDidMount: function(){
@@ -137,7 +139,14 @@ var ActivityDetail= React.createClass({
           zIndex: 10,
         }
       };
-      // "inline" : display-inline
+      var ActionType;
+      if (detail.ActionType == '6') {ActionType='专题活动'}
+      else if (detail.ActionType == '5') {ActionType='社团活动'} 
+      else if (detail.ActionType == '4') {ActionType='招聘实习'}
+      else if (detail.ActionType == '3') {ActionType='公益活动'}
+      else if (detail.ActionType == '2') {ActionType='比赛活动'}
+      else if (detail.ActionType == '1') {ActionType='讲座报告'}
+      else {ActionType='其它'};
       return (
         <div>
           <div className="activity-detail">
@@ -147,23 +156,23 @@ var ActivityDetail= React.createClass({
             </div>
             <div>
               <p className="inline activity-detail-title">活动类别：</p>
-              <p className="inline activity-category">{detail.Category}</p>
+              <p className="inline activity-category">{ActionType}</p>
             </div>
             <div>
               <p className="activity-detail-title">活动简介：</p>
-              <p className="activity-brief">{detail.Brief}</p>
+              <p className="activity-brief">{detail.Summary}</p>
             </div>
             <div>
               <p className="inline activity-detail-title">报名开始时间：</p>
-              <p className="inline activity-time-begin">{detail.TimeBegin}</p>
+              <p className="inline activity-time-begin">{detail.Time}</p>
             </div>
             <div>
               <p className="inline activity-detail-title">报名截止时间：</p>
-              <p className="inline activity-time-end">{detail.TimeEnd}</p>
+              <p className="inline activity-time-end">{detail.EndTime}</p>
             </div>
             <div>
               <p className="inline activity-detail-title">人数限制：</p>
-              <p className="inline activity-number">{detail.PeopleNumber}</p>
+              <p className="inline activity-number">{detail.Current}/{detail.All}</p>
             </div>
             <div>
               <p className="inline activity-detail-title">报名状态：</p>
@@ -248,7 +257,7 @@ var ActivityTable= React.createClass({
                 break;
               }
               t_message.push({
-                'ActionID': data[obj].MsgID,
+                'ActionID': data[obj].ActionID,
                 'Title': data[obj].Title,
                 'Time': data[obj].Time,
                 'ActiveTime': data[obj].ActiveTime,
@@ -291,7 +300,8 @@ var ActivityTable= React.createClass({
           fontSize: 14,
           display: 'block',
         },
-      }
+      };
+      console.log('ActionID:'+message.ActionID);
       return (
         // Change titleColor/subtitleColor:
         // CardTitle props: subtitleColor={Colors.grey700}
@@ -302,10 +312,10 @@ var ActivityTable= React.createClass({
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
-            showExpandableButton={false}>
+            showExpandableButton={true}>
           </CardTitle>
           <CardText expandable={true}>
-            <ActivityDetail url='messageText' MsgID={message.ActionID} />
+            <ActivityDetail url='messageText' ActionID={message.ActionID} />
           </CardText>
 
         </Card>
