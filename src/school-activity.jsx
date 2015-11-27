@@ -364,9 +364,9 @@ var SchoolActivity= React.createClass({
           <Tab label="讲座报告" value='g'>
             <ActivityTable url='getjiangzuo'/>
           </Tab>
-          <Tab label="其它" value='h'>
-            <ActivityTable url='messages'/>
-          </Tab>
+          {/*<Tab label="其它" value='h'>
+                    <ActivityTable url='messages'/>
+                  </Tab>*/}
         </Tabs>
         </div>
       </div>
