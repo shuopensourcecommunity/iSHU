@@ -93,5 +93,6 @@ def postcampuscessagelist(request):
                     # print "else c[key] =",c[key]
             result[unicode(i)] = c
         result = JsonResponse(result)
+        print result
         return result
 
