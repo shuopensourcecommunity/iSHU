@@ -377,3 +377,16 @@ def getjiangzuo(request):
         result = JsonResponse(result)
         print result
         return result
+
+@csrf_exempt
+def getcampusactionbyid(request):
+    if request.method == "POST":
+        action_id = request.POST['action_id']
+        base_url = 'http://api.shu.edu.cn/Mobile/'
+        append_url = 'CampusAction/GetCampusActionById'
+        data = {
+            'actionId':action_id,
+        }
+        message_list = requests.post(base_url+append_url, data = data)
+        a = message_list.json()
+        return a

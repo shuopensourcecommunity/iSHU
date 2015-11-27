@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^index/getbisai', getbisai,name = 'getbisai'),
     #讲座报告
     url(r'^index/getjiangzuo',getjiangzuo,name = 'getjiangzuo'),
-
-
-
+    #获取活动详细内容,传action_id
+    url(r'^index/getcampusactionbyid',getcampusactionbyid,name = 'getcampusactionbyid'),
 ]
