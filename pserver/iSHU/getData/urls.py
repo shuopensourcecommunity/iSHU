@@ -1,11 +1,30 @@
+#-*- encoding: utf-8 -*-
 from django.conf.urls import include, url
 
-
-from views import get_campus_message_list,index,userlogin,campuscalendarspring,postcampuscessagelist
+from views import getxgbmessagelist,getjwcmessagelist,getgampusactionlist
+from views import index,userlogin,postcampuscessagelist
+from views import getzhuanti,getshetuan,getzhaopin,getgongyi,getbisai,getjiangzuo
 urlpatterns = [
     url(r"^index/$",index),
-    url(r"^schoolInfo", get_campus_message_list),
     url(r"^userlogin",userlogin),
-    url(r"^campuscalendarspring",campuscalendarspring),
-    url(r"^index/postcampuscessagelist",postcampuscessagelist,name='postcampuscessagelist')
+    url(r"^index/postcampuscessagelist", postcampuscessagelist,name = 'postcampuscessagelist'),
+    url(r"^index/getxgbmessagelist", getxgbmessagelist,name = 'getxgbmessagelist'),
+    url(r"^index/getjwcmessagelist", getjwcmessagelist,name = 'getjwcmessagelist'),
+    #全部校园活动
+    url(r"^index/getgampusactionlist", getgampusactionlist,name = 'getgampusactionlist'),
+    #专题活动
+    url(r'^index/getzhuanti', getzhuanti,name = 'getzhuanti'),
+    #社团活动
+    url(r'^index/getshetuan', getshetuan,name = 'getshetuan'),
+    #招聘实习
+    url(r'^index/getzhaopin', getzhaopin,name = 'getzhaopin'),
+    #公益活动
+    url(r'^index/getgongyi', getgongyi,name = 'getgongyi'),
+    #比赛活动
+    url(r'^index/getbisai', getbisai,name = 'getbisai'),
+    #讲座报告
+    url(r'^index/getjiangzuo',getjiangzuo,name = 'getjiangzuo'),
+
+
+
 ]
