@@ -2,7 +2,7 @@
 from django.conf.urls import include, url
 
 from views import getxgbmessagelist,getjwcmessagelist,getgampusactionlist
-from views import index,userlogin,postcampuscessagelist
+from views import index,userlogin,postcampuscessagelist,getcampusactionbyid
 from views import getzhuanti,getshetuan,getzhaopin,getgongyi,getbisai,getjiangzuo
 urlpatterns = [
     url(r"^index/$",index),
