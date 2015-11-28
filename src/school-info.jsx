@@ -136,7 +136,7 @@ var MessageTable= React.createClass({
       return (
         <Card initiallyExpanded={false}>
           <CardTitle
-            titleStyle={? styles.t:styles.title}
+            titleStyle={styles.title}
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
