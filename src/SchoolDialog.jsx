@@ -56,6 +56,7 @@ var SchoolDialog= React.createClass({
         };
       }.bind(this),
       error: function(xhr, status, err) {
+        this.setState({status: '登陆失败'});
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -89,6 +90,7 @@ var SchoolDialog= React.createClass({
         this.setState({status: t_status});
       }.bind(this),
       error: function(xhr, status, err) {
+        this.setState({status: '报名失败'});
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });

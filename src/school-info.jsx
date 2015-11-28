@@ -11,17 +11,19 @@ var InfiniteScroll = require('react-infinite-scroll')(React);
 var MessageText= React.createClass({
   getInitialState: function() {
     return {
-      messageText: 'abc'
+      messageText: ''
     };
   },
   loadMessageFromServer: function() {
+    var data={msg_id: this.props.MsgID};
     $.ajax({
-      MsgID: this.props.MsgID,
       url: this.props.url,
       dataType: 'json',
-      methods: 'post',
+      method: 'post',
+      data: data,
       success: function(data) {
-        console.log
+        console.log(data);
+        console.log(data.Summary);
         var t_messageText = [];
         t_messageText.push(data.Summary);
         this.setState({messageText: t_messageText});
@@ -45,6 +47,9 @@ var MessageText= React.createClass({
 
 var MessageTable= React.createClass({
   getInitialState: function() {
+    var url;
+    if (this.props.url == 'getjwcmessagelist') {url='getjwcmessagebyid';}
+    else if (this.props.url == 'postcampuscessagelist') {url='getcampusmessagebyid';};
     return {
       messages: [],
       pagecount: 0,
@@ -54,7 +59,8 @@ var MessageTable= React.createClass({
       current_page: 1,
       startTime: "10:01",
       endTime: "12:01",
-      hasMoreMessages: true
+      hasMoreMessages: true,
+      url: {url}
       // if has more questions, continue loading.
     };
   },
@@ -86,7 +92,8 @@ var MessageTable= React.createClass({
                 'Title': data[obj].Title,
                 'Time': data[obj].Time,
                 'ActiveTime': data[obj].ActiveTime,
-                'Auth': data[obj].Auth
+                'Auth': data[obj].Auth,
+                'url': this.state.url.url
               });
               t_pagecount: data.pageCount;
             }
@@ -117,19 +124,25 @@ var MessageTable= React.createClass({
           width: '93%',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
+        },
+        t: {
+          fontSize: 18,
+          display: 'block',
+          lineHeight: '24px',
+          whiteSpace: 'nowrap',
         }
       };
       return (
         <Card initiallyExpanded={false}>
           <CardTitle
-            titleStyle={styles.title}
+            titleStyle={actAsExpander? styles.t:styles.title}
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
             showExpandableButton={true}>
           </CardTitle>
           <CardText expandable={true}>
-            <MessageText url='messageText' MsgID={message.MsgID} />
+            <MessageText url={message.url} MsgID={message.MsgID} />
           </CardText>
         </Card>
       );

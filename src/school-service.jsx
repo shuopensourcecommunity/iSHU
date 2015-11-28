@@ -20,17 +20,25 @@ var ServiceCards = React.createClass({
         style={{width: '100%', overflowY: 'auto'}}
       >
         <GridTile
+          rootClass={'a'}
+          href='http://www.campus.shu.edu.cn'
           title='社团'
-        ><a href='http://www.campus.shu.edu.cn'><img src='/static/style/imgs/1.png' /></a></GridTile>
+        ><img src='/static/style/imgs/1.png' /></GridTile>
         <GridTile
+          rootClass={'a'}
           title='志愿者报名'
-        ><a href="http://202.120.127.129/Shulvms/Login.aspx"><img src='/static/style/imgs/2.png'  /></a></GridTile>
+          href="http://202.120.127.129/Shulvms/Login.aspx"
+        ><img src='/static/style/imgs/2.png' /></GridTile>
         <GridTile
+          rootClass={'a'}
+          href="http://card.lehu.shu.edu.cn/CardTrainingDetail.aspx"
           title='晨跑'
-        ><a href="http://card.lehu.shu.edu.cn/CardTrainingDetail.aspx"><img src='/static/style/imgs/3.jpg'  /></a></GridTile>
+        ><img src='/static/style/imgs/3.jpg' /></GridTile>
         <GridTile
+          rootClass={'a'}
+          href="http://card.lehu.shu.edu.cn/CardLostDetail.aspx"
           title='一卡通挂失'
-        ><a href="http://card.lehu.shu.edu.cn/CardLostDetail.aspx"><img src='/static/style/imgs/4.png'  /></a></GridTile>
+        ><img src='/static/style/imgs/4.png' /></GridTile>
       </GridList>
     )
   }

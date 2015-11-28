@@ -133,6 +133,7 @@ var ActivityTable= React.createClass({
 
 var SchoolActivity= React.createClass({
   render: function(){
+    console.log(screen.width);
     let styles = {
       content: {
         left: '0',
@@ -140,7 +141,7 @@ var SchoolActivity= React.createClass({
         position: 'absolute',
       },
       tab:{
-        width: '560px',
+        width: (screen.width>'560px')?'100%':'560px'
       }
     };
     return (
