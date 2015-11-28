@@ -404,7 +404,6 @@ def getcampusactionbyid(request):
         a = message_list.json()
         #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
         a = JsonResponse(a)
-
         print a
         return a
 
@@ -431,6 +430,38 @@ def applyforcampusaction(request):
         print message_list.content
         a = message_list.json()
         print a
+        a = JsonResponse(a)
+        print a
+        return a
+
+@csrf_exempt
+def getcampusmessagebyid(request):
+    if request.method == "POST":
+        msg_id = request.POST['msg_id']
+        base_url = 'http://api.shu.edu.cn/Mobile/'
+        append_url = 'CampusMessage/GetCampusMessageById'
+        data = {
+            'msgId':msg_id,
+        }
+        message_list = requests.post(base_url+append_url, data = data)
+        a = message_list.json()
+        #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
+        a = JsonResponse(a)
+        print a
+        return a
+
+@csrf_exempt
+def getjwcmessagebyid(request):
+    if request.method == "POST":
+        msg_id = request.POST['msg_id']
+        base_url = 'http://api.shu.edu.cn/Mobile/'
+        append_url = 'CampusMessage/GetJwcMessageById'
+        data = {
+            'msgId':msg_id,
+        }
+        message_list = requests.post(base_url+append_url, data = data)
+        a = message_list.json()
+        #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
         a = JsonResponse(a)
         print a
         return a
