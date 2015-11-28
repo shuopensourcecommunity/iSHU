@@ -20,24 +20,23 @@ let HomeGrid = React.createClass({
     };
   },
   render: function(){
+    // console.log('screen-height:'+screen.height+', screen-width:'+screen.width);
     return (
-      <div className="home-content">
-        <GridList
-          className="home-grid center"
-          cellHeight={200}
-          style={{width: '100%', height: '100%', overflowY: 'auto'}}
-          >
-          {
-            this.state.homeData.map(home => <GridTile
-              rootClass={Link}
-              to={home.linkto}
-              title={home.title}
-              titleBackground={'rgba(0, 0, 0, 0)'}
-              style={{padding:0}}
-              ><img src={home.img} /></GridTile>)
-          }
-        </GridList>
-      </div>
+      <GridList
+        className="home-grid center"
+        cellHeight={200}
+        cols={(screen.width>500)?3:2}
+        style={{width: '100%', height:'90%', overflowY: 'auto'}}
+        >
+        {
+          this.state.homeData.map(home => <GridTile
+            rootClass={Link}
+            to={home.linkto}
+            title={home.title}
+            titleBackground={'rgba(0, 0, 0, 0.4)'}
+            ><img src={home.img} /></GridTile>)
+        }
+      </GridList>
     )
   }
 });

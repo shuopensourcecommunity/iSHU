@@ -1,8 +1,10 @@
 .home-content {
-  padding: 0, 16px;
-  position: center;
+
 }
 .home-grid img {
   //border-radius:50%;
-  //width: 100px;
+  //width:auto;
+}
+.home-title {
+  color: black;
 }
