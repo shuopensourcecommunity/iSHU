@@ -4,6 +4,7 @@ from django.conf.urls import include, url
 from views import getxgbmessagelist,getjwcmessagelist,getgampusactionlist,applyforcampusaction
 from views import index,userlogin,postcampuscessagelist,getcampusactionbyid
 from views import getzhuanti,getshetuan,getzhaopin,getgongyi,getbisai,getjiangzuo
+from views import getjwcmessagebyid,getcampusmessagebyid
 urlpatterns = [
     url(r"^index/$",index),
     url(r"^index/userlogin",userlogin),
@@ -28,5 +29,8 @@ urlpatterns = [
     url(r'^index/getcampusactionbyid',getcampusactionbyid,name = 'getcampusactionbyid'),
     #报名,需要action_id,cookie,reasion,phone,mail
     url(r'^index/applyforcampusaction',applyforcampusaction, name = 'applyforcampusaction'),
-
+    #校园咨询
+    url(r'^index/getcampusmessagebyid',getcampusmessagebyid,name = 'getcampusmessagebyid'),
+    #jwc
+    url(r'^index/getjwcmessagebyid',getjwcmessagebyid,name = 'getjwcmessagebyid'),
 ]
