@@ -46,6 +46,7 @@ var MessageTable= React.createClass({
   getInitialState: function() {
     return {
       messages: [],
+      pagecount: 0,
       keyword: 1,
       type: 203,
       limit: 10,
@@ -71,13 +72,14 @@ var MessageTable= React.createClass({
           data: data,
           success: function(data) {
             var t_message = this.state.messages;
+            var t_pagecount = 0;
             for (var obj in data){
-              console.log('loadQestionCard ' + obj);
-              if(data[obj] == null){
+              if(data[obj].MsgID == undefined){
                 // when no more questions, stop loading.
                 this.setState({ hasMoreMessages:false });
                 break;
               }
+              console.log('loadQestionCard ' + obj);
               t_message.push({
                 'MsgID': data[obj].MsgID,
                 'Title': data[obj].Title,
@@ -85,12 +87,15 @@ var MessageTable= React.createClass({
                 'ActiveTime': data[obj].ActiveTime,
                 'Auth': data[obj].Auth
               });
+              t_pagecount: data.pageCount;
             }
             this.setState({
               messages: t_message,
+              pagecount: t_pagecount,
               current_page: this.state.current_page + 1,
               // current page is loaded, ready to load next page (currentPage+1)
             });
+            if (this.state.current_page > this.state.pagecount) {this.setState({ hasMoreMessages:false });};
           }.bind(this),
           error: function(xhr, status, err) {
             console.error(this.props.url, status, err.toString());
@@ -108,7 +113,7 @@ var MessageTable= React.createClass({
           display: 'block',
           lineHeight: '24px',
           whiteSpace: 'nowrap',
-          width: '100%',
+          width: '93%',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
         }

@@ -352,7 +352,6 @@ def getbisai(request):
 @csrf_exempt
 def getjiangzuo(request):
     if request.method == "POST":
-        print "a"
         import time
         current_page = request.POST['current_page']
         base_url = 'http://api.shu.edu.cn/Mobile/'
@@ -369,10 +368,10 @@ def getjiangzuo(request):
             'currentPage':current_page,
             #'count':'',
         }
+        print data
         message_list = requests.post(base_url+append_url, data = data)
         print message_list.content
         a = message_list.json()
-        #print a
         result = {}
         result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
@@ -385,6 +384,7 @@ def getjiangzuo(request):
             result[unicode(i)] = c      
         result = JsonResponse(result)
         print result
+        print "a"
         return result
 
 @csrf_exempt

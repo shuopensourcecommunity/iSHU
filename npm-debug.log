@@ -1,0 +1,123 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'meterial-ui' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose install initial load of /Users/ivan_l/GitLab/iSHU/package.json
+5 warn package.json iSHU@0.1.0 No repository field.
+6 warn package.json iSHU@0.1.0 No README data
+7 warn package.json iSHU@0.1.0 No license field.
+8 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/babel-core/package.json
+9 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/babel-loader/package.json
+10 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/bootstrap/package.json
+11 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/bundle-loader/package.json
+12 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/css-loader/package.json
+13 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/file-loader/package.json
+14 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/imports-loader/package.json
+15 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/jquery/package.json
+16 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/json-loader/package.json
+17 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/jsx-loader/package.json
+18 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/less/package.json
+19 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/less-loader/package.json
+20 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/material-ui/package.json
+21 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/pip/package.json
+22 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react/package.json
+23 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-addons-create-fragment/package.json
+24 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-addons-pure-render-mixin/package.json
+25 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-addons-transition-group/package.json
+26 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-addons-update/package.json
+27 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-dom/package.json
+28 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-hot-loader/package.json
+29 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-infinite-scroll/package.json
+30 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-router/package.json
+31 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/react-tap-event-plugin/package.json
+32 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/style-loader/package.json
+33 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/url-loader/package.json
+34 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/webpack/package.json
+35 verbose installManyTop reading scoped package data from /Users/ivan_l/GitLab/iSHU/node_modules/webpack-dev-server/package.json
+36 info package.json babel-core@5.8.29 No README data
+37 info package.json bundle-loader@0.5.4 No license field.
+38 info package.json jquery@2.1.4 No license field.
+39 info package.json jsx-loader@0.13.2 license should be a valid SPDX license expression
+40 info package.json less-loader@2.2.1 No license field.
+41 info package.json pip@0.0.1 No license field.
+42 info package.json react-addons-create-fragment@0.14.0 No repository field.
+43 info package.json react-addons-transition-group@0.14.0 No repository field.
+44 info package.json react-addons-pure-render-mixin@0.14.0 No repository field.
+45 info package.json react-addons-update@0.14.0 No repository field.
+46 info package.json react-tap-event-plugin@0.2.1 No license field.
+47 verbose readDependencies loading dependencies from /Users/ivan_l/GitLab/iSHU/package.json
+48 silly cache add args [ 'meterial-ui', null ]
+49 verbose cache add spec meterial-ui
+50 silly cache add parsed spec { raw: 'meterial-ui',
+50 silly cache add   scope: null,
+50 silly cache add   name: 'meterial-ui',
+50 silly cache add   rawSpec: '',
+50 silly cache add   spec: '*',
+50 silly cache add   type: 'range' }
+51 silly addNamed meterial-ui@*
+52 verbose addNamed "*" is a valid semver range for meterial-ui
+53 silly addNameRange { name: 'meterial-ui', range: '*', hasData: false }
+54 silly mapToRegistry name meterial-ui
+55 silly mapToRegistry using default registry
+56 silly mapToRegistry registry https://registry.npmjs.org/
+57 silly mapToRegistry uri https://registry.npmjs.org/meterial-ui
+58 verbose addNameRange registry:https://registry.npmjs.org/meterial-ui not in flight; fetching
+59 verbose request uri https://registry.npmjs.org/meterial-ui
+60 verbose request no auth needed
+61 info attempt registry request try #1 at 10:39:19 PM
+62 verbose request id 06f463a0c1f1daeb
+63 http request GET https://registry.npmjs.org/meterial-ui
+64 http 404 https://registry.npmjs.org/meterial-ui
+65 verbose headers { 'content-type': 'application/json',
+65 verbose headers   'cache-control': 'max-age=0',
+65 verbose headers   'content-length': '2',
+65 verbose headers   'accept-ranges': 'bytes',
+65 verbose headers   date: 'Fri, 27 Nov 2015 14:39:26 GMT',
+65 verbose headers   via: '1.1 varnish',
+65 verbose headers   age: '0',
+65 verbose headers   connection: 'keep-alive',
+65 verbose headers   'x-served-by': 'cache-lcy1126-LCY',
+65 verbose headers   'x-cache': 'MISS',
+65 verbose headers   'x-cache-hits': '0',
+65 verbose headers   'x-timer': 'S1448635166.325444,VS0,VE97' }
+66 silly get cb [ 404,
+66 silly get   { 'content-type': 'application/json',
+66 silly get     'cache-control': 'max-age=0',
+66 silly get     'content-length': '2',
+66 silly get     'accept-ranges': 'bytes',
+66 silly get     date: 'Fri, 27 Nov 2015 14:39:26 GMT',
+66 silly get     via: '1.1 varnish',
+66 silly get     age: '0',
+66 silly get     connection: 'keep-alive',
+66 silly get     'x-served-by': 'cache-lcy1126-LCY',
+66 silly get     'x-cache': 'MISS',
+66 silly get     'x-cache-hits': '0',
+66 silly get     'x-timer': 'S1448635166.325444,VS0,VE97' } ]
+67 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/meterial-ui
+67 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:239:14)
+67 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+67 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:354:22)
+67 verbose stack     at Request.emit (events.js:110:17)
+67 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+67 verbose stack     at Request.emit (events.js:129:20)
+67 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+67 verbose stack     at IncomingMessage.emit (events.js:129:20)
+67 verbose stack     at _stream_readable.js:908:16
+67 verbose stack     at process._tickCallback (node.js:355:11)
+68 verbose statusCode 404
+69 verbose pkgid meterial-ui
+70 verbose cwd /Users/ivan_l/GitLab/iSHU
+71 error Darwin 15.0.0
+72 error argv "node" "/usr/local/bin/npm" "install" "meterial-ui"
+73 error node v0.12.7
+74 error npm  v2.11.3
+75 error code E404
+76 error 404 Registry returned 404 for GET on https://registry.npmjs.org/meterial-ui
+76 error 404
+76 error 404 'meterial-ui' is not in the npm registry.
+76 error 404 You should bug the author to publish it (or use the name yourself!)
+76 error 404 It was specified as a dependency of 'iSHU'
+76 error 404
+76 error 404 Note that you can also install from a
+76 error 404 tarball, folder, http url, or git url.
+77 verbose exit [ 1, true ]
