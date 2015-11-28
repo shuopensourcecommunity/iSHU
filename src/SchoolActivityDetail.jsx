@@ -15,7 +15,8 @@ injectTapEventPlugin();
 var SchoolActivityDetail= React.createClass({
   getInitialState: function() {
     return {
-      messageText:[]
+      messageText:[],
+      cookie: this.props.cookie,
     };
   },
   loadMessageFromServer: function() {
@@ -61,55 +62,6 @@ var SchoolActivityDetail= React.createClass({
     this.loadMessageFromServer();
   },
 
-  _handleSignUpClick: function(){
-    console.log('will pop up a modal dialog');
-    this.setState({showDialogActions: true});
-  },
-  _handleRequestClose: function(){
-    this.setState({showDialogActions: false});
-  },
-  _handleDialogCancel: function(){
-    this.setState({showDialogActions: false});
-  },
-  _handleDialogSubmit: function(){
-    this.setState({showDialogActions: false});
-    this.refs.success.show();
-    var signUpData={
-      'id': this.state.messageText[0].MsgID,
-      'phone': this.state.phone,
-      'mail': this.state.mail,
-      'text': this.state.text,
-      'cookie': this.state.messageText.cookie
-    };
-    console.log(signUpData);
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      method: 'post',
-      data: data,
-      success: function(data) {
-        this.setState({isJoined: true});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-  _handleAction: function(event){
-    this.refs.success.dismiss();
-  },
-  // handle TextField onChange
-  phoneHandleChange: function(event) {
-    this.setState({phone: event.target.value});
-    console.log(this.state.phone);
-  },
-  mailHandleChange: function(event) {
-    this.setState({mail: event.target.value});
-  },
-  textHandleChange: function(event) {
-    this.setState({text: event.target.value});
-  },
-
   render: function() {
     var ActivityDetail = this.state.messageText.map(function (detail){
       // customActions in Dialog
@@ -142,8 +94,7 @@ var SchoolActivityDetail= React.createClass({
       console.log(Summary);
       var string ='abczxaeib';
       string=string.replace("zx","\u000d\u000a");
-      console.log(this.props.multiLine);
-
+      console.log(this.props.ActionID);
       return (
         <div>
           <div className="activity-detail">
@@ -176,7 +127,7 @@ var SchoolActivityDetail= React.createClass({
               <p className="inline activity-status">{detail.Status}</p>
             </div>
           </div>
-          <SchoolDialog MsgID={detail.MsgID} />
+          <SchoolDialog ActionID={this.props.ActionID} cookie={this.state.cookie} />
         </div>
       )
     }.bind(this));

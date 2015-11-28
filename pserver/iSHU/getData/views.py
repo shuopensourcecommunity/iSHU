@@ -20,17 +20,26 @@ def get_info(base_url,  append_url, params):
 
 @csrf_exempt
 def userlogin(request):
+    # print 'login'
     if request.method == 'POST':
+        # print 'post'
         user_number = request.POST['id']
-        user_password = requests.POST['pwd']
+        # print user_number
+        user_password = request.POST['pwd']
+        # print user_password
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'User/UserLogin/'
         data = {'userName':user_number,
                 'password':user_password,
                 }
+        # print data
         #get_info(base_url,append_url,data)
         login_status = requests.post(base_url+append_url, data = data)
-        return login_status
+        content = login_status.json()
+        # print content
+        content = JsonResponse(content)
+        print content
+        return content
 
 @csrf_exempt
 def postcampuscessagelist(request):
@@ -401,23 +410,26 @@ def getcampusactionbyid(request):
 
 @csrf_exempt
 def applyforcampusaction(request):
+    print 'a'
     if request.method == "POST":
         action_id = request.POST['action_id']
-        pers_no = request.POST['pers_no']
-        can_ly = request.POST['can_ly']
-        shou_j = request.POST['shou_j']
-        you_x = request.POST['you_x']
+        cookie = request.POST['cookie']
+        reason = request.POST['reason']
+        phone = request.POST['phone']
+        mail = request.POST['mail']
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusAction/ApplyForCampusAction'
         data = {
-            'persNo':pers_no,
+            'persNo':cookie,
             'actionId':action_id,
-            'canYLY':can_ly,
-            'shouJ':shou_j,
-            'youX':you_x,
+            'canYLY':reason,
+            'shouJ':phone,
+            'youX':mail,
         }
         message_list = requests.post(base_url+append_url, data = data)
+        print message_list
         a = message_list.json()
+        print a
         a = JsonResponse(a)
         print a
         return a

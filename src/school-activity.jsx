@@ -113,9 +113,8 @@ var ActivityTable= React.createClass({
             showExpandableButton={true}>
           </CardTitle>
           <CardText expandable={true}>
-            <ActivityDetail url='messageText' ActionID={message.ActionID} />
+            <ActivityDetail url='messageText' ActionID={message.ActionID}/>
           </CardText>
-
         </Card>
       );
     });

@@ -9,7 +9,6 @@ var {render} = require('react-dom');
 var InfiniteScroll = require('react-infinite-scroll')(React);
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
-
 var SchoolDialog= React.createClass({
   getInitialState: function() {
     return {
@@ -19,13 +18,46 @@ var SchoolDialog= React.createClass({
       // snackbar hide duration, milliseconds
       mail: 'Hello!',
       phone: '123',
-      text: 'dsf'
+      reason: 'dsf',
+      id: '13121312',
+      pwd: 'J123123dandi',
+      status: '请稍等，信息正在空中飞翔。。。',
+      realname: 'a',
+      cookie: this.props.cookie,
     };
   },
-
   _handleSignUpClick: function(){
     console.log('will pop up a modal dialog');
     this.setState({showDialogActions: true});
+  },
+  _handleLogin: function(){
+    this.setState({showDialogActions: false});
+    this.refs.success.show();
+    var data={
+      'id': this.state.id,
+      'pwd': this.state.pwd,
+    };
+    console.log(data);
+    $.ajax({
+      url: 'userlogin',
+      dataType: 'json',
+      method: 'post',
+      data: data,
+      success: function(data) {
+        var t_status = data.status;
+        this.setState({status: t_status});
+        if (t_status == "登录成功") {
+          var t_realname = data.realname;
+          var t_username = data.username;
+          this.setState({realname: t_realname});
+          this.setState({cookie: t_username});
+        };
+        // console.log("cookie: "+ this.state.cookie);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   },
   _handleRequestClose: function(){
     this.setState({showDialogActions: false});
@@ -36,20 +68,22 @@ var SchoolDialog= React.createClass({
   _handleDialogSubmit: function(){
     this.setState({showDialogActions: false});
     this.refs.success.show();
-    var signUpData={
-      'id': this.props.MsgID,
+    console.log(this.props.ActionID);
+    var data={
+      'action_id': this.props.ActionID,
       'phone': this.state.phone,
       'mail': this.state.mail,
-      'text': this.state.text,
-      'cookie': this.props.cookie
+      'reason': this.state.reason,
+      'cookie': this.state.cookie,
     };
-    console.log(signUpData);
+    console.log("data: "+data);
     $.ajax({
-      url: this.props.url,
+      url: 'applyforcampusaction',
       dataType: 'json',
       method: 'post',
       data: data,
       success: function(data) {
+        console.log(data);
         this.setState({isJoined: true});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -71,30 +105,61 @@ var SchoolDialog= React.createClass({
   textHandleChange: function(event) {
     this.setState({text: event.target.value});
   },
+  idHandleChange: function(event) {
+    this.setState({id: event.target.value});
+  },
+  pwdHandleChange: function(event) {
+    this.setState({pwd: event.target.value});
+  },
   render: function() {
   	let customActions = [
-        <FlatButton
-          label="Cancel"
-          secondary={true}
-          onTouchTap={this._handleDialogCancel} />,
-        <FlatButton
-          label="Submit"
-          primary={true}
-          onTouchTap={this._handleDialogSubmit} />
+      <FlatButton
+        label="取消"
+        secondary={true}
+        onTouchTap={this._handleDialogCancel} />,
+      <FlatButton
+        label={this.state.cookie==undefined? "登陆":"报名"}
+        primary={true}
+        onTouchTap={this.state.cookie==undefined? this._handleLogin:this._handleDialogSubmit} />
     ];
     let styles = {
-        content : {
-          width: '100%',
-          position: 'relative',
-          zIndex: 10,
-        }
+      content : {
+        width: '100%',
+        position: 'relative',
+        zIndex: 10,
+      }
     };
+    let login = [
+      <div className="index">
+        <TextField className="text-field"
+          floatingLabelText="学  号" type='id' onChange={this.idHandleChange}/>
+        <br></br>
+        <TextField className="text-field"
+          floatingLabelText="密  码"
+          type = "password" onChange={this.pwdHandleChange}/>
+      </div>
+    ];
+    let signup = [
+      <div className="index">
+        <TextField className="text-field"
+          floatingLabelText="手  机：" type="phone" onChange={this.phoneHandleChange}/>
+        <br />
+        <TextField className="text-field"
+          floatingLabelText="邮  箱：" type="mail" onChange={this.mailHandleChange}/>
+        <br />
+        <TextField className="text-field"
+          floatingLabelText="参加理由：" type="text" multiLine="true" onChange={this.textHandleChange}/>
+        <br />
+      </div>
+    ];
+    var text = this.state.cookie==undefined? login:signup;
+    console.log(this.state.realname);
   	return (
   		<div>
-          <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} />
+        <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} />
         <Dialog
             ref="signup"
-            title="我要报名"
+            title={this.state.cookie==undefined? "登陆":"我要报名"}
             actions={customActions}
             open={this.state.showDialogActions}
             autoDetectWindowHeight={true}
@@ -102,28 +167,17 @@ var SchoolDialog= React.createClass({
             onRequestClose={this._handleRequestClose}
             contentStyle={styles.content}
             style={styles.main}>
-            <div className="index">
-              <TextField className="text-field"
-                floatingLabelText="手机：" type="phone" onChange={this.phoneHandleChange}/>
-              <br />
-              <TextField className="text-field"
-                floatingLabelText="邮箱：" type="mail" onChange={this.mailHandleChange}/>
-              <br />
-              <TextField className="text-field"
-                floatingLabelText="参加理由：" type="text" multiLine="true" onChange={this.textHandleChange}/>
-              <br />
-            </div>
+            {text}
           </Dialog>
           <Snackbar
             ref="success"
-            message="报名成功"
+            message={this.state.status}
             action="关闭"
             autoHideDuration={this.state.autoHideDuration}
             onActionTouchTap={this._handleAction}/>
-        </div>
+      </div>
     );
   }
 });
-
 module.exports = SchoolDialog;
 

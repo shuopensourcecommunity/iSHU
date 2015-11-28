@@ -26,11 +26,11 @@ var ServiceCards = React.createClass({
           title='志愿者报名'
         ><a href="http://202.120.127.129/Shulvms/Login.aspx"><img src='/static/style/imgs/2.png'  /></a></GridTile>
         <GridTile
-          title='晨跑／一卡通挂失'
-        ><a href="http://card.lehu.shu.edu.cn"><img src='/static/style/imgs/3.jpg'  /></a></GridTile>
+          title='晨跑'
+        ><a href="http://card.lehu.shu.edu.cn/CardTrainingDetail.aspx"><img src='/static/style/imgs/3.jpg'  /></a></GridTile>
         <GridTile
-          title='一卡通管理'
-        ><a href="http://card.lehu.shu.edu.cn"><img src='/static/style/imgs/4.png'  /></a></GridTile>
+          title='一卡通挂失'
+        ><a href="http://card.lehu.shu.edu.cn/CardLostDetail.aspx"><img src='/static/style/imgs/4.png'  /></a></GridTile>
       </GridList>
     )
   }
