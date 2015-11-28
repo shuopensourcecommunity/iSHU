@@ -1,57 +1,42 @@
 'use strict'
-
+require("../style/css/Home.css");
 let React = require('react');
 let {render} = require('react-dom');
 let AppBar = require('./AppBar.jsx');
+var { GridList, GridTile } = require('material-ui');
 var {Link, RouteHandler} = require('react-router');
 
-let HomeTable = React.createClass({
+let HomeGrid = React.createClass({
+  getInitialState: function() {
+    return {
+      homeData: [
+        { title: "校园资讯", img: "http://lorempixel.com/100/100/animals/", linkto: "/info" },
+        { title: "校园活动", img: "http://lorempixel.com/100/100/food/", linkto: "/activity" },
+        { title: "校园查询", img: "http://lorempixel.com/100/100/cats/", linkto: "/query" },
+        { title: "校园服务", img: "http://lorempixel.com/100/100/animals/", linkto: "/service" },
+        { title: "乐乎问吧", img: "http://lorempixel.com/100/100/nature/" },
+        { title: "其他", img: "http://lorempixel.com/100/100/city/" }
+      ]
+    };
+  },
   render: function(){
-    let link2info = "/info";
-    let link2activity = "/activity";
-    let link2query = "/query";
-    let link2service = "/service";
-    //let link2ask = "";
     return (
-      <div>
-        <table className="home-table">
-          <tbody>
-            <tr>
-              <td>
-                <Link to={link2info}>
-                  <img src="http://lorempixel.com/100/100/animals/"/>
-                  <p>校园资讯</p>
-              </Link>
-            </td>
-              <td>
-                <Link to={link2activity}>
-                  <img src="http://lorempixel.com/100/100/food/"/>
-                  <p>校园活动</p>
-              </Link>
-            </td>
-            </tr>
-            <tr>
-              <td>
-                <Link to={link2query}>
-                  <img src="http://lorempixel.com/100/100/cats/"/>
-                  <p>校园查询</p>
-                </Link>
-              </td>
-              <td>
-                <Link to={link2service}>
-                  <img src="http://lorempixel.com/100/100/abstract/"/>
-                  <p>校园服务</p>
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="http://lorempixel.com/100/100/nature/"/>
-              <p>乐乎问吧</p></td>
-              <td><img src="http://lorempixel.com/100/100/city/"/>
-              <p>其他</p></td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="home-content">
+        <GridList
+          className="home-grid center"
+          cellHeight={200}
+          style={{width: '100%', height: '100%', overflowY: 'auto'}}
+          >
+          {
+            this.state.homeData.map(home => <GridTile
+              rootClass={Link}
+              to={home.linkto}
+              title={home.title}
+              titleBackground={'rgba(0, 0, 0, 0)'}
+              style={{padding:0}}
+              ><img src={home.img} /></GridTile>)
+          }
+        </GridList>
       </div>
     )
   }
@@ -62,7 +47,7 @@ const App = React.createClass({
     return (
       <div>
         <AppBar title="上海大学" />
-        <HomeTable />
+        <HomeGrid />
       </div>
     )
   }

@@ -1,15 +1,8 @@
-.home-table {
-  width: 100%;
-  height: 85%;
-  text-align: center;
+.home-content {
+  padding: 0, 16px;
+  position: center;
 }
-
-.home-table img {
-  border-radius:50%;
+.home-grid img {
+  //border-radius:50%;
+  //width: 100px;
 }
-/* // show table border
-.home-table, table, tr, td {
-  border: 1px dashed red;
-    border-spacing: 0px;
-}
-*/
