@@ -2,6 +2,7 @@
 require("../style/css/Activity.css");
 require("../style/css/Signup.css");
 var React = require("react");
+var cookie = require('react-cookie');
 var { Card, CardTitle, CardText, CardActions, CircularProgress,
       Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
 var AppBar = require('./AppBar.jsx');
@@ -23,7 +24,7 @@ var SchoolDialog= React.createClass({
       pwd: 'J123123dandi',
       status: '请稍等，信息正在空中飞翔。。。',
       realname: 'a',
-      cookie: this.props.cookie,
+      username: cookie.load('username'),
     };
   },
   _handleSignUpClick: function(){
@@ -50,9 +51,9 @@ var SchoolDialog= React.createClass({
           var t_realname = data.realname;
           var t_username = data.username;
           this.setState({realname: t_realname});
-          this.setState({cookie: t_username});
+          this.setState({username: t_username});
+          cookie.save('username', t_username);
         };
-        // console.log("cookie: "+ this.state.cookie);
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -74,7 +75,7 @@ var SchoolDialog= React.createClass({
       'phone': this.state.phone,
       'mail': this.state.mail,
       'reason': this.state.reason,
-      'cookie': this.state.cookie,
+      'username': this.state.username,
     };
     console.log("data: "+data);
     $.ajax({
@@ -83,8 +84,9 @@ var SchoolDialog= React.createClass({
       method: 'post',
       data: data,
       success: function(data) {
-        console.log(data);
+        var t_status=data.status;
         this.setState({isJoined: true});
+        this.setState({status: t_status});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -102,8 +104,8 @@ var SchoolDialog= React.createClass({
   mailHandleChange: function(event) {
     this.setState({mail: event.target.value});
   },
-  textHandleChange: function(event) {
-    this.setState({text: event.target.value});
+  reasonHandleChange: function(event) {
+    this.setState({reason: event.target.value});
   },
   idHandleChange: function(event) {
     this.setState({id: event.target.value});
@@ -118,9 +120,9 @@ var SchoolDialog= React.createClass({
         secondary={true}
         onTouchTap={this._handleDialogCancel} />,
       <FlatButton
-        label={this.state.cookie==undefined? "登陆":"报名"}
+        label={this.state.username==undefined? "登陆":"报名"}
         primary={true}
-        onTouchTap={this.state.cookie==undefined? this._handleLogin:this._handleDialogSubmit} />
+        onTouchTap={this.state.username==undefined? this._handleLogin:this._handleDialogSubmit} />
     ];
     let styles = {
       content : {
@@ -148,18 +150,18 @@ var SchoolDialog= React.createClass({
           floatingLabelText="邮  箱：" type="mail" onChange={this.mailHandleChange}/>
         <br />
         <TextField className="text-field"
-          floatingLabelText="参加理由：" type="text" multiLine="true" onChange={this.textHandleChange}/>
+          floatingLabelText="参加理由：" type="text" multiLine="true" onChange={this.reasonHandleChange}/>
         <br />
       </div>
     ];
-    var text = this.state.cookie==undefined? login:signup;
+    var text = this.state.username==undefined? login:signup;
     console.log(this.state.realname);
   	return (
   		<div>
         <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} />
         <Dialog
             ref="signup"
-            title={this.state.cookie==undefined? "登陆":"我要报名"}
+            title={this.state.username==undefined? "登陆":"我要报名"}
             actions={customActions}
             open={this.state.showDialogActions}
             autoDetectWindowHeight={true}

@@ -413,21 +413,22 @@ def applyforcampusaction(request):
     print 'a'
     if request.method == "POST":
         action_id = request.POST['action_id']
-        cookie = request.POST['cookie']
+        username = request.POST['username']
         reason = request.POST['reason']
         phone = request.POST['phone']
         mail = request.POST['mail']
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusAction/ApplyForCampusAction'
         data = {
-            'persNo':cookie,
+            'persNo':username,
             'actionId':action_id,
             'canYLY':reason,
             'shouJ':phone,
             'youX':mail,
         }
+        print data
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list
+        print message_list.content
         a = message_list.json()
         print a
         a = JsonResponse(a)

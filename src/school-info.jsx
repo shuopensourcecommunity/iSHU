@@ -21,6 +21,7 @@ var MessageText= React.createClass({
       dataType: 'json',
       methods: 'post',
       success: function(data) {
+        console.log
         var t_messageText = [];
         t_messageText.push(data.Summary);
         this.setState({messageText: t_messageText});

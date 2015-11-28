@@ -27,7 +27,8 @@
     "jquery": "^2.1.4",
     "json-loader": "0.5.2",
     "material-ui": "0.13.4",
-    "react-infinite-scroll": "0.1.5"
+    "react-infinite-scroll": "0.1.5",
+    "react-cookie": "0.4.2"
   },
   "dependencies": {
     "react": "0.14.0",

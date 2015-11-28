@@ -16,7 +16,7 @@ var SchoolActivityDetail= React.createClass({
   getInitialState: function() {
     return {
       messageText:[],
-      cookie: this.props.cookie,
+      username: []
     };
   },
   loadMessageFromServer: function() {
@@ -127,7 +127,7 @@ var SchoolActivityDetail= React.createClass({
               <p className="inline activity-status">{detail.Status}</p>
             </div>
           </div>
-          <SchoolDialog ActionID={this.props.ActionID} cookie={this.state.cookie} />
+          <SchoolDialog ActionID={this.props.ActionID} />
         </div>
       )
     }.bind(this));
