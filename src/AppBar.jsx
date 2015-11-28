@@ -18,14 +18,22 @@ const AppBar = React.createClass({
     return { title: '上海大学' };
   },
   getInitialState: function(){
-    return{
-      AppBarTitle: '上海大学',
-    };
+    return { AppBarTitle: '上海大学' };
   },
   componentDidMount: function(){
     this.setState({AppBarTitle: this.props.title});
   },
+  _handleLoginLogout: function(event, item){
+    console.log(item);
+    if(item == "登出") {
+      console.log("123");
+    }
+    if(item == "登录"){
+      console.log("321");
+    }  
+  },
   render() {
+    let logStatus = cookie.load() ? "登出" : "登录";
     return (
       <AppBarComponent
         title={this.state.AppBarTitle}
@@ -37,10 +45,13 @@ const AppBar = React.createClass({
         </Link>}
         iconElementRight={
           <IconMenu iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }>
-              <MenuItem primaryText={cookie.load() ? "登出" : "登陆"} />
+              <MenuItem
+                primaryText={logStatus}
+                onChange={this._handleLoginLogout(event, logStatus)}
+                 />
           </IconMenu>
         }
-      />
+        />
     )
   }
 })
