@@ -1,7 +1,7 @@
 #-*- encoding: utf-8 -*-
 from django.conf.urls import include, url
 
-from views import getxgbmessagelist,getjwcmessagelist,getgampusactionlist
+from views import getxgbmessagelist,getjwcmessagelist,getgampusactionlist,applyforcampusaction
 from views import index,userlogin,postcampuscessagelist,getcampusactionbyid
 from views import getzhuanti,getshetuan,getzhaopin,getgongyi,getbisai,getjiangzuo
 urlpatterns = [
@@ -26,5 +26,7 @@ urlpatterns = [
     url(r'^index/getjiangzuo',getjiangzuo,name = 'getjiangzuo'),
     #获取活动详细内容,传action_id
     url(r'^index/getcampusactionbyid',getcampusactionbyid,name = 'getcampusactionbyid'),
+    #报名,需要action_id,pers_no,can_ly,shou_j,you_x
+    url(r'^index/applyforcampusaction',applyforcampusaction, name = 'applyforcampusaction'),
 
 ]

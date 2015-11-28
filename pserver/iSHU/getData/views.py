@@ -398,7 +398,31 @@ def getcampusactionbyid(request):
         }
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
+        #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
         a = JsonResponse(a)
+
         print a
         return a
 
+@csrf_exempt
+def applyforcampusaction(request):
+    if request.method == "POST":
+        action_id = request.POST['action_id']
+        pers_no = request.POST['pers_no']
+        can_ly = request.POST['can_ly']
+        shou_j = request.POST['shou_j']
+        you_x = request.POST['you_x']
+        base_url = 'http://api.shu.edu.cn/Mobile/'
+        append_url = 'CampusAction/ApplyForCampusAction'
+        data = {
+            'persNo':pers_no,
+            'actionId':action_id,
+            'canYLY':can_ly,
+            'shouJ':shou_j,
+            'youX':you_x,
+        }
+        message_list = requests.post(base_url+append_url, data = data)
+        a = message_list.json()
+        a = JsonResponse(a)
+        print a
+        return a
