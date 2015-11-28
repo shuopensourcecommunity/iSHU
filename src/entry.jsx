@@ -1,5 +1,6 @@
 'use strict';
 var App = require('./App.jsx');
+var cookie = require('react-cookie');
 var SchoolInfo = require('./school-info.jsx');
 var SchoolQuery = require('./school-query.jsx');
 var SchoolService = require('./school-service.jsx');

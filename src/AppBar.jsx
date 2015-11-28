@@ -1,6 +1,7 @@
 'use strict'
 require("../style/css/main.css");
 let React = require('react');
+var cookie = require('react-cookie');
 let {render} = require('react-dom');
 let mui = require('material-ui');
 let AppBarComponent = mui.AppBar;

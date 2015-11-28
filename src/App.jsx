@@ -1,6 +1,7 @@
 'use strict'
 
-let React = require('react');
+var React = require('react');
+var cookie = require('react-cookie');
 let {render} = require('react-dom');
 let AppBar = require('./AppBar.jsx');
 var {Link, RouteHandler} = require('react-router');

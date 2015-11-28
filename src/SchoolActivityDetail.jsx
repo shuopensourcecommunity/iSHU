@@ -2,6 +2,7 @@
 require("../style/css/Activity.css");
 require("../style/css/Signup.css");
 var React = require("react");
+var cookie = require('react-cookie');
 var { Card, CardTitle, CardText, CardActions, CircularProgress,
       Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
 var AppBar = require('./AppBar.jsx');

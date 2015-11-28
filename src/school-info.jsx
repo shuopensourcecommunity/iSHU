@@ -1,6 +1,7 @@
 'use strict'
 require("../style/css/Info.css");
 var React = require("react");
+var cookie = require('react-cookie');
 let {Card, CardTitle, CardText, CardActions, CircularProgress, Tabs, Tab } = require('material-ui');
 const AppBar = require('./AppBar.jsx');
 let injectTapEventPlugin = require("react-tap-event-plugin");
@@ -135,7 +136,7 @@ var MessageTable= React.createClass({
       return (
         <Card initiallyExpanded={false}>
           <CardTitle
-            titleStyle={actAsExpander? styles.t:styles.title}
+            titleStyle={? styles.t:styles.title}
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
