@@ -395,7 +395,6 @@ def getcampusactionbyid(request):
         a = message_list.json()
         #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
         a = JsonResponse(a)
-
         print a
         return a
 
