@@ -34,16 +34,16 @@ def userlogin(request):
 
 @csrf_exempt
 def postcampuscessagelist(request):
-    print request.method
+    # print request.method
     if request.method == "POST":
         import time
         current_page = request.POST['current_page']
-        print current_page
+        # print current_page
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusMessage/GetCampusMessageList/'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        print current_page
+        # print current_page
         data = { 
             'keyword':'',
             'type':203,
@@ -65,7 +65,7 @@ def postcampuscessagelist(request):
                     c[key] = unicode(value)
             result[unicode(i)] = c
         result = JsonResponse(result)
-        print result
+        # print result
         return result
 
 @csrf_exempt
@@ -73,7 +73,7 @@ def getxgbmessagelist(request):
     if request.method == "POST":
         import time
         current_page = request.POST['current_page']
-        print current_page
+        # print current_page
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusMessage/GetXgbMessageList'
         starttime = '2010-01-01T00:00:00Z'
@@ -105,7 +105,7 @@ def getjwcmessagelist(request):
     if request.method == "POST":
         import time
         current_page = request.POST['current_page']
-        print current_page
+        # print current_page
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusMessage/GetJwcMessageList'
         starttime = '2010-01-01T00:00:00Z'
@@ -152,7 +152,6 @@ def getgampusactionlist(request):
             #'count':'',
         }
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
         a = message_list.json()
         #print a
         result = {}
@@ -164,7 +163,7 @@ def getgampusactionlist(request):
                     c[key] = value 
                 else:
                     c[key] = unicode(value)
-            result[unicode(i)] = c      
+            result[unicode(i)] = c  
         result = JsonResponse(result)
         return result
 
@@ -188,7 +187,6 @@ def getzhuanti(request):
             #'count':'',
         }
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
         a = message_list.json()
         #print a
         result = {}
@@ -224,7 +222,7 @@ def getshetuan(request):
             #'count':'',
         }
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
+        # print message_list.content
         a = message_list.json()
         #print a
         result = {}
@@ -260,7 +258,7 @@ def getzhaopin(request):
             #'count':'',
         }
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
+        # print message_list.content
         a = message_list.json()
         #print a
         result = {}
@@ -274,7 +272,7 @@ def getzhaopin(request):
                     c[key] = unicode(value)
             result[unicode(i)] = c      
         result = JsonResponse(result)
-        print result
+        # print result
         return result
 
 @csrf_exempt
@@ -297,7 +295,7 @@ def getgongyi(request):
             #'count':'',
         }
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
+        # print message_list.content
         a = message_list.json()
         #print a
         result = {}
@@ -333,7 +331,7 @@ def getbisai(request):
             #'count':'',
         }
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
+        # print message_list.content
         a = message_list.json()
         #print a
         result = {}
@@ -368,9 +366,7 @@ def getjiangzuo(request):
             'currentPage':current_page,
             #'count':'',
         }
-        print data
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
@@ -383,8 +379,7 @@ def getjiangzuo(request):
                     c[key] = unicode(value)
             result[unicode(i)] = c      
         result = JsonResponse(result)
-        print result
-        print "a"
+        # print result
         return result
 
 @csrf_exempt

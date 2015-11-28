@@ -53,6 +53,7 @@ var ActivityDetail= React.createClass({
             'Time': data.Time,
             'EndTime': data.EndTime,
           });
+          console.log(t_messageText);
           this.setState({messageText: t_messageText});
         }.bind(this),
         error: function(xhr, status, err) {
@@ -147,6 +148,13 @@ var ActivityDetail= React.createClass({
       else if (detail.ActionType == '2') {ActionType='比赛活动'}
       else if (detail.ActionType == '1') {ActionType='讲座报告'}
       else {ActionType='其它'};
+      var Summary=detail.Summary.replace("\r","\u000d");
+      var Summary=Summary.replace("\n","\u000a");
+      console.log(Summary);
+      var string ='abczxaeib';
+      string=string.replace("zx","\u000d\u000a");
+      console.log(this.props.multiLine);
+
       return (
         <div>
           <div className="activity-detail">
@@ -156,11 +164,11 @@ var ActivityDetail= React.createClass({
             </div>
             <div>
               <p className="inline activity-detail-title">活动类别：</p>
-              <p className="inline activity-category">{ActionType}</p>
+              <p className="inline activity-category" >{ActionType}</p>
             </div>
             <div>
               <p className="activity-detail-title">活动简介：</p>
-              <p className="activity-brief">{detail.Summary}</p>
+              <div className="activity-brief">{Summary}</div>
             </div>
             <div>
               <p className="inline activity-detail-title">报名开始时间：</p>
@@ -258,7 +266,6 @@ var ActivityTable= React.createClass({
                 this.setState({ hasMoreMessages:false });
                 break;
               }
-              console.log(this.state.hasMoreMessages);
               t_message.push({
                 'ActionID': data[obj].ActionID,
                 'Title': data[obj].Title,

@@ -26,7 +26,7 @@
     "bootstrap": "^3.3.5",
     "jquery": "^2.1.4",
     "json-loader": "0.5.2",
-    "material-ui": "0.12.4",
+    "material-ui": "0.13.4",
     "react-infinite-scroll": "0.1.5"
   },
   "dependencies": {
