@@ -66,9 +66,9 @@ const AppBar = React.createClass({
   _handleDialogCancel: function(){
     this.setState({showDialogActions: false});
   },
-  // _handleAction: function(event){
-  //   this.refs.success.dismiss();
-  // },
+  _handleAction: function(event){
+    this.refs.success.dismiss();
+  },
   idHandleChange: function(event) {
     this.setState({id: event.target.value});
   },
@@ -110,40 +110,40 @@ const AppBar = React.createClass({
       }
     };
     return (
-      <AppBarComponent
-        title={this.state.AppBarTitle}
-        showMenuIconButton={true}
-        iconElementLeft={
-          <Link to="/">
-            <IconButton tooltip="Home" touch={true}>
-              <ActionHome color={Colors.white} hoverColor={Colors.cyan900} />
-            </IconButton>
-          </Link>}
-        iconElementRight={
-          <IconMenu iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }>
-            <MenuItem primaryText={logStatus}
-              onChange={this._handleLoginLogout(event, logStatus)} />
-              <Dialog
-                ref="login"
-                title="登陆"
-                actions={customActions}
-                open={this.state.showDialogActions}
-                autoDetectWindowHeight={true}
-                autoScrollBodyContent={true}
-                onRequestClose={this._handleRequestClose}
-                contentStyle={styles.content}
-                style={styles.main}>
-                {customActions}
-              </Dialog>
-              <Snackbar
-                ref="success"
-                message={this.state.status}
-                action="关闭"
-                autoHideDuration={this.state.autoHideDuration}
-                onActionTouchTap={this._handleAction}/>
-          </IconMenu>
-        }
-      />
+      <div>
+        <AppBarComponent
+          title={this.state.AppBarTitle}
+          showMenuIconButton={true}
+          iconElementLeft={
+            <Link to="/">
+              <IconButton tooltip="Home" touch={true}>
+                <ActionHome color={Colors.white} hoverColor={Colors.cyan900} />
+              </IconButton>
+            </Link>}
+          iconElementRight={
+            <IconMenu iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }>
+              <MenuItem primaryText={logStatus}
+                onChange={this._handleLoginLogout(event, logStatus)} />
+            </IconMenu>} />
+        <Dialog
+          ref="login"
+          title="登陆"
+          actions={customActions}
+          open={this.state.showDialogActions}
+          autoDetectWindowHeight={true}
+          autoScrollBodyContent={true}
+          onRequestClose={this._handleRequestClose}
+          contentStyle={styles.content}
+          style={styles.main}>
+          {customActions}
+        </Dialog>
+        <Snackbar
+          ref="success"
+          message={this.state.status}
+          action="关闭"
+          autoHideDuration={this.state.autoHideDuration}
+          onActionTouchTap={this._handleAction}/>
+      </div>
     )
   }
 });
