@@ -1,15 +1,10 @@
-.home-table {
-  width: 100%;
-  height: 85%;
-  text-align: center;
-}
+.home-content {
 
-.home-table img {
-  border-radius:50%;
 }
-/* // show table border
-.home-table, table, tr, td {
-  border: 1px dashed red;
-    border-spacing: 0px;
+.home-grid img {
+  //border-radius:50%;
+  //width:auto;
 }
-*/
+.home-title {
+  color: black;
+}

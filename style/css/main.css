@@ -7,18 +7,18 @@
 body {
   margin: 0px;
 }
-
 a {
   text-decoration: none;
 }
-
 .app-bar {
   top: 0px;
   left: 0px;
   right: 0px;
   position: fixed;
 }
-
 .container {
   padding-top: 64px;
+}
+.center {
+  text-align: center;
 }

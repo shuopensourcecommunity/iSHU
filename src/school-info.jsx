@@ -1,6 +1,7 @@
 'use strict'
 require("../style/css/Info.css");
 var React = require("react");
+var cookie = require('react-cookie');
 let {Card, CardTitle, CardText, CardActions, CircularProgress, Tabs, Tab } = require('material-ui');
 const AppBar = require('./AppBar.jsx');
 let injectTapEventPlugin = require("react-tap-event-plugin");
@@ -11,16 +12,19 @@ var InfiniteScroll = require('react-infinite-scroll')(React);
 var MessageText= React.createClass({
   getInitialState: function() {
     return {
-      messageText: 'abc'
+      messageText: ''
     };
   },
   loadMessageFromServer: function() {
+    var data={msg_id: this.props.MsgID};
     $.ajax({
-      MsgID: this.props.MsgID,
       url: this.props.url,
       dataType: 'json',
-      methods: 'post',
+      method: 'post',
+      data: data,
       success: function(data) {
+        console.log(data);
+        console.log(data.Summary);
         var t_messageText = [];
         t_messageText.push(data.Summary);
         this.setState({messageText: t_messageText});
@@ -44,15 +48,20 @@ var MessageText= React.createClass({
 
 var MessageTable= React.createClass({
   getInitialState: function() {
+    var url;
+    if (this.props.url == 'getjwcmessagelist') {url='getjwcmessagebyid';}
+    else if (this.props.url == 'postcampuscessagelist') {url='getcampusmessagebyid';};
     return {
       messages: [],
+      pagecount: 0,
       keyword: 1,
       type: 203,
       limit: 10,
       current_page: 1,
       startTime: "10:01",
       endTime: "12:01",
-      hasMoreMessages: true
+      hasMoreMessages: true,
+      url: {url}
       // if has more questions, continue loading.
     };
   },
@@ -71,26 +80,31 @@ var MessageTable= React.createClass({
           data: data,
           success: function(data) {
             var t_message = this.state.messages;
+            var t_pagecount = 0;
             for (var obj in data){
-              console.log('loadQestionCard ' + obj);
-              if(data[obj] == null){
+              if(data[obj].MsgID == undefined){
                 // when no more questions, stop loading.
                 this.setState({ hasMoreMessages:false });
                 break;
               }
+              console.log('loadQestionCard ' + obj);
               t_message.push({
                 'MsgID': data[obj].MsgID,
                 'Title': data[obj].Title,
                 'Time': data[obj].Time,
                 'ActiveTime': data[obj].ActiveTime,
-                'Auth': data[obj].Auth
+                'Auth': data[obj].Auth,
+                'url': this.state.url.url
               });
+              t_pagecount: data.pageCount;
             }
             this.setState({
               messages: t_message,
+              pagecount: t_pagecount,
               current_page: this.state.current_page + 1,
               // current page is loaded, ready to load next page (currentPage+1)
             });
+            if (this.state.current_page > this.state.pagecount) {this.setState({ hasMoreMessages:false });};
           }.bind(this),
           error: function(xhr, status, err) {
             console.error(this.props.url, status, err.toString());
@@ -100,24 +114,36 @@ var MessageTable= React.createClass({
   },
   render: function() {
     var messageNodes = this.state.messages.map(function (message) {
-      var subtitle="时间："+message.Time+" 发布来源："+message.Auth;
+      var subtitle;
+      (message.Auth == "None") ? subtitle="时间："+message.Time:subtitle="时间："+message.Time+"     发布来源："+message.Auth;
       let styles={
-        cardtitle: {
-          fontSize: '17px',
-          lineHeight: '25px'
+        title: {
+          fontSize: 18,
+          display: 'block',
+          lineHeight: '24px',
+          whiteSpace: 'nowrap',
+          width: '93%',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        },
+        t: {
+          fontSize: 18,
+          display: 'block',
+          lineHeight: '24px',
+          whiteSpace: 'nowrap',
         }
       };
       return (
         <Card initiallyExpanded={false}>
           <CardTitle
-            titleStyle={styles.cardtitle}
+            titleStyle={styles.title}
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
             showExpandableButton={true}>
           </CardTitle>
           <CardText expandable={true}>
-            <MessageText url='messageText' MsgID={message.MsgID} />
+            <MessageText url={message.url} MsgID={message.MsgID} />
           </CardText>
         </Card>
       );
@@ -145,10 +171,10 @@ var SchoolInfo= React.createClass({
             <MessageTable url='postcampuscessagelist'/>
           </Tab>
           <Tab label="学生事务" value='b'>
-            <MessageTable url=''/>
+            <MessageTable url='getxgbmessagelist'/>
           </Tab>
           <Tab label="教务信息" value='c'>
-            <MessageTable url=''/>
+            <MessageTable url='getjwcmessagelist'/>
           </Tab>
         </Tabs>
       </div>
