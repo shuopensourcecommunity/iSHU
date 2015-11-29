@@ -142,7 +142,7 @@ var SchoolActivity= React.createClass({
         position: 'absolute',
       },
       tab:{
-        width: (screen.width>'560px')?'100%':'560px'
+        width: (screen.width>'560')?'100%':'560px'
       }
     };
     return (

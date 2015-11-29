@@ -49,10 +49,10 @@ const AppBar = React.createClass({
               <MenuItem
                 primaryText={logStatus}
                 onChange={this._handleLoginLogout(event, logStatus)}
-                 />
+              />
           </IconMenu>
         }
-        />
+      />
     )
   }
 })

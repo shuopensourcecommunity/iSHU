@@ -15,7 +15,7 @@ var SchoolDialog= React.createClass({
     return {
       isJoined: false,
       showDialogActions: false,
-      autoHideDuration: 5000,
+      autoHideDuration: 100,
       // snackbar hide duration, milliseconds
       mail: 'Hello!',
       phone: '123',
@@ -23,7 +23,7 @@ var SchoolDialog= React.createClass({
       id: '13121312',
       pwd: 'J123123dandi',
       status: '请稍等，信息正在空中飞翔。。。',
-      realname: 'a',
+      realname: '',
       username: cookie.load('username'),
     };
   },
@@ -32,6 +32,7 @@ var SchoolDialog= React.createClass({
     this.setState({showDialogActions: true});
   },
   _handleLogin: function(){
+    this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
     var data={
@@ -46,7 +47,7 @@ var SchoolDialog= React.createClass({
       data: data,
       success: function(data) {
         var t_status = data.status;
-        this.setState({status: t_status});
+        this.setState({status: t_status,message: t_status});
         if (t_status == "登录成功") {
           var t_realname = data.realname;
           var t_username = data.username;
@@ -65,9 +66,11 @@ var SchoolDialog= React.createClass({
     this.setState({showDialogActions: false});
   },
   _handleDialogCancel: function(){
+    cookie.remove('username');
     this.setState({showDialogActions: false});
   },
   _handleDialogSubmit: function(){
+    this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
     console.log(this.props.ActionID);
@@ -96,12 +99,12 @@ var SchoolDialog= React.createClass({
     });
   },
   _handleAction: function(event){
+    if (this.state.status == '登录成功') {this.setState({showDialogActions: true});};
     this.refs.success.dismiss();
   },
   // handle TextField onChange
   phoneHandleChange: function(event) {
     this.setState({phone: event.target.value});
-    console.log(this.state.phone);
   },
   mailHandleChange: function(event) {
     this.setState({mail: event.target.value});
@@ -157,7 +160,6 @@ var SchoolDialog= React.createClass({
       </div>
     ];
     var text = this.state.username==undefined? login:signup;
-    console.log(this.state.realname);
   	return (
   		<div>
         <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} />
