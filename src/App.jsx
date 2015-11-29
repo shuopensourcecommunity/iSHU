@@ -2,8 +2,8 @@
 
 var React = require('react');
 var cookie = require('react-cookie');
+var AppBar = require('./AppBar.jsx');
 require("../style/css/Home.css");
-let React = require('react');
 
 let HomeGrid = React.createClass({
   getInitialState: function() {

@@ -92,10 +92,10 @@ var SchoolActivityDetail= React.createClass({
       else {ActionType='其它'};
       var Summary=detail.Summary.replace("\r","\u000d");
       var Summary=Summary.replace("\n","\u000a");
-      console.log(Summary);
-      var string ='abczxaeib';
-      string=string.replace("zx","\u000d\u000a");
-      console.log(this.props.ActionID);
+      // console.log(Summary);
+      // var string ='abczxaeib';
+      // string=string.replace("zx","\u000d\u000a");
+      // console.log(this.props.ActionID);
       return (
         <div>
           <div className="activity-detail">

@@ -15,7 +15,7 @@ var SchoolDialog= React.createClass({
     return {
       isJoined: false,
       showDialogActions: false,
-      autoHideDuration: 100,
+      autoHideDuration: 5000,
       // snackbar hide duration, milliseconds
       mail: 'Hello!',
       phone: '123',
@@ -32,7 +32,7 @@ var SchoolDialog= React.createClass({
     this.setState({showDialogActions: true});
   },
   _handleLogin: function(){
-    this.setState({status: '请稍等，信息正在空中飞翔。。。'});
+    // this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
     var data={
@@ -66,11 +66,10 @@ var SchoolDialog= React.createClass({
     this.setState({showDialogActions: false});
   },
   _handleDialogCancel: function(){
-    cookie.remove('username');
     this.setState({showDialogActions: false});
   },
   _handleDialogSubmit: function(){
-    this.setState({status: '请稍等，信息正在空中飞翔。。。'});
+    // this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
     console.log(this.props.ActionID);
@@ -99,7 +98,7 @@ var SchoolDialog= React.createClass({
     });
   },
   _handleAction: function(event){
-    if (this.state.status == '登录成功') {this.setState({showDialogActions: true});};
+    // if (this.state.status == '登录成功') {this.setState({showDialogActions: true});};
     this.refs.success.dismiss();
   },
   // handle TextField onChange
@@ -134,6 +133,10 @@ var SchoolDialog= React.createClass({
         width: '100%',
         position: 'relative',
         zIndex: 10,
+      },
+      main : {
+        position: 'fixed'
+        // position: 'absolute'
       }
     };
     let login = [
