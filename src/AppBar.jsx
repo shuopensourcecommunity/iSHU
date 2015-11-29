@@ -123,7 +123,7 @@ const AppBar = React.createClass({
           iconElementRight={
             <IconMenu iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }>
               <MenuItem primaryText={logStatus}
-                onChange={this._handleLoginLogout(event, logStatus)} />
+                onItemTouchTap={this._handleLoginLogout(event, logStatus)} />
             </IconMenu>} />
         <Dialog
           ref="login"
