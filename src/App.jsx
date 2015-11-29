@@ -4,6 +4,9 @@ var React = require('react');
 var cookie = require('react-cookie');
 var AppBar = require('./AppBar.jsx');
 require("../style/css/Home.css");
+const GridList = require('material-ui/lib/grid-list/grid-list');
+const GridTile = require('material-ui/lib/grid-list/grid-tile');
+let {Link, RouteHandler} = require('react-router');
 
 let HomeGrid = React.createClass({
   getInitialState: function() {

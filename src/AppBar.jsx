@@ -3,13 +3,16 @@ require("../style/css/main.css");
 let React = require('react');
 let cookie = require('react-cookie');
 let {render} = require('react-dom');
+let mui = require('material-ui');
+let AppBarComponent = mui.AppBar;
+let MenuItem = require('material-ui/lib/menus/menu-item');
+let MenuDivider = require('material-ui/lib/menus/menu-divider');
 var { Card, CardTitle, CardText, CardActions, CircularProgress,
-      Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField,
-      AppBarComponent, MenuItem, MenuDivider } = require('material-ui');
+      Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField} = require('material-ui');
 let Colors = require('../public/mui/colors.js');
 let ActionHome = require('../public/mui/svg-icons/action-home.jsx');
 let MoreVertIcon = require('../public/mui/svg-icons/more-vert.jsx');
-let { IconButton, IconMenu, Menu}= require('material-ui');
+let {IconButton, IconMenu, Menu}= require('material-ui');
 let {Link, RouteHandler} = require('react-router');
 
 const AppBar = React.createClass({
