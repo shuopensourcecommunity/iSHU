@@ -31,7 +31,7 @@ var SchoolDialog= React.createClass({
     this.setState({showDialogActions: true});
   },
   _handleLogin: function(){
-    // this.setState({status: '请稍等，信息正在空中飞翔。。。'});
+    this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
     var data={
@@ -67,7 +67,7 @@ var SchoolDialog= React.createClass({
     this.setState({showDialogActions: false});
   },
   _handleDialogSubmit: function(){
-    // this.setState({status: '请稍等，信息正在空中飞翔。。。'});
+    this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
     var data={
@@ -84,8 +84,10 @@ var SchoolDialog= React.createClass({
       data: data,
       success: function(data) {
         var t_status=data.status;
-        this.setState({isJoined: true});
         this.setState({status: t_status});
+        if (t_status == '报名成功') {
+          this.setState({isJoined: true});
+        };
       }.bind(this),
       error: function(xhr, status, err) {
         this.setState({status: '报名失败'});
@@ -94,7 +96,7 @@ var SchoolDialog= React.createClass({
     });
   },
   _handleAction: function(event){
-    // if (this.state.status == '登录成功') {this.setState({showDialogActions: true});};
+    if (this.state.status == '登录成功') {this.setState({showDialogActions: true});};
     this.refs.success.dismiss();
   },
   // handle TextField onChange

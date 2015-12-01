@@ -402,7 +402,7 @@ def getcampusactionbyid(request):
         }
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
-        #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
+        a['Summary'] = a['Summary'].replace("\r\n", "<BR />")
         a = JsonResponse(a)
         print a
         return a

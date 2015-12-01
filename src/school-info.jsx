@@ -37,9 +37,7 @@ var MessageText= React.createClass({
   },
   render: function() {
     return (
-      <div>
-        {this.state.messageText}
-      </div>
+      <div dangerouslySetInnerHTML={{__html: this.state.messageText}} />
     );
   }
 });
@@ -60,7 +58,6 @@ var MessageTable= React.createClass({
       endTime: "12:01",
       hasMoreMessages: true,
       url: {url}
-      // if has more questions, continue loading.
     };
   },
   loadMessageFromServer: function(page) {
@@ -124,6 +121,13 @@ var MessageTable= React.createClass({
           overflow: 'hidden',
           textOverflow: 'ellipsis',
         },
+        title2: {
+          fontSize: 18,
+          display: 'block',
+          lineHeight: '24px',
+          whiteSpace: 'nowrap',
+          width: '93%',
+        },
         t: {
           fontSize: 18,
           display: 'block',
@@ -134,7 +138,7 @@ var MessageTable= React.createClass({
       return (
         <Card initiallyExpanded={false}>
           <CardTitle
-            titleStyle={styles.title}
+            titleStyle={Card.isExpanded?styles.title2:styles.title}
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}

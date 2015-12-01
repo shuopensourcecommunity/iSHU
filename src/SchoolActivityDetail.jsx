@@ -65,23 +65,6 @@ var SchoolActivityDetail= React.createClass({
 
   render: function() {
     var ActivityDetail = this.state.messageText.map(function (detail){
-      // customActions in Dialog
-      let customActions = [
-        <FlatButton
-          label="Cancel"
-          secondary={true}
-          onTouchTap={this._handleDialogCancel} />,
-        <FlatButton
-          label="Submit"
-          primary={true}
-          onTouchTap={this._handleDialogSubmit} />
-      ];
-      let styles = {
-        main : {
-          position: 'fixed'
-          // position: 'absolute'
-        }
-      };
       var ActionType;
       if (detail.ActionType == '6') {ActionType='专题活动'}
       else if (detail.ActionType == '5') {ActionType='社团活动'} 
@@ -90,8 +73,6 @@ var SchoolActivityDetail= React.createClass({
       else if (detail.ActionType == '2') {ActionType='比赛活动'}
       else if (detail.ActionType == '1') {ActionType='讲座报告'}
       else {ActionType='其它'};
-      var Summary=detail.Summary.replace("\r","\u000d");
-      var Summary=Summary.replace("\n","\u000a");
       // console.log(Summary);
       // var string ='abczxaeib';
       // string=string.replace("zx","\u000d\u000a");
@@ -109,8 +90,9 @@ var SchoolActivityDetail= React.createClass({
             </div>
             <div>
               <p className="activity-detail-title">活动简介：</p>
-              <div className="activity-brief">{Summary}</div>
+              <div className="activity-brief"><div dangerouslySetInnerHTML={{__html: detail.Summary}} /></div>
             </div>
+            <br />
             <div>
               <p className="inline activity-detail-title">报名开始时间：</p>
               <p className="inline activity-time-begin">{detail.Time}</p>

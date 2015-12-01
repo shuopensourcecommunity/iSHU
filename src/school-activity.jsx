@@ -123,7 +123,7 @@ var ActivityTable= React.createClass({
       <InfiniteScroll
         loadMore={this.loadMessageFromServer}
         hasMore={this.state.hasMoreMessages}
-        loader={<CircularProgress className="circular-progress" mode="indeterminate" />}>
+        loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
         {messageNodes}
       </InfiniteScroll>
       </div>
