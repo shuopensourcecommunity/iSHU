@@ -37,7 +37,9 @@ var MessageText= React.createClass({
   },
   render: function() {
     return (
-      <div dangerouslySetInnerHTML={{__html: this.state.messageText}} />
+      <div className='activity-tabs'>
+        <div dangerouslySetInnerHTML={{__html: this.state.messageText}} />
+      </div>
     );
   }
 });
@@ -144,7 +146,7 @@ var MessageTable= React.createClass({
             actAsExpander={true}
             showExpandableButton={true}>
           </CardTitle>
-          <CardText expandable={true}>
+          <CardText expandable={true} >
             <MessageText url={message.url} MsgID={message.MsgID} />
           </CardText>
         </Card>
