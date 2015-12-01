@@ -9,10 +9,8 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt
 import requests
 @csrf_exempt
 def index(request):
-    #t = loader.get_template("index.html") 
-    #return HttpResponse(t.render(request))
     return render(request, "index.html")
-#BASE_URL = "http://api.shu.edu.cn/Mobile/"
+
 @csrf_exempt
 def get_info(base_url,  append_url, params):
     res = requests.post(base_url+append_url, data = params)
@@ -20,23 +18,16 @@ def get_info(base_url,  append_url, params):
 
 @csrf_exempt
 def userlogin(request):
-    # print 'login'
     if request.method == 'POST':
-        # print 'post'
         user_number = request.POST['id']
-        # print user_number
         user_password = request.POST['pwd']
-        # print user_password
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'User/UserLogin/'
         data = {'userName':user_number,
                 'password':user_password,
                 }
-        # print data
-        #get_info(base_url,append_url,data)
         login_status = requests.post(base_url+append_url, data = data)
         content = login_status.json()
-        # print content
         content = JsonResponse(content)
         print content
         return content
@@ -231,9 +222,7 @@ def getshetuan(request):
             #'count':'',
         }
         message_list = requests.post(base_url+append_url, data = data)
-        # print message_list.content
         a = message_list.json()
-        #print a
         result = {}
         result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
@@ -445,7 +434,6 @@ def getcampusmessagebyid(request):
         }
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
-        #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
         a = JsonResponse(a)
         print a
         return a
@@ -461,7 +449,5 @@ def getjwcmessagebyid(request):
         }
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
-        #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
         a = JsonResponse(a)
-        print a
         return a
