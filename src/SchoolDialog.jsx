@@ -28,7 +28,6 @@ var SchoolDialog= React.createClass({
     };
   },
   _handleSignUpClick: function(){
-    console.log('will pop up a modal dialog');
     this.setState({showDialogActions: true});
   },
   _handleLogin: function(){
@@ -39,7 +38,6 @@ var SchoolDialog= React.createClass({
       'id': this.state.id,
       'pwd': this.state.pwd,
     };
-    console.log(data);
     $.ajax({
       url: 'userlogin',
       dataType: 'json',
@@ -72,7 +70,6 @@ var SchoolDialog= React.createClass({
     // this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
-    console.log(this.props.ActionID);
     var data={
       'action_id': this.props.ActionID,
       'phone': this.state.phone,
@@ -80,7 +77,6 @@ var SchoolDialog= React.createClass({
       'reason': this.state.reason,
       'username': this.state.username,
     };
-    console.log("data: "+data);
     $.ajax({
       url: 'applyforcampusaction',
       dataType: 'json',

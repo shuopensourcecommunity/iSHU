@@ -22,7 +22,6 @@ let HomeGrid = React.createClass({
     };
   },
   render: function(){
-    // console.log('screen-height:'+screen.height+', screen-width:'+screen.width);
     return (
       <GridList
         className="home-grid center"

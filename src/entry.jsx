@@ -6,6 +6,7 @@ var SchoolQuery = require('./school-query.jsx');
 var SchoolService = require('./school-service.jsx');
 var SchoolAskBar = require('./school-askbar.jsx');
 var SchoolActivity = require('./school-activity.jsx');
+var ServiceVolunteer = require('./service-volunteer.jsx');
 var NotFound = require('./NotFound.jsx');
 
 var React = require('react')
@@ -20,5 +21,6 @@ render((
     <Route path="service" component={SchoolService}/>
     <Route path="askbar" component={SchoolAskBar} />
     <Route path="activity" component={SchoolActivity}/>
+    <Route path="volunter" component={ServiceVolunteer}/>
   </Router>
 ),document.getElementById('app-container'))

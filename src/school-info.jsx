@@ -23,8 +23,6 @@ var MessageText= React.createClass({
       method: 'post',
       data: data,
       success: function(data) {
-        console.log(data);
-        console.log(data.Summary);
         var t_messageText = [];
         t_messageText.push(data.Summary);
         this.setState({messageText: t_messageText});
@@ -66,7 +64,7 @@ var MessageTable= React.createClass({
     };
   },
   loadMessageFromServer: function(page) {
-      console.log('loadMessageFromServer - page ' + this.state.current_page);
+      // console.log('loadMessageFromServer - page ' + this.state.current_page);
       // fake an async. ajax call with setTimeout
       var data = {
         current_page: this.state.current_page
@@ -87,7 +85,7 @@ var MessageTable= React.createClass({
                 this.setState({ hasMoreMessages:false });
                 break;
               }
-              console.log('loadQestionCard ' + obj);
+              // console.log('loadQestionCard ' + obj);
               t_message.push({
                 'MsgID': data[obj].MsgID,
                 'Title': data[obj].Title,

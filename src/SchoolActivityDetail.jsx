@@ -21,7 +21,7 @@ var SchoolActivityDetail= React.createClass({
     };
   },
   loadMessageFromServer: function() {
-    console.log('action_id:'+this.props.ActionID);
+    // console.log('action_id:'+this.props.ActionID);
     var data = {
         action_id: this.props.ActionID
       };
@@ -49,7 +49,7 @@ var SchoolActivityDetail= React.createClass({
             'Time': data.Time,
             'EndTime': data.EndTime,
           });
-          console.log(t_messageText);
+          // console.log(t_messageText);
           this.setState({messageText: t_messageText});
         }.bind(this),
         error: function(xhr, status, err) {

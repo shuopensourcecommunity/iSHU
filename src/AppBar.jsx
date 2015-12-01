@@ -35,14 +35,14 @@ const AppBar = React.createClass({
     this.setState({AppBarTitle: this.props.title});
   },
   _handleLogin: function(){
-    // this.setState({status: '请稍等，信息正在空中飞翔。。。'});
+    this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
     var data={
       'id': this.state.id,
       'pwd': this.state.pwd,
     };
-    console.log(data);
+    // console.log(data);
     $.ajax({
       url: 'userlogin',
       dataType: 'json',
@@ -83,11 +83,11 @@ const AppBar = React.createClass({
     if(this.state.logStatus == "登出") {
       cookie.remove('username');
       this.setState({logStatus: "登录"});
-      console.log("123");
+      // console.log("123");
     }
     if(this.state.logStatus == "登录"){
       this.setState({showDialogActions: true});
-      console.log("321");
+      // console.log("321");
     }  
   },
   render: function() {

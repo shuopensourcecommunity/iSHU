@@ -12,9 +12,6 @@ injectTapEventPlugin();
 var {render} = require('react-dom');
 
 var QueryTabs = React.createClass({
-
-
-
   render: function(){
     return (
       <div>
