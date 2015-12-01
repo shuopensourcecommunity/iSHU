@@ -81,10 +81,6 @@ var SchoolActivityDetail= React.createClass({
         <div>
           <div className="activity-detail">
             <div>
-              <p className="inline activity-detail-title">活动名称：</p>
-              <p className="inline activity-name">{detail.Title}</p>
-            </div>
-            <div>
               <p className="inline activity-detail-title">活动类别：</p>
               <p className="inline activity-category" >{ActionType}</p>
             </div>
