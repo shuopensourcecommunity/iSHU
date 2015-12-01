@@ -10,6 +10,7 @@ var {render} = require('react-dom');
 var InfiniteScroll = require('react-infinite-scroll')(React);
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
+
 var SchoolDialog= React.createClass({
   getInitialState: function() {
     return {

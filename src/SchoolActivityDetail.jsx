@@ -58,11 +58,9 @@ var SchoolActivityDetail= React.createClass({
       },1000);
     }.bind(this), 1000);
   },
-
   componentDidMount: function(){
     this.loadMessageFromServer();
   },
-
   render: function() {
     var ActivityDetail = this.state.messageText.map(function (detail){
       var ActionType;
@@ -111,7 +109,11 @@ var SchoolActivityDetail= React.createClass({
       )
     }.bind(this));
     return (
-      <div>{ActivityDetail}</div>
+      <InfiniteScroll
+        hasMore= 'false'
+        loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
+        {ActivityDetail}
+      </InfiniteScroll>
     );
   }
 });
