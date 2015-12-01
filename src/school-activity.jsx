@@ -24,18 +24,16 @@ var ActivityTable= React.createClass({
       current_page: 1,
       startTime: "10:01",
       endTime: "12:01",
-      hasMoreMessages: true
-      // if has more questions, continue loading.
+      hasMoreMessages: true,
+      title_style: false
     };
   },
   loadMessageFromServer: function(page) {
       // console.log('loadMessageFromServer - page ' + this.state.current_page);
-      // fake an async. ajax call with setTimeout
       var data = {
         current_page: this.state.current_page
       };
       setTimeout(function() {
-        // add data
         $.ajax({
           url: this.props.url,
           dataType: 'json',
@@ -48,7 +46,6 @@ var ActivityTable= React.createClass({
             for (var obj in data){
               // console.log('loadQestionCard ' + obj);
               if(data[obj].ActionID == undefined){
-                // when no more questions, stop loading.
                 if (obj < data.length-1)  {this.setState({ hasMoreMessages:false });}
                 break;
               }
@@ -77,6 +74,9 @@ var ActivityTable= React.createClass({
         });
       }.bind(this), 1000);
   },
+  cardOnClick: function() {
+    this.setState({title_style: !this.state.title_style});
+  },
   render: function() {
     var messageNodes = this.state.messages.map(function (message) {
       let subtitle=message.Auth+" "
@@ -95,29 +95,35 @@ var ActivityTable= React.createClass({
           overflow: 'hidden',
           textOverflow: 'ellipsis',
         },
+        title2 : {
+          fontSize: 18,
+          lineHeight: '24px',
+          width: '93%',
+        },
         subtitle: {
           fontSize: 14,
           display: 'block',
         },
       };
+      var title_style = this.state.title_style? styles.title2:styles.title;
       return (
         // Change titleColor/subtitleColor:
         // CardTitle props: subtitleColor={Colors.grey700}
         // or Styles.title: color: Colors.grey700,
         <Card initiallyExpanded={false}>
           <CardTitle
-            titleStyle={styles.title}
+            titleStyle={title_style}
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
-            showExpandableButton={true}>
+            showExpandableButton={true}  onClick={this.cardOnClick}>
           </CardTitle>
           <CardText expandable={true}>
             <ActivityDetail url='messageText' ActionID={message.ActionID}/>
           </CardText>
         </Card>
       );
-    });
+    }.bind(this));
     return (
       <div>
       <InfiniteScroll
@@ -147,34 +153,34 @@ var SchoolActivity= React.createClass({
       <div>
         <AppBar title="校园活动"/>
         <div className='activity-tabs'>
-        <Tabs
-        tabItemContainerStyle={styles.tab}
-        contentContainerStyle={styles.content}>
-          <Tab label="全部" value='a'>
-            <ActivityTable url='getgampusactionlist'/>
-          </Tab>
-          <Tab label="专题活动" value='b'>
-            <ActivityTable url='getzhuanti'/>
-          </Tab>
-          <Tab label="社团活动" value='c'>
-            <ActivityTable url='getshetuan'/>
-          </Tab>
-          <Tab label="招聘实习" value='d'>
-            <ActivityTable url='getzhaopin'/>
-          </Tab>
-          <Tab label="公益活动" value='e'>
-            <ActivityTable url='getgongyi'/>
-          </Tab>
-          <Tab label="比赛活动" value='f'>
-            <ActivityTable url='getbisai'/>
-          </Tab>
-          <Tab label="讲座报告" value='g'>
-            <ActivityTable url='getjiangzuo'/>
-          </Tab>
-          {/*<Tab label="其它" value='h'>
+          <Tabs
+            tabItemContainerStyle={styles.tab}
+            contentContainerStyle={styles.content}>
+            <Tab label="全部" value='a'>
+              <ActivityTable url='getgampusactionlist'/>
+            </Tab>
+            <Tab label="专题活动" value='b'>
+              <ActivityTable url='getzhuanti'/>
+            </Tab>
+            <Tab label="社团活动" value='c'>
+              <ActivityTable url='getshetuan'/>
+            </Tab>
+            <Tab label="招聘实习" value='d'>
+              <ActivityTable url='getzhaopin'/>
+            </Tab>
+            <Tab label="公益活动" value='e'>
+              <ActivityTable url='getgongyi'/>
+            </Tab>
+            <Tab label="比赛活动" value='f'>
+              <ActivityTable url='getbisai'/>
+            </Tab>
+            <Tab label="讲座报告" value='g'>
+              <ActivityTable url='getjiangzuo'/>
+            </Tab>
+            {/*<Tab label="其它" value='h'>
                     <ActivityTable url='messages'/>
-                  </Tab>*/}
-        </Tabs>
+                    </Tab>*/}
+          </Tabs>
         </div>
       </div>
     );

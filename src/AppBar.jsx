@@ -80,18 +80,24 @@ const AppBar = React.createClass({
     this.setState({pwd: event.target.value});
   },
   _handleLoginLogout: function(){
-    if(this.state.logStatus == "登出") {
+    if(cookie.load('username')) {
       cookie.remove('username');
       this.setState({logStatus: "登录"});
-      // console.log("123");
+      console.log("123");
     }
-    if(this.state.logStatus == "登录"){
+    else {
+      this.setState({logStatus: "登出"});
       this.setState({showDialogActions: true});
-      // console.log("321");
+      console.log("321");
     }  
   },
+  logStatus: function() {
+    return (
+      <MenuItem primaryText={cookie.load('username')?"登出":"登录"}
+        onTouchTap={this._handleLoginLogout} />
+    )
+  },
   render: function() {
-    let logstatus = this.state.logStatus;
     let customActions = [
       <FlatButton
         label="取消"
@@ -114,7 +120,7 @@ const AppBar = React.createClass({
       }
     };
     return (
-      <div>
+      <div ref="myAppBarMenu">
         <AppBarComponent
           title={this.state.AppBarTitle}
           showMenuIconButton={true}
@@ -126,8 +132,7 @@ const AppBar = React.createClass({
             </Link>}
           iconElementRight={
             <IconMenu iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }>
-              <MenuItem primaryText={logstatus}
-                onTouchTap={this._handleLoginLogout} />
+              <this.logStatus />
             </IconMenu>} />
             <Dialog
             ref="login"

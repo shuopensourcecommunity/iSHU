@@ -59,7 +59,8 @@ var MessageTable= React.createClass({
       startTime: "10:01",
       endTime: "12:01",
       hasMoreMessages: true,
-      url: {url}
+      url: {url},
+      title_style: false
     };
   },
   loadMessageFromServer: function(page) {
@@ -109,25 +110,26 @@ var MessageTable= React.createClass({
         },1000);
       }.bind(this), 1000);
   },
+  cardOnClick: function() {
+    this.setState({title_style: !this.state.title_style});
+  },
   render: function() {
     var messageNodes = this.state.messages.map(function (message) {
       var subtitle;
       (message.Auth == "None") ? subtitle="时间："+message.Time:subtitle="时间："+message.Time+"     发布来源："+message.Auth;
       let styles={
-        title: {
-          fontSize: 18,
-          display: 'block',
-          lineHeight: '24px',
-          whiteSpace: 'nowrap',
-          width: '93%',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
+        title : {
+        fontSize: 18,
+        display: 'block',
+        lineHeight: '24px',
+        whiteSpace: 'nowrap',
+        width: '93%',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
         },
-        title2: {
+        title2 : {
           fontSize: 18,
-          display: 'block',
           lineHeight: '24px',
-          whiteSpace: 'nowrap',
           width: '93%',
         },
         t: {
@@ -137,21 +139,22 @@ var MessageTable= React.createClass({
           whiteSpace: 'nowrap',
         }
       };
+      var title_style = this.state.title_style? styles.title2:styles.title;
       return (
         <Card initiallyExpanded={false}>
           <CardTitle
-            titleStyle={Card.isExpanded?styles.title2:styles.title}
+            titleStyle={title_style}
             title={message.Title}
             subtitle={subtitle}
             actAsExpander={true}
-            showExpandableButton={true}>
+            showExpandableButton={true}  onClick={this.cardOnClick}>
           </CardTitle>
           <CardText expandable={true} >
             <MessageText url={message.url} MsgID={message.MsgID} />
           </CardText>
         </Card>
       );
-    });
+    }.bind(this));
     return (
       <InfiniteScroll
         loadMore={this.loadMessageFromServer}

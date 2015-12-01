@@ -16,7 +16,7 @@ def index(request):
 @csrf_exempt
 def get_info(base_url,  append_url, params):
     res = requests.post(base_url+append_url, data = params)
-    print res.text
+    # print res.text
 
 @csrf_exempt
 def userlogin(request):
@@ -38,7 +38,7 @@ def userlogin(request):
         content = login_status.json()
         # print content
         content = JsonResponse(content)
-        print content
+        # print content
         return content
 
 @csrf_exempt
@@ -197,7 +197,6 @@ def getzhuanti(request):
         }
         message_list = requests.post(base_url+append_url, data = data)
         a = message_list.json()
-        #print a
         result = {}
         result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
@@ -233,7 +232,6 @@ def getshetuan(request):
         message_list = requests.post(base_url+append_url, data = data)
         # print message_list.content
         a = message_list.json()
-        #print a
         result = {}
         result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
@@ -269,7 +267,6 @@ def getzhaopin(request):
         message_list = requests.post(base_url+append_url, data = data)
         # print message_list.content
         a = message_list.json()
-        #print a
         result = {}
         result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
@@ -306,7 +303,6 @@ def getgongyi(request):
         message_list = requests.post(base_url+append_url, data = data)
         # print message_list.content
         a = message_list.json()
-        #print a
         result = {}
         result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
@@ -342,7 +338,6 @@ def getbisai(request):
         message_list = requests.post(base_url+append_url, data = data)
         # print message_list.content
         a = message_list.json()
-        #print a
         result = {}
         result['pagecount'] = a['pageCount']
         for i in range(0,len(a['messageList'])):
@@ -404,12 +399,11 @@ def getcampusactionbyid(request):
         a = message_list.json()
         a['Summary'] = a['Summary'].replace("\r\n", "<BR />")
         a = JsonResponse(a)
-        print a
+        # print a
         return a
 
 @csrf_exempt
 def applyforcampusaction(request):
-    print 'a'
     if request.method == "POST":
         action_id = request.POST['action_id']
         username = request.POST['username']
@@ -425,13 +419,12 @@ def applyforcampusaction(request):
             'shouJ':phone,
             'youX':mail,
         }
-        print data
+        # print data
         message_list = requests.post(base_url+append_url, data = data)
-        print message_list.content
+        # print message_list.content
         a = message_list.json()
-        print a
         a = JsonResponse(a)
-        print a
+        # print a
         return a
 
 @csrf_exempt
@@ -447,7 +440,7 @@ def getcampusmessagebyid(request):
         a = message_list.json()
         #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
         a = JsonResponse(a)
-        print a
+        # print a
         return a
 
 @csrf_exempt
@@ -463,5 +456,5 @@ def getjwcmessagebyid(request):
         a = message_list.json()
         #a['Summary'] = a['Summary'].replace("\r\n", "<BR>")
         a = JsonResponse(a)
-        print a
+        # print a
         return a

@@ -16,7 +16,6 @@ var SchoolDialog= React.createClass({
       isJoined: false,
       showDialogActions: false,
       autoHideDuration: 5000,
-      // snackbar hide duration, milliseconds
       mail: 'Hello!',
       phone: '123',
       reason: 'dsf',
@@ -52,6 +51,7 @@ var SchoolDialog= React.createClass({
           this.setState({realname: t_realname});
           this.setState({username: t_username});
           cookie.save('username', t_username);
+          this.refs.myAppBarMenu.componentDidMount();
         };
       }.bind(this),
       error: function(xhr, status, err) {
@@ -160,7 +160,7 @@ var SchoolDialog= React.createClass({
         <br />
       </div>
     ];
-    var text = this.state.username==undefined? login:signup;
+    var text = cookie.load('username')? signup:login;
   	return (
   		<div>
         <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} />
