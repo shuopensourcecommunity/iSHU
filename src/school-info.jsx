@@ -61,7 +61,7 @@ var MessageTable= React.createClass({
       startTime: "10:01",
       endTime: "12:01",
       hasMoreMessages: true,
-      url: {url},
+      url: url,
       title_style: false
     };
   },
@@ -94,7 +94,7 @@ var MessageTable= React.createClass({
                 'Time': data[obj].Time,
                 'ActiveTime': data[obj].ActiveTime,
                 'Auth': data[obj].Auth,
-                'url': this.state.url.url
+                'url': this.state.url
               });
               t_pagecount = data.pagecount;
             }
@@ -160,7 +160,7 @@ var MessageTable= React.createClass({
     return (
       <InfiniteScroll
         loadMore={this.loadMessageFromServer}
-        hasMore={this.state.hasMoreMessages}
+        hasMore={this.props.select=='1'?this.state.hasMoreMessages:false}
         loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
         {messageNodes}
       </InfiniteScroll>
@@ -169,19 +169,34 @@ var MessageTable= React.createClass({
 });
 
 var SchoolInfo= React.createClass({
+  getInitialState: function(){
+    return {
+      select: 1
+    }
+  },
+  campuscessage: function() {
+    this.setState({select: 1});
+  },
+  xgbmessage: function() {
+    this.setState({select: 2});
+  },
+  jwcmessage: function() {
+    this.setState({select: 3});
+  },
   render: function(){
+    var select=this.state.select;
     return (
       <div>
         <AppBar title="校园资讯"/>
         <Tabs>
-          <Tab label="上大新闻" value='a'>
-            <MessageTable url='postcampuscessagelist'/>
+          <Tab label="上大新闻" onActive={this.campuscessage}>
+            <MessageTable url='postcampuscessagelist' select={select=='1'?1:0}/>
           </Tab>
-          <Tab label="学生事务" value='b'>
-            <MessageTable url='getxgbmessagelist'/>
+          <Tab label="学生事务" onActive={this.xgbmessage}>
+            <MessageTable url='getxgbmessagelist' select={select=='2'?1:0}/>
           </Tab>
-          <Tab label="教务信息" value='c'>
-            <MessageTable url='getjwcmessagelist'/>
+          <Tab label="教务信息" onActive={this.jwcmessage}>
+            <MessageTable url='getjwcmessagelist' select={select=='3'?1:0}/>
           </Tab>
         </Tabs>
       </div>

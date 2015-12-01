@@ -127,7 +127,7 @@ var ActivityTable= React.createClass({
     return (
       <InfiniteScroll
         loadMore={this.loadMessageFromServer}
-        hasMore={this.state.hasMoreMessages}
+        hasMore={this.props.select=='1'?this.state.hasMoreMessages:false}
         loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
         {messageNodes}
       </InfiniteScroll>
@@ -136,6 +136,32 @@ var ActivityTable= React.createClass({
 });
 
 var SchoolActivity= React.createClass({
+  getInitialState: function(){
+    return {
+      select: 1
+    }
+  },
+  campuscessage: function() {
+    this.setState({select: 1});
+  },
+  zhuanti: function() {
+    this.setState({select: 2});
+  },
+  shetuan: function() {
+    this.setState({select: 3});
+  },
+  zhaopin: function() {
+    this.setState({select: 4});
+  },
+  gongyi: function() {
+    this.setState({select: 5});
+  },
+  bisai: function() {
+    this.setState({select: 6});
+  },
+  jiangzuo: function() {
+    this.setState({select: 7});
+  },
   render: function(){
     let styles = {
       content: {
@@ -147,6 +173,7 @@ var SchoolActivity= React.createClass({
         width: (screen.width>'560')?'100%':'560px'
       }
     };
+    var select=this.state.select;
     return (
       <div>
         <AppBar title="校园活动"/>
@@ -154,26 +181,26 @@ var SchoolActivity= React.createClass({
           <Tabs
             tabItemContainerStyle={styles.tab}
             contentContainerStyle={styles.content}>
-            <Tab label="全部" value='a'>
-              <ActivityTable url='getgampusactionlist'/>
+            <Tab label="全部" onActive={this.campuscessage}>
+              <ActivityTable url='getgampusactionlist' select={select=='1'?1:0}/>
             </Tab>
-            <Tab label="专题活动" value='b'>
-              <ActivityTable url='getzhuanti'/>
+            <Tab label="专题活动" onActive={this.zhuanti}>
+              <ActivityTable url='getzhuanti' select={select=='2'?1:0}/>
             </Tab>
-            <Tab label="社团活动" value='c'>
-              <ActivityTable url='getshetuan'/>
+            <Tab label="社团活动" onActive={this.shetuan}>
+              <ActivityTable url='getshetuan' select={select=='3'?1:0}/>
             </Tab>
-            <Tab label="招聘实习" value='d'>
-              <ActivityTable url='getzhaopin'/>
+            <Tab label="招聘实习" onActive={this.zhaopin}>
+              <ActivityTable url='getzhaopin' select={select=='4'?1:0}/>
             </Tab>
-            <Tab label="公益活动" value='e'>
-              <ActivityTable url='getgongyi'/>
+            <Tab label="公益活动" onActive={this.gongyi}>
+              <ActivityTable url='getgongyi' select={select=='5'?1:0}/>
             </Tab>
-            <Tab label="比赛活动" value='f'>
-              <ActivityTable url='getbisai'/>
+            <Tab label="比赛活动" onActive={this.bisai}>
+              <ActivityTable url='getbisai' select={select=='6'?1:0}/>
             </Tab>
-            <Tab label="讲座报告" value='g'>
-              <ActivityTable url='getjiangzuo'/>
+            <Tab label="讲座报告" onActive={this.jiangzuo}>
+              <ActivityTable url='getjiangzuo' select={select=='7'?1:0}/>
             </Tab>
             {/*<Tab label="其它" value='h'>
                     <ActivityTable url='messages'/>
