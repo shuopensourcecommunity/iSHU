@@ -163,7 +163,7 @@ var ServiceVolunteer= React.createClass({
   render: function(){
     return (
       <div>
-        <AppBar title=’志愿者报名‘/>
+        <AppBar title='志愿者报名'/>
         <MessageTable url=''/>
       </div>
     );
