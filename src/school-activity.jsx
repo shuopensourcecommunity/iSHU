@@ -49,7 +49,7 @@ var ActivityTable= React.createClass({
               // console.log('loadQestionCard ' + obj);
               if(data[obj].ActionID == undefined){
                 // when no more questions, stop loading.
-                this.setState({ hasMoreMessages:false });
+                if (obj < data.length-1)  {this.setState({ hasMoreMessages:false });}
                 break;
               }
               t_message.push({
@@ -61,7 +61,7 @@ var ActivityTable= React.createClass({
                 'Auth': data[obj].Auth,
                 'Address': data[obj].Address,
               });
-              t_pagecount: data.pageCount;
+              t_pagecount = data.pagecount;
             }
             this.setState({
               messages: t_message,
@@ -69,7 +69,7 @@ var ActivityTable= React.createClass({
               current_page: this.state.current_page + 1,
               // current page is loaded, ready to load next page (currentPage+1)
             });
-            if (this.state.current_page > this.state.pagecount) {this.setState({ hasMoreMessages:false });};
+            if (this.state.current_page >= this.state.pagecount) {this.setState({ hasMoreMessages:false });};
           }.bind(this),
           error: function(xhr, status, err) {
             console.error(this.props.url, status, err.toString());

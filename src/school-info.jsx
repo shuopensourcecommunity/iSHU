@@ -82,7 +82,7 @@ var MessageTable= React.createClass({
             for (var obj in data){
               if(data[obj].MsgID == undefined){
                 // when no more questions, stop loading.
-                this.setState({ hasMoreMessages:false });
+                if (obj < data.length-1) {this.setState({ hasMoreMessages:false });}
                 break;
               }
               // console.log('loadQestionCard ' + obj);
@@ -94,7 +94,7 @@ var MessageTable= React.createClass({
                 'Auth': data[obj].Auth,
                 'url': this.state.url.url
               });
-              t_pagecount: data.pageCount;
+              t_pagecount = data.pagecount;
             }
             this.setState({
               messages: t_message,
@@ -102,7 +102,7 @@ var MessageTable= React.createClass({
               current_page: this.state.current_page + 1,
               // current page is loaded, ready to load next page (currentPage+1)
             });
-            if (this.state.current_page > this.state.pagecount) {this.setState({ hasMoreMessages:false });};
+            if (this.state.current_page >= this.state.pagecount) {this.setState({ hasMoreMessages:false });};
           }.bind(this),
           error: function(xhr, status, err) {
             console.error(this.props.url, status, err.toString());
@@ -147,14 +147,12 @@ var MessageTable= React.createClass({
       );
     });
     return (
-      <div>
       <InfiniteScroll
         loadMore={this.loadMessageFromServer}
         hasMore={this.state.hasMoreMessages}
-        loader={<CircularProgress className="circular-progress" mode="indeterminate" />}>
+        loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
         {messageNodes}
       </InfiniteScroll>
-      </div>
     );
   }
 });
