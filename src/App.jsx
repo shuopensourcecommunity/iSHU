@@ -12,7 +12,7 @@ let HomeGrid = React.createClass({
   getInitialState: function() {
     return {
       homeData: [
-        { title: "校园资讯", img: "http://lorempixel.com/100/100/animals/", linkto: "/info" },
+        { title: "校园资讯", img: "http://lorempixel.com/100/100/", linkto: "/info" },
         { title: "校园活动", img: "http://lorempixel.com/100/100/food/", linkto: "/activity" },
         { title: "校园查询", img: "http://lorempixel.com/100/100/cats/", linkto: "/query" },
         { title: "校园服务", img: "http://lorempixel.com/100/100/animals/", linkto: "/service" },

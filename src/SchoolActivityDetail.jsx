@@ -17,7 +17,8 @@ var SchoolActivityDetail= React.createClass({
   getInitialState: function() {
     return {
       messageText:[],
-      username: []
+      username: [],
+      hasMoreMessages: true
     };
   },
   loadMessageFromServer: function() {
@@ -50,16 +51,16 @@ var SchoolActivityDetail= React.createClass({
             'EndTime': data.EndTime,
           });
           // console.log(t_messageText);
-          this.setState({messageText: t_messageText});
+          this.setState({
+            messageText: t_messageText,
+            hasMoreMessages: false
+          });
         }.bind(this),
         error: function(xhr, status, err) {
           console.error(this.props.url, status, err.toString());
         }.bind(this)
       },1000);
     }.bind(this), 1000);
-  },
-  componentDidMount: function(){
-    this.loadMessageFromServer();
   },
   render: function() {
     var ActivityDetail = this.state.messageText.map(function (detail){
@@ -110,7 +111,8 @@ var SchoolActivityDetail= React.createClass({
     }.bind(this));
     return (
       <InfiniteScroll
-        hasMore= 'false'
+        loadMore={this.loadMessageFromServer}
+        hasMore={this.state.hasMoreMessages}
         loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
         {ActivityDetail}
       </InfiniteScroll>

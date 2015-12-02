@@ -12,7 +12,8 @@ var InfiniteScroll = require('react-infinite-scroll')(React);
 var MessageText= React.createClass({
   getInitialState: function() {
     return {
-      messageText: ''
+      messageText: '',
+      hasMoreMessages: true
     };
   },
   loadMessageFromServer: function() {
@@ -25,7 +26,10 @@ var MessageText= React.createClass({
       success: function(data) {
         var t_messageText = [];
         t_messageText.push(data.Summary);
-        this.setState({messageText: t_messageText});
+        this.setState({
+          messageText: t_messageText,
+          hasMoreMessages: false
+        });
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -38,7 +42,8 @@ var MessageText= React.createClass({
   render: function() {
     return (
       <InfiniteScroll className='activity-tabs'
-        hasMore= 'false'
+        loadMore={this.loadMessageFromServer}
+        hasMore={this.state.hasMoreMessages}
         loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
         <div dangerouslySetInnerHTML={{__html: this.state.messageText}} />
       </InfiniteScroll>
