@@ -12,16 +12,22 @@ let HomeGrid = React.createClass({
   getInitialState: function() {
     return {
       homeData: [
-        { title: "校园资讯", img: "http://lorempixel.com/100/100/", linkto: "/info" },
-        { title: "校园活动", img: "http://lorempixel.com/100/100/food/", linkto: "/activity" },
-        { title: "校园查询", img: "http://lorempixel.com/100/100/cats/", linkto: "/query" },
-        { title: "校园服务", img: "http://lorempixel.com/100/100/animals/", linkto: "/service" },
-        { title: "乐乎问吧", img: "http://lorempixel.com/100/100/nature/" },
-        { title: "其他", img: "http://lorempixel.com/100/100/city/" }
+        { title: "校园资讯", img: "/static/style/imgs/school-info.png", linkto: "/info" },
+        { title: "校园活动", img: "/static/style/imgs/school-activity.png", linkto: "/activity" },
+        { title: "校园查询", img: "/static/style/imgs/school-query.png", linkto: "/query" },
+        { title: "校园服务", img: "/static/style/imgs/school-service.png", linkto: "/service" },
+        { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png" },
+        { title: "办事指南", img: "/static/style/imgs/banshi-query.png" }
       ]
     };
   },
   render: function(){
+    let styles = {
+      Img: {
+        height: '70%',
+        transform: 'translateX(0%),translateY(50%)',
+      }
+    }
     return (
       <GridList
         className="home-grid center"
@@ -34,8 +40,8 @@ let HomeGrid = React.createClass({
             rootClass={Link}
             to={home.linkto}
             title={home.title}
-            titleBackground={'rgba(0, 0, 0, 0.4)'}
-            ><img src={home.img} /></GridTile>)
+            titleBackground={'rgba(0, 0, 0, 0)'}
+            ><div><img src={home.img} style={styles.Img} /></div></GridTile>)
         }
       </GridList>
     )

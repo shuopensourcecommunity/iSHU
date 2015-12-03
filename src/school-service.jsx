@@ -14,8 +14,15 @@ var {render} = require('react-dom');
 var {Link, RouteHandler} = require('react-router');
 var ServiceCards = React.createClass({
   render: function(){
+    let styles = {
+      Img: {
+        height: '68%',
+        transform: 'translateX(0%),translateY(50%)',
+      },
+    }
     return (
       <GridList
+        className="home-grid center"
         cols={2}
         cellHeight={265}
         style={{width: '100%', overflowY: 'auto'}}
@@ -24,22 +31,22 @@ var ServiceCards = React.createClass({
           rootClass={'a'}
           href='http://www.campus.shu.edu.cn'
           title='社团'
-        ><img src='/static/style/imgs/1.png' /></GridTile>
+        ><div><img src='/static/style/imgs/community-signup.png' style={styles.Img} /></div></GridTile>
         <GridTile
           rootClass={'a'}
           title='志愿者报名'
           href="http://202.120.127.129/Shulvms/Login.aspx"
-        ><img src='/static/style/imgs/2.png' /></GridTile>
+        ><div><img src='/static/style/imgs/volunteer-signup.png' style={styles.Img} /></div></GridTile>
         <GridTile
           rootClass={'a'}
           href="http://card.lehu.shu.edu.cn/CardTrainingDetail.aspx"
           title='晨跑'
-        ><img src='/static/style/imgs/3.jpg' /></GridTile>
+        ><div><img src='/static/style/imgs/run-query.png' style={styles.Img} /></div></GridTile>
         <GridTile
           rootClass={'a'}
           href="http://card.lehu.shu.edu.cn/CardLostDetail.aspx"
           title='一卡通挂失'
-        ><img src='/static/style/imgs/4.png' /></GridTile>
+        ><div><img src='/static/style/imgs/card-loss.png' style={styles.Img} /></div></GridTile>
       </GridList>
     )
   }
