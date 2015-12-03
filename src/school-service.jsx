@@ -13,34 +13,43 @@ injectTapEventPlugin();
 var {render} = require('react-dom');
 var {Link, RouteHandler} = require('react-router');
 var ServiceCards = React.createClass({
+  getInitialState: function() {
+    return {
+      data: [
+        { title: "社团报名",
+          img: "/static/style/imgs/community-signup.png",
+          linkto: "http://www.campus.shu.edu.cn"
+        },
+        {
+          title: "志愿者报名",
+          img: "/static/style/imgs/volunteer-signup.png",
+          linkto: "http://202.120.127.129/Shulvms/Login.aspx"
+        },
+        {
+          title: "晨跑查询",
+          img: "/static/style/imgs/run-query.png",
+          linkto: "http://card.lehu.shu.edu.cn/CardTrainingDetail.aspx"
+        },
+        {
+          title: "一卡通挂失",
+          img: "/static/style/imgs/card-loss.png",
+          linkto: "http://card.lehu.shu.edu.cn/CardLostDetail.aspx"
+        }
+      ]
+    };
+  },
   render: function(){
     return (
-      <GridList
-        cols={2}
-        cellHeight={265}
-        style={{width: '100%', overflowY: 'auto'}}
-      >
-        <GridTile
-          rootClass={'a'}
-          href='http://www.campus.shu.edu.cn'
-          title='社团'
-        ><img src='/static/style/imgs/1.png' /></GridTile>
-        <GridTile
-          rootClass={'a'}
-          title='志愿者报名'
-          href="http://202.120.127.129/Shulvms/Login.aspx"
-        ><img src='/static/style/imgs/2.png' /></GridTile>
-        <GridTile
-          rootClass={'a'}
-          href="http://card.lehu.shu.edu.cn/CardTrainingDetail.aspx"
-          title='晨跑'
-        ><img src='/static/style/imgs/3.jpg' /></GridTile>
-        <GridTile
-          rootClass={'a'}
-          href="http://card.lehu.shu.edu.cn/CardLostDetail.aspx"
-          title='一卡通挂失'
-        ><img src='/static/style/imgs/4.png' /></GridTile>
-      </GridList>
+      <div className="service-grid center">
+        {
+          this.state.data.map(home => <a href={home.linkto}>
+            <div className="service-block">
+              <img className="service-img" src={home.img} />
+              <p className="service-title">{home.title}</p>
+            </div>
+          </a>)
+        }
+      </div>
     )
   }
 })
