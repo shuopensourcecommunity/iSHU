@@ -1,3 +1,23 @@
-.service-img{
-  height:41%;
+.service-grid {
+  padding:20 30 0 30px;
+}
+.service-block {
+  /*border: solid red 1px;*/
+  max-width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 5%;
+  font-weight: 600;
+}
+.service-img {
+  width: 100%;
+}
+.service-title {
+  color: black;
+}
+/* aspect-ratio: width/height */
+@media screen and (min-aspect-ratio: 1/1) {
+  .service-block {
+    max-width: 25% !important;
+  }
 }

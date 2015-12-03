@@ -1,10 +1,23 @@
-.home-content {
-
+.home-grid {
+  padding:20 30 0 30px;
 }
-.home-grid img {
-  //border-radius:50%;
-  //width:auto;
+.home-block {
+  /*border: solid red 1px;*/
+  max-width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 5%;
+  font-weight: 600;
+}
+.home-img {
+  width: 100%;
 }
 .home-title {
   color: black;
+}
+/* aspect-ratio: width/height */
+@media screen and (min-aspect-ratio: 1/1) {
+  .home-block {
+    max-width: 30% !important;
+  }
 }
