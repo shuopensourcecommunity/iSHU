@@ -17,7 +17,7 @@ let HomeGrid = React.createClass({
         { title: "校园查询", img: "/static/style/imgs/school-query.png", linkto: "/query" },
         { title: "校园服务", img: "/static/style/imgs/school-service.png", linkto: "/service" },
         { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png" },
-        { title: "学生事务", img: "/static/style/imgs/banshi-query.png" }
+        { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "/student"},
       ]
     };
   },
