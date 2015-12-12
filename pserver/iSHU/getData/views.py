@@ -1,20 +1,23 @@
-#-*- encoding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 
-from django.shortcuts import render,loader
-
+from django.shortcuts import render, loader
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 # Create your views here.
 import requests
+
+
 @csrf_exempt
 def index(request):
     return render(request, "index.html")
 
+
 @csrf_exempt
-def get_info(base_url,  append_url, params):
-    res = requests.post(base_url+append_url, data = params)
+def get_info(base_url, append_url, params):
+    res = requests.post(base_url + append_url, data=params)
     # print res.text
+
 
 @csrf_exempt
 def userlogin(request):
@@ -23,14 +26,15 @@ def userlogin(request):
         user_password = request.POST['pwd']
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'User/UserLogin/'
-        data = {'userName':user_number,
-                'password':user_password,
+        data = {'userName': user_number,
+                'password': user_password,
                 }
-        login_status = requests.post(base_url+append_url, data = data)
+        login_status = requests.post(base_url + append_url, data=data)
         content = login_status.json()
         content = JsonResponse(content)
         # print content
         return content
+
 
 @csrf_exempt
 def postcampuscessagelist(request):
@@ -44,29 +48,30 @@ def postcampuscessagelist(request):
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
         # print current_page
-        data = { 
-            'keyword':'',
-            'type':203,
-            'limit':10,
-            'startTime':starttime,
-            'endTime':endtime,
-            'currentPage':current_page,
+        data = {
+            'keyword': '',
+            'type': 203,
+            'limit': 10,
+            'startTime': starttime,
+            'endTime': endtime,
+            'currentPage': current_page,
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messagelist'])):
+        for i in range(0, len(a['messagelist'])):
             c = {}
             for key, value in a['messagelist'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
             result[unicode(i)] = c
         result = JsonResponse(result)
         # print result
         return result
+
 
 @csrf_exempt
 def getxgbmessagelist(request):
@@ -78,27 +83,28 @@ def getxgbmessagelist(request):
         append_url = 'CampusMessage/GetXgbMessageList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'limit':10,
-            'startTime':starttime,
-            'endTime':endtime,
-            'currentPage':current_page,
+        data = {
+            'keyword': '',
+            'limit': 10,
+            'startTime': starttime,
+            'endTime': endtime,
+            'currentPage': current_page,
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messagelist'])):
+        for i in range(0, len(a['messagelist'])):
             c = {}
             for key, value in a['messagelist'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
             result[unicode(i)] = c
         xgbresult = JsonResponse(result)
         return xgbresult
+
 
 @csrf_exempt
 def getjwcmessagelist(request):
@@ -110,27 +116,28 @@ def getjwcmessagelist(request):
         append_url = 'CampusMessage/GetJwcMessageList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'limit':10,
-            'startTime':starttime,
-            'endTime':endtime,
-            'currentPage':current_page,
+        data = {
+            'keyword': '',
+            'limit': 10,
+            'startTime': starttime,
+            'endTime': endtime,
+            'currentPage': current_page,
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messagelist'])):
+        for i in range(0, len(a['messagelist'])):
             c = {}
             for key, value in a['messagelist'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
             result[unicode(i)] = c
         jwcresult = JsonResponse(result)
-        return jwcresult    
+        return jwcresult
+
 
 @csrf_exempt
 def getgampusactionlist(request):
@@ -141,31 +148,32 @@ def getgampusactionlist(request):
         append_url = 'CampusAction/GetCampusActionList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'method':99,
-            'type':3,
-            'limit':10,
-            #'startTime':'',
-            #'endTime':'',
-            'currentPage':current_page,
-            #'count':'',
+        data = {
+            'keyword': '',
+            'method': 99,
+            'type': 3,
+            'limit': 10,
+            # 'startTime':'',
+            # 'endTime':'',
+            'currentPage': current_page,
+            # 'count':'',
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
-        #print a
+        # print a
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messageList'])):
+        for i in range(0, len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
-            result[unicode(i)] = c  
+            result[unicode(i)] = c
         result = JsonResponse(result)
         return result
+
 
 @csrf_exempt
 def getzhuanti(request):
@@ -176,30 +184,31 @@ def getzhuanti(request):
         append_url = 'CampusAction/GetCampusActionList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'method':6,
-            'type':3,
-            'limit':10,
-            #'startTime':'',
-            #'endTime':'',
-            'currentPage':current_page,
-            #'count':'',
+        data = {
+            'keyword': '',
+            'method': 6,
+            'type': 3,
+            'limit': 10,
+            # 'startTime':'',
+            # 'endTime':'',
+            'currentPage': current_page,
+            # 'count':'',
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messageList'])):
+        for i in range(0, len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
-            result[unicode(i)] = c      
+            result[unicode(i)] = c
         result = JsonResponse(result)
         return result
+
 
 @csrf_exempt
 def getshetuan(request):
@@ -210,30 +219,31 @@ def getshetuan(request):
         append_url = 'CampusAction/GetCampusActionList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'method':5,
-            'type':3,
-            'limit':10,
-            #'startTime':'',
-            #'endTime':'',
-            'currentPage':current_page,
-            #'count':'',
+        data = {
+            'keyword': '',
+            'method': 5,
+            'type': 3,
+            'limit': 10,
+            # 'startTime':'',
+            # 'endTime':'',
+            'currentPage': current_page,
+            # 'count':'',
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messageList'])):
+        for i in range(0, len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
-            result[unicode(i)] = c      
+            result[unicode(i)] = c
         result = JsonResponse(result)
         return result
+
 
 @csrf_exempt
 def getzhaopin(request):
@@ -244,32 +254,33 @@ def getzhaopin(request):
         append_url = 'CampusAction/GetCampusActionList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'method':4,
-            'type':3,
-            'limit':10,
-            #'startTime':'',
-            #'endTime':'',
-            'currentPage':current_page,
-            #'count':'',
+        data = {
+            'keyword': '',
+            'method': 4,
+            'type': 3,
+            'limit': 10,
+            # 'startTime':'',
+            # 'endTime':'',
+            'currentPage': current_page,
+            # 'count':'',
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         # print message_list.content
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messageList'])):
+        for i in range(0, len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
-            result[unicode(i)] = c      
+            result[unicode(i)] = c
         result = JsonResponse(result)
         # print result
         return result
+
 
 @csrf_exempt
 def getgongyi(request):
@@ -280,31 +291,32 @@ def getgongyi(request):
         append_url = 'CampusAction/GetCampusActionList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'method':3,
-            'type':3,
-            'limit':10,
-            #'startTime':'',
-            #'endTime':'',
-            'currentPage':current_page,
-            #'count':'',
+        data = {
+            'keyword': '',
+            'method': 3,
+            'type': 3,
+            'limit': 10,
+            # 'startTime':'',
+            # 'endTime':'',
+            'currentPage': current_page,
+            # 'count':'',
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         # print message_list.content
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messageList'])):
+        for i in range(0, len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
-            result[unicode(i)] = c      
+            result[unicode(i)] = c
         result = JsonResponse(result)
         return result
+
 
 @csrf_exempt
 def getbisai(request):
@@ -315,31 +327,32 @@ def getbisai(request):
         append_url = 'CampusAction/GetCampusActionList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'method':2,
-            'type':3,
-            'limit':10,
-            #'startTime':'',
-            #'endTime':'',
-            'currentPage':current_page,
-            #'count':'',
+        data = {
+            'keyword': '',
+            'method': 2,
+            'type': 3,
+            'limit': 10,
+            # 'startTime':'',
+            # 'endTime':'',
+            'currentPage': current_page,
+            # 'count':'',
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         # print message_list.content
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messageList'])):
+        for i in range(0, len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
-            result[unicode(i)] = c      
+            result[unicode(i)] = c
         result = JsonResponse(result)
         return result
+
 
 @csrf_exempt
 def getjiangzuo(request):
@@ -350,31 +363,32 @@ def getjiangzuo(request):
         append_url = 'CampusAction/GetCampusActionList'
         starttime = '2010-01-01T00:00:00Z'
         endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = { 
-            'keyword':'',
-            'method':1,
-            'type':3,
-            'limit':10,
-            #'startTime':'',
-            #'endTime':'',
-            'currentPage':current_page,
-            #'count':'',
+        data = {
+            'keyword': '',
+            'method': 1,
+            'type': 3,
+            'limit': 10,
+            # 'startTime':'',
+            # 'endTime':'',
+            'currentPage': current_page,
+            # 'count':'',
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         result = {}
         result['pagecount'] = a['pageCount']
-        for i in range(0,len(a['messageList'])):
+        for i in range(0, len(a['messageList'])):
             c = {}
             for key, value in a['messageList'][i].iteritems():
-                if isinstance(value,(unicode,)):
-                    c[key] = value 
+                if isinstance(value, (unicode,)):
+                    c[key] = value
                 else:
                     c[key] = unicode(value)
-            result[unicode(i)] = c      
+            result[unicode(i)] = c
         result = JsonResponse(result)
         # print result
         return result
+
 
 @csrf_exempt
 def getcampusactionbyid(request):
@@ -383,14 +397,15 @@ def getcampusactionbyid(request):
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusAction/GetCampusActionById'
         data = {
-            'actionId':action_id,
+            'actionId': action_id,
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         a['Summary'] = a['Summary'].replace("\r\n", "<BR />")
         a = JsonResponse(a)
         # print a
         return a
+
 
 @csrf_exempt
 def applyforcampusaction(request):
@@ -403,19 +418,20 @@ def applyforcampusaction(request):
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusAction/ApplyForCampusAction'
         data = {
-            'persNo':username,
-            'actionId':action_id,
-            'canYLY':reason,
-            'shouJ':phone,
-            'youX':mail,
+            'persNo': username,
+            'actionId': action_id,
+            'canYLY': reason,
+            'shouJ': phone,
+            'youX': mail,
         }
         # print data
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         # print message_list.content
         a = message_list.json()
         a = JsonResponse(a)
         # print a
         return a
+
 
 @csrf_exempt
 def getcampusmessagebyid(request):
@@ -424,13 +440,14 @@ def getcampusmessagebyid(request):
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusMessage/GetCampusMessageById'
         data = {
-            'msgId':msg_id,
+            'msgId': msg_id,
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         a = JsonResponse(a)
         # print a
         return a
+
 
 @csrf_exempt
 def getjwcmessagebyid(request):
@@ -439,9 +456,9 @@ def getjwcmessagebyid(request):
         base_url = 'http://api.shu.edu.cn/Mobile/'
         append_url = 'CampusMessage/GetJwcMessageById'
         data = {
-            'msgId':msg_id,
+            'msgId': msg_id,
         }
-        message_list = requests.post(base_url+append_url, data = data)
+        message_list = requests.post(base_url + append_url, data=data)
         a = message_list.json()
         a = JsonResponse(a)
         return a

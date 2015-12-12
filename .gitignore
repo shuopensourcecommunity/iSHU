@@ -3,3 +3,5 @@ build/
 fake/
 *.pyc
 venv/
+.idea/
+*.tar.gz
