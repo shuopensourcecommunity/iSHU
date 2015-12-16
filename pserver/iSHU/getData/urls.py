@@ -2,12 +2,12 @@
 from django.conf.urls import include, url
 
 from views import getxgbmessagelist,getjwcmessagelist,getgampusactionlist,applyforcampusaction
-from views import index,userlogin,postcampuscessagelist,getcampusactionbyid
+from views import index,user_login,postcampuscessagelist,getcampusactionbyid
 from views import getzhuanti,getshetuan,getzhaopin,getgongyi,getbisai,getjiangzuo
 from views import getjwcmessagebyid,getcampusmessagebyid
 urlpatterns = [
     url(r"^index/$",index),
-    url(r"^index/userlogin",userlogin),
+    url(r"^index/user_login", user_login),
     url(r"^index/postcampuscessagelist", postcampuscessagelist,name = 'postcampuscessagelist'),
     url(r"^index/getxgbmessagelist", getxgbmessagelist,name = 'getxgbmessagelist'),
     url(r"^index/getjwcmessagelist", getjwcmessagelist,name = 'getjwcmessagelist'),

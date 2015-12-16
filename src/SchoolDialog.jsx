@@ -39,7 +39,7 @@ var SchoolDialog= React.createClass({
       'pwd': this.state.pwd,
     };
     $.ajax({
-      url: 'userlogin',
+      url: 'user_login',
       dataType: 'json',
       method: 'post',
       data: data,

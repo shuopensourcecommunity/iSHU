@@ -44,7 +44,7 @@ const AppBar = React.createClass({
     };
     // console.log(data);
     $.ajax({
-      url: 'userlogin',
+      url: 'user_login',
       dataType: 'json',
       method: 'post',
       data: data,

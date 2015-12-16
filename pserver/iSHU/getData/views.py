@@ -20,7 +20,7 @@ def get_info(base_url, append_url, params):
 
 
 @csrf_exempt
-def userlogin(request):
+def user_login(request):
     if request.method == 'POST':
         user_number = request.POST['id']
         user_password = request.POST['pwd']
