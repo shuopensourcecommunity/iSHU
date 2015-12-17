@@ -82,7 +82,7 @@ var ActivityTable= React.createClass({
       let styles = {
         root: {
           padding: 16,
-          position: 'relative',
+          position: 'relative'
         },
         title: {
           fontSize: 18,
@@ -91,16 +91,16 @@ var ActivityTable= React.createClass({
           whiteSpace: 'nowrap',
           width: '93%',
           overflow: 'hidden',
-          textOverflow: 'ellipsis',
+          textOverflow: 'ellipsis'
         },
         title2 : {
           fontSize: 18,
           lineHeight: '24px',
-          width: '93%',
+          width: '93%'
         },
         subtitle: {
           fontSize: 14,
-          display: 'block',
+          display: 'block'
         },
       };
       var title_style = this.state.title_style? styles.title2:styles.title;
@@ -165,7 +165,7 @@ var SchoolActivity= React.createClass({
       content: {
         left: '0',
         right: '0',
-        position: 'absolute',
+        position: 'absolute'
       },
       tab:{
         width: (screen.width>'560')?'100%':'560px'
@@ -189,16 +189,16 @@ var SchoolActivity= React.createClass({
               <ActivityTable url='get_msg/club_action/' select={select=='3'?1:0}/>
             </Tab>
             <Tab label="招聘实习" onActive={this.zhaopin}>
-              <ActivityTable url='getzhaopin' select={select=='4'?1:0}/>
+              <ActivityTable url='get_msg/recruit_action/' select={select=='4'?1:0}/>
             </Tab>
             <Tab label="公益活动" onActive={this.gongyi}>
-              <ActivityTable url='getgongyi' select={select=='5'?1:0}/>
+              <ActivityTable url='get_msg/public_good_action/' select={select=='5'?1:0}/>
             </Tab>
             <Tab label="比赛活动" onActive={this.bisai}>
-              <ActivityTable url='getbisai' select={select=='6'?1:0}/>
+              <ActivityTable url='get_msg/competition_action/' select={select=='6'?1:0}/>
             </Tab>
             <Tab label="讲座报告" onActive={this.jiangzuo}>
-              <ActivityTable url='getjiangzuo' select={select=='7'?1:0}/>
+              <ActivityTable url='get_msg/lecture_action/' select={select=='7'?1:0}/>
             </Tab>
             {/*<Tab label="其它" value='h'>
                     <ActivityTable url='messages'/>

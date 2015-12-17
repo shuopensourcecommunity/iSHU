@@ -41,5 +41,36 @@
     "type": 3,
     "limit": 10,
     "currentPage": ""
+  },
+  "recruit_action": {
+    "keyword": "",
+    "method": 4,
+    "type": 3,
+    "limit": 10,
+    "currentPage": "",
+    "count":""
+  },
+  "public_good_action": {
+    "keyword": "",
+    "method": 3,
+    "type": 3,
+    "limit": 10,
+    "currentPage": "",
+    "count" :""
+  },
+  "competition_action": {
+    "keyword": "",
+    "method": 2,
+    "type": 3,
+    "limit": 10,
+    "currentPage": "",
+    "count": ""
+  },
+  "lecture_action": {
+    "keyword": "",
+    "method": 1,
+    "type": 3,
+    "limit": 10,
+    "currentPage": ""
   }
 }
