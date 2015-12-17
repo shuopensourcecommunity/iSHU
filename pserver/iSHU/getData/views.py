@@ -34,8 +34,9 @@ def user_login(request):
         # print content
         return content
 
-# [校园信息， 学工办， 教务处，活动, 专题活动， 社团活动， 招聘活动]
-SECTIONS = ['campus', 'xgb', 'jwc', 'action', 'club_action', 'special_action', 'recruit_action']
+# [校园信息， 学工办， 教务处，活动, 专题活动， 社团活动， 招聘活动, 公益活动， 竞赛活动， 讲座活动]
+SECTIONS = ['campus', 'xgb', 'jwc', 'action', 'club_action', 'special_action', 'recruit_action',
+            'public_good_action', 'competition_action', 'lecture_action']
 BASE_URL = 'http://api.shu.edu.cn/Mobile/'
 append_url = {
     'campus': 'CampusMessage/GetCampusMessageList/',
