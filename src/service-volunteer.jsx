@@ -48,7 +48,7 @@ var MessageTable= React.createClass({
   getInitialState: function() {
     var url;
     if (this.props.url == 'getjwcmessagelist') {url='getjwcmessagebyid';}
-    else if (this.props.url == 'postcampuscessagelist') {url='getcampusmessagebyid';};
+    else if (this.props.url == 'get_campus_msg_list') {url='getcampusmessagebyid';};
     return {
       messages: [],
       pagecount: 0,

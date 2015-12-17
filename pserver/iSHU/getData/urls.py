@@ -1,16 +1,19 @@
 #-*- encoding: utf-8 -*-
 from django.conf.urls import include, url
 
-from views import getxgbmessagelist,getjwcmessagelist,getgampusactionlist,applyforcampusaction
-from views import index,user_login,postcampuscessagelist,getcampusactionbyid
+from views import getgampusactionlist,applyforcampusaction
+from views import index,user_login,getcampusactionbyid
 from views import getzhuanti,getshetuan,getzhaopin,getgongyi,getbisai,getjiangzuo
 from views import getjwcmessagebyid,getcampusmessagebyid
+from views import get_msg_list
 urlpatterns = [
     url(r"^index/$",index),
     url(r"^index/user_login", user_login),
-    url(r"^index/postcampuscessagelist", postcampuscessagelist,name = 'postcampuscessagelist'),
-    url(r"^index/getxgbmessagelist", getxgbmessagelist,name = 'getxgbmessagelist'),
-    url(r"^index/getjwcmessagelist", getjwcmessagelist,name = 'getjwcmessagelist'),
+
+    # 校园咨询页面
+    url(r"^index/get_msg/(?P<section>campus)/$", get_msg_list, name ='get_campus_msg_list'),
+    url(r"^index/get_msg/(?P<section>xgb)/$", get_msg_list, name='get_xgb_msg_list'),
+    url(r"^index/get_msg/(?P<section>jwc)/", get_msg_list, name='get_jwc_msg_list'),
     #全部校园活动
     url(r"^index/getgampusactionlist", getgampusactionlist,name = 'getgampusactionlist'),
     #专题活动

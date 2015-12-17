@@ -1,0 +1,24 @@
+{
+  "campus": {
+    "keyword": "",
+    "type": 203,
+    "limit": 10,
+    "startTime": "",
+    "endTime": "",
+    "currentPage": ""
+  },
+  "xgb": {
+    "keyword": "",
+    "limit": 10,
+    "startTime": "",
+    "endTime": "",
+    "currentPage": ""
+  },
+  "jwc":{
+    "keyword": "",
+    "limit": 10,
+    "startTime": "",
+    "endTime": "",
+    "currentPage": ""
+  }
+}

@@ -1,22 +1,21 @@
 # -*- encoding: utf-8 -*-
-
 from django.shortcuts import render, loader
-from django.http import HttpResponse
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404, HttpResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
-# Create your views here.
+from django.views.decorators.http import require_http_methods
 import requests
+import time
+import json
+import os
+
+import pdb
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 @csrf_exempt
 def index(request):
     return render(request, "index.html")
-
-
-@csrf_exempt
-def get_info(base_url, append_url, params):
-    res = requests.post(base_url + append_url, data=params)
-    # print res.text
 
 
 @csrf_exempt
@@ -35,111 +34,53 @@ def user_login(request):
         # print content
         return content
 
-
-@csrf_exempt
-def postcampuscessagelist(request):
-    # print request.method
-    if request.method == "POST":
-        import time
-        current_page = request.POST['current_page']
-        # print current_page
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusMessage/GetCampusMessageList/'
-        starttime = '2010-01-01T00:00:00Z'
-        endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        # print current_page
-        data = {
-            'keyword': '',
-            'type': 203,
-            'limit': 10,
-            'startTime': starttime,
-            'endTime': endtime,
-            'currentPage': current_page,
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        result = {}
-        result['pagecount'] = a['pageCount']
-        for i in range(0, len(a['messagelist'])):
-            c = {}
-            for key, value in a['messagelist'][i].iteritems():
-                if isinstance(value, (unicode,)):
-                    c[key] = value
-                else:
-                    c[key] = unicode(value)
-            result[unicode(i)] = c
-        result = JsonResponse(result)
-        # print result
-        return result
+# [校园信息， 学工办， 教务处，活动]
+SECTIONS = ['campus', 'xgb', 'jwc', 'action', ]
+BASE_URL = 'http://api.shu.edu.cn/Mobile/CampusMessage/'
+append_url = {
+    'campus': 'GetCampusMessageList/',
+    'xgb':    'GetXgbMessageList',
+    'jwc':    'GetJwcMessageList',
+    'action': 'GetCampusActionList',
+}
 
 
-@csrf_exempt
-def getxgbmessagelist(request):
-    if request.method == "POST":
-        import time
-        current_page = request.POST['current_page']
-        # print current_page
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusMessage/GetXgbMessageList'
-        starttime = '2010-01-01T00:00:00Z'
-        endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = {
-            'keyword': '',
-            'limit': 10,
-            'startTime': starttime,
-            'endTime': endtime,
-            'currentPage': current_page,
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        result = {}
-        result['pagecount'] = a['pageCount']
-        for i in range(0, len(a['messagelist'])):
-            c = {}
-            for key, value in a['messagelist'][i].iteritems():
-                if isinstance(value, (unicode,)):
-                    c[key] = value
-                else:
-                    c[key] = unicode(value)
-            result[unicode(i)] = c
-        xgbresult = JsonResponse(result)
-        return xgbresult
+@require_http_methods(["POST"])
+def get_msg_list(request, section):
+    def generate_view():
+        with open(os.path.join(BASE_DIR, 'getData/section.json'), "r") as f:
+            sections = json.load(f)
+            if section in sections:
+                return sections[section]
+            else:
+                # TODO deal with the error
+                return {}
+
+    data = generate_view()
+    data['currentPage'] = request.POST['current_page']
+    data['startTime'] = '2010-01-01T00:00:00Z'# if data['startTime'] else data['startTime']
+    data['endTime'] = time.strftime('%Y-%m-%dT%H:%M:%SZ')# if data['endTime'] else data['endTime']
+
+    msg_res = requests.post(BASE_URL+append_url[section], data=data).json()
+    response = dict()
+    try:
+        response['pagecount'] = msg_res['pageCount']
+    except KeyError as e:
+        # TODO deal with the error
+        return HttpResponse('ok')
+    lens = len(msg_res['messagelist'])
+    for i in range(0, lens):
+        c = dict()
+        for key, value in msg_res['messagelist'][i].iteritems():
+            if isinstance(value, (unicode,)):
+                c[key] = value
+            else:
+                c[key] = unicode(value)
+        response[unicode(i)] = c
+    return JsonResponse(response)
 
 
-@csrf_exempt
-def getjwcmessagelist(request):
-    if request.method == "POST":
-        import time
-        current_page = request.POST['current_page']
-        # print current_page
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusMessage/GetJwcMessageList'
-        starttime = '2010-01-01T00:00:00Z'
-        endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = {
-            'keyword': '',
-            'limit': 10,
-            'startTime': starttime,
-            'endTime': endtime,
-            'currentPage': current_page,
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        result = {}
-        result['pagecount'] = a['pageCount']
-        for i in range(0, len(a['messagelist'])):
-            c = {}
-            for key, value in a['messagelist'][i].iteritems():
-                if isinstance(value, (unicode,)):
-                    c[key] = value
-                else:
-                    c[key] = unicode(value)
-            result[unicode(i)] = c
-        jwcresult = JsonResponse(result)
-        return jwcresult
 
-
-@csrf_exempt
 def getgampusactionlist(request):
     if request.method == "POST":
         import time
@@ -175,7 +116,7 @@ def getgampusactionlist(request):
         return result
 
 
-@csrf_exempt
+
 def getzhuanti(request):
     if request.method == "POST":
         import time
@@ -210,7 +151,6 @@ def getzhuanti(request):
         return result
 
 
-@csrf_exempt
 def getshetuan(request):
     if request.method == "POST":
         import time
@@ -245,7 +185,7 @@ def getshetuan(request):
         return result
 
 
-@csrf_exempt
+
 def getzhaopin(request):
     if request.method == "POST":
         import time
@@ -282,7 +222,7 @@ def getzhaopin(request):
         return result
 
 
-@csrf_exempt
+
 def getgongyi(request):
     if request.method == "POST":
         import time
@@ -318,7 +258,7 @@ def getgongyi(request):
         return result
 
 
-@csrf_exempt
+
 def getbisai(request):
     if request.method == "POST":
         import time
@@ -354,7 +294,7 @@ def getbisai(request):
         return result
 
 
-@csrf_exempt
+
 def getjiangzuo(request):
     if request.method == "POST":
         import time
@@ -390,7 +330,7 @@ def getjiangzuo(request):
         return result
 
 
-@csrf_exempt
+
 def getcampusactionbyid(request):
     if request.method == "POST":
         action_id = request.POST['action_id']
@@ -407,7 +347,7 @@ def getcampusactionbyid(request):
         return a
 
 
-@csrf_exempt
+
 def applyforcampusaction(request):
     if request.method == "POST":
         action_id = request.POST['action_id']
@@ -433,7 +373,6 @@ def applyforcampusaction(request):
         return a
 
 
-@csrf_exempt
 def getcampusmessagebyid(request):
     if request.method == "POST":
         msg_id = request.POST['msg_id']

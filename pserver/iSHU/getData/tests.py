@@ -12,3 +12,6 @@ class APITest(TestCase):
 
         '''
         pass
+
+    def test_get_xgb_msg_list(self):
+        response = self.client.get('/')

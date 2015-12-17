@@ -54,8 +54,8 @@ var MessageText= React.createClass({
 var MessageTable= React.createClass({
   getInitialState: function() {
     var url;
-    if (this.props.url == 'getjwcmessagelist') {url='getjwcmessagebyid';}
-    else if (this.props.url == 'postcampuscessagelist') {url='getcampusmessagebyid';};
+    if (this.props.url == 'get_msg/jwc/') {url='getjwcmessagebyid';}
+    else if (this.props.url == 'get_msg/campus/') {url='getcampusmessagebyid';};
     return {
       messages: [],
       pagecount: 0,
@@ -109,7 +109,8 @@ var MessageTable= React.createClass({
               current_page: this.state.current_page + 1,
               // current page is loaded, ready to load next page (currentPage+1)
             });
-            if (this.state.current_page >= this.state.pagecount) {this.setState({ hasMoreMessages:false });};
+            if (this.state.current_page >= this.state.pagecount) {this.setState({ hasMoreMessages:false });}
+
           }.bind(this),
           error: function(xhr, status, err) {
             console.error(this.props.url, status, err.toString());
@@ -195,13 +196,13 @@ var SchoolInfo= React.createClass({
         <AppBar title="校园资讯"/>
         <Tabs>
           <Tab label="上大新闻" onActive={this.campuscessage}>
-            <MessageTable url='postcampuscessagelist' select={select=='1'?1:0}/>
+            <MessageTable url='get_msg/campus/' select={select=='1'?1:0}/>
           </Tab>
           <Tab label="学生事务" onActive={this.xgbmessage}>
-            <MessageTable url='getxgbmessagelist' select={select=='2'?1:0}/>
+            <MessageTable url='get_msg/xgb/' select={select=='2'?1:0}/>
           </Tab>
           <Tab label="教务信息" onActive={this.jwcmessage}>
-            <MessageTable url='getjwcmessagelist' select={select=='3'?1:0}/>
+            <MessageTable url='get_msg/jwc/' select={select=='3'?1:0}/>
           </Tab>
         </Tabs>
       </div>
