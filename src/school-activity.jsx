@@ -40,11 +40,9 @@ var ActivityTable= React.createClass({
           method: 'post',
           data: data,
           success: function(data) {
-            // console.log(data);
             var t_message = this.state.messages;
             var t_pagecount = 0;
             for (var obj in data){
-              // console.log('loadQestionCard ' + obj);
               if(data[obj].ActionID == undefined){
                 if (obj < data.length-1)  {this.setState({ hasMoreMessages:false });}
                 break;
@@ -182,13 +180,13 @@ var SchoolActivity= React.createClass({
             tabItemContainerStyle={styles.tab}
             contentContainerStyle={styles.content}>
             <Tab label="全部" onActive={this.campuscessage}>
-              <ActivityTable url='getgampusactionlist' select={select=='1'?1:0}/>
+              <ActivityTable url='get_msg/action/' select={select=='1'?1:0}/>
             </Tab>
             <Tab label="专题活动" onActive={this.zhuanti}>
-              <ActivityTable url='getzhuanti' select={select=='2'?1:0}/>
+              <ActivityTable url='get_msg/special_action/' select={select=='2'?1:0}/>
             </Tab>
             <Tab label="社团活动" onActive={this.shetuan}>
-              <ActivityTable url='getshetuan' select={select=='3'?1:0}/>
+              <ActivityTable url='get_msg/club_action/' select={select=='3'?1:0}/>
             </Tab>
             <Tab label="招聘实习" onActive={this.zhaopin}>
               <ActivityTable url='getzhaopin' select={select=='4'?1:0}/>

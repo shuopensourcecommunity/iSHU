@@ -36,17 +36,20 @@ def user_login(request):
 
 # [校园信息， 学工办， 教务处，活动]
 SECTIONS = ['campus', 'xgb', 'jwc', 'action', ]
-BASE_URL = 'http://api.shu.edu.cn/Mobile/CampusMessage/'
+BASE_URL = 'http://api.shu.edu.cn/Mobile/'
 append_url = {
-    'campus': 'GetCampusMessageList/',
-    'xgb':    'GetXgbMessageList',
-    'jwc':    'GetJwcMessageList',
-    'action': 'GetCampusActionList',
+    'campus': 'CampusMessage/GetCampusMessageList/',
+    'xgb':    'CampusMessage/GetXgbMessageList/',
+    'jwc':    'CampusMessage/GetJwcMessageList/',
+    'action': 'CampusAction/GetCampusActionList/',
+    'club_action':   'CampusAction/GetCampusActionList',
+    'special_action': 'CampusAction/GetCampusActionList'
 }
 
 
 @require_http_methods(["POST"])
 def get_msg_list(request, section):
+
     def generate_view():
         with open(os.path.join(BASE_DIR, 'getData/section.json'), "r") as f:
             sections = json.load(f)
@@ -57,9 +60,13 @@ def get_msg_list(request, section):
                 return {}
 
     data = generate_view()
-    data['currentPage'] = request.POST['current_page']
-    data['startTime'] = '2010-01-01T00:00:00Z'# if data['startTime'] else data['startTime']
-    data['endTime'] = time.strftime('%Y-%m-%dT%H:%M:%SZ')# if data['endTime'] else data['endTime']
+    data['currentPage'] = request.POST.get('current_page', 1)
+
+    # TODO strange datetime
+    if data.has_key('startTime'):
+        data['startTime'] = '2010-01-01T00:00:00Z'# if data['startTime'] else data['startTime']
+    if data.has_key('endTime'):
+        data['endTime'] = time.strftime('%Y-%m-%dT%H:%M:%SZ')# if data['endTime'] else data['endTime']
 
     msg_res = requests.post(BASE_URL+append_url[section], data=data).json()
     response = dict()
@@ -68,122 +75,22 @@ def get_msg_list(request, section):
     except KeyError as e:
         # TODO deal with the error
         return HttpResponse('ok')
-    lens = len(msg_res['messagelist'])
+
+    # TODO ugly code
+    if msg_res.has_key('messagelist'):
+        msg_list = msg_res['messagelist']
+    else:
+        msg_list = msg_res['messageList']
+    lens = len(msg_list)
     for i in range(0, lens):
         c = dict()
-        for key, value in msg_res['messagelist'][i].iteritems():
+        for key, value in msg_list[i].iteritems():
             if isinstance(value, (unicode,)):
                 c[key] = value
             else:
                 c[key] = unicode(value)
         response[unicode(i)] = c
     return JsonResponse(response)
-
-
-
-def getgampusactionlist(request):
-    if request.method == "POST":
-        import time
-        current_page = request.POST['current_page']
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusAction/GetCampusActionList'
-        starttime = '2010-01-01T00:00:00Z'
-        endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = {
-            'keyword': '',
-            'method': 99,
-            'type': 3,
-            'limit': 10,
-            # 'startTime':'',
-            # 'endTime':'',
-            'currentPage': current_page,
-            # 'count':'',
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        # print a
-        result = {}
-        result['pagecount'] = a['pageCount']
-        for i in range(0, len(a['messageList'])):
-            c = {}
-            for key, value in a['messageList'][i].iteritems():
-                if isinstance(value, (unicode,)):
-                    c[key] = value
-                else:
-                    c[key] = unicode(value)
-            result[unicode(i)] = c
-        result = JsonResponse(result)
-        return result
-
-
-
-def getzhuanti(request):
-    if request.method == "POST":
-        import time
-        current_page = request.POST['current_page']
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusAction/GetCampusActionList'
-        starttime = '2010-01-01T00:00:00Z'
-        endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = {
-            'keyword': '',
-            'method': 6,
-            'type': 3,
-            'limit': 10,
-            # 'startTime':'',
-            # 'endTime':'',
-            'currentPage': current_page,
-            # 'count':'',
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        result = {}
-        result['pagecount'] = a['pageCount']
-        for i in range(0, len(a['messageList'])):
-            c = {}
-            for key, value in a['messageList'][i].iteritems():
-                if isinstance(value, (unicode,)):
-                    c[key] = value
-                else:
-                    c[key] = unicode(value)
-            result[unicode(i)] = c
-        result = JsonResponse(result)
-        return result
-
-
-def getshetuan(request):
-    if request.method == "POST":
-        import time
-        current_page = request.POST['current_page']
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusAction/GetCampusActionList'
-        starttime = '2010-01-01T00:00:00Z'
-        endtime = time.strftime('%Y-%m-%dT%H:%M:%SZ')
-        data = {
-            'keyword': '',
-            'method': 5,
-            'type': 3,
-            'limit': 10,
-            # 'startTime':'',
-            # 'endTime':'',
-            'currentPage': current_page,
-            # 'count':'',
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        result = {}
-        result['pagecount'] = a['pageCount']
-        for i in range(0, len(a['messageList'])):
-            c = {}
-            for key, value in a['messageList'][i].iteritems():
-                if isinstance(value, (unicode,)):
-                    c[key] = value
-                else:
-                    c[key] = unicode(value)
-            result[unicode(i)] = c
-        result = JsonResponse(result)
-        return result
-
 
 
 def getzhaopin(request):

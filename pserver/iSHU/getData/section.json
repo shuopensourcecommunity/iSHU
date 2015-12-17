@@ -20,5 +20,26 @@
     "startTime": "",
     "endTime": "",
     "currentPage": ""
+  },
+  "action":{
+    "keyword": "",
+    "method": 99,
+    "type": 3,
+    "limit": 10,
+    "currentPage": ""
+  },
+  "club_action": {
+    "keyword": "",
+    "method": 5,
+    "type": 3,
+    "limit": 10,
+    "currentPage": ""
+  },
+  "special_action": {
+    "keyword": "",
+    "method": 6,
+    "type": 3,
+    "limit": 10,
+    "currentPage": ""
   }
 }
