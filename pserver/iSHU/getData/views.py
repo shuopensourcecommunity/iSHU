@@ -1,24 +1,22 @@
 # -*- encoding: utf-8 -*-
-from django.shortcuts import render, loader
+from django.shortcuts import render, loader, RequestContext
 from django.http import JsonResponse, Http404, HttpResponse
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.views.decorators.csrf import csrf_protect, csrf_exempt, ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
 import requests
 import time
 import json
 import os
 
-import pdb
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-@csrf_exempt
+@ensure_csrf_cookie
 def index(request):
     return render(request, "index.html")
 
 
-@csrf_exempt
 def user_login(request):
     if request.method == 'POST':
         user_number = request.POST['id']

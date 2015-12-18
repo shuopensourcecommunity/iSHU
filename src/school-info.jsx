@@ -9,6 +9,7 @@ injectTapEventPlugin();
 var {render} = require('react-dom');
 var InfiniteScroll = require('react-infinite-scroll')(React);
 
+
 var MessageText= React.createClass({
   getInitialState: function() {
     return {
@@ -18,6 +19,7 @@ var MessageText= React.createClass({
   },
   loadMessageFromServer: function() {
     var data={msg_id: this.props.MsgID};
+
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -78,6 +80,8 @@ var MessageTable= React.createClass({
       };
       setTimeout(function() {
         // add data
+
+
         $.ajax({
           url: this.props.url,
           dataType: 'json',

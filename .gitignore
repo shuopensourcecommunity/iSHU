@@ -6,3 +6,4 @@ venv/
 .idea/
 *.tar.gz
 server.config
+tmp
