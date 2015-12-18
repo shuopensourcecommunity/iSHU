@@ -20,8 +20,8 @@ const AppBar = React.createClass({
     return { title: '上海大学' };
   },
   getInitialState: function(){
-    return { 
-      AppBarTitle: '上海大学',
+    return {
+      //AppBarTitle: '上海大学',
       showDialogActions: false,
       autoHideDuration: 5000,
       id: '13121312',
@@ -32,7 +32,7 @@ const AppBar = React.createClass({
     }
   },
   componentDidMount: function(){
-    this.setState({AppBarTitle: this.props.title});
+    //this.setState({AppBarTitle: this.props.title});
   },
   _handleLogin: function(){
     this.setState({status: '请稍等，信息正在空中飞翔。。。'});
@@ -89,7 +89,7 @@ const AppBar = React.createClass({
       this.setState({logStatus: "登出"});
       this.setState({showDialogActions: true});
       console.log("321");
-    }  
+    }
   },
   logStatus: function() {
     return (
@@ -119,10 +119,13 @@ const AppBar = React.createClass({
         // position: 'absolute'
       }
     };
+    let title = (this.props.title=="上海大学")
+      ? <img className="logo-text" src="/static/style/imgs/shu-logo-white-text.png" />
+      : this.props.title;
     return (
       <div ref="myAppBarMenu">
         <AppBarComponent
-          title={this.state.AppBarTitle}
+          title={title}
           showMenuIconButton={true}
           iconElementLeft={
             <Link to="/">

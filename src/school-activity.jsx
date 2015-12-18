@@ -75,6 +75,9 @@ var ActivityTable= React.createClass({
   cardOnClick: function() {
     this.setState({title_style: !this.state.title_style});
   },
+  componentDidMount: function() {
+    this.loadMessageFromServer();
+  },
   render: function() {
     var messageNodes = this.state.messages.map(function (message) {
       let subtitle=message.Auth+" "

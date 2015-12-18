@@ -22,3 +22,7 @@ a {
 .center {
   text-align: center;
 }
+.logo-text {
+  height: 30px;
+  padding-top: 13px;
+}
