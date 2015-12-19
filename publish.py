@@ -23,7 +23,7 @@ def push():
         put('build/*','./build')
         put('style/*', './style')
         put('public/*','./public')
-        put('pserver/*','./pserver')
+        put('pserver/iSHU/*','./pserver/iSHU')
         put('./index.html','./index.html')
 
 
