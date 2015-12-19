@@ -7,13 +7,16 @@ let mui = require('material-ui');
 let AppBarComponent = mui.AppBar;
 let MenuItem = require('material-ui/lib/menus/menu-item');
 let MenuDivider = require('material-ui/lib/menus/menu-divider');
-var { Card, CardTitle, CardText, CardActions, CircularProgress,
+const { Card, CardTitle, CardText, CardActions, CircularProgress,
       Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField} = require('material-ui');
-let Colors = require('../public/mui/colors.js');
-let ActionHome = require('../public/mui/svg-icons/action-home.jsx');
-let MoreVertIcon = require('../public/mui/svg-icons/more-vert.jsx');
-let {IconButton, IconMenu, Menu}= require('material-ui');
-let {Link, RouteHandler} = require('react-router');
+const Colors = require('../public/mui/colors.js');
+const ActionHome = require('../public/mui/svg-icons/action-home.jsx');
+const MoreVertIcon = require('../public/mui/svg-icons/more-vert.jsx');
+const {IconButton, IconMenu, Menu}= require('material-ui');
+const {Link, RouteHandler} = require('react-router');
+const List = require('material-ui/lib/lists/list');
+const ListDivider = require('material-ui/lib/lists/list-divider');
+const ListItem = require('material-ui/lib/lists/list-item');
 
 const AppBar = React.createClass({
   getDefaultProps: function(){
@@ -28,7 +31,15 @@ const AppBar = React.createClass({
       pwd: '',
       status: '请稍等，信息正在空中飞翔。。。',
       realname: '',
-      logStatus: cookie.load('username')?"登出":"登录"
+      logStatus: cookie.load('username')?"登出":"登录",
+      homeData: [
+        { title: "校园资讯", img: "/static/style/imgs/school-info.png", linkto: "#info" },
+        { title: "校园活动", img: "/static/style/imgs/school-activity.png", linkto: "#activity" },
+        { title: "校园查询", img: "/static/style/imgs/school-query.png", linkto: "#query" },
+        { title: "校园服务", img: "/static/style/imgs/school-service.png", linkto: "#service" },
+        { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png", linkto: "#askbar"},
+        { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "#student"},
+      ]
     }
   },
   componentDidMount: function(){
@@ -134,35 +145,48 @@ const AppBar = React.createClass({
               </IconButton>
             </Link>}
           iconElementRight={
-            <IconMenu iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }>
+            <IconMenu
+              iconButtonElement={ 
+                <IconButton>
+                  <MoreVertIcon />
+                </IconButton> }>
+              {
+                this.state.homeData.map(home =>
+                  <MenuItem primaryText={home.title} href={home.linkto}/>
+                )
+              }
+              <MenuDivider />
               <this.logStatus />
             </IconMenu>} />
-            <Dialog
-            ref="login"
-            title="登录"
-            actions={customActions}
-            open={this.state.showDialogActions}
-            autoDetectWindowHeight={true}
-            autoScrollBodyContent={true}
-            onRequestClose={this._handleRequestClose}
-            contentStyle={styles.content}
-            style={styles.main}>
-            <div className="index">
-        <TextField className="text-field"
-          floatingLabelText="学  号" type='id' onChange={this.idHandleChange}/>
-        <br></br>
-        <TextField className="text-field"
-          floatingLabelText="密  码"
-          type = "password" onChange={this.pwdHandleChange}/>
+        <Dialog
+          ref="login"
+          title="登录"
+          actions={customActions}
+          open={this.state.showDialogActions}
+          autoDetectWindowHeight={true}
+          autoScrollBodyContent={true}
+          onRequestClose={this._handleRequestClose}
+          contentStyle={styles.content}
+          style={styles.main}>
+          <div className="index">
+            <TextField className="text-field"
+              floatingLabelText="学  号" 
+              type='id' 
+              onChange={this.idHandleChange}/>
+            <br></br>
+            <TextField className="text-field"
+              floatingLabelText="密  码"
+              type = "password" 
+              onChange={this.pwdHandleChange} />
+          </div>
+        </Dialog>
+        <Snackbar
+          ref="success"
+          message={this.state.status}
+          action="关闭"
+          autoHideDuration={this.state.autoHideDuration}
+          onActionTouchTap={this._handleAction}/>
       </div>
-          </Dialog>
-          <Snackbar
-            ref="success"
-            message={this.state.status}
-            action="关闭"
-            autoHideDuration={this.state.autoHideDuration}
-            onActionTouchTap={this._handleAction}/>
-            </div>
     )
   }
 });
