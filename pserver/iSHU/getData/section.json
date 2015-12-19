@@ -69,5 +69,8 @@
     "type": 3,
     "limit": 10,
     "currentPage": ""
+  },
+  "getcampusmessagebyid": {
+    "msgId": ""
   }
 }

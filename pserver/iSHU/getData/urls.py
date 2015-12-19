@@ -26,7 +26,9 @@ urlpatterns = [
     #报名,需要action_id,cookie,reasion,phone,mail
     url(r'^index/applyforcampusaction',applyforcampusaction, name = 'applyforcampusaction'),
     #校园咨询
-    url(r'^index/getcampusmessagebyid',getcampusmessagebyid,name = 'getcampusmessagebyid'),
+    #url(r'^index/getcampusmessagebyid',getcampusmessagebyid,name = 'getcampusmessagebyid'),
     #jwc
     url(r'^index/getjwcmessagebyid',getjwcmessagebyid,name = 'getjwcmessagebyid'),
+    #
+    url(r'^index/(?P<section>getcampusmessagebyid)$',get_msg_list,name = 'getcampusmessagebyid'),
 ]

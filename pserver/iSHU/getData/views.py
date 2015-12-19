@@ -7,6 +7,7 @@ import requests
 import time
 import json
 import os
+import pdb
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,7 +35,7 @@ def user_login(request):
 
 # [校园信息， 学工办， 教务处，活动, 专题活动， 社团活动， 招聘活动, 公益活动， 竞赛活动， 讲座活动]
 SECTIONS = ['campus', 'xgb', 'jwc', 'action', 'club_action', 'special_action', 'recruit_action',
-            'public_good_action', 'competition_action', 'lecture_action']
+            'public_good_action', 'competition_action', 'lecture_action','getcampusmessagebyid']
 BASE_URL = 'http://api.shu.edu.cn/Mobile/'
 append_url = {
     'campus': 'CampusMessage/GetCampusMessageList/',
@@ -46,13 +47,16 @@ append_url = {
     'recruit_action': 'CampusAction/GetCampusActionList',
     'public_good_action': 'CampusAction/GetCampusActionList',
     'competition_action': 'CampusAction/GetCampusActionList',
-    'lecture_action':     'CampusAction/GetCampusActionList'
+    'lecture_action':     'CampusAction/GetCampusActionList',
+
+    'getcampusmessagebyid': 'CampusMessage/GetCampusMessageById',
+
 }
 
 
 @require_http_methods(["POST"])
 def get_msg_list(request, section):
-
+    
     def generate_view():
         with open(os.path.join(BASE_DIR, 'getData/section.json'), "r") as f:
             sections = json.load(f)
@@ -63,13 +67,18 @@ def get_msg_list(request, section):
                 return {}
 
     data = generate_view()
-    data['currentPage'] = request.POST.get('current_page', 1)
 
+    if data.has_key('currentPage'):
+        data['currentPage'] = request.POST.get('current_page', 1)
+    print data.has_key('msgId')
+    if data.has_key('msgId'):
+       data['msgId'] = request.POST.get('msg_id')
     # TODO strange datetime
     if data.has_key('startTime'):
         data['startTime'] = '2010-01-01T00:00:00Z'# if data['startTime'] else data['startTime']
     if data.has_key('endTime'):
         data['endTime'] = time.strftime('%Y-%m-%dT%H:%M:%SZ')# if data['endTime'] else data['endTime']
+
 
     msg_res = requests.post(BASE_URL+append_url[section], data=data).json()
     response = dict()
@@ -80,20 +89,27 @@ def get_msg_list(request, section):
         return HttpResponse('ok')
 
     # TODO ugly code
-    if msg_res.has_key('messagelist'):
-        msg_list = msg_res['messagelist']
+    if msg_res.has_key('messagelist') or msg_res.has_key('messageList'):
+        if msg_res.has_key('messagelist'):
+            msg_list = msg_res['messagelist']
+        else:
+            msg_list = msg_res['messageList']
+        lens = len(msg_list)
+        for i in range(0, lens):
+            c = dict()
+            for key, value in msg_list[i].iteritems():
+                if isinstance(value, (unicode,)):
+                    c[key] = value
+                else:
+                    c[key] = unicode(value)
+            response[unicode(i)] = c
+        return JsonResponse(response)
     else:
-        msg_list = msg_res['messageList']
-    lens = len(msg_list)
-    for i in range(0, lens):
-        c = dict()
-        for key, value in msg_list[i].iteritems():
-            if isinstance(value, (unicode,)):
-                c[key] = value
-            else:
-                c[key] = unicode(value)
-        response[unicode(i)] = c
-    return JsonResponse(response)
+        print msg_res
+        response = msg_res.json()
+        return JsonResponse(response)
+        
+
 
 
 def getcampusactionbyid(request):
