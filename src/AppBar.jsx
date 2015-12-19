@@ -24,8 +24,8 @@ const AppBar = React.createClass({
       //AppBarTitle: '上海大学',
       showDialogActions: false,
       autoHideDuration: 5000,
-      id: '13121312',
-      pwd: 'J123123dandi',
+      id: '',
+      pwd: '',
       status: '请稍等，信息正在空中飞翔。。。',
       realname: '',
       logStatus: cookie.load('username')?"登出":"登录"

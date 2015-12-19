@@ -1,10 +1,13 @@
 var webpack = require('webpack');
 var path = require('path');
 module.exports ={
-    entry: path.resolve(__dirname,'src/entry.jsx'),
+    entry: {
+        ishu: './src/entry.jsx',
+        shu_ask: './shu_ask/scripts/main.js'
+    },
     output: {
-        path: path.resolve(__dirname, 'build'),
-        filename: "bundle.js"
+        path: path.join(__dirname, 'build'),
+        filename: "[name]bundle.js"
     },
     module: {
         loaders: [

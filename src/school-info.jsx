@@ -59,12 +59,7 @@ var MessageTable= React.createClass({
     return {
       messages: [],
       pagecount: 0,
-      keyword: 1,
-      type: 203,
-      limit: 10,
       current_page: 1,
-      startTime: "10:01",
-      endTime: "12:01",
       hasMoreMessages: true,
       url: url,
       title_style: false
