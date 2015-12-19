@@ -1,6 +1,6 @@
 'use strict'
-require("../style/css/Activity.css");
-require("../style/css/Signup.css");
+require("../style/css/ishu/Activity.css");
+require("../style/css/ishu/Signup.css");
 var React = require("react");
 var cookie = require('react-cookie');
 var { Card, CardTitle, CardText, CardActions, CircularProgress,

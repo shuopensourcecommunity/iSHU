@@ -1,0 +1,98 @@
+.title{
+	margin: 20px;
+}
+.titleinput{
+	margin: 10px;
+	padding: 6px;
+	font-size: 15px;
+	width: 75%;
+}
+.textinput{
+	height: 50%;
+	width: 100%;
+	padding: 10px;
+}
+.col{
+	width: 40%;
+	margin-left: 20px;
+}
+.price-input-box{
+	width: 60%;
+}
+.btnn{
+	margin-top: 20px;
+}
+.btn{
+	text-align: center;
+	vertical-align: middle;
+	color: #00838F;
+	background-color: transparent;
+}
+.btn:hover,
+.btn:focus,
+.btn.focus {
+  color: #333;
+  text-decoration: none;		
+}
+.btn-defult{
+	color: #666;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #0097A7;
+  border-color: #0097A7;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+	  color: #fff;
+  background-color: #006064;
+  border-color: #006064;
+}
+.btn-primary:hover {
+	  color: #fff;
+	background-color: #00838F;
+  	border-color: #00838F;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+	  color: #fff;
+  background-color: #006064;
+  border-color: #006064;
+}
+.btn-lg,
+.btn-group-lg > .btn {
+  float: right;
+  height: 36px;
+  width: 64px;
+  margin: 5px;
+  padding: 6px 8px;
+  border-radius: 2px;
+  line-height: 1.3333333;
+}
+.btn-block{
+	width: auto;
+}
+.navbar-brand {
+  height: 56px;
+  padding: 20px 18px;
+}
+.navbar-toggle {
+  float: left;
+  padding: 9px 16px;
+  margin-top: 13px;
+  margin-bottom: px;
+  border: 0 solid transparent;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  background-color: #006064;
+  border-color: #006064;
+}

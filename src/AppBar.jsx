@@ -1,5 +1,5 @@
 'use strict'
-require("../style/css/main.css");
+require("../style/css/ishu/main.css");
 let React = require('react');
 let cookie = require('react-cookie');
 let {render} = require('react-dom');
