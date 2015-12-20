@@ -72,5 +72,11 @@
   },
   "getcampusmessagebyid": {
     "msgId": ""
+  },
+  "getjwcmessagebyid": {
+    "msgId": ""
+  },
+  "getxgbmessagebyid": {
+    "msgId": ""
   }
 }
