@@ -3,8 +3,8 @@ from django.conf.urls import include, url
 
 from views import applyforcampusaction
 from views import index,user_login,getcampusactionbyid
-from views import getjwcmessagebyid,getcampusmessagebyid
 from views import get_msg_list
+
 urlpatterns = [
     url(r"^$",index),
     url(r"^user_login", user_login),
@@ -25,8 +25,9 @@ urlpatterns = [
     url(r'^getcampusactionbyid',getcampusactionbyid,name = 'getcampusactionbyid'),
     #报名,需要action_id,cookie,reasion,phone,mail
     url(r'^applyforcampusaction',applyforcampusaction, name = 'applyforcampusaction'),
-    #校园咨询
-    url(r'^getcampusmessagebyid',getcampusmessagebyid,name = 'getcampusmessagebyid'),
-    #jwc
-    url(r'^getjwcmessagebyid',getjwcmessagebyid,name = 'getjwcmessagebyid'),
+    #jwc,campus
+    url(r'^(?P<section>getcampusmessagebyid)$',get_msg_list,name = 'getcampusmessagebyid'),
+    url(r'^(?P<section>getjwcmessagebyid)$',get_msg_list,name = 'getjwcmessagebyid'),
+    url(r'^(?P<section>getxgbmessagebyid)$',get_msg_list,name = 'getxgbmessagebyid'),
+
 ]

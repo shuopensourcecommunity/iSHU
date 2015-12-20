@@ -69,5 +69,14 @@
     "type": 3,
     "limit": 10,
     "currentPage": ""
+  },
+  "getcampusmessagebyid": {
+    "msgId": ""
+  },
+  "getjwcmessagebyid": {
+    "msgId": ""
+  },
+  "getxgbmessagebyid": {
+    "msgId": ""
   }
 }

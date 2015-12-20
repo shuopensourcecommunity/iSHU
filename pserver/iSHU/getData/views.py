@@ -7,6 +7,7 @@ import requests
 import time
 import json
 import os
+import pdb
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,7 +35,7 @@ def user_login(request):
 
 # [校园信息， 学工办， 教务处，活动, 专题活动， 社团活动， 招聘活动, 公益活动， 竞赛活动， 讲座活动]
 SECTIONS = ['campus', 'xgb', 'jwc', 'action', 'club_action', 'special_action', 'recruit_action',
-            'public_good_action', 'competition_action', 'lecture_action']
+            'public_good_action', 'competition_action', 'lecture_action','getcampusmessagebyid',]
 BASE_URL = 'http://api.shu.edu.cn/Mobile/'
 append_url = {
     'campus': 'CampusMessage/GetCampusMessageList/',
@@ -46,13 +47,18 @@ append_url = {
     'recruit_action': 'CampusAction/GetCampusActionList',
     'public_good_action': 'CampusAction/GetCampusActionList',
     'competition_action': 'CampusAction/GetCampusActionList',
-    'lecture_action':     'CampusAction/GetCampusActionList'
+    'lecture_action':     'CampusAction/GetCampusActionList',
+
+    'getcampusmessagebyid': 'CampusMessage/GetCampusMessageById',
+    'getjwcmessagebyid':    'CampusMessage/GetJwcMessageById',
+    'getxgbmessagebyid':    'CampusMessage/GetXgbCampusMessageById'
+
 }
 
 
 @require_http_methods(["POST"])
 def get_msg_list(request, section):
-
+    
     def generate_view():
         with open(os.path.join(BASE_DIR, 'getData/section.json'), "r") as f:
             sections = json.load(f)
@@ -63,15 +69,24 @@ def get_msg_list(request, section):
                 return {}
 
     data = generate_view()
-    data['currentPage'] = request.POST.get('current_page', 1)
 
+    if data.has_key('currentPage'):
+        data['currentPage'] = request.POST.get('current_page', 1)
+    print data.has_key('msgId')
+    if data.has_key('msgId'):
+       data['msgId'] = request.POST.get('msg_id')
     # TODO strange datetime
     if data.has_key('startTime'):
         data['startTime'] = '2010-01-01T00:00:00Z'# if data['startTime'] else data['startTime']
     if data.has_key('endTime'):
         data['endTime'] = time.strftime('%Y-%m-%dT%H:%M:%SZ')# if data['endTime'] else data['endTime']
 
+    if section in ['getcampusmessagebyid','getjwcmessagebyid','getxgbmessagebyid']:
+        message_list = requests.post(BASE_URL+append_url[section], data=data).json()
+        return JsonResponse(message_list)        
+
     msg_res = requests.post(BASE_URL+append_url[section], data=data).json()
+
     response = dict()
     try:
         response['pagecount'] = msg_res['pageCount']
@@ -96,6 +111,7 @@ def get_msg_list(request, section):
     return JsonResponse(response)
 
 
+
 def getcampusactionbyid(request):
     if request.method == "POST":
         action_id = request.POST['action_id']
@@ -110,7 +126,6 @@ def getcampusactionbyid(request):
         a = JsonResponse(a)
         # print a
         return a
-
 
 
 def applyforcampusaction(request):
@@ -135,34 +150,4 @@ def applyforcampusaction(request):
         a = message_list.json()
         a = JsonResponse(a)
         # print a
-        return a
-
-
-def getcampusmessagebyid(request):
-    if request.method == "POST":
-        msg_id = request.POST['msg_id']
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusMessage/GetCampusMessageById'
-        data = {
-            'msgId': msg_id,
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        a = JsonResponse(a)
-        # print a
-        return a
-
-
-@csrf_exempt
-def getjwcmessagebyid(request):
-    if request.method == "POST":
-        msg_id = request.POST['msg_id']
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusMessage/GetJwcMessageById'
-        data = {
-            'msgId': msg_id,
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        a = JsonResponse(a)
         return a

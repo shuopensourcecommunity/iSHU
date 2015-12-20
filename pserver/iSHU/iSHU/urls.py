@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from getData import urls as getData_urls
+from askbar import urls as askbar_urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^ishu/', include(getData_urls))
+    url(r'^ishu/', include(getData_urls)),
+    url(r'^askbar/', include(askbar_urls))
 ]
