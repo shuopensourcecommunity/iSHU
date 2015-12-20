@@ -43,11 +43,11 @@ var MessageText= React.createClass({
   },
   render: function() {
     return (
-      <InfiniteScroll className='activity-tabs'
+      <InfiniteScroll
         loadMore={this.loadMessageFromServer}
         hasMore={this.state.hasMoreMessages}
         loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
-        <div dangerouslySetInnerHTML={{__html: this.state.messageText}} />
+        <div className='activity-tabs'><div dangerouslySetInnerHTML={{__html: this.state.messageText}} /></div>
       </InfiniteScroll>
     );
   }
