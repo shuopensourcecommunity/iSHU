@@ -1,5 +1,5 @@
 'use strict'
-require("../style/css/Info.css");
+require("../style/css/ishu/Info.css");
 var React = require("react");
 var cookie = require('react-cookie');
 let {Card, CardTitle, CardText, CardHeader, CardActions, CircularProgress, Tabs, Tab } = require('material-ui');

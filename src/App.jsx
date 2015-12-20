@@ -1,9 +1,9 @@
 'use strict'
 
+require("../style/css/ishu/Home.css");
 var React = require('react');
 var cookie = require('react-cookie');
 var AppBar = require('./AppBar.jsx');
-require("../style/css/Home.css");
 const GridList = require('material-ui/lib/grid-list/grid-list');
 const GridTile = require('material-ui/lib/grid-list/grid-tile');
 let {Link, RouteHandler} = require('react-router');
@@ -46,7 +46,7 @@ let HomeGrid = React.createClass({
         { title: "校园活动", img: "/static/style/imgs/school-activity.png", linkto: "/activity" },
         { title: "校园查询", img: "/static/style/imgs/school-query.png", linkto: "/query" },
         { title: "校园服务", img: "/static/style/imgs/school-service.png", linkto: "/service" },
-        { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png" },
+        { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png", linkto: "/askbar"},
         { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "/student"},
       ]
     };
