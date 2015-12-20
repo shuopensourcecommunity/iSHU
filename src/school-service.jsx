@@ -1,5 +1,5 @@
 'use strict'
-require("../style/css/main.css");
+require("../style/css/ishu/main.css");
 var React = require("react");
 var cookie = require('react-cookie');
 const Mui = require('material-ui');
