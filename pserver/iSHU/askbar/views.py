@@ -4,51 +4,49 @@ from django.http import JsonResponse, Http404, HttpResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt, ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
 import requests
-import time
-import json
-import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-SECTIONS = ['Categories', 'AskList', 'Question']
-
-urls = {
-    'Categories': 'http://api.shu.edu.cn/Mobile/Lehu/Categories',
-    'AskList': 'http://api.shu.edu.cn/Mobile/Lehu/AskList',
-    'Qusetion': 'http://api.shu.edu.cn/Mobile/Lehu/Question',
-}
 
 
-@require_http_methods(["GET"])
-def get_info(request, section):
-    def generate_view():
-        with open(os.path.join(BASE_DIR, 'askbar/section.json'), "r") as f:
-            sections = json.load(f)
-            if section in sections:
-                return sections[section]
-            else:
-                # TODO deal with the error
-                return {}
+@ensure_csrf_cookie
+@require_http_methods('GET')
+def index(request):
+    return render(request, '')
 
-    data = generate_view()
-    if data.has_key('questionId'):
-        date['questionId'] = request.GET.get('questionId')
-    if data.has_key('cid'):
-        date['cid'] = request.GET.get('cid')
-    if data.has_key('page'):
-        date['page'] = request.GET.get('page')
+@require_http_methods(['GET'])
+def get_categories(request):
+    """
+    Args:
+        request:
 
-        msg_res = requests.get(urls[section], data=data).json()
-        if msg_res.has_key('Data'):
-            msg_list = msg_res['Data']
-
-        response = dict()
-        for i in range(0, len(msg_list)):
-            c = dict()
-            for key, value in msg_list[i].iteritems():
-                if isinstance(value, (unicode,)):
-                    c[key] = value
-                else:
-                    c[key] = unicode(value)
-            response[unicode(i + 1)] = c
-        return JsonResponse(response)
+    Returns:
+        if success to get Data, return JsonResponse
+        {
+            "State": "success",
+            "Msg": "",
+            "Data": [
+             '0': {
+                "id": 36440,
+                "title": "求购上大土木系结构力学历年考题",
+                "price": 0,
+                "content": "<p>各位大哥大姐&nbsp; 我想问一下有没上大结构力学考研试题&nbsp; 06&nbsp; 07&nbsp; 08 的最好哦&nbsp;&nbsp; 谢谢了</p>",
+                "answer_number": 1,
+                "category_id": 1
+            },
+            '1': { ...}
+        }
+        if any error occurred, return JsonResponse
+        {
+           "State": "error",
+           "Data": '[]'
+        }
+    """
+    msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Categories").json()
+    try:
+        # and number to head of msg_res['Data']， Number start from 0
+        msg_res['Data'] = dict(enumerate(msg_res['Data']))
+        return JsonResponse(msg_res)
+    except KeyError as e:
+        return JsonResponse({
+            "State": "error",
+            "Msg": e.message,
+            "Data": "[]"
+        })
