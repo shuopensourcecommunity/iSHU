@@ -1,7 +1,10 @@
 # -*- encoding: utf-8 -*-
-from django.conf.urls import include, url
-from views import get_categories
+from django.conf.urls import url
+from views import index, get_categories, get_ask_list, get_answer_by_question_id
 
 urlpatterns = [
-    url(r'^(?P<section>Categories)/$', get_categories, name='get_categories'),
+    url(r'^$', index),
+    url(r'^categories$', get_categories, name='get_categories'),
+    url(r'^getAskList', get_ask_list, name='get_ask_list'),
+    url(r'^getAnswerByQuestionId', get_answer_by_question_id, name='get_answer_by_questionId')
 ]
