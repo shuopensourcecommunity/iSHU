@@ -9,9 +9,8 @@ let MenuItem = require('material-ui/lib/menus/menu-item');
 let MenuDivider = require('material-ui/lib/menus/menu-divider');
 const { Card, CardTitle, CardText, CardActions, CircularProgress,
       Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField} = require('material-ui');
-const Colors = require('../public/mui/colors.js');
-const ActionHome = require('../public/mui/svg-icons/action-home.jsx');
-const MoreVertIcon = require('../public/mui/svg-icons/more-vert.jsx');
+const Colors = require('../public/js/colors.js');
+const {ActionHome, NavigationMoreVert} = require('../public/js/svg-icons');
 const {IconButton, IconMenu, Menu}= require('material-ui');
 const {Link, RouteHandler} = require('react-router');
 const List = require('material-ui/lib/lists/list');
@@ -146,9 +145,9 @@ const AppBar = React.createClass({
             </Link>}
           iconElementRight={
             <IconMenu
-              iconButtonElement={ 
+              iconButtonElement={
                 <IconButton>
-                  <MoreVertIcon />
+                  <NavigationMoreVert />
                 </IconButton> }>
               {
                 this.state.homeData.map(home =>
@@ -170,13 +169,13 @@ const AppBar = React.createClass({
           style={styles.main}>
           <div className="index">
             <TextField className="text-field"
-              floatingLabelText="学  号" 
-              type='id' 
+              floatingLabelText="学  号"
+              type='id'
               onChange={this.idHandleChange}/>
             <br></br>
             <TextField className="text-field"
               floatingLabelText="密  码"
-              type = "password" 
+              type = "password"
               onChange={this.pwdHandleChange} />
           </div>
         </Dialog>
