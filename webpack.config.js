@@ -3,7 +3,7 @@ var path = require('path');
 module.exports ={
     entry: {
         ishu: './src/entry.jsx',
-        shu_ask: './src/shu_ask/main.js'
+        shu_ask: './src/shu_ask/main.jsx'
     },
     output: {
         path: path.join(__dirname, 'build'),

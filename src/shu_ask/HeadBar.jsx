@@ -2,7 +2,7 @@
 const React =require('react');
 const {Link, RouteHandler} = require('react-router');
 const {AppBar, IconButton, LeftNav, MenuItem} = require('material-ui');
-const {ActionSearch} = require('.../public/js/svg-icons');
+const {ActionSearch} = require('../../public/js/svg-icons.js');
 const injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 

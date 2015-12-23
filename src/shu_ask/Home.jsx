@@ -1,5 +1,5 @@
 'use strict';
-require('.../style/css/shu_ask/Home.css');
+require('../../style/css/shu_ask/Home.css');
 const React =require('react');
 const {Link, RouteHandler} = require('react-router');
 const HeadBar = require('./HeadBar.jsx');
