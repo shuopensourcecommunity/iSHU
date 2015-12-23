@@ -70,9 +70,9 @@ var StudentService= React.createClass({
                       <br/>
                       学生助理有课不在时，办理在读证明请前往A408
                       <br/>
-                      <b>延长校区: </b>行健楼
+                      <b>延长校区: </b>行健楼224室    电话: 021-56331343
                       <br/>
-                      <b>嘉定校区: </b>XX楼511
+                      <b>嘉定校区: </b>综合楼511    电话: 021-69980039
                       <br />
                       <br/>
                       注意：学生在读证明不予代开,若有特殊情况，本人不能到校，请代为开具的同学持至少两种申请人的身份证明(如学生证，学生证副卡，身份证等)
@@ -89,7 +89,8 @@ var StudentService= React.createClass({
                       <br/>
                       请前往校本部A400学生服务中心15号窗口办理：<br/>
                       请同学先前往武保处网站下载相关表格，填写完成后在15号窗口进行信息审核与盖章<br/>
-                      窗口电话：021-66135339
+                      窗口电话：021-66135339<br/>
+                      注意：居住证明办理只限宝山校区(校本部)住宿学生，其他校区或已退宿学生不予办理
                   </CardText>
               </Card>
               <Card initiallyExpanded={false}>
@@ -101,9 +102,9 @@ var StudentService= React.createClass({
                   </CardTitle>
                   <CardText expandable={true}>
                       <br/>
-                      在校本科生成绩大表，成绩排名证明，请前往校本部A400学生服务中心11号窗口办理<br/>
-                      窗口电话: 021-66135319 <br/>
-                      注意：老师若另有工作安排，有事或盖章可直接到行政楼401找相关老师办理，也可拨打66132131电话进行咨询
+                      在校本科生成绩大表，成绩排名证明，请前往校本部行政楼401找相关老师办理<br/>
+                      电话: 021-66132131 <br/>
+                      注意: 成绩证明办理请先在学生所在学院教务办公室签字盖章
                   </CardText>
               </Card>
               <Card initiallyExpanded={false}>
@@ -115,9 +116,9 @@ var StudentService= React.createClass({
                   </CardTitle>
                   <CardText expandable={true}>
 
-                      请前往校本部A400学生服务中心11号窗口办理<br/>
-                      窗口电话: 021-66135319 <br/>
-                      注意：老师若另有工作安排，有事或盖章可直接到行政楼401找相关老师办理，也可拨打66132131电话进行咨询
+                      请至行政楼306找相关老师办理<br/>
+                      窗口电话: 021-66132131转603 <br/>
+                      注意：结题证明开具需学院已将相关结题材料上交后进行
                   </CardText>
               </Card>
               <Card initiallyExpanded={false}>
@@ -128,9 +129,10 @@ var StudentService= React.createClass({
                       showExpandableButton={true}>
                   </CardTitle>
                   <CardText expandable={true}>
-                     请前往校本部A400学生服务中心1-3号窗口办理：<br/>
-                      办理时请先到窗口对面的电脑上填写相关信息(党组织关系登记表.xls),再到窗口办理党组织关系转移 <br/>
-                      窗口电话: 021-66135259
+                      每年3-6月，请前往校本部A400学生服务中心1-3号窗口办理：<br/>
+                      电话: 021-66135259<br/>
+                      其他时间请至行政楼411找相关老师办理<br/>
+                      电话: 021-66134532转802
                   </CardText>
               </Card>
               <Card initiallyExpanded={false}>
@@ -194,9 +196,10 @@ var StudentService= React.createClass({
                       上海市高校计算机等级考试成绩单遗失申请补办 <br/>
                       国家普通话水平测试证书遗失补办 <br/>
                       国家汉字应用水平测试成绩单补办 <br/>
-                      以上成绩单遗失补办请前往校本部A400学生服务中心11号窗口办理: <br/>
-                      窗口电话: 021-66135319 <br/>
-                      注意：老师若另有工作安排，有事或盖章可直接到行政楼401找相关老师办理，也可拨打66132131电话进行咨询
+                      以上成绩单遗失补办可于校本部A400学生服务中心11号窗口进行咨询(周一有老师值班): <br/>
+                      电话: 021-66135319 <br/>
+                      办理请至行政楼401找相关老师<br/>
+                      电话: 66132131
                   </CardText>
               </Card>
               <Card initiallyExpanded={false}>
@@ -280,8 +283,8 @@ var StudentService= React.createClass({
                       showExpandableButton={true}>
                   </CardTitle>
                   <CardText expandable={true}>
-                      前往校本部A400学生服务中心8号窗口办理<br/>
-                      窗口电话: 021-66134737 <br/>
+                      前往C楼车库慈善爱心屋办理<br/>
+                      电话: 021-66135120 <br/>
                   </CardText>
               </Card>
               <Card initiallyExpanded={false}>
@@ -346,49 +349,7 @@ var StudentService= React.createClass({
                       窗口电话: 021-66131396 <br/>
                   </CardText>
               </Card>
-              <Card initiallyExpanded={false}>
-                  <CardTitle
-                      titleStyle={title_style}
-                      title="伟长楼"
-                      actAsExpander={true}
-                      showExpandableButton={true}>
-                  </CardTitle>
-                  <CardText expandable={true}>
 
-                  </CardText>
-              </Card>
-              <Card initiallyExpanded={false}>
-                  <CardTitle
-                      titleStyle={title_style}
-                      title="图书馆研习空间"
-                      actAsExpander={true}
-                      showExpandableButton={true}>
-                  </CardTitle>
-                  <CardText expandable={true}>
-                    至相关网站预约，需至少四名同学学号
-                  </CardText>
-              </Card>
-              <Card initiallyExpanded={false}>
-                  <CardTitle
-                      titleStyle={title_style}
-                      title="图书馆报名厅"
-                      actAsExpander={true}
-                      showExpandableButton={true}>
-                  </CardTitle>
-                  <CardText expandable={true}>
-
-                  </CardText>
-              </Card>
-              <Card initiallyExpanded={false}>
-                  <CardTitle
-                      titleStyle={title_style}
-                      title="社区学院二楼"
-                      actAsExpander={true}
-                      showExpandableButton={true}>
-                  </CardTitle>
-                  <CardText expandable={true}>
-                  </CardText>
-              </Card>
           </Tab>
         </Tabs>
       </div>
