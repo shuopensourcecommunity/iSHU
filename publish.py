@@ -19,12 +19,13 @@ def push():
     local('webpack --config webpack.config.js')
     run('mkdir -p {}'.format(WORK_DIR))
     with cd('/var/www/ishu'):
-        run('mkdir -p build public style pserver')
+        run('mkdir -p build public style pserver templates src/progress')
         put('build/*','./build')
         put('style/*', './style')
         put('public/*','./public')
+        put('templates/*', './templates')
         put('pserver/iSHU/*','./pserver/iSHU')
-        put('./index.html','./index.html')
+        put('src/progress/*','./src/progress')
 
 
 if __name__ == "__main__":
