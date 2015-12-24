@@ -116,7 +116,7 @@ const Question = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<HeadBar url= 'categories' />
+				<HeadBar title='提问' />
 				<div className='q-and-a-container'>
 					<Title type='question' />
 					<TextForm type='question' />
@@ -131,7 +131,7 @@ const Answer = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<HeadBar url= 'categories' />
+				<HeadBar title='回答' />
 				<div className='q-and-a-container'>
 					<Title type='answer' query={this.props.query.title} />
 					<TextForm type='answer' />

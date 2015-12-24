@@ -28,7 +28,7 @@ const Login = React.createClass({
 	render: function() {
     return (
       <div>
-        <HeadBar url= 'categories' />
+        <HeadBar title='登录' />
 				<LoginForm />
 			</div>
 		);

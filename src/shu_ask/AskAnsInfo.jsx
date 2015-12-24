@@ -289,7 +289,7 @@ const AskAnsInfo = React.createClass({
     console.log(this.props.params.id);
     return (
       <div>
-        <HeadBar />
+        <HeadBar title='问题详情' />
         <QuestionContent />
         <AnswerTable questionId={this.props.params.id} />
       </div>
