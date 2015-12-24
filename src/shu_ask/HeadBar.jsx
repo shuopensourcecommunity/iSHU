@@ -51,13 +51,10 @@ const HeadBar = React.createClass({
 	},
 
 	render: function() {
-		// var sectorNodes = this.state.sectors.map(function (sector) {
-		// 	var string="/home/"+sector.key;
-		// 	return (
-		// 		 <ul className="dropdown-menu">
-		// 		 	<li key={sector.key} value= {sector.name}><Link to={string}>{sector.name}</Link></li>
-		// 		 </ul>
-		// 		);
+		// let categories = this.state.categories.map(function(category) {
+		// 	return {
+		//
+		// 	}
 		// });
 		let menuItems = [
 		  { route: 'home', text: '首  页' },
