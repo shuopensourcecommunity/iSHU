@@ -8,26 +8,33 @@ injectTapEventPlugin();
 
 const HeadBar = React.createClass({
 	getDefaultProps: function() {
-		return { title: '乐乎问吧' };
+		return {
+			title: '乐乎问吧',
+			url:'categories'
+		};
 	},
 	getInitialState: function(){
-		return { sectors: [] };
+		return {
+			categories: []
+		};
 	},
-	loadSectorFromServer: function() {
+	loadCategoriesFromServer: function() {
 		$.ajax({
 			url: this.props.url,
 			dataType: 'json',
 			methods: 'get',
 			success: function(data) {
-				let t_sector = [];
-				for (let obj in data.data){
-					console.log(data.data[obj]);
-					t_sector.push({
-						'name': data.data[obj].name,
-						'key': data.data[obj].key
+				let t_categories = [];
+				for (let obj in data.Data){
+					console.log(data.Data[obj]);
+					t_categories.push({
+						'id': data.Data[obj].ID,
+						'name': data.Data[obj].Name
 					});
 				}
-				this.setState({ sectors: t_sector });
+				// console.log(data);
+				// console.log(t_categories);
+				this.setState({ categories: t_categories });
 			}.bind(this),
 			error: function(xhr, status, err) {
 				console.error(this.props.url, status, err.toString());
@@ -36,7 +43,7 @@ const HeadBar = React.createClass({
 	},
 
 	componentDidMount: function() {
-		this.loadSectorFromServer();
+		this.loadCategoriesFromServer();
 	},
 
 	_toggleLeftNav: function() {
