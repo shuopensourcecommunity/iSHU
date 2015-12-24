@@ -1,8 +1,8 @@
 'use strict';
 require('../../style/css/shu_ask/QuestionAnswer.css');
+const HeadBar = require('./HeadBar.jsx');
 const React = require('react');
 const {Link, RouteHandler} = require('react-router');
-const HeadBar = require('./HeadBar.jsx');
 const {FlatButton, SelectField, TextField} = require('material-ui');
 
 const QselectBtn = React.createClass({

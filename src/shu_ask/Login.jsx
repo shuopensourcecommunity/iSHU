@@ -1,8 +1,8 @@
 'use strict';
 require('../../style/css/shu_ask/Login.css');
+const HeadBar = require('./HeadBar.jsx');
 const React =require('react');
 const {Link, RouteHandler} = require('react-router');
-const HeadBar = require('./HeadBar.jsx');
 const {TextField, RaisedButton} = require('material-ui');
 
 const LoginForm = React.createClass({

@@ -1,11 +1,10 @@
 'use strict';
 require('../../style/css/shu_ask/Home.css');
 const React =require('react');
-const {Link, RouteHandler} = require('react-router');
 const HeadBar = require('./HeadBar.jsx');
-const {List, ListDivider, ListItem} = require('material-ui');
+const {Link, RouteHandler} = require('react-router');
 const InfiniteScroll = require('react-infinite-scroll')(React);
-// InfiniteScroll-Needed: npm install react-infinite-scroll
+const {List, ListDivider, ListItem} = require('material-ui');
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
@@ -30,11 +29,11 @@ const QuestionTable = React.createClass({
     setTimeout(function() {
       // add data
       $.ajax({
+        url: this.props.url,
         data: {
           'cid': 1,
           'page': this.state.curpage
         },
-        url: this.props.url,
         dataType: 'json',
         methods: 'get',
         success: function(data) {
@@ -65,7 +64,7 @@ const QuestionTable = React.createClass({
           console.error(this.props.url, status, err.toString());
         }.bind(this)
       });
-    }.bind(this), 1000);
+    }.bind(this), 10);
   },
 
   render: function() {
@@ -104,12 +103,12 @@ const QuestionTable = React.createClass({
     );
   }
 });
-
+// TODO: headbar title change with categories
 const Home = React.createClass({
   render: function() {
     return (
       <div>
-        <HeadBar />
+        <HeadBar title='乐乎问吧' />
         <QuestionTable />
       </div>
     );

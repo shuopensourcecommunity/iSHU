@@ -1,167 +1,149 @@
 'use strict';
+const HeadBar = require('./HeadBar.jsx');
 const React =require('react');
 const {Link, RouteHandler} = require('react-router');
-const HeadBar = require('./HeadBar.jsx');
 const {Card, CardActions, CardText, CardTitle, FlatButton} = require('material-ui');
 
+// TODO request the question detail with a questuinId
 const QuestionContent = React.createClass({
-  getInitialState: function(){
+  getDefaultProps: function() {
     return {
-      question: [],
-      bestAnswers: [],
-      answers: []
-    };
-  },
-  loadQuestionFromServer: function(){
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      methods: 'get',
-      success: function(data) {
-        let t_bestAnswer = [];
-        let t_answer = [];
-        let question = [];
-        question.push({
-          'id': data.id,
-          'askerUrl': data.asker.link,
-          'title': data.title,
-          'author': data.asker.name,
-          'time': data.time,
-          'endTime': data.end_time,
-          'content': data.content,
-          'answerNumber': data.answers.number,
-          'price': data.price,
-          'sectorName': data.sector.name,
-          'sectorKey': data.sector.key,
-        });
-        for (let obj in data.answers.best_answer){
-          t_bestAnswer.push({
-            'url': data.answers.best_answer[obj]
-          });
-        }
-        for (let obj in data.answers.answer){
-          t_answer.push({
-            'url': data.answers.answer[obj]
-          });
-        }
-        this.setState(
-          {
-            question: question,
-            bestAnswers: t_bestAnswer,
-            answers: t_answer
-          }
-        );
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+      ans_url: 'getAnswerByQuestionId'
+    }
   },
 
-  componentDidMount: function(){
-    this.loadQuestionFromServer();
+  getInitialState: function() {
+    return {
+      question: []
+    };
   },
+
+  // loadQuestionFromServer: function() {
+  //   $.ajax({
+  //     url: this.props.url,
+  //     dataType: 'json',
+  //     methods: 'get',
+  //     success: function(data) {
+  //       let t_bestAnswer = [];
+  //       let t_answer = [];
+  //       let question = [];
+  //       question.push({
+  //         'id': data.id,
+  //         'askerUrl': data.asker.link,
+  //         'title': data.title,
+  //         'author': data.asker.name,
+  //         'time': data.time,
+  //         'endTime': data.end_time,
+  //         'content': data.content,
+  //         'answerNumber': data.answers.number,
+  //         'price': data.price,
+  //         'sectorName': data.sector.name,
+  //         'sectorKey': data.sector.key,
+  //       });
+  //       this.setState({
+  //         question: question
+  //       });
+  //     }.bind(this),
+  //     error: function(xhr, status, err) {
+  //       console.error(this.props.url, status, err.toString());
+  //     }.bind(this)
+  //   });
+  // },
+  //
+  // componentDidMount: function(){
+  //   this.loadQuestionFromServer();
+  // },
   render: function(){
-    let QuestionContent = this.state.question.map(function(question) {
-       let answer_link = '/answer/'+question.id;
-       let subtitle = '提问人：' + question.author + '  ' + question.time;
-       return (
-         <Card>
-           <CardTitle title={question.title} subtitle={subtitle} />
-           <CardText>
-             {question.content}
-           </CardText>
-           <CardText>
-             <span>共 {question.answerNumber} 个回答 赏金 {question.price}</span>
-             <FlatButton label='我要回答' primary={true} linkButton={true}/>
-           </CardText>
-         </Card>
-       )
-    });
+    // let QuestionContent = this.state.question.map(function(question) {
+    //    let answer_link = '/answer/'+question.id;
+    //    let subtitle = '提问人：' + question.author + '  ' + question.time;
+    //    return (
+    //      <Card>
+    //        <CardTitle title={question.title} subtitle={subtitle} />
+    //        <CardText>
+    //          {question.content}
+    //        </CardText>
+    //        <CardText>
+    //          <span>共 {question.answerNumber} 个回答 赏金 {question.price}</span>
+    //          <FlatButton label='我要回答' primary={true} linkButton={true}/>
+    //        </CardText>
+    //      </Card>
+    //    )
+    // });
     return(
       <div>
-        {QuestionContent}
+        123
       </div>
     )
   }
 });
 
 const AnswerTable = React.createClass({
+  getDefaultProps: function() {
+    return {
+      url: 'getAnswerByQuestionId'
+    }
+  },
+
   getInitialState: function(){
     return {
-      against: [],
+      disagree: [],
       agree: [],
       isBest: [],
       answers: [],
-      bestAnswers: [],
+      bestAnswers: []
     };
-  },
-
-  loadBestAnswersFromServer: function(){
-    $.ajax({
-      url: this.props.bestAnswerUrl,
-      dataType: 'json',
-      methods: 'get',
-      success: function(data) {
-        let t_agree = [];
-        let t_against = [];
-        let t_bestAnswer = [];
-        for (let obj in data.data){
-          t_bestAnswer.push({
-            'question_id': data.question_id,
-            'answer_id': data.data[obj].answer_id,
-            'author': data.data[obj].name,
-            'time': data.data[obj].time,
-            'agree': data.data[obj].agree,
-            'against': data.data[obj].disagree,
-            'content': data.data[obj].content,
-          });
-          let id = JSON.parse(data.data[obj].answer_id);
-          this.state.isBest[id] = true;
-          t_agree.push(false);
-          t_against.push(false);
-
-        }
-        this.setState({
-          bestAnswers: t_bestAnswer,
-          agree: t_agree,
-          against: t_against,
-        });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
   },
 
   loadAnswersFromServer: function(){
     $.ajax({
-      url: this.props.answerUrl,
+      url: this.props.url,
+      data: {
+        'questionId': this.props.questionId,
+        'type': 'answers'
+      },
       dataType: 'json',
       methods: 'get',
       success: function(data) {
+        console.log(data);
         let t_agree = [];
-        let t_against = [];
+        let t_disagree = [];
         let t_answer = [];
-        for (let obj in data.data){
-          t_answer.push({
-            'question_id': data.question_id,
-            'answer_id': data.data[obj].answer_id,
-            'author': data.data[obj].name,
-            'time': data.data[obj].time,
-            'agree': data.data[obj].agree,
-            'against': data.data[obj].disagree,
-            'content': data.data[obj].content,
-          });
-          let id = JSON.parse(data.data[obj].answer_id);
-          this.state.isBest[id] = false;
+        let t_bestAnswer = [];
+        for (let obj in data.Data){
+          // console.log(data.Data[obj].is_best);
+          if (data.Data[obj].is_best) {
+            t_bestAnswer.push({
+              'answerId': data.Data[obj].answerId,
+              'author': data.Data[obj].name,
+              'time': data.Data[obj].time,
+              'agree': data.Data[obj].agree,
+              'disagree': data.Data[obj].disagree,
+              'is_best': data.Data[obj].is_best,
+              'content': data.Data[obj].content
+            });
+          }
+          else {
+            t_answer.push({
+              'answerId': data.Data[obj].answerId,
+              'author': data.Data[obj].name,
+              'time': data.Data[obj].time,
+              'agree': data.Data[obj].agree,
+              'disagree': data.Data[obj].disagree,
+              'is_best': data.Data[obj].is_best,
+              'content': data.Data[obj].content
+            });
+          }
+          let id = JSON.parse(data.Data[obj].answerId);
+          // this.state.isBest[id] = false;
           t_agree.push(false);
-          t_against.push(false);
+          t_disagree.push(false);
         }
         this.setState({
           answers: t_answer,
+          bestAnswers: t_bestAnswer,
           agree: t_agree,
-          against: t_against,
+          disagree: t_disagree
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -172,13 +154,12 @@ const AnswerTable = React.createClass({
 
   componentDidMount: function(){
     this.loadAnswersFromServer();
-    this.loadBestAnswersFromServer();
   },
-
-  againstClick: function(id, event) {
+  // TODO update agree, disagree and set_best
+  disagreeClick: function(id, event) {
     let purl= 'answer'+id;
-    if (!this.state.against[id]) {
-      this.state.against[id] = true;
+    if (!this.state.disagree[id]) {
+      this.state.disagree[id] = true;
       this.state.agree[id] = false;
       $.ajax({
         url: purl,
@@ -193,7 +174,7 @@ const AnswerTable = React.createClass({
       });
     }
     else {
-      this.state.against[id] = false;
+      this.state.disagree[id] = false;
       $.ajax({
         url: purl,
         dataType: 'json',
@@ -210,7 +191,7 @@ const AnswerTable = React.createClass({
   agreeClick: function(id, event) {
     let purl= 'answer'+id;
     if (!this.state.agree[id]) {
-      this.state.against[id] = false;
+      this.state.disagree[id] = false;
       this.state.agree[id] = true;
       $.ajax({
         url: purl,
@@ -239,75 +220,55 @@ const AnswerTable = React.createClass({
       });
     }
   },
-  handleBestClick: function(id, bestStatus, event){
+  handleBestClick: function(id, is_best, event){
     let purl= 'answer'+id;
-    this.state.isBest[id] = !bestStatus;
+    this.state.isBest[id] = !is_best;
     console.log('answer' + id + ' is best: ' + this.state.isBest[id]);
     $.ajax({
       url: purl,
       dataType: 'json',
       type: 'post',
-      data: {'isBest': !bestStatus},
+      data: {'isBest': !is_best},
       success: function(data) {
-        this.setState({'pbest':!bestStatus});
+        this.setState({'pbest':!is_best});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
   },
+
+  answerList: function(answer) {
+    // ATTENTION: 设为最佳答案/取消最佳答案 can only be seen by the asker.
+    console.log(answer.is_best);
+    let id=answer.answerId;
+    let agreeText = parseInt(answer.agree);
+    if (this.state.agree[id]) agreeText=agreeText+1;
+    let disagreeText = parseInt(answer.disagree);
+    if (this.state.disagree[id]) disagreeText=disagreeText+1;
+    let is_best = answer.is_best;
+    let set_best = is_best ? '取消最佳' : '设为最佳';
+    let cardtitle = answer.author+'  '+answer.time;
+    return (
+      <Card>
+        <CardTitle subtitle={cardtitle} />
+        <CardActions>
+          <span>
+            <a onClick={this.agreeClick.bind(this, id)}>支持<h>{agreeText}</h></a>
+            <a onClick={this.disagreeClick.bind(this, id)}>反对<h>{disagreeText}</h></a>
+          </span>
+          <FlatButton label={set_best} primary={true} onTouchTap={this.handleBestClick.bind(this, id, is_best)} />
+        </CardActions>
+        <CardText>
+          {answer.content}
+        </CardText>
+      </Card>
+    )
+  },
+
   render: function(){
-    // ATTENTION: .btn-set-best/.btn-cancel-best(设为最佳答案/取消最佳答案) can only be seen by the asker.
-    let answers = this.state.answers.map(function(answer){
-      let id=answer.answer_id;
-      let agreeText = parseInt(answer.agree);
-      if (this.state.agree[id]) agreeText=agreeText+1;
-      let againstText = parseInt(answer.against);
-      if (this.state.against[id]) againstText=againstText+1;
-      let bestStatus = this.state.isBest[id];
-      let bestStr = bestStatus ? '取消最佳' : '设为最佳';
-      let cardtitle = answer.author+'  '+answer.time;
-      return (
-        <Card>
-          <CardTitle subtitle={cardtitle} />
-          <CardActions>
-            <span>
-              <a onClick={this.agreeClick.bind(this, id)}>支持<h>{agreeText}</h></a>
-              <a onClick={this.againstClick.bind(this, id)}>反对<h>{againstText}</h></a>
-            </span>
-            <FlatButton label={bestStr} primary={true} onTouchTap={this.handleBestClick.bind(this, id, bestStatus)} />
-          </CardActions>
-          <CardText>
-            {answer.content}
-          </CardText>
-        </Card>
-      )
-    },this);
-    let bestAnswers = this.state.bestAnswers.map(function(answer){
-      let id=answer.answer_id;
-      let agreeText = JSON.parse(answer.agree);
-      if (this.state.agree[id]) agreeText=agreeText+1;
-      let againstText = JSON.parse(answer.against);
-      if (this.state.against[id]) againstText=againstText+1;
-      let bestStatus = this.state.isBest[id];
-      let bestStr = bestStatus ? '取消最佳' : '设为最佳';
-      let cardtitle = answer.author+'  '+answer.time;
-      return (
-        <Card>
-          <CardTitle subtitle={cardtitle} />
-          <CardActions>
-            <span>
-              <a onClick={this.agreeClick.bind(this, id)}>支持<h>{agreeText}</h></a>
-              <a onClick={this.againstClick.bind(this, id)}>反对<h>{againstText}</h></a>
-            </span>
-            <FlatButton label={bestStr} primary={true} onTouchTap={this.handleBestClick.bind(this, id, bestStatus)} />
-          </CardActions>
-          <CardText>
-            {answer.content}
-          </CardText>
-        </Card>
-      )
-    },this);
+    let answers = this.state.answers.map(this.answerList,this);
+    let bestAnswers = this.state.bestAnswers.map(this.answerList,this);
     return (
       <div>
         <Card initiallyExpanded={true} expandable={true}>
@@ -324,16 +285,16 @@ const AnswerTable = React.createClass({
 });
 
 const AskAnsInfo = React.createClass({
-	render: function() {
-    let qcontent_url = 'question'+this.props.params.id;
-		return(
+  render: function() {
+    console.log(this.props.params.id);
+    return (
       <div>
-        <HeadBar url='categories' />
-        <QuestionContent url={qcontent_url} />
-        <AnswerTable answerUrl='answers' bestAnswerUrl='bestAnswers' />
+        <HeadBar />
+        <QuestionContent />
+        <AnswerTable questionId={this.props.params.id} />
       </div>
-		);
-	}
+    );
+  }
 });
 
 module.exports = AskAnsInfo;
