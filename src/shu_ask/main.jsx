@@ -13,8 +13,7 @@ const {Router, Route, Link, History, Lifecycle} = require('react-router');
 
 render((
   <Router>
-    <Route path="/" component={App} />
-    <Route path="home" component={Home} />
+    <Route path="/" component={Home} />
     <Route path="home/:key" component={Home}/>
     <Route path="login" component={Login} />
     <Route path="about" component={About} />
