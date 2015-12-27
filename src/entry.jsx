@@ -12,7 +12,6 @@ var NotFound = require('./NotFound.jsx');
 
 var React = require('react')
 var {render} = require('react-dom');
-var Router = require('react-router');
 var {Router, Route, Link, History, Lifecycle, DefaultRoute, Routes} = require('react-router');
  
 render((

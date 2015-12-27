@@ -7,7 +7,7 @@ import requests
 import time
 import json
 import os
-import pdb
+import logging
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -17,21 +17,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def index(request):
     return render(request, "index.html")
 
-
+@require_http_methods(['POST'])
 def user_login(request):
-    if request.method == 'POST':
-        user_number = request.POST['id']
-        user_password = request.POST['pwd']
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'User/UserLogin/'
-        data = {'userName': user_number,
-                'password': user_password,
-                }
-        login_status = requests.post(base_url + append_url, data=data)
-        content = login_status.json()
-        content = JsonResponse(content)
-        # print content
-        return content
+    user_number = request.POST['id']
+    user_password = request.POST['pwd']
+    base_url = 'http://api.shu.edu.cn/Mobile/'
+    append_url = 'User/UserLogin/'
+    data = {
+        'userName': user_number,
+        'password': user_password,
+    }
+    login_status = requests.post(base_url + append_url, data=data)
+    return JsonResponse(login_status.json())
 
 # [校园信息， 学工办， 教务处，活动, 专题活动， 社团活动， 招聘活动, 公益活动， 竞赛活动， 讲座活动]
 SECTIONS = ['campus', 'xgb', 'jwc', 'action', 'club_action', 'special_action', 'recruit_action',
@@ -58,6 +55,20 @@ append_url = {
 
 @require_http_methods(["POST"])
 def get_msg_list(request, section):
+    """
+
+    Args:
+        request:
+        section:
+
+    Returns:
+        if error occure return
+        {
+           "State": "error",
+           "Msg": error.message,
+           "Data": [],
+        }
+    """
     
     def generate_view():
         with open(os.path.join(BASE_DIR, 'getData/section.json'), "r") as f:
@@ -92,10 +103,13 @@ def get_msg_list(request, section):
         response['pagecount'] = msg_res['pageCount']
     except KeyError as e:
         # TODO deal with the error
-        return HttpResponse('ok')
+        return JsonResponse({
+            "State": "error",
+            "Msg": e.message,
+            "Data": "[]"
+        })
 
-    # TODO ugly code
-    if msg_res.has_key('messagelist'):
+    if 'messagelist' in msg_res.keys():
         msg_list = msg_res['messagelist']
     else:
         msg_list = msg_res['messageList']
@@ -111,7 +125,6 @@ def get_msg_list(request, section):
     return JsonResponse(response)
 
 
-
 def getcampusactionbyid(request):
     if request.method == "POST":
         action_id = request.POST['action_id']
@@ -124,7 +137,6 @@ def getcampusactionbyid(request):
         a = message_list.json()
         a['Summary'] = a['Summary'].replace("\r\n", "<BR />")
         a = JsonResponse(a)
-        # print a
         return a
 
 

@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt, ensure_csrf_
 from django.views.decorators.http import require_http_methods
 from django.utils.datastructures import MultiValueDictKeyError
 import requests
-import pdb
+
 
 @ensure_csrf_cookie
 @require_http_methods('GET')
@@ -56,7 +56,7 @@ def get_categories(request):
 @require_http_methods(['GET'])
 def get_ask_list(request):
     """
-
+    get question list data
     Args:
         request:
             request GET method give to params:
@@ -107,7 +107,7 @@ def get_ask_list(request):
 @require_http_methods(['GET'])
 def get_answer_by_question_id(request):
     """
-
+    get answers detail by question ID which answers belong to
     Args:
         request:
 
@@ -152,3 +152,39 @@ def get_answer_by_question_id(request):
             "Data": ""
         })
 
+
+# TODO NOT TESTED
+@require_http_methods(['GET'])
+def get_answer_detail_by_id(request):
+    """
+    Args:
+        request:
+
+    Returns:
+
+    """
+    try:
+        data = {
+            "answerId": request.GET['answerId']
+        }
+        msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', data=data).json()
+        msg_res['Data'] = dict(enumerate(msg_res['Data']))
+        return JsonResponse(msg_res)
+    except MultiValueDictKeyError as e:
+        return JsonResponse({
+            "State": "error",
+            "Msg": e.message,
+            "Data": ""
+        })
+
+
+def search_questions(request):
+    """
+
+    Args:
+        request:
+
+    Returns:
+
+    """
+    pass

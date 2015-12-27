@@ -8,8 +8,6 @@ const GridList = require('material-ui/lib/grid-list/grid-list');
 const GridTile = require('material-ui/lib/grid-list/grid-tile');
 let {Link, RouteHandler} = require('react-router');
 
-
-
 // using jQuery
 function getCookie(name) {
     var cookieValue = null;
@@ -47,7 +45,7 @@ let HomeGrid = React.createClass({
         { title: "校园查询", img: "/static/style/imgs/school-query.png", linkto: "/query" },
         { title: "校园服务", img: "/static/style/imgs/school-service.png", linkto: "/service" },
         { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png", linkto: "/askbar"},
-        { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "/student"},
+        { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "/student"}
       ]
     };
   },
@@ -55,7 +53,7 @@ let HomeGrid = React.createClass({
     let styles = {
       Img: {
         height: '70%',
-        transform: 'translateX(0%),translateY(50%)',
+        transform: 'translateX(0%),translateY(50%)'
       }
     }
     return (
