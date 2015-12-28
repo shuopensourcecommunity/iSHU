@@ -114,7 +114,7 @@ var SchoolActivityDetail= React.createClass({
         loadMore={this.loadMessageFromServer}
         hasMore={this.state.hasMoreMessages}
         loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
-        {ActivityDetail}
+        <div className='activity-tabs'>{ActivityDetail}</div>
       </InfiniteScroll>
     );
   }

@@ -44,8 +44,8 @@ let HomeGrid = React.createClass({
         { title: "校园活动", img: "/static/style/imgs/school-activity.png", linkto: "/activity" },
         { title: "校园查询", img: "/static/style/imgs/school-query.png", linkto: "/query" },
         { title: "校园服务", img: "/static/style/imgs/school-service.png", linkto: "/service" },
-        { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png", linkto: "/askbar"},
-        { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "/student"}
+        // { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png", linkto: "/askbar"},
+        // { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "/student"}
       ]
     };
   },
@@ -66,6 +66,18 @@ let HomeGrid = React.createClass({
             </div>
           </Link>)
         }
+        <a href="/askbar">
+          <div className="home-block">
+            <img className="home-img" src="/static/style/imgs/lehu-ask.png" />
+            <p className="home-title">乐乎问吧</p>
+          </div>
+        </a>
+        <Link to="/student">
+          <div className="home-block">
+            <img className="home-img" src="/static/style/imgs/banshi-query.png" />
+            <p className="home-title">学生事务</p>
+          </div>
+        </Link>
       </div>
     )
   }

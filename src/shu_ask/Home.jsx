@@ -81,7 +81,7 @@ const QuestionTable = React.createClass({
       // let sectorName='\> '+question.sectorName;
       return (
         <div>
-          <Link to={link}>
+          <Link {...question} to={link}>
             <ListItem
               primaryText={question.title}
               secondaryText={question.content}

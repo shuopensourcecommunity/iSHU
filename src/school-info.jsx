@@ -58,6 +58,7 @@ var MessageTable= React.createClass({
     var url;
     if (this.props.url == 'get_msg/jwc/') {url='getjwcmessagebyid';}
     else if (this.props.url == 'get_msg/campus/') {url='getcampusmessagebyid';}
+    else if (this.props.url == 'get_msg/xgb/') {url='getxgbmessagebyid';}
     return {
       messages: [],
       pagecount: 0,
@@ -75,8 +76,6 @@ var MessageTable= React.createClass({
       };
       setTimeout(function() {
         // add data
-
-
         $.ajax({
           url: this.props.url,
           dataType: 'json',
@@ -84,7 +83,7 @@ var MessageTable= React.createClass({
           data: data,
           success: function(data) {
             var t_message = this.state.messages;
-            var t_pagecount = 0;
+            var t_pagecount = data.pagecount;
             for (var obj in data){
               if(data[obj].MsgID == undefined){
                 // when no more questions, stop loading.
@@ -100,7 +99,6 @@ var MessageTable= React.createClass({
                 'Auth': data[obj].Auth,
                 'url': this.state.url
               });
-              t_pagecount = data.pagecount;
             }
             this.setState({
               messages: t_message,
@@ -118,6 +116,7 @@ var MessageTable= React.createClass({
       }.bind(this), 1000);
   },
   cardOnClick: function() {
+    console.log(this.refs.title);
     this.setState({title_style: !this.state.title_style});
   },
   render: function() {
@@ -148,7 +147,7 @@ var MessageTable= React.createClass({
       };
       var title_style = this.state.title_style? styles.title2:styles.title;
       return (
-        <Card initiallyExpanded={false}>
+        <Card key={message.MsgID} initiallyExpanded={false}>
           <CardTitle
             titleStyle={title_style}
             title={message.Title}
