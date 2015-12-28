@@ -286,7 +286,6 @@ const AnswerTable = React.createClass({
 
 const AskAnsInfo = React.createClass({
   render: function() {
-    console.log(this.props.params.id);
     return (
       <div>
         <HeadBar title='问题详情' />

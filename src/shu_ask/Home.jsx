@@ -4,7 +4,7 @@ const React =require('react');
 const HeadBar = require('./HeadBar.jsx');
 const {Link, RouteHandler} = require('react-router');
 const InfiniteScroll = require('react-infinite-scroll')(React);
-const {List, ListDivider, ListItem} = require('material-ui');
+const {List, ListDivider, ListItem, Card, CardTitle, CardText} = require('material-ui');
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
@@ -66,7 +66,9 @@ const QuestionTable = React.createClass({
       });
     }.bind(this), 10);
   },
-
+  cardOnClick: function() {
+    this.setState({title_style: !this.state.title_style});
+  },
   render: function() {
    /* ID   id
     * 板块  category_id
@@ -77,18 +79,28 @@ const QuestionTable = React.createClass({
     */
     let questionNodes = this.state.questions.map(function (question) {
       let link='/askAnsInfo/'+question.id;
-      // let sectorLink='/home/'+question.sectorKey;
-      // let sectorName='\> '+question.sectorName;
+      let category = ['新生入学','招生情况','学习制度','学生组织'];
+      let subtitle='赏金：'+question.price+"  回答："+question.answer_number+"  板块："+category[question.category_id];
+      let styles={
+        title : {
+        fontSize: 18,
+        display: 'block',
+        lineHeight: '24px',
+        whiteSpace: 'nowrap',
+        width: '93%',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        }
+      };
       return (
-        <div>
-          <Link {...question} to={link}>
-            <ListItem
-              primaryText={question.title}
-              secondaryText={question.content}
-              secondaryTextLines={2} />
+          <Link to={link} className="link">
+            <Card>
+              <CardTitle
+                titleStyle={styles.title}
+                title={question.title}
+                subtitle={subtitle} />
+            </Card>
           </Link>
-          <ListDivider />
-        </div>
       );
     }.bind(this));
     return (

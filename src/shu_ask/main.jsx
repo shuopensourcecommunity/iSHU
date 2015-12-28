@@ -18,7 +18,7 @@ render((
     <Route path="about" component={About} />
     <Route path="question" component={QuestionAnswer.Question} />
     <Route path="answer/:id" component={QuestionAnswer.Answer} />
-    <Route path="askAnsInfo/:id" params=":id" component={AskAnsInfo} />
+    <Route path="askAnsInfo/:id" component={AskAnsInfo} />
     <Route path="*" component={NotFound} />
   </Router>
 ), document.getElementById('app-container'))
