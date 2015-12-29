@@ -28,7 +28,9 @@
     "json-loader": "0.5.2",
     "material-ui": "0.13.4",
     "react-infinite-scroll": "0.1.5",
-    "react-cookie": "0.4.2"
+    "react-cookie": "0.4.2",
+    "underscore": "1.8.3",
+    "sprintf": "0.1.5"
   },
   "dependencies": {
     "react": "0.14.3",
