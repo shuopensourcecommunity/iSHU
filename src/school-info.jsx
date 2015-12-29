@@ -199,9 +199,9 @@ var SchoolInfo= React.createClass({
           <Tab label="学生事务" onActive={this.xgbmessage}>
             <MessageTable url='get_msg/xgb/' select={select=='2'?1:0}/>
           </Tab>
-          <Tab label="教务信息" onActive={this.jwcmessage}>
-            <MessageTable url='get_msg/jwc/' select={select=='3'?1:0}/>
-          </Tab>
+          {/*<Tab label="教务信息" onActive={this.jwcmessage}>
+                      <MessageTable url='get_msg/jwc/' select={select=='3'?1:0}/>
+                    </Tab>*/}
         </Tabs>
       </div>
     );
