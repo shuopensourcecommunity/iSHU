@@ -81,8 +81,8 @@ var QueryTabs = React.createClass({
             </div>
           </Tab>
           <Tab label="校园地图" value='b'>
-            <SchoolMapZoom></SchoolMapZoom>
             <div className="query-img">
+            <SchoolMapZoom></SchoolMapZoom>
 
             </div>
           </Tab>
