@@ -119,6 +119,7 @@ const QuestionTable = React.createClass({
 // TODO: headbar title change with categories
 const Home = React.createClass({
   render: function() {
+    console.log(cookie.load('username'));
     return (
       <div>
         <HeadBar title='乐乎问吧' />
