@@ -132,6 +132,7 @@ const AppBar = React.createClass({
     let title = (this.props.title=="上海大学")
       ? <img className="ishu-logo-img" src="/static/style/imgs/shu-logo-white-text.png" />
       : this.props.title;
+    document.title = title;
     return (
       <div ref="myAppBarMenu">
         <AppBarComponent

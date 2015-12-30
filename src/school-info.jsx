@@ -19,7 +19,6 @@ var MessageText= React.createClass({
   },
   loadMessageFromServer: function() {
     var data={msg_id: this.props.MsgID};
-
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -53,7 +52,60 @@ var MessageText= React.createClass({
   }
 });
 
-var MessageTable= React.createClass({
+var InfoMessage = React.createClass({
+  getInitialState: function() {
+    return {
+      title_style: false
+    };
+  },
+  cardOnClick: function() {
+    this.setState({title_style: !this.state.title_style});
+  },
+  render: function() {
+    var message = this.props.message;
+    var subtitle;
+    (message.Auth == "None") ? subtitle="时间："+message.Time:subtitle="时间："+message.Time+" 发布来源："+message.Auth;
+    let styles={
+      title : {
+        fontSize: 18,
+        display: 'block',
+        lineHeight: '24px',
+        whiteSpace: 'nowrap',
+        width: '93%',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+      },
+      title2 : {
+        fontSize: 18,
+        lineHeight: '24px',
+        width: '93%',
+      },
+      t: {
+        fontSize: 18,
+        display: 'block',
+        lineHeight: '24px',
+        whiteSpace: 'nowrap',
+      }
+    };
+    var title_style = this.state.title_style? styles.title2:styles.title;
+    return (
+      <Card key={message.MsgID} initiallyExpanded={false}>
+        <CardTitle
+          titleStyle={title_style}
+          title={message.Title}
+          subtitle={subtitle}
+          actAsExpander={true}
+          showExpandableButton={true}  onClick={this.cardOnClick}>
+        </CardTitle>
+        <CardText expandable={true} >
+          <MessageText url={message.url} MsgID={message.MsgID} />
+        </CardText>
+      </Card>
+    )
+  }
+})
+
+var InfoTable= React.createClass({
   getInitialState: function() {
     var url;
     if (this.props.url == 'get_msg/jwc/') {url='getjwcmessagebyid';}
@@ -69,13 +121,10 @@ var MessageTable= React.createClass({
     };
   },
   loadMessageFromServer: function(page) {
-      // console.log('loadMessageFromServer - page ' + this.state.current_page);
-      // fake an async. ajax call with setTimeout
       var data = {
         current_page: this.state.current_page
       };
       setTimeout(function() {
-        // add data
         $.ajax({
           url: this.props.url,
           dataType: 'json',
@@ -115,56 +164,16 @@ var MessageTable= React.createClass({
         },1000);
       }.bind(this), 1000);
   },
-  cardOnClick: function() {
-    console.log(this.refs.title);
-    this.setState({title_style: !this.state.title_style});
-  },
   render: function() {
     var messageNodes = this.state.messages.map(function (message) {
-      var subtitle;
-      (message.Auth == "None") ? subtitle="时间："+message.Time:subtitle="时间："+message.Time+"     发布来源："+message.Auth;
-      let styles={
-        title : {
-        fontSize: 18,
-        display: 'block',
-        lineHeight: '24px',
-        whiteSpace: 'nowrap',
-        width: '93%',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        },
-        title2 : {
-          fontSize: 18,
-          lineHeight: '24px',
-          width: '93%',
-        },
-        t: {
-          fontSize: 18,
-          display: 'block',
-          lineHeight: '24px',
-          whiteSpace: 'nowrap',
-        }
-      };
-      var title_style = this.state.title_style? styles.title2:styles.title;
       return (
-        <Card key={message.MsgID} initiallyExpanded={false}>
-          <CardTitle
-            titleStyle={title_style}
-            title={message.Title}
-            subtitle={subtitle}
-            actAsExpander={true}
-            showExpandableButton={true}  onClick={this.cardOnClick}>
-          </CardTitle>
-          <CardText expandable={true} >
-            <MessageText url={message.url} MsgID={message.MsgID} />
-          </CardText>
-        </Card>
+        <InfoMessage message={message} key={message.MsgID} />
       );
     }.bind(this));
     return (
       <InfiniteScroll
         loadMore={this.loadMessageFromServer}
-        hasMore={this.props.select=='1'?this.state.hasMoreMessages:false}
+        hasMore={this.props.active==this.props.url?this.state.hasMoreMessages:false}
         loader={<CircularProgress className="circular-progress" mode="indeterminate" size={0.8}/>}>
         {messageNodes}
       </InfiniteScroll>
@@ -173,35 +182,28 @@ var MessageTable= React.createClass({
 });
 
 var SchoolInfo= React.createClass({
-  getInitialState: function(){
+  getInitialState: function() {
     return {
-      select: 1
-    }
-  },
-  campuscessage: function() {
-    this.setState({select: 1});
-  },
-  xgbmessage: function() {
-    this.setState({select: 2});
-  },
-  jwcmessage: function() {
-    this.setState({select: 3});
+      infoData: [
+        { title: "上大新闻", url: 'get_msg/campus/' },
+        { title: "上大新闻", url: 'get_msg/xgb/' },
+        // { title: "学生事务", url: 'get_msg/jwc/' }
+      ]
+    };
   },
   render: function(){
-    var select=this.state.select;
+    var active = this.state.infoData[0].url;
     return (
       <div>
         <AppBar title="校园资讯"/>
         <Tabs>
-          <Tab label="上大新闻" onActive={this.campuscessage}>
-            <MessageTable url='get_msg/campus/' select={select=='1'?1:0}/>
-          </Tab>
-          <Tab label="学生事务" onActive={this.xgbmessage}>
-            <MessageTable url='get_msg/xgb/' select={select=='2'?1:0}/>
-          </Tab>
-          {/*<Tab label="教务信息" onActive={this.jwcmessage}>
-                      <MessageTable url='get_msg/jwc/' select={select=='3'?1:0}/>
-                    </Tab>*/}
+        {
+          this.state.infoData.map(data =>
+            <Tab label={data.title} onTouchTap={active=data.url} key={data.title}>
+              <InfoTable url={data.url} active={active}/>
+            </Tab>
+          )
+        }
         </Tabs>
       </div>
     );
