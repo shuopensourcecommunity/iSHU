@@ -5,7 +5,7 @@ const HeadBar = require('./HeadBar.jsx');
 const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const InfiniteScroll = require('react-infinite-scroll')(React);
-const {List, ListDivider, ListItem, Card, CardTitle, CardText} = require('material-ui');
+const {Card, CardTitle, CardText} = require('material-ui');
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
