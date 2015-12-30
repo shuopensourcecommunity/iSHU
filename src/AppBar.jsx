@@ -6,7 +6,7 @@ let {render} = require('react-dom');
 let mui = require('material-ui');
 let AppBarComponent = mui.AppBar;
 let MenuItem = require('material-ui/lib/menus/menu-item');
-let MenuDivider = require('material-ui/lib/menus/menu-divider');
+let Divider = require('material-ui/lib/divider');
 const { Card, CardTitle, CardText, CardActions, CircularProgress,
       Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField} = require('material-ui');
 const Colors = require('../public/js/colors.js');
@@ -101,14 +101,8 @@ const AppBar = React.createClass({
       console.log("321");
     }
   },
-  logStatus: function() {
-    return (
-      <MenuItem primaryText={cookie.load('username')?"登出":"登录"}
-        onTouchTap={this._handleLoginLogout} />
-    )
-  },
   render: function() {
-    let customActions = [
+    const customActions = [
       <FlatButton
         label="取消"
         secondary={true}
@@ -116,17 +110,16 @@ const AppBar = React.createClass({
       <FlatButton
         label="登录"
         primary={true}
+        keyboardFocused={true}
         onTouchTap={this._handleLogin} />
     ];
     let styles = {
       content : {
         width: '100%',
-        position: 'relative',
-        zIndex: 10,
+        position: 'relative'
       },
       main : {
         position: 'fixed'
-        // position: 'absolute'
       }
     };
     let title = (this.props.title=="上海大学")
@@ -146,6 +139,7 @@ const AppBar = React.createClass({
             </Link>}
           iconElementRight={
             <IconMenu
+              closeOnItemTouchTap={true}
               iconButtonElement={
                 <IconButton>
                   <NavigationMoreVert />
@@ -155,15 +149,15 @@ const AppBar = React.createClass({
                   <MenuItem primaryText={home.title} href={home.linkto}/>
                 )
               }
-              <MenuDivider />
-              <this.logStatus />
+              <Divider />
+              <MenuItem
+                primaryText={cookie.load('username')?"登出":"登录"}
+                onTouchTap={this._handleLoginLogout} />
             </IconMenu>} />
         <Dialog
-          ref="login"
           title="登录"
           actions={customActions}
           open={this.state.showDialogActions}
-          autoDetectWindowHeight={true}
           autoScrollBodyContent={true}
           onRequestClose={this._handleRequestClose}
           contentStyle={styles.content}

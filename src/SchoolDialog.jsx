@@ -130,12 +130,10 @@ var SchoolDialog= React.createClass({
     let styles = {
       content : {
         width: '100%',
-        position: 'relative',
-        zIndex: 10,
+        position: 'relative'
       },
       main : {
         position: 'fixed'
-        // position: 'absolute'
       }
     };
     let login = [
