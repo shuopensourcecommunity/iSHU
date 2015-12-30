@@ -1,5 +1,6 @@
 'use strict'
 const React =require('react');
+const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const {ActionSearch} = require('../../public/js/svg-icons.js');
 const {AppBar, IconButton, LeftNav, MenuItem} = require('material-ui');

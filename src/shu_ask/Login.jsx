@@ -2,6 +2,7 @@
 require('../../style/css/shu_ask/Login.css');
 const HeadBar = require('./HeadBar.jsx');
 const React =require('react');
+const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const {TextField, RaisedButton} = require('material-ui');
 
