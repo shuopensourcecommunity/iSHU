@@ -4,29 +4,38 @@ const HeadBar = require('./HeadBar.jsx');
 const React = require('react');
 const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
-const {FlatButton, SelectField, TextField} = require('material-ui');
+const {FlatButton, SelectField, TextField, menuItems, DropDownMenu} = require('material-ui');
 
 const QselectBtn = React.createClass({
+	getInitialState: function(){
+		return {
+			values: [
+				{ payload: '1', text: '新生入学' },
+				{ payload: '2', text: '招生情况' },
+				{ payload: '3', text: '学习制度' },
+		  		{ payload: '4', text: '学生组织' }
+			],
+			selectValue: null
+		};
+	},
+	_handleSelectValueChange: function(){
+		this.setState({selectValue});
+	},
 	render: function() {
-		let menuItems = [
-			{ payload: '1', text: '新生入学' },
-			{ payload: '2', text: '招生情况' },
-			{ payload: '3', text: '学习制度' },
-		  { payload: '4', text: '学生组织' }
-		];
 		let styles = {
 			root: {
-				width: '35%',
-				top: 15,
-				fontSize: 15
+				width: 100,
+				fontSize: 13
 			}
 		};
 		return (
 			<SelectField
 				style={styles.root}
-				/*{value={this.state.selectValue}
-				onChange={this._handleSelectValueChange.bind(null, 'selectValue')}}*/
-				menuItems={menuItems} />
+				value={this.state.selectvalue}
+				valueMember="payload"
+				displayMember="text"
+				menuItems={this.state.values}
+				onChange={this._handleSelectValueChange.bind(null, 'values')} />
 		)
 	}
 })
@@ -36,7 +45,7 @@ const QrewardForm = React.createClass({
 		let style = {
 			root: {
 				width: 100,
-				fontSize: 15
+				fontSize: 13
 			}
 		};
 		return (
@@ -81,7 +90,7 @@ const TextForm = React.createClass({
 const BtnGroup = React.createClass({
 	render: function() {
 		return (
-			<div>
+			<div className='BtnGroup'>
 				<FlatButton label='取消' secondary={true} />
 				<FlatButton label='提交' primary={true} />
 			</div>

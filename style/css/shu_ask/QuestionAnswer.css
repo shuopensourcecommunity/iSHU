@@ -1,4 +1,7 @@
 .q-and-a-container {
-	text-align:center;
+	float: center;
 	padding: 0 30px;
+}
+.BtnGroup {
+	float: right;
 }
