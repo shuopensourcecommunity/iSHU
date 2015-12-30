@@ -10,16 +10,19 @@ injectTapEventPlugin();
 const HeadBar = React.createClass({
 	getDefaultProps: function() {
 		return {
+			url:'categories',
 			title: '乐乎问吧',
-			url:'categories'
+			cid: 1
 		};
 	},
 	getInitialState: function(){
 		return {
-			categories: []
+			categories: [],
+			leftNavOpen: false
 		};
 	},
 	loadCategoriesFromServer: function() {
+		// category = [ "ID": 1, "Name": "招生情况", "SortID": 1, "Mid": null ]
 		$.ajax({
 			url: this.props.url,
 			dataType: 'json',
@@ -47,32 +50,31 @@ const HeadBar = React.createClass({
 		this.loadCategoriesFromServer();
 	},
 
-	_toggleLeftNav: function() {
-		this.refs.leftNav.toggle();
+	_handleLeftNavToggle: function() {
+		this.setState({leftNavOpen: !this.state.leftNavOpen});
+	},
+
+	_categoryOnClick: function() {
+		this.setState({
+			leftNavOpen: false,
+			// cid: cur_cid
+		});
 	},
 
 	render: function() {
-		// let categories = this.state.categories.map(function(category) {
-		// 	return {
-		//
-		// 	}
-		// });
-		let menuItems = [
-		  { route: 'home', text: '首  页' },
-		  { route: 'login', text: '登  陆' },
-		  { type: MenuItem.Types.SUBHEADER, text: '分类板块' },
-		  {
-		     type: MenuItem.Types.LINK,
-		     payload: 'https://github.com/callemall/material-ui',
-		     text: 'GitHub'
-		  },
-		];
 		return (
 			<div>
 				<AppBar
 				  title={this.props.title}
-					onLeftIconButtonTouchTap={this._toggleLeftNav} />
-				<LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
+					onLeftIconButtonTouchTap={this._handleLeftNavToggle} />
+				<LeftNav ref="leftNav"
+					openRight={true}
+					open={this.state.leftNavOpen}
+					onRequestChange={open => this.setState({open})}>
+						{this.state.categories.map(category =>
+							<MenuItem onTouchTap={this._categoryOnClick}>{category.name}</MenuItem>
+						)}
+				</LeftNav>
 			</div>
 		);
 	}
