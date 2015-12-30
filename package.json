@@ -28,6 +28,8 @@
     "material-ui": "0.14.0",
     "react-infinite-scroll": "0.1.5",
     "react-swipeable-views": "0.3.5",
+    "react-motion": "^0.3.0",
+    "react-tap-event-plugin": "0.2.1",
     "react-cookie": "0.4.2",
     "underscore": "1.8.3",
     "sprintf": "0.1.5"
