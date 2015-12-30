@@ -10,8 +10,9 @@ injectTapEventPlugin();
 const HeadBar = React.createClass({
 	getDefaultProps: function() {
 		return {
+			url:'categories',
 			title: '乐乎问吧',
-			url:'categories'
+			cid: 1
 		};
 	},
 	getInitialState: function(){
@@ -53,8 +54,11 @@ const HeadBar = React.createClass({
 		this.setState({leftNavOpen: !this.state.leftNavOpen});
 	},
 
-	_handleLeftNavClose: function() {
-		this.setState({leftNavOpen: false});
+	_categoryOnClick: function() {
+		this.setState({
+			leftNavOpen: false,
+			// cid: cur_cid
+		});
 	},
 
 	render: function() {
