@@ -7,10 +7,52 @@ from django.utils.datastructures import MultiValueDictKeyError
 import requests
 import utils
 
+
 @ensure_csrf_cookie
 @require_http_methods('GET')
 def index(request):
     return render(request, 'shu_ask_index.html')
+
+
+@csrf_exempt
+@require_http_methods(['POST'])
+def askbar_login(request):
+    """
+
+    Args:
+        request:
+         {
+             username: '13120157',
+             password: 'test-password'
+         }
+
+    Returns:
+        if success：
+        　　　return
+        {
+            "State":"success",
+            "Msg":"",
+            "Data":
+                {
+                    "Guid":"test-guid",
+                    "UserName":"testUsername"
+                }
+        }
+
+        else return
+        {
+            "status" :err.message
+        }
+
+    """
+
+    data = {
+        'userName': request.POST['username'],
+        'Password': request.POST['password']
+    }
+
+    res_msg = requests.post('http://api.shu.edu.cn/Mobile/LehuUserLogin', data=data).json()
+    return JsonResponse(res_msg)
 
 
 @require_http_methods(['GET'])
@@ -176,6 +218,72 @@ def get_answer_detail_by_id(request):
             "Msg": e.message,
             "Data": ""
         })
+
+
+@require_http_methods(['GET'])
+def get_question_detail_by_id(request):
+    """
+
+    Args:
+        request: questionId
+
+
+    Returns:
+        {
+            "State": "success",
+             "Msg": "",
+            "Data": {
+                "id": 511733,
+                "title": "APITest",
+                "price": 0,
+                "content": "ReplyAPITest",
+                "answer_number": 2,
+                "category_id": 1
+            }
+        }
+    """
+    try:
+        data = {
+            'questionId': request.GET['questionId']
+        }
+        msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Question", data=data).json()
+        return JsonResponse(msg_res)
+
+    except MultiValueDictKeyError as e:
+        return JsonResponse({
+            "State": "error",
+            "Msg": e.message,
+            "Data": "[]"
+        })
+
+
+@require_http_methods(['POST'])
+def submit_answer(request):
+    data = {
+        'guid': request.POST['guid'],
+        'content': request.POST['content'],
+        'questionId': request.POST['question_id']
+    }
+    msg_res = requests.post('http://api.shu.edu.cn/Mobile/Lehu/Answer', data=data).json()
+    return JsonResponse(msg_res)
+
+
+@require_http_methods(['POST'])
+def submit_question(request):
+    guid = request.POST['guid']
+    title = request.POST['title']
+    content = request.POST['content']
+    cid = request.POST['cid']
+
+    data = {
+        'guid': guid,
+        'title': title,
+        'content': content,
+        'cid': cid
+    }
+
+    msg_res = requests.post('http://api.shu.edu.cn/Mobile/Lehu/Question', data=data).json()
+    return JsonResponse(msg_res)
 
 
 def search_questions(request):
