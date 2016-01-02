@@ -134,7 +134,10 @@ def get_ask_list(request):
             "cid": request.GET['cid'],
             "page": request.GET['page']
         }
-        msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/AskList", data=data).json()
+        try:
+            msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/AskList", params=data).json()
+        except Exception as e:
+            print(e.message)
         msg_res['Data'] = dict(enumerate(msg_res['Data']))
         return JsonResponse(msg_res)
     except MultiValueDictKeyError as e:
