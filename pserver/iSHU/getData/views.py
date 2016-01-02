@@ -4,6 +4,7 @@ from django.shortcuts import render, loader, RequestContext
 from django.http import JsonResponse, Http404, HttpResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt, ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
+from django.views.defaults import page_not_found, server_error
 import requests
 import time
 import json
