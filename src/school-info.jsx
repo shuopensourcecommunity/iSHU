@@ -186,7 +186,7 @@ var SchoolInfo= React.createClass({
     return {
       infoData: [
         { title: "上大新闻", url: 'get_msg/campus/' },
-        { title: "上大新闻", url: 'get_msg/xgb/' },
+        { title: "学工办新闻", url: 'get_msg/xgb/' },
         // { title: "学生事务", url: 'get_msg/jwc/' }
       ]
     };
