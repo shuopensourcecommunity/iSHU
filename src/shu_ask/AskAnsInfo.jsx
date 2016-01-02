@@ -8,6 +8,7 @@ const {Card, CardActions, CardText, CardTitle, FlatButton} = require('material-u
 const QuestionContent = React.createClass({
   getDefaultProps: function() {
     return {
+      ask_url: 'getQuestionDetailById',
       ans_url: 'getAnswerByQuestionId'
     }
   },
@@ -18,61 +19,56 @@ const QuestionContent = React.createClass({
     };
   },
 
-  // loadQuestionFromServer: function() {
-  //   $.ajax({
-  //     url: this.props.url,
-  //     dataType: 'json',
-  //     methods: 'get',
-  //     success: function(data) {
-  //       let t_bestAnswer = [];
-  //       let t_answer = [];
-  //       let question = [];
-  //       question.push({
-  //         'id': data.id,
-  //         'askerUrl': data.asker.link,
-  //         'title': data.title,
-  //         'author': data.asker.name,
-  //         'time': data.time,
-  //         'endTime': data.end_time,
-  //         'content': data.content,
-  //         'answerNumber': data.answers.number,
-  //         'price': data.price,
-  //         'sectorName': data.sector.name,
-  //         'sectorKey': data.sector.key,
-  //       });
-  //       this.setState({
-  //         question: question
-  //       });
-  //     }.bind(this),
-  //     error: function(xhr, status, err) {
-  //       console.error(this.props.url, status, err.toString());
-  //     }.bind(this)
-  //   });
-  // },
-  //
-  // componentDidMount: function(){
-  //   this.loadQuestionFromServer();
-  // },
+  loadQuestionFromServer: function() {
+    $.ajax({
+      url: this.props.ask_url,
+      data: {
+        questionId: this.props.questionId
+      },
+      dataType: 'json',
+      methods: 'get',
+      success: function(data) {
+        let question = [];
+        question.push({
+          'id': data.Data.id,
+          'title': data.Data.title,
+          'price': data.Data.price,
+          'content': data.Data.content,
+          'answer_number': data.Data.answer_number,
+          'category_id': data.Data.category_id
+        });
+        this.setState({
+          question: question
+        });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  componentDidMount: function(){
+    this.loadQuestionFromServer();
+  },
   render: function(){
-    // let QuestionContent = this.state.question.map(function(question) {
-    //    let answer_link = '/answer/'+question.id;
-    //    let subtitle = '提问人：' + question.author + '  ' + question.time;
-    //    return (
-    //      <Card>
-    //        <CardTitle title={question.title} subtitle={subtitle} />
-    //        <CardText>
-    //          {question.content}
-    //        </CardText>
-    //        <CardText>
-    //          <span>共 {question.answerNumber} 个回答 赏金 {question.price}</span>
-    //          <FlatButton label='我要回答' primary={true} linkButton={true}/>
-    //        </CardText>
-    //      </Card>
-    //    )
-    // });
+    let QuestionContent = this.state.question.map(function(question) {
+       let subtitle = <span>共 {question.answer_number} 个回答 赏金 {question.price}</span>;
+       return (
+         <Card>
+           <CardTitle title={question.title} subtitle={subtitle} />
+           <CardText>
+             {question.content}
+           </CardText>
+           <CardText>
+
+             <FlatButton label='我要回答' primary={true} linkButton={true}/>
+           </CardText>
+         </Card>
+       )
+    });
     return(
       <div>
-        123
+        {QuestionContent}
       </div>
     )
   }
@@ -289,7 +285,7 @@ const AskAnsInfo = React.createClass({
     return (
       <div>
         <HeadBar title='问题详情' />
-        <QuestionContent />
+        <QuestionContent questionId={this.props.params.id} />
         <AnswerTable questionId={this.props.params.id} />
       </div>
     );
