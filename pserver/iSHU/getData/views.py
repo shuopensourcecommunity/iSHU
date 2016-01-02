@@ -21,22 +21,23 @@ def index(request):
     else:
         return render(request, "index.html")
 
+
 @require_http_methods(['POST'])
 def user_login(request):
-    user_number = request.POST['id']
-    user_password = request.POST['pwd']
-    base_url = 'http://api.shu.edu.cn/Mobile/'
-    append_url = 'User/UserLogin/'
+    username = request.POST['id']
+    password = request.POST['pwd']
+    base_url = 'http://api.shu.edu.cn/Mobile/User/UserLogin/'
     data = {
-        'userName': user_number,
-        'password': user_password,
+        'userName': username,
+        'password': password,
     }
-    login_status = requests.post(base_url + append_url, data=data)
-    return JsonResponse(login_status.json())
+    login_status = requests.post(base_url, data=data).json()
+    return JsonResponse(login_status)
+
 
 # [校园信息， 学工办， 教务处，活动, 专题活动， 社团活动， 招聘活动, 公益活动， 竞赛活动， 讲座活动]
 SECTIONS = ['campus', 'xgb', 'jwc', 'action', 'club_action', 'special_action', 'recruit_action',
-            'public_good_action', 'competition_action', 'lecture_action','getcampusmessagebyid',]
+            'public_good_action', 'competition_action', 'lecture_action']
 BASE_URL = 'http://api.shu.edu.cn/Mobile/'
 append_url = {
     'campus': 'CampusMessage/GetCampusMessageList/',
@@ -49,11 +50,6 @@ append_url = {
     'public_good_action': 'CampusAction/GetCampusActionList',
     'competition_action': 'CampusAction/GetCampusActionList',
     'lecture_action':     'CampusAction/GetCampusActionList',
-
-    'getcampusmessagebyid': 'CampusMessage/GetCampusMessageById',
-    'getjwcmessagebyid':    'CampusMessage/GetJwcMessageById',
-    'getxgbmessagebyid':    'CampusMessage/GetXgbCampusMessageById'
-
 }
 
 
@@ -85,19 +81,13 @@ def get_msg_list(request, section):
 
     data = generate_view()
 
-    if data.has_key('currentPage'):
+    if 'currentPage' in data:
         data['currentPage'] = request.POST.get('current_page', 1)
-    if data.has_key('msgId'):
-       data['msgId'] = request.POST.get('msg_id')
     # TODO strange datetime
-    if data.has_key('startTime'):
+    if 'startTime' in data:
         data['startTime'] = '2010-01-01T00:00:00Z'# if data['startTime'] else data['startTime']
-    if data.has_key('endTime'):
+    if 'endTime' in data:
         data['endTime'] = time.strftime('%Y-%m-%dT%H:%M:%SZ')# if data['endTime'] else data['endTime']
-
-    if section in ['getcampusmessagebyid','getjwcmessagebyid','getxgbmessagebyid']:
-        message_list = requests.post(BASE_URL+append_url[section], data=data).json()
-        return JsonResponse(message_list)        
 
     msg_res = requests.post(BASE_URL+append_url[section], data=data).json()
 
@@ -128,41 +118,53 @@ def get_msg_list(request, section):
     return JsonResponse(response)
 
 
-def getcampusactionbyid(request):
-    if request.method == "POST":
-        action_id = request.POST['action_id']
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusAction/GetCampusActionById'
-        data = {
-            'actionId': action_id,
-        }
-        message_list = requests.post(base_url + append_url, data=data)
-        a = message_list.json()
-        a['Summary'] = a['Summary'].replace("\r\n", "<BR />")
-        a = JsonResponse(a)
-        return a
+@require_http_methods(['POST'])
+def get_campus_message_by_id(request):
+    data = {
+        'msgId': request.POST.get('msg_id', None)
+    }
+    res_msg = requests.post("http://api.shu.edu.cn/Mobile/CampusMessage/GetCampusMessageById", data=data).json()
+    return JsonResponse(res_msg)
 
 
-def applyforcampusaction(request):
-    if request.method == "POST":
-        action_id = request.POST['action_id']
-        username = request.POST['username']
-        reason = request.POST['reason']
-        phone = request.POST['phone']
-        mail = request.POST['mail']
-        base_url = 'http://api.shu.edu.cn/Mobile/'
-        append_url = 'CampusAction/ApplyForCampusAction'
-        data = {
-            'persNo': username,
-            'actionId': action_id,
-            'canYLY': reason,
-            'shouJ': phone,
-            'youX': mail,
-        }
-        # print data
-        message_list = requests.post(base_url + append_url, data=data)
-        # print message_list.content
-        a = message_list.json()
-        a = JsonResponse(a)
-        # print a
-        return a
+@require_http_methods(['POST'])
+def get_xgb_message_by_id(request):
+    data = {
+        'msgId': request.POST.get('msg_id', None)
+    }
+    res_msg = requests.post("http://api.shu.edu.cn/Mobile/CampusMessage/GetXgbCampusMessageById", data=data).json()
+    return JsonResponse(res_msg)
+
+
+@require_http_methods(['POST'])
+def get_jwc_message_by_id(request):
+    data = {
+        'msgId': request.POST.get('msg_id', None)
+    }
+    res_msg = requests.post("http://api.shu.edu.cn/Mobile/CampusMessage/GetJwcMessageById", data=data).json()
+    return JsonResponse(res_msg)
+
+
+@require_http_methods(['POST'])
+def get_campus_action_by_id(request):
+    base_url = 'http://api.shu.edu.cn/Mobile/CampusAction/GetCampusActionById'
+    data = {
+        'actionId': request.POST.get('action_id',None)
+    }
+    res_msg = requests.post(base_url, data=data).json()
+    res_msg['Summary'] = res_msg['Summary'].replace("\r\n", "<BR />")
+    return JsonResponse(res_msg)
+
+
+@require_http_methods(['POST'])
+def apply_for_campus_action(request):
+    base_url = 'http://api.shu.edu.cn/Mobile/CampusAction/ApplyForCampusAction'
+    data = {
+        'persNo': request.POST['username'],
+        'actionId': request.POST['action_id'],
+        'canYLY': request.POST['reason'],
+        'shouJ': request.POST['phone'],
+        'youX': request.POST['mail']
+    }
+    res_msg = requests.post(base_url, data=data).json()
+    return JsonResponse(res_msg)
