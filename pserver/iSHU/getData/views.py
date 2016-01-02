@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+from __future__ import print_function
 from django.shortcuts import render, loader, RequestContext
 from django.http import JsonResponse, Http404, HttpResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt, ensure_csrf_cookie
@@ -7,7 +8,6 @@ import requests
 import time
 import json
 import os
-import logging
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -15,7 +15,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 @ensure_csrf_cookie
 def index(request):
-    return render(request, "index.html")
+    meta_info = request.META.get('HTTP_USER_AGENT', None)
+    if "QQBrowser" in meta_info:
+        return render(request, 'open_in_browser.html')
+    else:
+        return render(request, "index.html")
 
 @require_http_methods(['POST'])
 def user_login(request):
@@ -83,7 +87,6 @@ def get_msg_list(request, section):
 
     if data.has_key('currentPage'):
         data['currentPage'] = request.POST.get('current_page', 1)
-    print data.has_key('msgId')
     if data.has_key('msgId'):
        data['msgId'] = request.POST.get('msg_id')
     # TODO strange datetime
