@@ -22,30 +22,33 @@ const HeadBar = React.createClass({
 	},
 
 	render: function() {
+		let iconElementLeft = (
+			<Link to="/">
+				<IconButton tooltip="Home" touch={true}>
+					<ActionHome color={Colors.white} hoverColor={Colors.cyan900} />
+				</IconButton>
+			</Link>
+		);
+		let iconElementRight = (
+			<IconMenu
+				closeOnItemTouchTap={true}
+				iconButtonElement={
+					<IconButton>
+						<NavigationMoreVert />
+					</IconButton> }>
+					<MenuItem
+						primaryText={cookie.load('username')?"登出":"登录"}
+						onTouchTap={this._handleLoginLogout}
+						href="/askbar/login" />
+				</IconMenu>
+		);
 		return (
 			<div>
 				<AppBar
 					title={this.props.title}
 					showMenuIconButton={true}
-          iconElementLeft= {
-            <Link to="/">
-              <IconButton tooltip="Home" touch={true}>
-                <ActionHome color={Colors.white} hoverColor={Colors.cyan900} />
-              </IconButton>
-            </Link>
-					}
-					iconElementRight= {
-            <IconMenu
-              closeOnItemTouchTap={true}
-              iconButtonElement={
-                <IconButton>
-                  <NavigationMoreVert />
-                </IconButton> }>
-								<MenuItem
-									primaryText={cookie.load('username')?"登出":"登录"}
-									onTouchTap={this._handleLoginLogout} />
-							</IconMenu>
-					} />
+          iconElementLeft= {iconElementLeft}
+					iconElementRight= {iconElementRight} />
 			</div>
 		);
 	}

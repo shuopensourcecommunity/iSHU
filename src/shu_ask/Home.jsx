@@ -183,7 +183,7 @@ const Home = React.createClass({
           <ToolbarGroup lastChild={true} float="right">
               <DropDownMenu value={this.state.cid} onChange={this.handleChange}>
                 {this.state.categories.map(category =>
-                  <MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/'+category.id} />
+                  <MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
                 )}
               </DropDownMenu>
               <RaisedButton label="我要提问" primary={true} />
