@@ -54,7 +54,7 @@ const HeadBar = React.createClass({
 				  onRequestClose={this.closePopover} >
 				  <div style={{padding:10, width:200, textAlign:'center'}}>
 				    <p>您好，请登陆乐乎问吧</p>
-				    <RaisedButton primary={true} label="登录"/>
+				    <Link to='login'><RaisedButton primary={true} label="登录" /></Link>
 				  </div>
 				</Popover>
 			</div>
