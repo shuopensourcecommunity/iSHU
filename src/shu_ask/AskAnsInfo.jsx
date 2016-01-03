@@ -57,7 +57,7 @@ const QuestionContent = React.createClass({
          <Card>
            <CardTitle title={question.title} subtitle={subtitle} />
            <CardText>
-             {question.content}
+             <div dangerouslySetInnerHTML={{__html:  question.content }} ></div>
            </CardText>
            <CardText>
              <FlatButton label='我要回答' primary={true} linkButton={true}/>
