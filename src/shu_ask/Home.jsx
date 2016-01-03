@@ -122,7 +122,7 @@ const QuestionTable = React.createClass({
     );
   }
 });
-// TODO: headbar title change with categories
+
 const Home = React.createClass({
   getDefaultProps: function() {
     return {
@@ -131,7 +131,6 @@ const Home = React.createClass({
   },
 
   getInitialState: function() {
-    console.log('123  '+this.props.params.id);
     return {
       categories: [],
       cname: [],
