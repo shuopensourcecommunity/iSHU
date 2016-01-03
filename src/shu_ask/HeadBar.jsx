@@ -39,7 +39,7 @@ const HeadBar = React.createClass({
 					<MenuItem
 						primaryText={cookie.load('username')?"登出":"登录"}
 						onTouchTap={this._handleLoginLogout}
-						href="/askbar/login" />
+						href="/askbar/#/login" />
 				</IconMenu>
 		);
 		return (

@@ -1,9 +1,10 @@
-node_modules/
+.idea/
+*.pyc
+*.tar.gz
+venv/
 build/
 fake/
-*.pyc
-venv/
-.idea/
-*.tar.gz
+pserver/iSHU/Log/
+node_modules/
 server.config
 tmp
