@@ -73,7 +73,12 @@ const QuestionTable = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    if (nextProps.cid != this.props.cid) this.setState({questions: []});
+    if (nextProps.cid != this.props.cid)
+      this.setState({
+        questions: [],
+        curpage: 1,
+        hasMoreQuestions: true
+      });
   },
 
   cardOnClick: function() {
