@@ -38,10 +38,10 @@ var SchoolMapZoom = React.createClass({
         levelValues: levelValues,
         rowsPerLevel: rowsPerLevel,
         colsPerLevel: colsPerLevel,
-        isDebug: true,
+        isDebug: false,
       },
       {
-        isDebug: true,
+        isDebug: false,
         width: 640,
         height: 480,
         offsetX: 0,
