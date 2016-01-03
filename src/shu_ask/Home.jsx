@@ -5,14 +5,17 @@ const HeadBar = require('./HeadBar.jsx');
 const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const InfiniteScroll = require('react-infinite-scroll')(React);
-const {Card, CardTitle, CardText} = require('material-ui');
+const {HardwareKeyboardArrowLeft} = require('../../public/js/svg-icons');
+const {Card, CardTitle, CardText, DropDownMenu, IconButton, IconMenu, MenuItem, RaisedButton,
+			Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
 const QuestionTable = React.createClass({
   getDefaultProps: function() {
     return {
-      url: 'getAskList'
+      url: 'getAskList',
+      cid: 1
     }
   },
 
@@ -20,19 +23,20 @@ const QuestionTable = React.createClass({
     return {
       questions: [],
       curpage: 1,
-      hasMoreQuestions: true // if false, stop loading.
+      hasMoreQuestions: true
     };
   },
 
-  loadQuestionFromServer: function(page) {
+  loadQuestionFromServer: function() {
     console.log('loadQuestionFromServer - page ' + this.state.curpage);
+    console.log('load '+this.props.cid);
     // fake an async. ajax call with setTimeout
     setTimeout(function() {
       // add data
       $.ajax({
         url: this.props.url,
         data: {
-          'cid': 1,
+          'cid': this.props.cid,
           'page': this.state.curpage
         },
         dataType: 'json',
@@ -67,21 +71,20 @@ const QuestionTable = React.createClass({
       });
     }.bind(this), 10);
   },
+
+  componentWillReceiveProps: function(nextProps) {
+    if (nextProps.cid != this.props.cid) this.setState({questions: []});
+  },
+
   cardOnClick: function() {
     this.setState({title_style: !this.state.title_style});
   },
+
   render: function() {
-   /* ID   id
-    * 板块  category_id
-    * 标题  title
-    * 内容  content
-    * 回答  answer_number
-    * 赏金  price
-    */
+    console.log('render '+this.props.cid);
     let questionNodes = this.state.questions.map(function (question) {
       let link='/askAnsInfo/'+question.id;
-      let category = ['新生入学','招生情况','学习制度','学生组织'];
-      let subtitle='赏金：'+question.price+"  回答："+question.answer_number+"  板块："+category[question.category_id];
+      let subtitle='赏金：'+question.price+"  回答："+question.answer_number+"  板块："+this.props.cname;
       let styles={
         title : {
         fontSize: 18,
@@ -118,12 +121,80 @@ const QuestionTable = React.createClass({
 });
 // TODO: headbar title change with categories
 const Home = React.createClass({
+  getDefaultProps: function() {
+    return {
+      url:'categories'
+    };
+  },
+
+  getInitialState: function(){
+    return {
+      categories: [],
+      cname: [],
+      cid: 1
+    };
+  },
+
+  loadCategoriesFromServer: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      methods: 'get',
+      success: function(data) {
+        let t_categories = [];
+        let t_cname = [];
+        for (let obj in data.Data){
+          console.log(data.Data[obj]);
+          t_cname.push(data.Data[obj].Name);
+          t_categories.push({
+            'id': data.Data[obj].ID,
+            'name': data.Data[obj].Name
+          });
+        }
+        this.setState({
+          categories: t_categories,
+          cname: t_cname
+        });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  componentDidMount: function() {
+    this.loadCategoriesFromServer();
+  },
+
+  handleChange: function(e, index, value) {
+    this.setState({cid: value});
+  },
+
   render: function() {
-    console.log(cookie.load('username'));
+    // console.log(cookie.load('username'));
+    let categoryToolbar =  (
+        <Toolbar>
+          <ToolbarGroup firstChild={true} float="left">
+            <a href='/ishu'><IconButton tooltip="返回 iSHU"> <HardwareKeyboardArrowLeft /> </IconButton></a>
+          </ToolbarGroup>
+          <ToolbarGroup lastChild={true} float="right">
+              <DropDownMenu value={this.state.cid} onChange={this.handleChange}>
+                {this.state.categories.map(category =>
+                  <MenuItem value={category.id} primaryText={category.name} />
+                )}
+              </DropDownMenu>
+              <RaisedButton label="我要提问" primary={true} />
+          </ToolbarGroup>
+        </Toolbar>
+      );
+    let cid = this.state.cid;
+    let cname = this.state.cname[cid-1];
+    console.log(cid+cname);
     return (
       <div>
         <HeadBar title='乐乎问吧' />
-        <QuestionTable />
+        {categoryToolbar}
+        <QuestionTable cid={cid} cname={cname}/>
       </div>
     );
   }
