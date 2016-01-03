@@ -2,7 +2,8 @@
 const HeadBar = require('./HeadBar.jsx');
 const React =require('react');
 const {Link, RouteHandler} = require('react-router');
-const {Card, CardActions, CardText, CardTitle, FlatButton} = require('material-ui');
+const {Card, CardActions, CardText, CardTitle, FlatButton, RaisedButton,
+  Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 
 // TODO request the question detail with a questuinId
 const QuestionContent = React.createClass({

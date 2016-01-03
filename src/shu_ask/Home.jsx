@@ -29,7 +29,6 @@ const QuestionTable = React.createClass({
 
   loadQuestionFromServer: function() {
     console.log('loadQuestionFromServer - page ' + this.state.curpage);
-    console.log('load '+this.props.cid);
     // fake an async. ajax call with setTimeout
     setTimeout(function() {
       // add data
@@ -86,7 +85,6 @@ const QuestionTable = React.createClass({
   },
 
   render: function() {
-    console.log('render '+this.props.cid);
     let questionNodes = this.state.questions.map(function (question) {
       let link='/askAnsInfo/'+question.id;
       let subtitle='赏金：'+question.price+"  回答："+question.answer_number+"  板块："+this.props.cname;
@@ -132,11 +130,12 @@ const Home = React.createClass({
     };
   },
 
-  getInitialState: function(){
+  getInitialState: function() {
+    console.log('123  '+this.props.params.id);
     return {
       categories: [],
       cname: [],
-      cid: 1
+      cid: (this.props.params.id==undefined) ? 1 : parseInt(this.props.params.id)
     };
   },
 
@@ -185,7 +184,7 @@ const Home = React.createClass({
           <ToolbarGroup lastChild={true} float="right">
               <DropDownMenu value={this.state.cid} onChange={this.handleChange}>
                 {this.state.categories.map(category =>
-                  <MenuItem value={category.id} primaryText={category.name} />
+                  <MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/'+category.id} />
                 )}
               </DropDownMenu>
               <RaisedButton label="我要提问" primary={true} />
