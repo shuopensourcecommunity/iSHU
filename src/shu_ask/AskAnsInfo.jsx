@@ -5,41 +5,51 @@ const {Link, RouteHandler} = require('react-router');
 const {Card, CardActions, CardText, CardTitle, FlatButton, RaisedButton,
   Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 
-// TODO request the question detail with a questuinId
-const QuestionContent = React.createClass({
-  getDefaultProps: function() {
-    return {
-      ask_url: 'getQuestionDetailById',
-      ans_url: 'getAnswerByQuestionId'
-    }
+const styles = {
+  tbText: {
+    paddingLeft: 16,
+    fontSize: 15
   },
+  cardTitle: {
+    fontSize: 20
+  },
+  hide: {
+    display: 'none'
+  },
+  show: {
+    display: ''
+  }
+};
 
+const QuestionContent = React.createClass({
   getInitialState: function() {
     return {
-      question: []
+      id: 0,
+      title: '',
+      price: 0,
+      content: '',
+      answer_number: 0,
+      category_id: 0
     };
   },
 
   loadQuestionFromServer: function() {
     $.ajax({
-      url: this.props.ask_url,
+      url: 'getQuestionDetailById',
       data: {
         questionId: this.props.questionId
       },
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-        let question = [];
-        question.push({
-          'id': data.Data.id,
-          'title': data.Data.title,
-          'price': data.Data.price,
-          'content': data.Data.content,
-          'answer_number': data.Data.answer_number,
-          'category_id': data.Data.category_id
-        });
+        console.log(data);
         this.setState({
-          question: question
+          id: data.Data.id,
+          title: data.Data.title,
+          price: data.Data.price,
+          content: data.Data.content,
+          answer_number: data.Data.answer_number,
+          category_id: data.Data.category_id
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -48,26 +58,34 @@ const QuestionContent = React.createClass({
     });
   },
 
-  componentDidMount: function(){
+  componentDidMount: function() {
     this.loadQuestionFromServer();
   },
-  render: function(){
-    let QuestionContent = this.state.question.map(function(question) {
-       let subtitle = <span>共 {question.answer_number} 个回答 赏金 {question.price}</span>;
-       return (
-         <Card>
-           <CardTitle title={question.title} subtitle={subtitle} />
-           <CardText>
-             <div dangerouslySetInnerHTML={{__html:  question.content }} ></div>
-           </CardText>
-           <CardText>
-             <FlatButton label='我要回答' primary={true} linkButton={true}/>
-           </CardText>
-         </Card>
-       )
-    });
+
+  render: function() {
+    let question = this.state;
+    let tbText = '共 ' + question.answer_number + ' 个回答  赏金 ' + question.price;
+    let QuestionToolbar = (
+      <Toolbar>
+        <ToolbarGroup firstChild={true} float="left">
+          <ToolbarTitle text={tbText} style={styles.tbText} />
+        </ToolbarGroup>
+        <ToolbarGroup lastChild={true} float="right">
+          <RaisedButton label="我要回答" primary={true} />
+        </ToolbarGroup>
+      </Toolbar>
+    );
+    let QuestionContent = (
+      <Card>
+        <CardTitle title={question.title} titleStyle={styles.cardTitle} />
+        <CardText>
+          <div dangerouslySetInnerHTML={{__html:  question.content }} ></div>
+        </CardText>
+      </Card>
+    );
     return(
       <div>
+        {QuestionToolbar}
         {QuestionContent}
       </div>
     )
@@ -83,11 +101,13 @@ const AnswerTable = React.createClass({
 
   getInitialState: function(){
     return {
-      // disagree: [],
-      // agree: [],
+      disagree: [],
+      agree: [],
       isBest: [],
       answers: [],
-      bestAnswers: []
+      bestAnswers: [],
+      bestAnsNum: 0,
+      otherAnsNum: 0
     };
   },
 
@@ -106,9 +126,12 @@ const AnswerTable = React.createClass({
         let t_disagree = [];
         let t_answer = [];
         let t_bestAnswer = [];
+        let t_bestAnsNum = 0;
+        let t_otherAnsNum = 0;
         for (let obj in data.Data){
           // console.log(data.Data[obj].is_best);
           if (data.Data[obj].is_best) {
+            t_bestAnsNum++;
             t_bestAnswer.push({
               'answerId': data.Data[obj].answerId,
               'author': data.Data[obj].name,
@@ -120,6 +143,7 @@ const AnswerTable = React.createClass({
             });
           }
           else {
+            t_otherAnsNum++;
             t_answer.push({
               'answerId': data.Data[obj].answerId,
               'author': data.Data[obj].name,
@@ -131,15 +155,17 @@ const AnswerTable = React.createClass({
             });
           }
           let id = JSON.parse(data.Data[obj].answerId);
-          // this.state.isBest[id] = false;
+          this.state.isBest[id] = false;
           t_agree.push(false);
           t_disagree.push(false);
         }
         this.setState({
           answers: t_answer,
           bestAnswers: t_bestAnswer,
+          bestAnsNum: t_bestAnsNum,
+          otherAnsNum: t_otherAnsNum,
           agree: t_agree,
-          disagree: t_disagree
+          disagree: t_disagree,
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -265,16 +291,19 @@ const AnswerTable = React.createClass({
   render: function(){
     let answers = this.state.answers.map(this.answerList,this);
     let bestAnswers = this.state.bestAnswers.map(this.answerList,this);
+    let bestZero = (this.state.bestAnsNum==0);
+    let ansZero = (this.state.otherAnsNum==0);
     return (
       <div>
-        <Card initiallyExpanded={true} expandable={true}>
-          <CardTitle title='最佳回答' />
+        <div style={bestZero?styles.hide:styles.show}>
+          <Toolbar><ToolbarTitle firstChild={true} text='最佳回答' style={styles.tbText} /></Toolbar>
           {bestAnswers}
-        </Card>
-        <Card initiallyExpanded={true} expandable={true}>
-          <CardTitle title='其他回答' />
+        </div>
+        <div style={ansZero?styles.hide:styles.show}>
+          <Toolbar><ToolbarTitle firstChild={true} text='其它回答' style={styles.tbText} /></Toolbar>
           {answers}
-        </Card>
+        </div>
+        <p style={bestZero&&ansZero?styles.show:styles.hide}>该问题暂无答案</p>
       </div>
     );
   }
