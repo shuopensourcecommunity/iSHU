@@ -21,7 +21,7 @@ var SchoolMapZoom = React.createClass({
     var rowsPerLevel = 4;
     var colsPerLevel = 2;
     var tilesPath = function() {
-      var basePath = '/static/imgs/SchoolMap';
+      var basePath = '/static/style/imgs/SchoolMap';
       return _.map(levelValues, function(levelV) {
         return _.map(_.range(0, rowsPerLevel*levelV), function(row) {
           return _.map(_.range(0, colsPerLevel*levelV), function(col) {
