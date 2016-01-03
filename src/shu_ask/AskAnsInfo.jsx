@@ -60,7 +60,6 @@ const QuestionContent = React.createClass({
              {question.content}
            </CardText>
            <CardText>
-
              <FlatButton label='我要回答' primary={true} linkButton={true}/>
            </CardText>
          </Card>
@@ -83,8 +82,8 @@ const AnswerTable = React.createClass({
 
   getInitialState: function(){
     return {
-      disagree: [],
-      agree: [],
+      // disagree: [],
+      // agree: [],
       isBest: [],
       answers: [],
       bestAnswers: []

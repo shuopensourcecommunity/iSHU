@@ -1,9 +1,11 @@
 'use strict'
 const React =require('react');
 const cookie = require('react-cookie');
+const Colors = require('../../public/js/colors');
 const {Link, RouteHandler} = require('react-router');
-const {ActionSearch} = require('../../public/js/svg-icons.js');
-const {AppBar, IconButton, LeftNav, MenuItem} = require('material-ui');
+const {ActionHome, ActionSearch, HardwareKeyboardArrowLeft, NavigationMoreVert} = require('../../public/js/svg-icons');
+const {AppBar, Divider, DropDownMenu, IconButton, IconMenu, LeftNav, MenuItem, RaisedButton,
+			Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 const injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
@@ -50,10 +52,6 @@ const HeadBar = React.createClass({
 		this.loadCategoriesFromServer();
 	},
 
-	_handleLeftNavToggle: function() {
-		this.setState({leftNavOpen: !this.state.leftNavOpen});
-	},
-
 	_categoryOnClick: function() {
 		this.setState({
 			leftNavOpen: false,
@@ -65,16 +63,41 @@ const HeadBar = React.createClass({
 		return (
 			<div>
 				<AppBar
-				  title={this.props.title}
-					onLeftIconButtonTouchTap={this._handleLeftNavToggle} />
-				<LeftNav ref="leftNav"
-					openRight={true}
-					open={this.state.leftNavOpen}
-					onRequestChange={open => this.setState({open})}>
-						{this.state.categories.map(category =>
-							<MenuItem onTouchTap={this._categoryOnClick}>{category.name}</MenuItem>
-						)}
-				</LeftNav>
+					title={this.props.title}
+					showMenuIconButton={true}
+          iconElementLeft= {
+            <Link to="/">
+              <IconButton tooltip="Home" touch={true}>
+                <ActionHome color={Colors.white} hoverColor={Colors.cyan900} />
+              </IconButton>
+            </Link>
+					}
+					iconElementRight= {
+            <IconMenu
+              closeOnItemTouchTap={true}
+              iconButtonElement={
+                <IconButton>
+                  <NavigationMoreVert />
+                </IconButton> }>
+								<MenuItem
+									primaryText={cookie.load('username')?"登出":"登录"}
+									onTouchTap={this._handleLoginLogout} />
+							</IconMenu>
+					} />
+				<Toolbar>
+					<ToolbarGroup firstChild={true} float="left">
+						<a href='/ishu'><IconButton tooltip="返回 iSHU"> <HardwareKeyboardArrowLeft /> </IconButton></a>
+					</ToolbarGroup>
+					<ToolbarGroup lastChild={true} float="right">
+
+							<DropDownMenu value={this.props.cid}>
+								{this.state.categories.map(category =>
+									<MenuItem value={category.id} onTouchTap={this._categoryOnClick} primaryText={category.name} />
+								)}
+							</DropDownMenu>
+							<RaisedButton label="我要提问" primary={true} />
+					</ToolbarGroup>
+				</Toolbar>
 			</div>
 		);
 	}

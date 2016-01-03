@@ -7,6 +7,10 @@ const {Link, RouteHandler} = require('react-router');
 const {TextField, RaisedButton} = require('material-ui');
 
 const LoginForm = React.createClass({
+	getDefaultProps: function() {
+		url: 'login'
+	},
+
 	render: function() {
 		return(
 			<div className="lg-container">
