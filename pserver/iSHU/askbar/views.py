@@ -265,7 +265,7 @@ def submit_answer(request):
         'content': request.POST['content'],
         'questionId': request.POST['question_id']
     }
-    msg_res = requests.post('http://api.shu.edu.cn/Mobile/Lehu/Answer', data=data).json()
+    msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', params=data).json()
     return JsonResponse(msg_res)
 
 
@@ -281,8 +281,7 @@ def submit_question(request):
         'content': content,
         'cid': cid
     }
-
-    msg_res = requests.post('http://api.shu.edu.cn/Mobile/Lehu/Question', data=data).json()
+    msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Question', params=data).json()
     return JsonResponse(msg_res)
 
 
