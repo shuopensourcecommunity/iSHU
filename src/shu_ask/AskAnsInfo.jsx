@@ -270,15 +270,14 @@ const AnswerTable = React.createClass({
     if (this.state.disagree[id]) disagreeText=disagreeText+1;
     let is_best = answer.is_best;
     let set_best = is_best ? '取消最佳' : '设为最佳';
-    let cardtitle = answer.author+'  '+answer.time;
+    // let cardtitle = answer.author+'  '+answer.time;
+    let cardtitle = answer.time;
     return (
       <Card>
         <CardTitle subtitle={cardtitle} />
         <CardActions>
-          <span>
-            <a onClick={this.agreeClick.bind(this, id)}>支持<h>{agreeText}</h></a>
-            <a onClick={this.disagreeClick.bind(this, id)}>反对<h>{disagreeText}</h></a>
-          </span>
+          <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
+          <FlatButton label={'反对 '+disagreeText} onClick={this.disagreeClick.bind(this, id)} />
           <FlatButton label={set_best} primary={true} onTouchTap={this.handleBestClick.bind(this, id, is_best)} />
         </CardActions>
         <CardText>
