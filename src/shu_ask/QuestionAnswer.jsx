@@ -31,6 +31,7 @@ const Question = React.createClass({
     this.setState({content: event.target.value});
   },
   handleSubmitQuestion: function() {
+  	console.log(cookie.load('guid'));
     let data = {
       'guid': cookie.load('guid'),
       'title': this.state.title,
