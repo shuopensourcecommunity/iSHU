@@ -161,13 +161,13 @@ var SchoolActivity= React.createClass({
     var active = this.state.activityData[0].url;
     return (
       <div>
-        <AppBar title="校园活动"/>
+        <AppBar title="校园活动" zDepth={0} />
         <div className='activity-tabs'>
           <Tabs
             tabItemContainerStyle={styles.tab}
             contentContainerStyle={styles.content}>
           {
-            this.state.activityData.map(data => 
+            this.state.activityData.map(data =>
               <Tab label={data.title} onTouchTap={active=data.url} key={data.title}>
                 <ActivityTable url={data.url} active={active}/>
               </Tab>

@@ -111,7 +111,7 @@ var SchoolQuery = React.createClass({
   render: function(){
     return (
       <div>
-       <AppBar title="校园查询"/>
+       <AppBar title="校园查询" zDepth={0} />
        <QueryTabs />
       </div>
     );

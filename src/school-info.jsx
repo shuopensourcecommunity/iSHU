@@ -199,7 +199,7 @@ var SchoolInfo= React.createClass({
     var active = this.state.infoData[0].url;
     return (
       <div>
-        <AppBar title="校园资讯"/>
+        <AppBar title="校园资讯" zDepth={0} />
         <Tabs>
         {
           this.state.infoData.map(data =>

@@ -51,7 +51,7 @@ var StudentService= React.createClass({
       var title_style = this.state.title_style? styles.title2:styles.title;
     return (
       <div>
-        <AppBar title="学生事务"/>
+        <AppBar title="学生事务" zDepth={0} />
         <Tabs>
           <Tab label="证明类" onActive={this.certificate}>
               <Card initiallyExpanded={false}>

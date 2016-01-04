@@ -19,7 +19,10 @@ const ListItem = require('material-ui/lib/lists/list-item');
 
 const AppBar = React.createClass({
   getDefaultProps: function(){
-    return { title: '上海大学' };
+    return {
+      title: '上海大学',
+      zDepth: 1
+     };
   },
   getInitialState: function(){
     return {
@@ -129,6 +132,7 @@ const AppBar = React.createClass({
     return (
       <div ref="myAppBarMenu">
         <AppBarComponent
+          zDepth={this.props.zDepth}
           title={title}
           showMenuIconButton={true}
           iconElementLeft={
