@@ -1,8 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.conf.urls import url
-from views import index, get_categories, get_ask_list, get_answer_by_question_id, \
-    get_answer_detail_by_id, askbar_login, get_question_detail_by_id,submit_answer,\
-    submit_question
+from views import *
 
 urlpatterns = [
     url(r'^$', index),
@@ -13,5 +11,8 @@ urlpatterns = [
     url(r'^getAnswerDetailById', get_answer_detail_by_id, name='get_answer_detail_by_id'),
     url(r'^getQuestionDetailById', get_question_detail_by_id, name='get_question_detail_by_id'),
     url(r'^submitQuestion', submit_question, name='submit_question'),
-    url(r'^submitAnswer', submit_answer, name='submit_answer')
+    url(r'^submitAnswer', submit_answer, name='submit_answer'),
+    url(r'^likeAnswer', like_answer, name='like_answer'),
+    url(r'^dislikeAnswer', dislike_answer, name='dislike_answer'),
+    url(r'^setBestAnswer', set_best_answer, name='set_best_anser')
 ]

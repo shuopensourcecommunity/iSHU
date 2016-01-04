@@ -15,7 +15,7 @@ def push():
 
     '''
     read_config()
-    local('npm install')
+    #local('npm install')
     local('webpack --config webpack.config.js')
     run('mkdir -p {}'.format(WORK_DIR))
     with cd('/var/www/ishu'):
