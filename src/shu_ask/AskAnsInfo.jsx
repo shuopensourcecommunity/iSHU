@@ -277,7 +277,7 @@ const AnswerTable = React.createClass({
     let cardtitle = answer.time;
     return (
       <Card>
-        <CardTitle subtitle={cardtitle} />
+        <CardHeader style={styles.cardHeader} subtitle={cardtitle} />
         <CardActions>
           <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
           <FlatButton label={'反对 '+disagreeText} onClick={this.disagreeClick.bind(this, id)} />
