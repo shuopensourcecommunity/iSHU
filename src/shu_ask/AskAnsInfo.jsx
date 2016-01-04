@@ -2,13 +2,16 @@
 const HeadBar = require('./HeadBar.jsx');
 const React =require('react');
 const {Link, RouteHandler} = require('react-router');
-const {Card, CardActions, CardText, CardTitle, FlatButton, RaisedButton,
+const {Card, CardActions, CardHeader, CardText, FlatButton, RaisedButton,
   Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 
 const styles = {
   tbText: {
     paddingLeft: 16,
     fontSize: 15
+  },
+  cardHeader: {
+    height: 50
   },
   cardTitle: {
     fontSize: 20
@@ -77,7 +80,7 @@ const QuestionContent = React.createClass({
     );
     let QuestionContent = (
       <Card>
-        <CardTitle title={question.title} titleStyle={styles.cardTitle} />
+        <CardHeader style={styles.cardHeader} title={question.title} titleStyle={styles.cardTitle} />
         <CardText>
           <div dangerouslySetInnerHTML={{__html:  question.content }} ></div>
         </CardText>

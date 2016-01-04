@@ -51,7 +51,7 @@ const Answer = React.createClass({
 		let data = {
 			'guid': cookie.load('guid'),
 			'content': this.state.ansValue,
-			'questionId': this.state.qid
+			'question_id': this.state.qid
 		};
 		$.ajax({
 			url: 'submitAnswer',
