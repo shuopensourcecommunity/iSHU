@@ -16,14 +16,15 @@ const LoginForm = React.createClass({
 
 	handleLogin: function() {
 		console.log(this.state.id+this.state.pwd);
+		let data = {
+			'username': this.state.id,
+			'password': this.state.pwd
+		};
 		$.ajax({
 			url: 'login',
-      dataType: 'JSON',
-      method: 'POST',
-      data: {
-				'username': this.state.id,
-				'password': this.state.pwd
-			},
+      dataType: 'json',
+      method: 'post',
+      data: data,
       success: function(data) {
 				console.log(data);
         // var t_status = data.status;

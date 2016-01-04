@@ -1,5 +1,4 @@
 'use strict';
-const App = require('./App.jsx');
 const Home = require('./Home.jsx');
 const Login = require('./Login.jsx');
 const NotFound = require('./NotFound.jsx');
