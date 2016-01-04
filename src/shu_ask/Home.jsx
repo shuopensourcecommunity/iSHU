@@ -6,7 +6,7 @@ const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const InfiniteScroll = require('react-infinite-scroll')(React);
 const {HardwareKeyboardArrowLeft} = require('../../public/js/svg-icons');
-const {Card, CardTitle, CardText, DropDownMenu, IconButton, IconMenu, MenuItem, RaisedButton,
+const {Card, CardTitle, CardText, DropDownMenu, IconButton, IconMenu, MenuItem, FlatButton,
 			Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
@@ -170,6 +170,13 @@ const Home = React.createClass({
 
   render: function() {
     // console.log(cookie.load('username'));
+    let style={
+      button: {
+        marginLeft: 0,
+        marginRight: 0,
+        textAlign: 'center'
+      }
+    };
     let categoryToolbar =  (
         <Toolbar>
           <ToolbarGroup firstChild={true} float="left">
@@ -181,7 +188,7 @@ const Home = React.createClass({
                   <MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
                 )}
               </DropDownMenu>
-              <Link to={'/question'}><RaisedButton label="我要提问" primary={true} /></Link>
+              <FlatButton style={style.button} linkButton={true} label="提问" href={'askbar/#/question'} primary={true} />
           </ToolbarGroup>
         </Toolbar>
       );
