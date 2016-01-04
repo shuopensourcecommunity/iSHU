@@ -17,7 +17,6 @@ const LoginForm = React.createClass({
   },
 
   handleLogin: function() {
-    console.log(this.state.id+this.state.pwd);
     let data = {
       'username': this.state.id,
       'password': this.state.pwd
@@ -29,14 +28,19 @@ const LoginForm = React.createClass({
       data: data,
       success: function(data) {
         console.log(data);
-        this.setState({
-          guid: data.Data.Guid,
-          username: data.Data.UserName
-        });
-        cookie.save('username', data.Data.UserName);
-        cookie.save('guid', data.Data.Guid);
-        alert('登录成功');
-        window.location.href="/askbar/"
+        if (data.State=='success') {
+        	this.setState({
+          	guid: data.Data.Guid,
+          	username: data.Data.UserName
+        	});
+        	cookie.save('username', data.Data.UserName);
+        	cookie.save('guid', data.Data.Guid);
+        	alert('登录成功');
+        	window.location.href="/askbar/";
+      	}
+        else {
+        	alert(data.status);
+        }
         // var t_status = data.status;
         // this.setState({status: t_status,message: t_status});
         // if (t_status == "登录成功") {
