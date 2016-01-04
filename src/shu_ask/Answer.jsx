@@ -4,7 +4,7 @@ const HeadBar = require('./HeadBar.jsx');
 const React = require('react');
 const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
-const {Card, CardActions, CardHeader, CardText, FlatButton, TextField} = require('material-ui');
+const {Card, CardActions, CardHeader, CardText, Divider, FlatButton, TextField} = require('material-ui');
 
 const Answer = React.createClass({
 	getInitialState: function() {
@@ -71,24 +71,48 @@ const Answer = React.createClass({
 
 	render: function() {
 		console.log(this.props.params.id);
-
+		let styles = {
+			cardTitle: {
+				fontSize: 20
+			},
+			cardHeader: {
+				height: 50
+			},
+			answerAction: {
+				textAlign: 'center'
+			},
+			textField: {
+				textAlign: 'left'
+			},
+			textInput: {
+				paddingLeft: 16,
+				paddingRight: 16
+			},
+			floatingLabel: {
+				paddingLeft: 16
+			},
+		};
 		return (
 			<div>
 				<HeadBar title='回答' />
-				<div className='q-and-a-container'>
-					<Card style={{height: '100%'}}>
-				    <CardHeader title={this.state.qTitle} />
-				    <CardText> <div dangerouslySetInnerHTML={{__html: this.state.qContent }} ></div> </CardText>
+				<div>
+				  <CardHeader title={this.state.qTitle} style={styles.cardHeader} titleStyle={styles.cardTitle}/>
+				  <CardText> <div dangerouslySetInnerHTML={{__html: this.state.qContent }} ></div> </CardText>
+					<Divider />
+					<div style={styles.answerAction}>
 						<TextField
+							style={styles.textField}
+							inputStyle={styles.textInput}
+							floatingLabelStyle={styles.floatingLabel}
+							fullWidth={true}
 							multiLine={true}
 							rows={8}
-							floatingLabelText='ans'
+							floatingLabelText='请输入您的回答'
 							onChange={this.handleAnsValue} />
-						<CardActions>
-							<FlatButton label='取消' secondary={true} />
-							<FlatButton label='提交' primary={true} onTouchTap={this.handleSubmitAnswer} />
-						</CardActions>
-				  </Card>
+						<br />
+						<FlatButton label='取消' secondary={true} />
+						<FlatButton label='提交' primary={true} onTouchTap={this.handleSubmitAnswer} />
+					</div>
 				</div>
 			</div>
 		);

@@ -71,7 +71,7 @@ const QuestionContent = React.createClass({
           <ToolbarTitle text={tbText} style={styles.tbText} />
         </ToolbarGroup>
         <ToolbarGroup lastChild={true} float="right">
-          <RaisedButton linkButton={true} href={'askbar/#/answer/'+question.id} label="我要回答" primary={true} />
+          <RaisedButton linkButton={true} href={'/askbar/#/answer/'+question.id} label="我要回答" primary={true} />
         </ToolbarGroup>
       </Toolbar>
     );

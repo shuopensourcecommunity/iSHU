@@ -122,11 +122,6 @@ const QuestionTable = React.createClass({
 });
 
 const Home = React.createClass({
-  getDefaultProps: function() {
-    return {
-      url:'categories'
-    };
-  },
 
   getInitialState: function() {
     return {
@@ -138,7 +133,7 @@ const Home = React.createClass({
 
   loadCategoriesFromServer: function() {
     $.ajax({
-      url: this.props.url,
+      url: 'categories',
       dataType: 'json',
       methods: 'get',
       success: function(data) {
@@ -190,7 +185,7 @@ const Home = React.createClass({
                   <MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
                 )}
               </DropDownMenu>
-              <FlatButton style={style.button} linkButton={true} label="提问" href={'askbar/#/question'} primary={true} />
+              <FlatButton style={style.button} linkButton={true} label="提问" href={'/askbar/#/question'} primary={true} />
           </ToolbarGroup>
         </Toolbar>
       );
