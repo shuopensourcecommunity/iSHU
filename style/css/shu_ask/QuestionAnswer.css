@@ -1,9 +1,8 @@
-.q-and-a-container {
-	float: center;
-	padding: 0px 30px;
-}
 .BtnGroup {
-	float: right;
 	text-align: center;
-	
+	width: 100%;
+}
+.button {
+	float: right;
+	display: inline;
 }

@@ -4,7 +4,7 @@ const HeadBar = require('./HeadBar.jsx');
 const React = require('react');
 const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
-const {FlatButton, SelectField, TextField, menuItems, DropDownMenu} = require('material-ui');
+const {FlatButton, SelectField, TextField, menuItems} = require('material-ui');
 
 const Question = React.createClass({
   getInitialState: function() {
@@ -17,10 +17,10 @@ const Question = React.createClass({
       ],
     	title: '',
     	content: '',
-    	cid: 0
+    	cid: 1
     };
   },
-  _handleSelectValueChange: function(event, values){
+  _handleSelectValueChange: function(values){
   	console.log(values.target.value);
     this.setState({cid: values.target.value});
   },
@@ -60,55 +60,61 @@ const Question = React.createClass({
     });
   },
   render: function() {
-    var placeholder=[];
-    var selects=[];
     var style = {
+      textfield: {
+      	textAlign: 'left'
+      },
       root: {
-        width: 100,
-        fontSize: 13
+        fontSize: 13,
+        width: '44%',
+        marginLeft: '43%',
+        marginBottom: 40
       }
     };
-    placeholder='问题描述';
-    selects.push(
-      <ul>
-      	<TextField
-        	style={style.root}
-        	hintText='1 ~ 1000'
-        	floatingLabelText='悬赏额' />
-      	<SelectField
-        	style={style.root}
-        	value={this.state.cid}
-        	hintText='问题分类'
-        	valueMember='payload'
-        	displayMember='text'
-        	menuItems={this.state.values}
-        	onChange={this._handleSelectValueChange.bind(null, 'values')} />
-      </ul>
-    );
+    var field = [
+    	  	// {<TextField
+    	  	// 	       		style={style.root}
+    	  	//   	     		hintText='1 ~ 1000'
+    	  	//    	    		floatingLabelText='悬赏额' />}
+     			<SelectField
+       			style={style.root}
+       			labelStyle={style.label}
+	        	value={this.state.cid}
+	        	floatingLabelText='问题分类'
+  	     		valueMember='payload'
+	    	   	displayMember='text'
+  	   	  	menuItems={this.state.values}
+    	   		onChange={this._handleSelectValueChange.bind('values')} />
+    ];
     return (
       <div>
         <HeadBar title='提问' />
-        <div className='q-and-a-container'>
+        <center>
         	<TextField
         		onChange={this._handleTitleChange}
         		floatingLabelText='提问标题' />
+        </center>
+        <center>
         	<TextField
+        		style={style.textfield}
           	multiLine={true}
           	rows={8}
         		onChange={this._handleContentChange}
-          	floatingLabelText={placeholder} />
-        	{selects}
-      		<div className='BtnGroup'>
-        		<FlatButton label='取消'
-        			linkButton={true}
-        			href='/askbar/'
-        			secondary={true} />
-        		<FlatButton label='提交'
-        			keyboardFocused={true}
-        			primary={true}
-        			onTouchTap={this.handleSubmitQuestion} />
-      		</div>
-        </div>
+          	floatingLabelText='问题描述' />
+        </center>
+        {field}
+     		<div className='BtnGroup'>
+       		<FlatButton label='提交'
+       			className='button'
+       			keyboardFocused={true}
+       			primary={true}
+       			onTouchTap={this.handleSubmitQuestion} />
+       		<FlatButton label='取消'
+       			className='button'
+       			linkButton={true}
+       			href='/askbar/'
+       			secondary={true} />
+     		</div>
       </div>
     );
   }
