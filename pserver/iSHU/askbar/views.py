@@ -275,7 +275,6 @@ def submit_question(request):
     title = request.POST['title']
     content = request.POST['content']
     cid = request.POST['cid']
-
     data = {
         'guid': guid,
         'title': title,

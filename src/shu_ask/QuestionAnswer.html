@@ -1014,190 +1014,154 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>SchoolDialog</title></head><body><article class="markdown-body"><p>&lsquo;use strict&rsquo;<br />
-require(&ldquo;../style/css/ishu/Activity.css&rdquo;);<br />
-require(&ldquo;../style/css/ishu/Signup.css&rdquo;);<br />
-var React = require(&ldquo;react&rdquo;);<br />
-var cookie = require(&lsquo;react-cookie&rsquo;);<br />
-var { Card, CardTitle, CardText, CardActions, CircularProgress,<br />
-      Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require(&lsquo;material-ui&rsquo;);<br />
-var AppBar = require(&lsquo;./AppBar.jsx&rsquo;);<br />
-var {render} = require(&lsquo;react-dom&rsquo;);<br />
-var InfiniteScroll = require(&lsquo;react-infinite-scroll&rsquo;)(React);<br />
-var injectTapEventPlugin = require(&ldquo;react-tap-event-plugin&rdquo;);<br />
-injectTapEventPlugin();</p>
-<p>var SchoolDialog= React.createClass({<br />
-  getInitialState: function() {<br />
-    return {<br />
-      isJoined: false,<br />
-      showDialogActions: false,<br />
-      autoHideDuration: 5000,<br />
-      mail: &lsquo;Hello!&rsquo;,<br />
-      phone: &lsquo;123&rsquo;,<br />
-      reason: &lsquo;dsf&rsquo;,<br />
-      id: &lsquo;13121312&rsquo;,<br />
-      pwd: &lsquo;J123123dandi&rsquo;,<br />
-      status: &lsquo;请稍等，信息正在空中飞翔。。。&rsquo;,<br />
-      realname: &lsquo;&rsquo;,<br />
-      username: cookie.load(&lsquo;username&rsquo;),<br />
-    };<br />
-  },<br />
-  _handleSignUpClick: function(){<br />
-    this.setState({showDialogActions: true});<br />
-  },<br />
-  _handleLogin: function(){<br />
-    this.setState({status: &lsquo;请稍等，信息正在空中飞翔。。。&rsquo;});<br />
-    this.setState({showDialogActions: false});<br />
-    this.refs.success.show();<br />
-    var data={<br />
-      &lsquo;id&rsquo;: this.state.id,<br />
-      &lsquo;pwd&rsquo;: this.state.pwd,<br />
-    };<br />
-    $.ajax({<br />
-      url: &lsquo;user_login&rsquo;,<br />
-      dataType: &lsquo;json&rsquo;,<br />
-      method: &lsquo;post&rsquo;,<br />
-      data: data,<br />
-      success: function(data) {<br />
-        var t_status = data.status;<br />
-        this.setState({status: t_status,message: t_status});<br />
-        if (t_status == &ldquo;登录成功&rdquo;) {<br />
-          var t_realname = data.realname;<br />
-          var t_username = data.username;<br />
-          this.setState({realname: t_realname});<br />
-          this.setState({username: t_username});<br />
-          cookie.save(&lsquo;username&rsquo;, t_username);<br />
-          this.refs.myAppBarMenu.componentDidMount();<br />
+</style><title>QuestionAnswer</title></head><body><article class="markdown-body"><p>&lsquo;use strict&rsquo;;<br />
+require(&lsquo;../../style/css/shu_ask/QuestionAnswer.css&rsquo;);<br />
+const HeadBar = require(&lsquo;./HeadBar.jsx&rsquo;);<br />
+const React = require(&lsquo;react&rsquo;);<br />
+const cookie = require(&lsquo;react-cookie&rsquo;);<br />
+const {Link, RouteHandler} = require(&lsquo;react-router&rsquo;);<br />
+const {FlatButton, SelectField, TextField, menuItems, DropDownMenu} = require(&lsquo;material-ui&rsquo;);</p>
+<p>const QselectBtn = React.createClass({<br />
+    getInitialState: function(){<br />
+        return {<br />
+            values: [<br />
+                { payload: &lsquo;1&rsquo;, text: &lsquo;新生入学&rsquo; },<br />
+                { payload: &lsquo;2&rsquo;, text: &lsquo;招生情况&rsquo; },<br />
+                { payload: &lsquo;3&rsquo;, text: &lsquo;学习制度&rsquo; },<br />
+                { payload: &lsquo;4&rsquo;, text: &lsquo;学生组织&rsquo; }<br />
+            ],<br />
+            selectValue: null<br />
         };<br />
-      }.bind(this),<br />
-      error: function(xhr, status, err) {<br />
-        this.setState({status: &lsquo;登陆失败&rsquo;});<br />
-        console.error(this.props.url, status, err.toString());<br />
-      }.bind(this)<br />
-    });<br />
-  },<br />
-  _handleRequestClose: function(){<br />
-    this.setState({showDialogActions: false});<br />
-  },<br />
-  _handleDialogCancel: function(){<br />
-    this.setState({showDialogActions: false});<br />
-  },<br />
-  _handleDialogSubmit: function(){<br />
-    this.setState({status: &lsquo;请稍等，信息正在空中飞翔。。。&rsquo;});<br />
-    this.setState({showDialogActions: false});<br />
-    this.refs.success.show();<br />
-    var data={<br />
-      &lsquo;action_id&rsquo;: this.props.ActionID,<br />
-      &lsquo;phone&rsquo;: this.state.phone,<br />
-      &lsquo;mail&rsquo;: this.state.mail,<br />
-      &lsquo;reason&rsquo;: this.state.reason,<br />
-      &lsquo;username&rsquo;: this.state.username,<br />
-    };<br />
-    $.ajax({<br />
-      url: &lsquo;apply_for_campus_action&rsquo;,<br />
-      dataType: &lsquo;json&rsquo;,<br />
-      method: &lsquo;post&rsquo;,<br />
-      data: data,<br />
-      success: function(data) {<br />
-        var t_status=data.status;<br />
-        this.setState({status: t_status});<br />
-        if (t_status == &lsquo;报名成功&rsquo;) {<br />
-          this.setState({isJoined: true});<br />
+    },<br />
+    _handleSelectValueChange: function(){<br />
+        this.setState({selectValue});<br />
+    },<br />
+    render: function() {<br />
+        let styles = {<br />
+            root: {<br />
+                width: 100,<br />
+                fontSize: 13<br />
+            }<br />
         };<br />
-      }.bind(this),<br />
-      error: function(xhr, status, err) {<br />
-        this.setState({status: &lsquo;报名失败&rsquo;});<br />
-        console.error(this.props.url, status, err.toString());<br />
-      }.bind(this)<br />
-    });<br />
-  },<br />
-  _handleAction: function(event){<br />
-    if (this.state.status == &lsquo;登录成功&rsquo;) {this.setState({showDialogActions: true});};<br />
-    this.refs.success.dismiss();<br />
-  },<br />
-  // handle TextField onChange<br />
-  phoneHandleChange: function(event) {<br />
-    this.setState({phone: event.target.value});<br />
-  },<br />
-  mailHandleChange: function(event) {<br />
-    this.setState({mail: event.target.value});<br />
-  },<br />
-  reasonHandleChange: function(event) {<br />
-    this.setState({reason: event.target.value});<br />
-  },<br />
-  idHandleChange: function(event) {<br />
-    this.setState({id: event.target.value});<br />
-  },<br />
-  pwdHandleChange: function(event) {<br />
-    this.setState({pwd: event.target.value});<br />
-  },<br />
-  render: function() {<br />
-    let customActions = [<br />
-      <FlatButton
-        label="取消"
-        secondary={true}
-        onTouchTap={this._handleDialogCancel} />,<br />
-      <FlatButton
-        label={this.state.username==undefined? "登陆":"报名"}
-        primary={true}
-        onTouchTap={this.state.username==undefined? this._handleLogin:this._handleDialogSubmit} /><br />
-    ];<br />
-    let styles = {<br />
-      content : {<br />
-        width: &lsquo;100%&rsquo;,<br />
-        position: &lsquo;relative&rsquo;<br />
-      },<br />
-      main : {<br />
-        position: &lsquo;fixed&rsquo;<br />
-      }<br />
-    };<br />
-    let login = [<br />
-      <div className="index"><br />
-        <TextField className="text-field"
-          floatingLabelText="学  号" type='id' onChange={this.idHandleChange}/><br />
-        <br></br><br />
-        <TextField className="text-field"
-          floatingLabelText="密  码"
-          type = "password" onChange={this.pwdHandleChange}/><br />
-      </div><br />
-    ];<br />
-    let signup = [<br />
-      <div className="index"><br />
-        <TextField className="text-field"
-          floatingLabelText="手  机：" type="phone" onChange={this.phoneHandleChange}/><br />
-        <br /><br />
-        <TextField className="text-field"
-          floatingLabelText="邮  箱：" type="mail" onChange={this.mailHandleChange}/><br />
-        <br /><br />
-        <TextField className="text-field"
-          floatingLabelText="参加理由：" type="text" multiLine="true" onChange={this.reasonHandleChange}/><br />
-        <br /><br />
-      </div><br />
-    ];<br />
-    var text = cookie.load(&lsquo;username&rsquo;)? signup:login;<br />
-    return (<br />
-        <div><br />
-        <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} /><br />
-        <Dialog
-            ref="signup"
-            title={this.state.username==undefined? "登陆":"我要报名"}
-            actions={customActions}
-            open={this.state.showDialogActions}
-            autoDetectWindowHeight={true}
-            autoScrollBodyContent={true}
-            onRequestClose={this._handleRequestClose}
-            contentStyle={styles.content}
-            style={styles.main}><br />
-            {text}<br />
-          </Dialog><br />
-          <Snackbar
-            ref="success"
-            message={this.state.status}
-            action="关闭"
-            autoHideDuration={this.state.autoHideDuration}
-            onActionTouchTap={this._handleAction}/><br />
-      </div><br />
-    );<br />
-  }<br />
-});<br />
-module.exports = SchoolDialog;</p></article></body></html>
+        return (<br />
+            &lt;SelectField<br />
+                style={styles.root}<br />
+                value={this.state.selectvalue}</p>
+<pre><code>            valueMember="payload"
+            displayMember="text"
+            menuItems={this.state.values}
+            onChange={this._handleSelectValueChange.bind(null, 'values')} /&gt;
+    )
+}
+</code></pre>
+<p>})</p>
+<p>const QrewardForm = React.createClass({<br />
+    render: function() {<br />
+        let style = {<br />
+            root: {<br />
+                width: 100,<br />
+                fontSize: 13<br />
+            }<br />
+        };<br />
+        return (<br />
+            <TextField
+                style={style.root}
+                hintText='1 ~ 1000'
+                floatingLabelText='悬赏额' /><br />
+        )<br />
+    }<br />
+})</p>
+<p>const TextForm = React.createClass({<br />
+    render: function() {<br />
+        let placeholder=[];<br />
+        let selects=[];<br />
+        if (this.props.type === &lsquo;question&rsquo;) {<br />
+            placeholder=&rsquo;问题描述&rsquo;;<br />
+        }<br />
+        else {<br />
+            placeholder=&rsquo;回答不超过300个汉字&rsquo;;<br />
+        }<br />
+        if (this.props.type == &lsquo;question&rsquo;) {<br />
+            selects.push(<br />
+                <ul><br />
+                    <QrewardForm /><br />
+                    <QselectBtn /><br />
+                </ul><br />
+            );<br />
+        }<br />
+        return (<br />
+            <div className='q-and-a-container'><br />
+                <TextField className='q-and-a-container'
+                    multiLine={true}
+                    rows={8}
+                    floatingLabelText={placeholder} /><br />
+                {selects}<br />
+            </div><br />
+        );<br />
+    }<br />
+});</p>
+<p>const BtnGroup = React.createClass({<br />
+    render: function() {<br />
+        return (<br />
+            <div className='BtnGroup'><br />
+                <FlatButton label='取消' secondary={true} /><br />
+                <FlatButton label='提交' primary={true} /><br />
+            </div><br />
+        );<br />
+    }<br />
+});</p>
+<p>const Title = React.createClass({<br />
+    render:function() {<br />
+        let type = [];<br />
+        if (this.props.type === &lsquo;question&rsquo;) {<br />
+            type.push(<br />
+                <TextField className='q-and-a-container'
+                    floatingLabelText='提问标题' /><br />
+            );<br />
+        }<br />
+        else {<br />
+            type.push(<br />
+                <h5  className='q-and-a-container'>标题:<br />
+                    {this.props.query}<br />
+                </h5><br />
+            );<br />
+        }<br />
+        return (<br />
+            <div className='q-and-a-container'><br />
+                {type}<br />
+            </div><br />
+        )<br />
+    }<br />
+})</p>
+<p>const Question = React.createClass({<br />
+    render: function() {<br />
+        return (<br />
+            <div><br />
+                <HeadBar title='提问' /><br />
+                <div className='q-and-a-container'><br />
+                    <Title type='question' /><br />
+                    <TextForm type='question' /><br />
+                    <BtnGroup /><br />
+                </div><br />
+            </div><br />
+        );<br />
+    }<br />
+});</p>
+<p>const Answer = React.createClass({<br />
+    render: function() {<br />
+        return (<br />
+            <div><br />
+                <HeadBar title='回答' /><br />
+                <div className='q-and-a-container'><br />
+                    <Title type='answer' query={this.props.query.title} /><br />
+                    <TextForm type='answer' /><br />
+                    <BtnGroup /><br />
+                </div><br />
+            </div><br />
+        );<br />
+    }<br />
+});</p>
+<p>module.exports = {<br />
+    Question: Question,<br />
+    Answer: Answer<br />
+}</p></article></body></html>
