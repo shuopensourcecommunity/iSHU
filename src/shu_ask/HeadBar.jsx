@@ -42,7 +42,8 @@ const HeadBar = React.createClass({
 				</IconButton>
 			</Link>
 		);
-		let btnText = cookie.load('guid')?'登出':'登录';
+		let btnText = cookie.load('guid')?'登陆':'登出';
+		let text = cookie.load('guid')?'您好，请登陆乐乎问吧':'';
 		let iconElementRight = (
 			<div>
 				<IconButton onClick={this.show}>
