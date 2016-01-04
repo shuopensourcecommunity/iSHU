@@ -167,25 +167,36 @@ const Home = React.createClass({
 
   render: function() {
     // console.log(cookie.load('username'));
-    let style={
+    let styles={
       button: {
         marginLeft: 0,
         marginRight: 0,
         textAlign: 'center'
-      }
+      },
+			iconStyle: {
+				fill: '#CCC'
+			},
+			labelStyle: {
+				color: '#666'
+			},
+			underline: {
+				borderTop: 0
+			}
     };
     let categoryToolbar =  (
         <Toolbar>
           <ToolbarGroup firstChild={true} float="left">
-            <FlatButton style={style.button} linkButton={true} label="< iSHU" href={'/ishu'} secondary={true} />
+            <FlatButton style={styles.button} linkButton={true} label="< iSHU" href={'/ishu'} secondary={true} />
           </ToolbarGroup>
           <ToolbarGroup lastChild={true} float="right">
-              <DropDownMenu value={this.state.cid} onChange={this.handleChange}>
-                {this.state.categories.map(category =>
-                  <MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
-                )}
+              <DropDownMenu value={this.state.cid} onChange={this.handleChange} iconStyle={styles.iconStyle} labelStyle={styles.labelStyle} underlineStyle={styles.underline}>
+                {
+									this.state.categories.map(category =>
+                  	<MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
+                	)
+								}
               </DropDownMenu>
-              <FlatButton style={style.button} linkButton={true} label="提问" href={'/askbar/#/question'} primary={true} />
+              <FlatButton style={styles.button} linkButton={true} label="提问" href={'/askbar/#/question'} primary={true} />
           </ToolbarGroup>
         </Toolbar>
       );
