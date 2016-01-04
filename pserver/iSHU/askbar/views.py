@@ -12,7 +12,6 @@ import utils
 def index(request):
     return render(request, 'shu_ask_index.html')
 
-@csrf_exempt
 @require_http_methods(['POST'])
 def askbar_login(request):
     """
