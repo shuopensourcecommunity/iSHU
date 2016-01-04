@@ -270,49 +270,48 @@ Traceback (most recent call last):
   File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
     raise MultiValueDictKeyError(repr(key))
 MultiValueDictKeyError: "'guid'"
-ERROR 2016-01-04 14:05:22,621 base 1532 12508 Internal Server Error: /askbar/getAskList
+ERROR 2016-01-04 03:38:15,715 base 3785 123145310715904 Internal Server Error: /askbar/submitQuestion
 Traceback (most recent call last):
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\views\decorators\http.py", line 45, in inner
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
     return func(request, *args, **kwargs)
-  File "D:\Desktop\iSHU\pserver\iSHU\askbar\views.py", line 140, in get_ask_list
-    msg_res['Data'] = dict(enumerate(msg_res['Data']))
-UnboundLocalError: local variable 'msg_res' referenced before assignment
-ERROR 2016-01-04 14:22:48,029 base 1532 11252 Internal Server Error: /askbar/getAskList
-Traceback (most recent call last):
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\views\decorators\http.py", line 45, in inner
-    return func(request, *args, **kwargs)
-  File "D:\Desktop\iSHU\pserver\iSHU\askbar\views.py", line 140, in get_ask_list
-    msg_res['Data'] = dict(enumerate(msg_res['Data']))
-UnboundLocalError: local variable 'msg_res' referenced before assignment
-ERROR 2016-01-04 14:37:15,584 base 1532 14412 Internal Server Error: /askbar/getQuestionDetailById
-Traceback (most recent call last):
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\views\decorators\http.py", line 45, in inner
-    return func(request, *args, **kwargs)
-  File "D:\Desktop\iSHU\pserver\iSHU\askbar\views.py", line 250, in get_question_detail_by_id
-    msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Question", data=data).json()
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\requests\models.py", line 805, in json
-    return complexjson.loads(self.text, **kwargs)
-  File "C:\Python27\Lib\json\__init__.py", line 338, in loads
-    return _default_decoder.decode(s)
-  File "C:\Python27\Lib\json\decoder.py", line 366, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-  File "C:\Python27\Lib\json\decoder.py", line 384, in raw_decode
-    raise ValueError("No JSON object could be decoded")
-ValueError: No JSON object could be decoded
-ERROR 2016-01-04 14:43:52,670 base 1532 14048 Internal Server Error: /askbar/submitAnswer
-Traceback (most recent call last):
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\views\decorators\http.py", line 45, in inner
-    return func(request, *args, **kwargs)
-  File "D:\Desktop\iSHU\pserver\iSHU\askbar\views.py", line 264, in submit_answer
-    'guid': request.POST['guid'],
-  File "D:\Desktop\iSHU\pserver\venv\lib\site-packages\django\utils\datastructures.py", line 322, in __getitem__
+  File "/Users/ivan_l/GitLab/iSHU/pserver/iSHU/askbar/views.py", line 274, in submit_question
+    guid = request.POST['guid']
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
     raise MultiValueDictKeyError(repr(key))
 MultiValueDictKeyError: "'guid'"
+ERROR 2016-01-04 03:38:37,531 base 3785 123145310715904 Internal Server Error: /askbar/submitQuestion
+Traceback (most recent call last):
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/Users/ivan_l/GitLab/iSHU/pserver/iSHU/askbar/views.py", line 285, in submit_question
+    msg_res = requests.post('http://api.shu.edu.cn/Mobile/Lehu/Question', data=data).json()
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/requests/models.py", line 805, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/local/Cellar/python/2.7.10_2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/Cellar/python/2.7.10_2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/Cellar/python/2.7.10_2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 384, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+ERROR 2016-01-04 03:38:55,625 base 3785 123145310715904 Internal Server Error: /askbar/submitQuestion
+Traceback (most recent call last):
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/django/views/decorators/http.py", line 45, in inner
+    return func(request, *args, **kwargs)
+  File "/Users/ivan_l/GitLab/iSHU/pserver/iSHU/askbar/views.py", line 285, in submit_question
+    msg_res = requests.post('http://api.shu.edu.cn/Mobile/Lehu/Question', data=data).json()
+  File "/Users/ivan_l/GitLab/shu_ask/fake/fake_server/venv/lib/python2.7/site-packages/requests/models.py", line 805, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/local/Cellar/python/2.7.10_2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/Cellar/python/2.7.10_2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/Cellar/python/2.7.10_2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 384, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
