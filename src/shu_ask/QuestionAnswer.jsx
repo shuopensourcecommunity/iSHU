@@ -4,7 +4,7 @@ const HeadBar = require('./HeadBar.jsx');
 const React = require('react');
 const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
-const {Card, CardHeader, CardText, FlatButton, RaisedButton, SelectField, TextField, menuItems, DropDownMenu} = require('material-ui');
+const {Card, CardActions, CardHeader, CardText, FlatButton, RaisedButton, SelectField, TextField, menuItems, DropDownMenu} = require('material-ui');
 
 const QselectBtn = React.createClass({
 	getInitialState: function(){
@@ -208,17 +208,21 @@ const Answer = React.createClass({
 			<div>
 				<HeadBar title='回答' />
 				<div className='q-and-a-container'>
-					<Card>
+					<Card style={{height: '100%'}}>
 				    <CardHeader title={this.state.qTitle} />
 				    <CardText> <div dangerouslySetInnerHTML={{__html: this.state.qContent }} ></div> </CardText>
+							<TextField
+								multiLine={true}
+								rows={8}
+								floatingLabelText='ans'
+								onChange={this.handleAnsValue} />
+							<CardActions>
+								<FlatButton label='取消' secondary={true} />
+								<FlatButton label='提交' primary={true} onTouchTap={this.handleSubmitAnswer} />
+							</CardActions>
+
 				  </Card>
-					<TextField
-						multiLine={true}
-						rows={8}
-						floatingLabelText='ans'
-						onChange={this.handleAnsValue} />
-					<FlatButton label='取消' secondary={true} />
-					<FlatButton label='提交' primary={true} onTouchTap={this.handleSubmitAnswer} />
+
 				</div>
 			</div>
 		);
