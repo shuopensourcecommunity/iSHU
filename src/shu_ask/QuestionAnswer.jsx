@@ -9,6 +9,10 @@ const {FlatButton, SelectField, TextField, menuItems, DropDownMenu} = require('m
 const QselectBtn = React.createClass({
 	getInitialState: function(){
 		return {
+			guid: cookie.load('guid')?cookie.load('guid'):'',
+			ask_title: '',
+			ask_content: '',
+			ask_cid: 1,
 			values: [
 				{ payload: '1', text: '新生入学' },
 				{ payload: '2', text: '招生情况' },
@@ -69,10 +73,7 @@ const TextForm = React.createClass({
 		}
 		if (this.props.type == 'question') {
 			selects.push(
-				<ul>
-					<QrewardForm />
 					<QselectBtn />
-				</ul>
 			);
 		}
 		return (

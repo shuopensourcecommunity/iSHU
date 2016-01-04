@@ -181,7 +181,7 @@ const Home = React.createClass({
                   <MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
                 )}
               </DropDownMenu>
-              <RaisedButton label="我要提问" primary={true} />
+              <Link to={'/question'}><RaisedButton label="我要提问" primary={true} /></Link>
           </ToolbarGroup>
         </Toolbar>
       );
