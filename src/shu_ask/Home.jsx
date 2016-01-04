@@ -177,7 +177,7 @@ const Home = React.createClass({
     let categoryToolbar =  (
         <Toolbar>
           <ToolbarGroup firstChild={true} float="left">
-            <a href='/ishu'><IconButton tooltip="返回 iSHU"> <HardwareKeyboardArrowLeft /> </IconButton></a>
+            <FlatButton style={style.button} linkButton={true} label="< iSHU" href={'/ishu'} secondary={true} />
           </ToolbarGroup>
           <ToolbarGroup lastChild={true} float="right">
               <DropDownMenu value={this.state.cid} onChange={this.handleChange}>
