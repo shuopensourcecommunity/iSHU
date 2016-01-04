@@ -42,18 +42,18 @@ const HeadBar = React.createClass({
 				</IconButton>
 			</Link>
 		);
+		let btnText = cookie.load('guid')?'登出':'登录';
 		let iconElementRight = (
 			<div>
 				<IconButton onClick={this.show}>
 					<NavigationMoreVert color={Colors.white} hoverColor={Colors.cyan900} />
 				</IconButton>
-
 				<Popover open={this.state.activePopover}
 				  anchorEl={this.state.anchorEl}
 				  onRequestClose={this.closePopover} >
 				  <div style={{padding:10, width:200, textAlign:'center'}}>
 				    <p>您好，请登陆乐乎问吧</p>
-				    <Link to='/login'><RaisedButton primary={true} label="登录" /></Link>
+				    <Link to='/login'><RaisedButton primary={true} label={btnText} /></Link>
 				  </div>
 				</Popover>
 			</div>

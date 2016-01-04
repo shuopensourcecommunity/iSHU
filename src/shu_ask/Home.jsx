@@ -14,7 +14,6 @@ injectTapEventPlugin();
 const QuestionTable = React.createClass({
   getDefaultProps: function() {
     return {
-      url: 'getAskList',
       cid: 1
     }
   },
@@ -28,12 +27,12 @@ const QuestionTable = React.createClass({
   },
 
   loadQuestionFromServer: function() {
-    console.log('loadQuestionFromServer - page ' + this.state.curpage);
+    console.log('page ' + this.state.curpage);
     // fake an async. ajax call with setTimeout
     setTimeout(function() {
       // add data
       $.ajax({
-        url: this.props.url,
+        url: 'getAskList',
         data: {
           'cid': this.props.cid,
           'page': this.state.curpage
@@ -41,10 +40,8 @@ const QuestionTable = React.createClass({
         dataType: 'json',
         methods: 'get',
         success: function(data) {
-          // console.log(data);
           let t_question = this.state.questions;
           for (let obj in data.Data){
-            // if no more data, set false to stop loading.
             if(data.Data[obj] == null) {
               this.setState({ hasMoreQuestions: false });
               break;
@@ -58,7 +55,6 @@ const QuestionTable = React.createClass({
               'category_id': data.Data[obj].category_id
             });
           }
-          // console.log(t_question);
           this.setState({
             questions: t_question,
             curpage: this.state.curpage + 1,
@@ -147,7 +143,6 @@ const Home = React.createClass({
         let t_categories = [];
         let t_cname = [];
         for (let obj in data.Data){
-          console.log(data.Data[obj]);
           t_cname.push(data.Data[obj].Name);
           t_categories.push({
             'id': data.Data[obj].ID,
@@ -186,7 +181,7 @@ const Home = React.createClass({
                   <MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
                 )}
               </DropDownMenu>
-              <RaisedButton label="我要提问" primary={true} />
+              <Link to={'/question'}><RaisedButton label="我要提问" primary={true} /></Link>
           </ToolbarGroup>
         </Toolbar>
       );
