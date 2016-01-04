@@ -83,7 +83,9 @@ const QuestionTable = React.createClass({
   render: function() {
     let questionNodes = this.state.questions.map(function (question) {
       let link='/askAnsInfo/'+question.id;
-      let subtitle='赏金：'+question.price+"  回答："+question.answer_number+"  板块："+this.props.cname;
+      let subtitle='[ '+this.props.cname+' ] '
+									+' 赏金: '+question.price
+									+' 回答: '+question.answer_number;
       let styles={
         title : {
         fontSize: 18,

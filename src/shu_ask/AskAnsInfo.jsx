@@ -106,8 +106,8 @@ const AnswerTable = React.createClass({
       isBest: [],
       answers: [],
       bestAnswers: [],
-      bestAnsNum: 0,
-      otherAnsNum: 0
+      bestAnsNum: -1,
+      otherAnsNum: -1
     };
   },
 
@@ -292,6 +292,8 @@ const AnswerTable = React.createClass({
     let bestAnswers = this.state.bestAnswers.map(this.answerList,this);
     let bestZero = (this.state.bestAnsNum==0);
     let ansZero = (this.state.otherAnsNum==0);
+    let initBestZero = (this.state.bestAnsNum==-1);
+    let initAnsZero = (this.state.otherAnsNum==-1);
     return (
       <div>
         <div style={bestZero?styles.hide:styles.show}>
@@ -302,7 +304,10 @@ const AnswerTable = React.createClass({
           <Toolbar><ToolbarTitle firstChild={true} text='其它回答' style={styles.tbText} /></Toolbar>
           {answers}
         </div>
-        <p style={bestZero&&ansZero?styles.show:styles.hide}>该问题暂无答案</p>
+        <div style={{textAlign: 'center'}}>
+          <p style={bestZero&&ansZero?styles.show:styles.hide}>该问题暂无答案</p>
+          <p style={initBestZero&&initAnsZero?styles.show:styles.hide}>Loading...</p>
+        </div>
       </div>
     );
   }
