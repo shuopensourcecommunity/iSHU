@@ -7,13 +7,12 @@ from django.utils.datastructures import MultiValueDictKeyError
 import requests
 import utils
 
-
 @ensure_csrf_cookie
 @require_http_methods('GET')
 def index(request):
     return render(request, 'shu_ask_index.html')
 
-
+@csrf_exempt
 @require_http_methods(['POST'])
 def askbar_login(request):
     """
@@ -49,8 +48,9 @@ def askbar_login(request):
         'userName': request.POST['username'],
         'Password': request.POST['password']
     }
+    print(data)
 
-    res_msg = requests.post('http://api.shu.edu.cn/Mobile/LehuUserLogin', data=data).json()
+    res_msg = requests.post('http://api.shu.edu.cn/Mobile/User/LehuUserLogin', data=data).json()
     return JsonResponse(res_msg)
 
 
