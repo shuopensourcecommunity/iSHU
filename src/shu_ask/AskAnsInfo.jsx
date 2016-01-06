@@ -37,8 +37,7 @@ const QuestionContent = React.createClass({
     $.ajax({
       url: 'getQuestionDetail',
       data: {
-        questionId: this.props.questionId,
-        user_id: cookie.load('username')
+        questionId: this.props.questionId
       },
       dataType: 'json',
       methods: 'get',

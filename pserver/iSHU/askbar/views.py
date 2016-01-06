@@ -177,8 +177,8 @@ class AnswerView(View):
 
     def dislike(self, request):
         data = {
-            'guid': request.POST['guid'],
-            'answerId': request.POST['answerId']
+            'guid': request.POST.get('guid', None),
+            'answerId': request.POST.get('answerId', None)
         }
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Dislike', params=data).json()
         return JsonResponse(msg_res)
