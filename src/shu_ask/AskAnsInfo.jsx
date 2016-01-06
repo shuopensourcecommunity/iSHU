@@ -1,6 +1,7 @@
 'use strict';
 const HeadBar = require('./HeadBar.jsx');
 const React =require('react');
+const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const {Card, CardActions, CardHeader, CardText, FlatButton, RaisedButton,
   Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
@@ -207,7 +208,7 @@ const AnswerTable = React.createClass({
   },
   // TODO update agree, disagree and set_best
   disagreeClick: function(id, event) {
-    let purl= 'answer'+id;
+    let purl= 'dislikeAnswer';
     if (!this.state.disagree[id]) {
       this.state.disagree[id] = true;
       this.state.agree[id] = false;
@@ -215,6 +216,10 @@ const AnswerTable = React.createClass({
         url: purl,
         dataType: 'json',
         type: 'post',
+        data: {
+          'answerId': id,
+          'guid': cookie.load('guid')
+        },
         success: function(data) {
           this.setState({'disagree': '1'});
         }.bind(this),

@@ -89,7 +89,6 @@ class QuestionView(View):
 
         msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Question", params=data).json()
         if self.type == 'detail':
-            print("detail" + str(msg_res['Data'][u'user_id']))
             question_owner_id = msg_res['Data'][u'user_id']
         else:
             question_owner_id = None
@@ -181,7 +180,7 @@ class AnswerView(View):
             'guid': request.POST['guid'],
             'answerId': request.POST['answerId']
         }
-        msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Unlike', params=data).json()
+        msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Dislike', params=data).json()
         return JsonResponse(msg_res)
 
     def set_best(self, request):
