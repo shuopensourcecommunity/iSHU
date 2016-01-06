@@ -26,7 +26,7 @@
     - method: get
     - params: questionId
     
-+ 问题的最佳回答： /getQuestionAnswers
++ 问题的最佳回答： /getQuestionBestAnswers
     - method: get
     - params: questionId
 
