@@ -14,7 +14,7 @@ import utils
 def index(request):
     return render(request, 'shu_ask_index.html')
 
-
+@csrf_exempt
 @require_http_methods(['POST'])
 def askbar_login(request):
     data = {
@@ -23,6 +23,14 @@ def askbar_login(request):
     }
     try:
         res_msg = requests.post('http://api.shu.edu.cn/Mobile/User/LehuUserLogin', data=data).json()
+        guid = res_msg['Data']['Guid']
+        username = res_msg['Data']['UserName']
+        user_id = res_msg['Data']['UserID']
+        request.session[user_id] = {
+            'guid': guid,
+            'username': username,
+            'user_id': user_id
+        }
         return JsonResponse(res_msg)
     except AttributeError as e:
         return JsonResponse({
@@ -54,12 +62,25 @@ def get_categories(request):
 class QuestionView(View):
     type = ''
 
+    def is_owner(self, user_id, question_id):
+        msg_res = requests.get('http://localhost/askbar/getQuestionDetail', params={'questionId': question_id}).json()
+        if msg_res['user_id'] == user_id:
+            return True
+        else:
+            return False
+
     def get(self, request):
         data = {
             'questionId': request.GET['questionId'],
             'type': self.type
         }
+        user_id = request.session.get('user_id', None)
+        question_id = request.GET['questionId']
         msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Question", params=data).json()
+        if user_id and self.is_owner(user_id, question_id):
+            msg_res['is_owner'] = True
+        else:
+            msg_res['is_owner'] = False
         return JsonResponse(msg_res)
 
     def post(self, request):
@@ -133,7 +154,7 @@ class AnswerView(View):
     def like(self, request):
         data = {
             'guid': request.POST['guid'],
-            'answerId': request.POST['answer_id']
+            'answerId': request.POST['answerId']
         }
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Like', params=data).json()
         return JsonResponse(msg_res)
@@ -141,7 +162,7 @@ class AnswerView(View):
     def dislike(self, request):
         data = {
             'guid': request.POST['guid'],
-            'answerId': request.POST['answer_id']
+            'answerId': request.POST['answerId']
         }
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Unlike', params=data).json()
         return JsonResponse(msg_res)
@@ -149,7 +170,7 @@ class AnswerView(View):
     def set_best(self, request):
         data = {
             'guid': request.POST['guid'],
-            'answerId': request.POST['answer_id']
+            'answerId': request.POST['answerId']
         }
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/SetBest', params=data).json()
         return JsonResponse(msg_res)
