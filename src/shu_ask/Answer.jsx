@@ -6,6 +6,18 @@ const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const {Card, CardActions, CardHeader, CardText, Divider, FlatButton, TextField} = require('material-ui');
 
+const styles = {
+	cardTitle: { fontSize: 20 },
+	cardHeader: { height: 50 },
+	answerAction: { textAlign: 'center' },
+	textField: { textAlign: 'left' },
+	textInput: {
+		paddingLeft: 16,
+		paddingRight: 16
+	},
+	floatingLabel: { paddingLeft: 16 },
+};
+
 const Answer = React.createClass({
 	getInitialState: function() {
 		return {
@@ -67,29 +79,12 @@ const Answer = React.createClass({
 		});
 	},
 
+	handleReturn: function() {
+		window.location.href= '/askbar/#/AskAnsInfo/' + this.props.params.id;
+	},
+
 	render: function() {
 		console.log(this.props.params.id);
-		let styles = {
-			cardTitle: {
-				fontSize: 20
-			},
-			cardHeader: {
-				height: 50
-			},
-			answerAction: {
-				textAlign: 'center'
-			},
-			textField: {
-				textAlign: 'left'
-			},
-			textInput: {
-				paddingLeft: 16,
-				paddingRight: 16
-			},
-			floatingLabel: {
-				paddingLeft: 16
-			},
-		};
 		return (
 			<div>
 				<HeadBar title='回答' />
@@ -108,7 +103,7 @@ const Answer = React.createClass({
 							floatingLabelText='请输入您的回答'
 							onChange={this.handleAnsValue} />
 						<br />
-						<FlatButton label='取消' secondary={true} />
+						<FlatButton label='返回' secondary={true} onTouchTap={this.handleReturn}/>
 						<FlatButton label='提交' primary={true} onTouchTap={this.handleSubmitAnswer} />
 					</div>
 				</div>
