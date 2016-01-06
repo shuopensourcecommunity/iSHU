@@ -154,7 +154,7 @@ class AnswerView(View):
     def like(self, request):
         data = {
             'guid': request.POST['guid'],
-            'answerId': request.POST['answer_id']
+            'answerId': request.POST['answerId']
         }
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Like', params=data).json()
         return JsonResponse(msg_res)
@@ -162,7 +162,7 @@ class AnswerView(View):
     def dislike(self, request):
         data = {
             'guid': request.POST['guid'],
-            'answerId': request.POST['answer_id']
+            'answerId': request.POST['answerId']
         }
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Unlike', params=data).json()
         return JsonResponse(msg_res)
@@ -170,7 +170,7 @@ class AnswerView(View):
     def set_best(self, request):
         data = {
             'guid': request.POST['guid'],
-            'answerId': request.POST['answer_id']
+            'answerId': request.POST['answerId']
         }
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/SetBest', params=data).json()
         return JsonResponse(msg_res)
