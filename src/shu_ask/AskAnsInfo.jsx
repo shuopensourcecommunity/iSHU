@@ -95,7 +95,7 @@ const QuestionContent = React.createClass({
 const AnswerTable = React.createClass({
   getDefaultProps: function() {
     return {
-      url: 'getAnswerByQuestionId'
+      url: 'getQuestionAnswers'
     }
   },
 
