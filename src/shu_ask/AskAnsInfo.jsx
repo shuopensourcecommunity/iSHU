@@ -207,7 +207,7 @@ const AnswerTable = React.createClass({
     this.loadBestAnswersFromServer();
   },
   // TODO update agree, disagree and set_best
-  disagreeClick: function(event, id) {
+  disagreeClick: function(id, event) {
     if (!this.state.disagree[id]) {
       var data = {
         guid: cookie.load('guid'),
