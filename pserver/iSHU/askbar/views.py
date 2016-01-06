@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt, ensure_csrf_
 from django.views.decorators.http import require_http_methods
 from django.utils.datastructures import MultiValueDictKeyError
 from django.views.generic.base import View
+from functools import wraps
 import requests
 import utils
 
@@ -87,17 +88,18 @@ class QuestionView(View):
 
 
 class AnswerView(View):
-    allowed_methods = ['get', 'post', 'like', 'dislike', 'set_best']
+    allowed_methods = ['get', 'submit', 'like', 'dislike', 'set_best']
     method = None
 
     def dispatch(self, request, *args, **kwargs):
+
         if self.method.lower() in self.allowed_methods:
             handler = getattr(self, self.method.lower(), self.http_method_not_allowed)
+
         else:
             handler = self.http_method_not_allowed
         return handler(request, *args, **kwargs)
 
-    @require_http_methods(['GET'])
     def get(self, request):
         try:
             data = {
@@ -113,17 +115,21 @@ class AnswerView(View):
                 "Data": ""
             })
 
-    @require_http_methods(['POST'])
-    def post(self, request):
-        data = {
-            'guid': request.POST['guid'],
-            'content': request.POST['content'],
-            'questionId': request.POST['question_id']
-        }
-        msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', params=data).json()
-        return JsonResponse(msg_res)
+    def submit(self, request):
+        try:
+            data = {
+                'guid': request.POST['guid'],
+                'content': request.POST['content'],
+                'questionId': request.POST['question_id']
+            }
+            msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', params=data).json()
+            return JsonResponse(msg_res)
+        except MultiValueDictKeyError as e:
+            return JsonResponse({
+                'State': 'error',
+                'Msg': 'params error'
+            })
 
-    @require_http_methods(['POST'])
     def like(self, request):
         data = {
             'guid': request.POST['guid'],
@@ -132,7 +138,6 @@ class AnswerView(View):
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Like', params=data).json()
         return JsonResponse(msg_res)
 
-    @require_http_methods(['POST'])
     def dislike(self, request):
         data = {
             'guid': request.POST['guid'],
@@ -141,7 +146,6 @@ class AnswerView(View):
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Unlike', params=data).json()
         return JsonResponse(msg_res)
 
-    @require_http_methods(['POST'])
     def set_best(self, request):
         data = {
             'guid': request.POST['guid'],

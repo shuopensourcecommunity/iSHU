@@ -16,7 +16,7 @@ urlpatterns = [
 
     # Answer related url
     url(r'^getAnswerDetail', AnswerView.as_view(method='get'), name='get_answer_detail_by_id'),
-    url(r'^submitAnswer', AnswerView.as_view(method='post'), name='submitAnswer'),
+    url(r'^submitAnswer', AnswerView.as_view(method='submit'), name='submitAnswer'),
     url(r'^likeAnswer', AnswerView.as_view(method='like'), name='like_answer'),
     url(r'^dislikeAnswer', AnswerView.as_view(method='dislike'), name='dislike_answer'),
     url(r'^setBestAnswer', AnswerView.as_view(method='set_best'), name='set_best_answer')
