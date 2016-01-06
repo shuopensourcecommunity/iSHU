@@ -211,7 +211,7 @@ const AnswerTable = React.createClass({
       $.ajax({
         url: 'dislikeAnswer',
         dataType: 'json',
-        methods: 'post',
+        method: 'post',
         data: data,
         success: function(data) {
           console.log(data);
@@ -285,7 +285,7 @@ const AnswerTable = React.createClass({
     $.ajax({
       url: 'setBestAnswer',
       dataType: 'json',
-      methods: 'post',
+      method: 'post',
       data: data,
       success: function(data) {
         console.log(data);
@@ -318,7 +318,7 @@ const AnswerTable = React.createClass({
           <FlatButton label={set_best} primary={true} onTouchTap={this.handleBestClick.bind(this, id, is_best)} />
         </CardActions>
         <CardText>
-          {answer.content}
+          <div dangerouslySetInnerHTML={{__html:  answer.content }} ></div>
         </CardText>
       </Card>
     )
