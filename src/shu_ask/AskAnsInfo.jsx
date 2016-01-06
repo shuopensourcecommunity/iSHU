@@ -16,6 +16,7 @@ const styles = {
   hide: { display: 'none' },
   show: { display: '' }
 };
+var is_owner = false;
 
 const QuestionContent = React.createClass({
   getInitialState: function() {
@@ -34,9 +35,10 @@ const QuestionContent = React.createClass({
 
   loadQuestionFromServer: function() {
     $.ajax({
-      url: 'getQuestionDetailById',
+      url: 'getQuestionDetail',
       data: {
-        questionId: this.props.questionId
+        questionId: this.props.questionId,
+        user_id: cookie.load('username')
       },
       dataType: 'json',
       methods: 'get',
@@ -51,8 +53,9 @@ const QuestionContent = React.createClass({
           userName: data.Data.user_name,
           updatedTime: data.Data.updated_time,
           title: data.Data.title,
-          content: data.Data.content
+          content: data.Data.content,
         });
+        is_owner = data.is_owner;
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -285,14 +288,23 @@ const AnswerTable = React.createClass({
     let set_best = is_best ? '取消最佳' : '设为最佳';
     let cardtitle = answer.author;
     let subtitle = answer.time;
+    let cardAction = is_owner?(
+      <CardActions>
+        <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
+        <FlatButton label={'反对 '+disagreeText} onClick={this.disagreeClick.bind(this, id)} />
+        <FlatButton label={set_best} primary={true} onTouchTap={this.handleBestClick.bind(this, id, is_best)} />
+      </CardActions>
+    ):
+    (
+      <CardActions>
+        <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
+        <FlatButton label={'反对 '+disagreeText} onClick={this.disagreeClick.bind(this, id)} />
+      </CardActions>
+    );
     return (
       <Card key={id}>
         <CardHeader style={styles.cardHeader} title={cardtitle} subtitle={subtitle} />
-        <CardActions>
-          <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
-          <FlatButton label={'反对 '+disagreeText} onClick={this.disagreeClick.bind(this, id)} />
-          <FlatButton label={set_best} primary={true} onTouchTap={this.handleBestClick.bind(this, id, is_best)} />
-        </CardActions>
+        {cardAction}
         <CardText>
           <div dangerouslySetInnerHTML={{__html:  answer.content }} ></div>
         </CardText>
