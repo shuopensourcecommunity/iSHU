@@ -56,7 +56,7 @@ var SchoolDialog= React.createClass({
         };
       }.bind(this),
       error: function(xhr, status, err) {
-        this.setState({status: '登陆失败'});
+        this.setState({status: '登录失败'});
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });

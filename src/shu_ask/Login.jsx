@@ -74,7 +74,7 @@ const LoginForm = React.createClass({
         <br />
         <br />
         <FlatButton
-        	label="登陆"
+        	label="登录"
         	primary={true}
        		keyboardFocused={true}
        		onTouchTap={this.handleLogin} />
