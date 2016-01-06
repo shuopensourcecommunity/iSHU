@@ -14,7 +14,7 @@ injectTapEventPlugin();
 const QuestionTable = React.createClass({
   getDefaultProps: function() {
     return {
-      cid: 1
+      categoryId: 0
     }
   },
 
@@ -28,47 +28,51 @@ const QuestionTable = React.createClass({
 
   loadQuestionFromServer: function() {
     console.log('page ' + this.state.curpage);
-    // fake an async. ajax call with setTimeout
-    setTimeout(function() {
-      // add data
-      $.ajax({
-        url: 'getAskList',
-        data: {
-          'cid': this.props.cid,
-          'page': this.state.curpage
-        },
-        dataType: 'json',
-        methods: 'get',
-        success: function(data) {
-          let t_question = this.state.questions;
-          for (let obj in data.Data){
-            if(data.Data[obj] == null) {
-              this.setState({ hasMoreQuestions: false });
-              break;
-            }
-            t_question.push({
-              'id': data.Data[obj].id,
-              'title': data.Data[obj].title,
-              'price': data.Data[obj].price,
-              'content': data.Data[obj].content,
-              'answer_number': data.Data[obj].answer_number,
-              'category_id': data.Data[obj].category_id
-            });
+		let categoryId = this.props.categoryId;
+		let getAllCategories = {
+			'page': this.state.curpage
+		};
+		let getThisCategory = {
+			'cid': categoryId,
+			'page': this.state.curpage
+		};
+		let getWrongId = {};
+		let data = (categoryId==0) ? getAllCategories : ((categoryId>=1 && categoryId<=14) ? getThisCategory: getWrongId);
+    $.ajax({
+      url: 'getAskList',
+      data: data,
+      dataType: 'json',
+      methods: 'get',
+      success: function(data) {
+				console.log(data);
+        let t_question = this.state.questions;
+      	for (let obj in data.Data){
+          if(data.Data[obj] == null) {
+            this.setState({ hasMoreQuestions: false });
+            break;
           }
-          this.setState({
-            questions: t_question,
-            curpage: this.state.curpage + 1,
+          t_question.push({
+            'id': data.Data[obj].id,
+            'title': data.Data[obj].title,
+            'price': data.Data[obj].price,
+            'content': data.Data[obj].content,
+            'ansNumber': data.Data[obj].answer_number,
+            'categoryId': data.Data[obj].category_id
           });
-        }.bind(this),
-        error: function(xhr, status, err) {
-          console.error(this.props.url, status, err.toString());
-        }.bind(this)
-      });
-    }.bind(this), 10);
+        }
+        this.setState({
+          questions: t_question,
+          curpage: this.state.curpage + 1,
+        });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   },
 
   componentWillReceiveProps: function(nextProps) {
-    if (nextProps.cid != this.props.cid)
+    if (nextProps.categoryId != this.props.categoryId)
       this.setState({
         questions: [],
         curpage: 1,
@@ -82,10 +86,12 @@ const QuestionTable = React.createClass({
 
   render: function() {
     let questionNodes = this.state.questions.map(function (question) {
-      let link='/askAnsInfo/'+question.id;
-      let subtitle='[ '+this.props.cname+' ] '
+			let link='/askAnsInfo/'+question.id;
+			let categoryId = question.categoryId;
+			let categoryName = this.props.categoryName[categoryId];
+      let subtitle='[ '+categoryName+' ] '
 									+' 赏金: '+question.price
-									+' 回答: '+question.answer_number;
+									+' 回答: '+question.ansNumber;
       let styles={
         title : {
         fontSize: 18,
@@ -99,7 +105,7 @@ const QuestionTable = React.createClass({
       };
       return (
           <Link to={link} className="link">
-            <Card>
+            <Card key={question.id}>
               <CardTitle
                 titleStyle={styles.title}
                 title={question.title}
@@ -126,8 +132,8 @@ const Home = React.createClass({
   getInitialState: function() {
     return {
       categories: [],
-      cname: [],
-      cid: (this.props.params.id==undefined) ? 1 : parseInt(this.props.params.id)
+      categoryName: [],
+      categoryId: (this.props.params.id==undefined) ? 0 : parseInt(this.props.params.id)
     };
   },
 
@@ -137,10 +143,12 @@ const Home = React.createClass({
       dataType: 'json',
       methods: 'get',
       success: function(data) {
+				console.log(data);
         let t_categories = [];
-        let t_cname = [];
+        let t_categoryName = [];
+				t_categoryName.push('全部板块');
         for (let obj in data.Data){
-          t_cname.push(data.Data[obj].Name);
+          t_categoryName.push(data.Data[obj].Name);
           t_categories.push({
             'id': data.Data[obj].ID,
             'name': data.Data[obj].Name
@@ -148,7 +156,7 @@ const Home = React.createClass({
         }
         this.setState({
           categories: t_categories,
-          cname: t_cname
+          categoryName: t_categoryName
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -162,11 +170,10 @@ const Home = React.createClass({
   },
 
   handleChange: function(e, index, value) {
-    this.setState({cid: value});
+    this.setState({categoryId: value});
   },
 
   render: function() {
-    // console.log(cookie.load('username'));
     let styles={
       button: {
         marginLeft: 0,
@@ -189,7 +196,8 @@ const Home = React.createClass({
             <FlatButton style={styles.button} linkButton={true} label="< iSHU" href={'/ishu'} secondary={true} />
           </ToolbarGroup>
           <ToolbarGroup lastChild={true} float="right">
-              <DropDownMenu value={this.state.cid} onChange={this.handleChange} iconStyle={styles.iconStyle} labelStyle={styles.labelStyle} underlineStyle={styles.underline}>
+              <DropDownMenu value={this.state.categoryId} onChange={this.handleChange} iconStyle={styles.iconStyle} labelStyle={styles.labelStyle} underlineStyle={styles.underline}>
+								<MenuItem value={0} primaryText="全部板块" href={'/askbar/'} />
                 {
 									this.state.categories.map(category =>
                   	<MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
@@ -200,14 +208,15 @@ const Home = React.createClass({
           </ToolbarGroup>
         </Toolbar>
       );
-    let cid = this.state.cid;
-    let cname = this.state.cname[cid-1];
-    console.log(cid+cname);
+    let categoryId = this.state.categoryId;
+    let categoryName = this.state.categoryName;
+    console.log(categoryId);
+		console.log(categoryName);
     return (
       <div>
         <HeadBar title='乐乎问吧' />
         {categoryToolbar}
-        <QuestionTable cid={cid} cname={cname}/>
+        <QuestionTable categoryId={categoryId} categoryName={categoryName}/>
       </div>
     );
   }
