@@ -20,12 +20,15 @@ const styles = {
 const QuestionContent = React.createClass({
   getInitialState: function() {
     return {
-      id: 0,
-      title: '',
-      price: 0,
-      content: '',
       answer_number: 0,
-      category_id: 0
+      category_id: 0,
+      id: 0,
+      price: 0,
+      userId: 0,
+      userName: '',
+      updatedTime: '',
+      title: '',
+      content: '',
     };
   },
 
@@ -40,12 +43,15 @@ const QuestionContent = React.createClass({
       success: function(data) {
         console.log(data);
         this.setState({
-          id: data.Data.id,
-          title: data.Data.title,
-          price: data.Data.price,
-          content: data.Data.content,
           answer_number: data.Data.answer_number,
-          category_id: data.Data.category_id
+          category_id: data.Data.category_id,
+          id: data.Data.id,
+          price: data.Data.price,
+          userId: data.Data.user_id,
+          userName: data.Data.user_name,
+          updatedTime: data.Data.updated_time,
+          title: data.Data.title,
+          content: data.Data.content
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -76,6 +82,7 @@ const QuestionContent = React.createClass({
         <CardHeader style={styles.cardHeader} title={question.title} titleStyle={styles.cardTitle} />
         <CardText>
           <div dangerouslySetInnerHTML={{__html:  question.content }} ></div>
+          <p>{question.userName} {question.updatedTime}</p>
         </CardText>
       </Card>
     );
@@ -97,7 +104,7 @@ const AnswerTable = React.createClass({
       answers: [],
       bestAnswers: [],
       bestAnsNum: -1,
-      allAnsNum: -1
+      ansNum: -1
     };
   },
 
@@ -118,9 +125,9 @@ const AnswerTable = React.createClass({
         let t_answer = [];
         let t_bestAnswer = [];
         let t_bestAnsNum = 0;
-        let t_allAnsNum = 0;
+        let t_ansNum = 0;
         for (let obj in data.Data) {
-          t_allAnsNum++;
+          t_ansNum++;
           t_answer.push({
             'answerId': data.Data[obj].answerId,
             'author': data.Data[obj].name,
@@ -137,7 +144,7 @@ const AnswerTable = React.createClass({
         }
         this.setState({
           answers: t_answer,
-          allAnsNum: t_allAnsNum,
+          ansNum: t_ansNum,
           agree: t_agree,
           disagree: t_disagree,
         });
@@ -165,7 +172,7 @@ const AnswerTable = React.createClass({
         let t_answer = [];
         let t_bestAnswer = [];
         let t_bestAnsNum = 0;
-        let t_allAnsNum = 0;
+        let t_ansNum = 0;
         for (let obj in data.Data) {
           t_bestAnsNum++;
           t_bestAnswer.push({
@@ -328,9 +335,9 @@ const AnswerTable = React.createClass({
     let answers = this.state.answers.map(this.answerList,this);
     let bestAnswers = this.state.bestAnswers.map(this.answerList,this);
     let bestZero = (this.state.bestAnsNum==0);
-    let ansZero = (this.state.allAnsNum==0);
+    let ansZero = (this.state.ansNum==0);
     let initBestZero = (this.state.bestAnsNum==-1);
-    let initAnsZero = (this.state.allAnsNum==-1);
+    let initAnsZero = (this.state.ansNum==-1);
     return (
       <div>
         <div style={bestZero?styles.hide:styles.show}>
