@@ -10,9 +10,9 @@ const Question = React.createClass({
   getInitialState: function() {
     return {
       categories: [],
-    	title: '',
-    	content: '',
-    	cid: 1
+      title: '',
+      content: '',
+      cid: 1
     };
   },
   loadCategoriesFromServer: function() {
@@ -21,7 +21,7 @@ const Question = React.createClass({
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-				// console.log(data);
+        // console.log(data);
         let t_categories = [];
         for (let obj in data.Data){
           t_categories.push({
@@ -51,7 +51,7 @@ const Question = React.createClass({
     this.setState({content: event.target.value});
   },
   handleSubmitQuestion: function() {
-  	console.log(cookie.load('guid'));
+    console.log(cookie.load('guid'));
     let data = {
       'guid': cookie.load('guid'),
       'title': this.state.title,
@@ -73,9 +73,9 @@ const Question = React.createClass({
   },
   render: function() {
     // console.log(this.state.cid);
-    var style = {
+    let style = {
       textfield: {
-      	textAlign: 'left'
+        textAlign: 'left'
       },
       root: {
         fontSize: 13,
@@ -84,53 +84,50 @@ const Question = React.createClass({
         marginBottom: 40
       }
     };
-    var field = [
-    	  	// {<TextField
-    	  	// 	       		style={style.root}
-    	  	//   	     		hintText='1 ~ 1000'
-    	  	//    	    		floatingLabelText='悬赏额' />}
-     			<SelectField
-       			style={style.root}
-       			labelStyle={style.label}
-	        	value={this.state.cid}
-	        	floatingLabelText='问题分类'
-    	   		onChange={this.handleSelectValueChange} >
-            {
-              this.state.categories.map(category =>
-                <MenuItem value={category.id} primaryText={category.name} />
-              )
-            }
-          </SelectField>
+    let field = [
+    // {<TextField style={style.root} hintText='1 ~ 1000' floatingLabelText='悬赏额' />}
+      <SelectField
+        style={style.root}
+        labelStyle={style.label}
+        value={this.state.cid}
+        floatingLabelText='问题分类'
+        onChange={this.handleSelectValueChange} >
+        {
+          this.state.categories.map(category =>
+            <MenuItem value={category.id} primaryText={category.name} />
+          )
+        }
+      </SelectField>
     ];
     return (
       <div>
         <HeadBar title='提问' />
         <center>
-        	<TextField
-        		onChange={this.handleTitleChange}
-        		floatingLabelText='提问标题' />
+          <TextField
+            onChange={this.handleTitleChange}
+            floatingLabelText='提问标题' />
         </center>
         <center>
-        	<TextField
-        		style={style.textfield}
-          	multiLine={true}
-          	rows={8}
-        		onChange={this.handleContentChange}
-          	floatingLabelText='问题描述' />
+          <TextField
+            style={style.textfield}
+            multiLine={true}
+            rows={8}
+            onChange={this.handleContentChange}
+            floatingLabelText='问题描述' />
         </center>
         {field}
-     		<div className='BtnGroup'>
-       		<FlatButton label='提交'
-       			className='button'
-       			keyboardFocused={true}
-       			primary={true}
-       			onTouchTap={this.handleSubmitQuestion} />
-       		<FlatButton label='取消'
-       			className='button'
-       			linkButton={true}
-       			href='/askbar/'
-       			secondary={true} />
-     		</div>
+         <div className='BtnGroup'>
+           <FlatButton label='提交'
+             className='button'
+             keyboardFocused={true}
+             primary={true}
+             onTouchTap={this.handleSubmitQuestion} />
+           <FlatButton label='取消'
+             className='button'
+             linkButton={true}
+             href='/askbar/'
+             secondary={true} />
+         </div>
       </div>
     );
   }

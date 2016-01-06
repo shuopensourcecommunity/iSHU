@@ -7,7 +7,7 @@ const {Link, RouteHandler} = require('react-router');
 const InfiniteScroll = require('react-infinite-scroll')(React);
 const {HardwareKeyboardArrowLeft} = require('../../public/js/svg-icons');
 const {Card, CardTitle, CardText, DropDownMenu, IconButton, IconMenu, MenuItem, FlatButton,
-			Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
+  Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
@@ -28,25 +28,25 @@ const QuestionTable = React.createClass({
 
   loadQuestionFromServer: function() {
     console.log('page ' + this.state.curpage);
-		let categoryId = this.props.categoryId;
-		let getAllCategories = {
-			'page': this.state.curpage
-		};
-		let getThisCategory = {
-			'cid': categoryId,
-			'page': this.state.curpage
-		};
-		let getWrongId = {};
-		let data = (categoryId==0) ? getAllCategories : ((categoryId>=1 && categoryId<=14) ? getThisCategory: getWrongId);
+    let categoryId = this.props.categoryId;
+    let getAllCategories = {
+      'page': this.state.curpage
+    };
+    let getThisCategory = {
+      'cid': categoryId,
+      'page': this.state.curpage
+    };
+    let getWrongId = {};
+    let data = (categoryId==0) ? getAllCategories : ((categoryId>=1 && categoryId<=14) ? getThisCategory: getWrongId);
     $.ajax({
       url: 'getAskList',
       data: data,
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-				console.log(data);
+        console.log(data);
         let t_question = this.state.questions;
-      	for (let obj in data.Data){
+        for (let obj in data.Data){
           if(data.Data[obj] == null) {
             this.setState({ hasMoreQuestions: false });
             break;
@@ -86,13 +86,11 @@ const QuestionTable = React.createClass({
 
   render: function() {
     let questionNodes = this.state.questions.map(function (question) {
-			let link='/askAnsInfo/'+question.id;
-			let categoryId = question.categoryId;
-			let categoryName = this.props.categoryName[categoryId];
-      let subtitle='[ '+categoryName+' ] '
-									+' 赏金: '+question.price
-									+' 回答: '+question.ansNumber;
-      let styles={
+      let link = '/askAnsInfo/' + question.id;
+      let categoryId = question.categoryId;
+      let categoryName = this.props.categoryName[categoryId];
+      let subtitle = '[ '+categoryName+' ] ' +' 赏金: '+question.price +' 回答: '+question.ansNumber;
+      let styles = {
         title : {
         fontSize: 18,
         display: 'block',
@@ -104,14 +102,14 @@ const QuestionTable = React.createClass({
         }
       };
       return (
-          <Link to={link} className="link">
-            <Card key={question.id}>
-              <CardTitle
-                titleStyle={styles.title}
-                title={question.title}
-                subtitle={subtitle} />
-            </Card>
-          </Link>
+        <Link to={link} className="link">
+          <Card key={question.id}>
+            <CardTitle
+              titleStyle={styles.title}
+              title={question.title}
+              subtitle={subtitle} />
+          </Card>
+        </Link>
       );
     }.bind(this));
     return (
@@ -128,7 +126,6 @@ const QuestionTable = React.createClass({
 });
 
 const Home = React.createClass({
-
   getInitialState: function() {
     return {
       categories: [],
@@ -143,10 +140,10 @@ const Home = React.createClass({
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-				// console.log(data);
+        // console.log(data);
         let t_categories = [];
         let t_categoryName = [];
-				t_categoryName.push('全部版块');
+        t_categoryName.push('全部版块');
         for (let obj in data.Data){
           t_categoryName.push(data.Data[obj].Name);
           t_categories.push({
@@ -180,15 +177,15 @@ const Home = React.createClass({
         marginRight: 0,
         textAlign: 'center'
       },
-			iconStyle: {
-				fill: '#CCC'
-			},
-			labelStyle: {
-				color: '#666'
-			},
-			underline: {
-				borderTop: 0
-			}
+      iconStyle: {
+        fill: '#CCC'
+      },
+      labelStyle: {
+        color: '#666'
+      },
+      underline: {
+        borderTop: 0
+      }
     };
     let categoryToolbar =  (
         <Toolbar>
@@ -197,12 +194,12 @@ const Home = React.createClass({
           </ToolbarGroup>
           <ToolbarGroup lastChild={true} float="right">
               <DropDownMenu value={this.state.categoryId} onChange={this.handleChange} iconStyle={styles.iconStyle} labelStyle={styles.labelStyle} underlineStyle={styles.underline}>
-								<MenuItem value={0} primaryText="全部板块" href={'/askbar/'} />
+                <MenuItem value={0} primaryText="全部板块" href={'/askbar/'} />
                 {
-									this.state.categories.map(category =>
-                  	<MenuItem key={'cid?'+category.id} value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
-                	)
-								}
+                  this.state.categories.map(category =>
+                    <MenuItem key={'cid?'+category.id} value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
+                  )
+                }
               </DropDownMenu>
               <FlatButton style={styles.button} linkButton={true} label="提问" href={'/askbar/#/question'} primary={true} />
           </ToolbarGroup>
@@ -211,7 +208,7 @@ const Home = React.createClass({
     let categoryId = this.state.categoryId;
     let categoryName = this.state.categoryName;
     // console.log(categoryId);
-		// console.log(categoryName);
+    // console.log(categoryName);
     return (
       <div>
         <HeadBar title='乐乎问吧' />

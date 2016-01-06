@@ -5,7 +5,7 @@ const Colors = require('../../public/js/colors');
 const {Link, RouteHandler} = require('react-router');
 const {ActionHome, ActionSearch, HardwareKeyboardArrowLeft, NavigationMoreVert} = require('../../public/js/svg-icons');
 const {AppBar, Divider, DropDownMenu, IconButton, IconMenu, MenuItem, Popover, RaisedButton,
-      Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
+  Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 const injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
@@ -34,18 +34,18 @@ const HeadBar = React.createClass({
     });
   },
   _handleLog: function() {
-  	if (cookie.load('guid')) {
+    if (cookie.load('guid')) {
       $.ajax({
       url: 'logout',
       dataType: 'json',
       method: 'get',
       success: function(data) {
         if (data.State=='success') {
-        	cookie.remove('guid');
+          cookie.remove('guid');
           cookie.remove('username');
           alert('登出成功');
-        	window.location.href="/askbar/";
-      	}
+          window.location.href="/askbar/";
+        }
         else {
           alert(data.status);
         }
@@ -55,10 +55,10 @@ const HeadBar = React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
      });
-  	}
-  	else {
-  		window.location.href="/askbar/#/login";
-  	}
+    }
+    else {
+      window.location.href="/askbar/#/login";
+    }
   },
   render: function() {
     let iconElementLeft = (
@@ -84,16 +84,13 @@ const HeadBar = React.createClass({
           </div>
         </Popover>
       </div>
-
     );
     return (
-      <div>
-        <AppBar
-          title={this.props.title}
-          showMenuIconButton={true}
-          iconElementLeft= {iconElementLeft}
-          iconElementRight= {iconElementRight} />
-      </div>
+      <AppBar
+        title={this.props.title}
+        showMenuIconButton={true}
+        iconElementLeft= {iconElementLeft}
+        iconElementRight= {iconElementRight} />
     );
   }
 });

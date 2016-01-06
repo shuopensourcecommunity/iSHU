@@ -29,17 +29,17 @@ const LoginForm = React.createClass({
       success: function(data) {
         console.log(data);
         if (data.State=='success') {
-        	this.setState({
-          	guid: data.Data.Guid,
-          	username: data.Data.UserName
-        	});
-        	cookie.save('username', data.Data.UserName);
-        	cookie.save('guid', data.Data.Guid);
-        	alert('登录成功');
-        	window.location.href="/askbar/";
-      	}
+          this.setState({
+            guid: data.Data.Guid,
+            username: data.Data.UserName
+          });
+          cookie.save('username', data.Data.UserName);
+          cookie.save('guid', data.Data.Guid);
+          alert('登录成功');
+          window.location.href="/askbar/";
+        }
         else {
-        	alert(data.status);
+          alert(data.status);
         }
       }.bind(this),
       error: function(xhr, status, err) {
@@ -74,14 +74,14 @@ const LoginForm = React.createClass({
         <br />
         <br />
         <FlatButton
-        	label="登录"
-        	primary={true}
-       		keyboardFocused={true}
-       		onTouchTap={this.handleLogin} />
+          label="登录"
+          primary={true}
+           keyboardFocused={true}
+           onTouchTap={this.handleLogin} />
         <FlatButton
-        	label="重置"
-        	secondary={true}
-       		onTouchTap={this.handleReset} />
+          label="重置"
+          secondary={true}
+           onTouchTap={this.handleReset} />
       </div>
     );
   }
