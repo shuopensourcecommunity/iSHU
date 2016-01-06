@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^submitAnswer', submit_answer, name='submit_answer'),
     url(r'^likeAnswer', like_answer, name='like_answer'),
     url(r'^dislikeAnswer', dislike_answer, name='dislike_answer'),
-    url(r'^setBestAnswer', set_best_answer, name='set_best_anser')
+    url(r'^setBestAnswer', set_best_answer, name='set_best_answer')
 ]

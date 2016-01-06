@@ -1,6 +1,7 @@
 'use strict';
 const HeadBar = require('./HeadBar.jsx');
 const React =require('react');
+const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const {Card, CardActions, CardText, CardTitle, FlatButton, RaisedButton,
   Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
@@ -178,16 +179,21 @@ const AnswerTable = React.createClass({
     this.loadAnswersFromServer();
   },
   // TODO update agree, disagree and set_best
-  disagreeClick: function(id, event) {
-    let purl= 'answer'+id;
+  disagreeClick: function(event, id) {
     if (!this.state.disagree[id]) {
+      var data = {
+        guid: cookie.load('guid'),
+        answerId: id
+      };
       this.state.disagree[id] = true;
       this.state.agree[id] = false;
       $.ajax({
-        url: purl,
+        url: 'dislikeAnswer',
         dataType: 'json',
-        type: 'post',
+        methods: 'post',
+        data: data,
         success: function(data) {
+          console.log(data);
           this.setState({'disagree': '1'});
         }.bind(this),
         error: function(xhr, status, err) {
@@ -211,15 +217,21 @@ const AnswerTable = React.createClass({
     }
   },
   agreeClick: function(id, event) {
-    let purl= 'answer'+id;
     if (!this.state.agree[id]) {
+      var data = {
+        guid: cookie.load('guid'),
+        answerId: id
+      };
+      console.log(data);
       this.state.disagree[id] = false;
       this.state.agree[id] = true;
       $.ajax({
-        url: purl,
+        url: 'likeAnswer',
         dataType: 'json',
-        type: 'post',
+        method: 'post',
+        data: data,
         success: function(data) {
+          console.log(data);
           this.setState({'pagree': '1'});
         }.bind(this),
         error: function(xhr, status, err) {
@@ -243,15 +255,19 @@ const AnswerTable = React.createClass({
     }
   },
   handleBestClick: function(id, is_best, event){
-    let purl= 'answer'+id;
     this.state.isBest[id] = !is_best;
     console.log('answer' + id + ' is best: ' + this.state.isBest[id]);
+    var data = {
+      guid: cookie.load('guid'),
+      answerId: id
+    };
     $.ajax({
-      url: purl,
+      url: 'setBestAnswer',
       dataType: 'json',
-      type: 'post',
-      data: {'isBest': !is_best},
+      methods: 'post',
+      data: data,
       success: function(data) {
+        console.log(data);
         this.setState({'pbest':!is_best});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -273,7 +289,7 @@ const AnswerTable = React.createClass({
     // let cardtitle = answer.author+'  '+answer.time;
     let cardtitle = answer.time;
     return (
-      <Card>
+      <Card key={id}>
         <CardTitle subtitle={cardtitle} />
         <CardActions>
           <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
