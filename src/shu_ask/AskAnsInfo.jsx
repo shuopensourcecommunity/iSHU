@@ -98,19 +98,125 @@ const QuestionContent = React.createClass({
   }
 });
 
+const AnswerBtn = React.createClass({
+  getInitialState: function(){
+    return {
+      disagree: false,
+      agree: false
+    };
+  },
+  disagreeClick: function(id, event) {
+    $.ajax({
+      url: 'dislikeAnswer',
+      dataType: 'json',
+      method: 'post',
+      data: {
+        answerId: id,
+        guid: cookie.load('guid')
+      },
+      success: function(data) {
+        console.log(data);
+        if (data.State=='success') {
+          this.setState({disagree: true});
+        }
+        else {
+          alert(data.Msg);
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        alert('(　ﾟдﾟ)操作失败了');
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  agreeClick: function(id, event) {
+    $.ajax({
+      url: 'likeAnswer',
+      dataType: 'json',
+      method: 'post',
+      data: {
+        answerId: id,
+        guid: cookie.load('guid')
+      },
+      success: function(data) {
+        console.log(data);
+        if (data.State=='success') {
+          this.setState({agree: true});
+        }
+        else {
+          alert(data.Msg);
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        alert('(　ﾟдﾟ)操作失败了');
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  handleBestClick: function(id, event){
+    var data = {
+      guid: cookie.load('guid'),
+      answerId: id
+    };
+    $.ajax({
+      url: 'setBestAnswer',
+      dataType: 'json',
+      method: 'post',
+      data: data,
+      success: function(data) {
+        // console.log(data);
+        if (data.State=='success') {
+          location.reload();
+        }
+        else {
+          alert(data.Data);
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        alert('(　ﾟдﾟ)操作失败了');
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  render: function(){
+    let id = this.props.id;
+    let btn_disabled = false;
+    let agreeText = this.props.agreeText;
+    if (this.state.agree) {
+      agreeText=agreeText+1;
+      btn_disabled = true;
+    }
+    let disagreeText = this.props.disagreeText;
+    if (this.state.disagree) {
+      disagreeText=disagreeText+1;
+      btn_disabled = true;
+    }
+    let is_best = this.state.is_best;
+    return is_owner&&(!this.props.is_best)?(
+      <CardActions>
+        <FlatButton label={'支持 '+agreeText} disabled={btn_disabled} onClick={this.agreeClick.bind(this, id)} />
+        <FlatButton label={'反对 '+disagreeText} disabled={btn_disabled} onClick={this.disagreeClick.bind(this, id)} />
+        <FlatButton label='设为最佳' primary={true} onTouchTap={this.handleBestClick.bind(this, id)} />
+      </CardActions>
+    ):
+    (
+      <CardActions>
+        <FlatButton label={'支持 '+agreeText} disabled={btn_disabled} onClick={this.agreeClick.bind(this, id)} />
+        <FlatButton label={'反对 '+disagreeText} disabled={btn_disabled} onClick={this.disagreeClick.bind(this, id)} />
+      </CardActions>
+    );
+  }
+});
+
 const AnswerTable = React.createClass({
   getInitialState: function(){
     return {
-      disagree: [],
-      agree: [],
-      isBest: [],
       answers: [],
       bestAnswers: [],
       bestAnsNum: -1,
       ansNum: -1
     };
   },
-
   loadAnswersFromServer: function(){
     let data = {
       'questionId': this.props.questionId,
@@ -122,15 +228,11 @@ const AnswerTable = React.createClass({
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-        console.log(data);
-        let t_agree = [];
-        let t_disagree = [];
         let t_answer = [];
-        let t_bestAnswer = [];
-        let t_bestAnsNum = 0;
         let t_ansNum = 0;
         for (let obj in data.Data) {
           t_ansNum++;
+          console.log(obj);
           t_answer.push({
             'answerId': data.Data[obj].answerId,
             'author': data.Data[obj].user_name,
@@ -141,15 +243,10 @@ const AnswerTable = React.createClass({
             'content': data.Data[obj].content
           });
           let id = JSON.parse(data.Data[obj].answerId);
-          this.state.isBest[id] = false;
-          t_agree.push(false);
-          t_disagree.push(false);
         }
         this.setState({
           answers: t_answer,
-          ansNum: t_ansNum,
-          agree: t_agree,
-          disagree: t_disagree,
+          ansNum: t_ansNum
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -169,13 +266,8 @@ const AnswerTable = React.createClass({
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-        console.log(data);
-        let t_agree = [];
-        let t_disagree = [];
-        let t_answer = [];
         let t_bestAnswer = [];
         let t_bestAnsNum = 0;
-        let t_ansNum = 0;
         for (let obj in data.Data) {
           t_bestAnsNum++;
           t_bestAnswer.push({
@@ -188,15 +280,10 @@ const AnswerTable = React.createClass({
             'content': data.Data[obj].content
           });
           let id = JSON.parse(data.Data[obj].answerId);
-          this.state.isBest[id] = false;
-          t_agree.push(false);
-          t_disagree.push(false);
         }
         this.setState({
           bestAnswers: t_bestAnswer,
-          bestAnsNum: t_bestAnsNum,
-          agree: t_agree,
-          disagree: t_disagree,
+          bestAnsNum: t_bestAnsNum
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -204,107 +291,23 @@ const AnswerTable = React.createClass({
       }.bind(this)
     });
   },
-
   componentDidMount: function(){
     this.loadAnswersFromServer();
     this.loadBestAnswersFromServer();
   },
-  // TODO update agree, disagree and set_best
-  disagreeClick: function(id, event) {
-      var data = {
-        guid: cookie.load('guid'),
-        answerId: id
-      };
-      console.log(data);
-      this.state.disagree[id] = true;
-      this.state.agree[id] = false;
-      $.ajax({
-        url: 'dislikeAnswer',
-        dataType: 'json',
-        method: 'post',
-        data: data,
-        success: function(data) {
-          console.log(data);
-          this.setState({'disagree': '1'});
-        }.bind(this),
-        error: function(xhr, status, err) {
-          console.error(this.props.url, status, err.toString());
-        }.bind(this)
-      });
-  },
-  agreeClick: function(id, event) {
-      var data = {
-        guid: cookie.load('guid'),
-        answerId: id
-      };
-      console.log(data);
-      this.state.disagree[id] = false;
-      this.state.agree[id] = true;
-      $.ajax({
-        url: 'likeAnswer',
-        dataType: 'json',
-        method: 'post',
-        data: data,
-        success: function(data) {
-          console.log(data);
-          this.setState({'pagree': '1'});
-        }.bind(this),
-        error: function(xhr, status, err) {
-          console.error(this.props.url, status, err.toString());
-        }.bind(this)
-      });
-  },
-  handleBestClick: function(id, is_best, event){
-    this.state.isBest[id] = !is_best;
-    console.log('answer' + id + ' is best: ' + this.state.isBest[id]);
-    var data = {
-      guid: cookie.load('guid'),
-      answerId: id
-    };
-    $.ajax({
-      url: 'setBestAnswer',
-      dataType: 'json',
-      method: 'post',
-      data: data,
-      success: function(data) {
-        console.log(data);
-        this.setState({'pbest':!is_best});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-
   answerList: function(answer) {
-    // ATTENTION: 设为最佳答案/取消最佳答案 can only be seen by the asker.
-    console.log(answer.is_best);
-    let id=answer.answerId;
-    let agreeText = parseInt(answer.agree);
-    if (this.state.agree[id]) agreeText=agreeText+1;
-    let disagreeText = parseInt(answer.disagree);
-    if (this.state.disagree[id]) disagreeText=disagreeText+1;
-    let is_best = answer.is_best;
-    let set_best = is_best ? '取消最佳' : '设为最佳';
     let cardtitle = answer.author;
     let subtitle = answer.time;
-    let cardAction = is_owner?(
-      <CardActions>
-        <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
-        <FlatButton label={'反对 '+disagreeText} onClick={this.disagreeClick.bind(this, id)} />
-        <FlatButton label={set_best} primary={true} onTouchTap={this.handleBestClick.bind(this, id, is_best)} />
-      </CardActions>
-    ):
-    (
-      <CardActions>
-        <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
-        <FlatButton label={'反对 '+disagreeText} onClick={this.disagreeClick.bind(this, id)} />
-      </CardActions>
-    );
+    let agreeText = parseInt(answer.agree);
+    let disagreeText = parseInt(answer.disagree);
     return (
-      <Card key={id}>
+      <Card key={answer.answerId}>
         <CardHeader style={styles.cardHeader} title={cardtitle} subtitle={subtitle} />
-        {cardAction}
+        <AnswerBtn
+          id={answer.answerId}
+          is_best={answer.is_best}
+          agreeText={agreeText}
+          disagreeText={disagreeText} />
         <CardText>
           <div dangerouslySetInnerHTML={{__html:  answer.content }} ></div>
         </CardText>

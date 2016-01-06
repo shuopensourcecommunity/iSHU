@@ -41,14 +41,6 @@ const LoginForm = React.createClass({
         else {
         	alert(data.status);
         }
-        // var t_status = data.status;
-        // this.setState({status: t_status,message: t_status});
-        // if (t_status == "登录成功") {
-        //   var t_realname = data.realname;
-        //   this.setState({realname: t_realname});
-        //   cookie.save('username', data.username);
-        //   this.setState({logStatus: "登出"});
-        // };
       }.bind(this),
       error: function(xhr, status, err) {
         alert('登陆失败');

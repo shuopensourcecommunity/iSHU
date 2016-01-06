@@ -42,8 +42,8 @@ const HeadBar = React.createClass({
       success: function(data) {
         if (data.State=='success') {
         	cookie.remove('guid');
-            cookie.remove('username');
-            alert('登出成功');
+          cookie.remove('username');
+          alert('登出成功');
         	window.location.href="/askbar/";
       	}
         else {
