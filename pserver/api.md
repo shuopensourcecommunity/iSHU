@@ -1,7 +1,7 @@
 # Askbar 
 
 
-+ 登陆： /login 
++ 登录： /login 
     - method: post
     - params: {userName, Password}
     - return: {

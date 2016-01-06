@@ -123,7 +123,7 @@ var SchoolDialog= React.createClass({
         secondary={true}
         onTouchTap={this._handleDialogCancel} />,
       <FlatButton
-        label={this.state.username==undefined? "登陆":"报名"}
+        label={this.state.username==undefined? "登录":"报名"}
         primary={true}
         keyboardFocused={true}
         onTouchTap={this.state.username==undefined? this._handleLogin:this._handleDialogSubmit} />
@@ -166,7 +166,7 @@ var SchoolDialog= React.createClass({
         <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} />
         <Dialog
             ref="signup"
-            title={this.state.username==undefined? "登陆":"我要报名"}
+            title={this.state.username==undefined? "登录":"我要报名"}
             actions={customActions}
             open={this.state.showDialogActions}
             autoDetectWindowHeight={true}
