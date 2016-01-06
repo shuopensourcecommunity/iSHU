@@ -143,10 +143,10 @@ const Home = React.createClass({
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-				console.log(data);
+				// console.log(data);
         let t_categories = [];
         let t_categoryName = [];
-				t_categoryName.push('全部板块');
+				t_categoryName.push('全部版块');
         for (let obj in data.Data){
           t_categoryName.push(data.Data[obj].Name);
           t_categories.push({
