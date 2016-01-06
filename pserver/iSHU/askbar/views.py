@@ -120,7 +120,7 @@ class AnswerView(View):
             data = {
                 'guid': request.POST['guid'],
                 'content': request.POST['content'],
-                'questionId': request.POST['question_id']
+                'questionId': request.POST['questionId']
             }
             msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', params=data).json()
             return JsonResponse(msg_res)
