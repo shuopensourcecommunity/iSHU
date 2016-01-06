@@ -1,14 +1,14 @@
 'use strict'
 require("../style/css/ishu/main.css");
-let React = require('react');
-let cookie = require('react-cookie');
-let {render} = require('react-dom');
-let mui = require('material-ui');
-let AppBarComponent = mui.AppBar;
-let MenuItem = require('material-ui/lib/menus/menu-item');
-let Divider = require('material-ui/lib/divider');
+const React = require('react');
+const cookie = require('react-cookie');
+const {render} = require('react-dom');
+const mui = require('material-ui');
+const AppBarComponent = mui.AppBar;
+const MenuItem = require('material-ui/lib/menus/menu-item');
+const Divider = require('material-ui/lib/divider');
 const { Card, CardTitle, CardText, CardActions, CircularProgress,
-      Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField} = require('material-ui');
+  Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
 const Colors = require('../public/js/colors.js');
 const {ActionHome, NavigationMoreVert} = require('../public/js/svg-icons');
 const {IconButton, IconMenu, Menu}= require('material-ui');

@@ -1,6 +1,5 @@
 'use strict'
 require("../style/css/ishu/main.css");
-
 var _ = require('underscore');
 var sprintf = require('sprintf');
 var React = require("react");

@@ -4,7 +4,7 @@ require("../style/css/ishu/Signup.css");
 var React = require("react");
 var cookie = require('react-cookie');
 var { Card, CardTitle, CardText, CardActions, CircularProgress,
-      Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
+  Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
 var AppBar = require('./AppBar.jsx');
 var ActivityDetail = require('./SchoolActivityDetail.jsx');
 var {render} = require('react-dom');
