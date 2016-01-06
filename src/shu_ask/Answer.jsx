@@ -60,10 +60,8 @@ const Answer = React.createClass({
       data: data,
       success: function(data) {
 				console.log(data);
-				console.log('回答成功');
       }.bind(this),
       error: function(xhr, status, err) {
-				console.log('回答失败');
         console.error(this.props.url, status, err.toString());
       }.bind(this)
 		});

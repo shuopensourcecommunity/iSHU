@@ -7,12 +7,17 @@ urlpatterns = [
     url(r'^login', askbar_login, name='askbar_login'),
     url(r'^categories$', get_categories, name='get_categories'),
     url(r'^getAskList', get_ask_list, name='get_ask_list'),
-    url(r'^getAnswerByQuestionId', get_answer_by_question_id, name='get_answer_by_questionId'),
-    url(r'^getAnswerDetailById', get_answer_detail_by_id, name='get_answer_detail_by_id'),
-    url(r'^getQuestionDetailById', get_question_detail_by_id, name='get_question_detail_by_id'),
-    url(r'^submitQuestion', submit_question, name='submit_question'),
-    url(r'^submitAnswer', submit_answer, name='submit_answer'),
-    url(r'^likeAnswer', like_answer, name='like_answer'),
-    url(r'^dislikeAnswer', dislike_answer, name='dislike_answer'),
-    url(r'^setBestAnswer', set_best_answer, name='set_best_answer')
+
+    # Question related url
+    url(r'^getQuestionDetail', QuestionView.as_view(type='detail'), name='get_question_detail_by_id'),
+    url(r'^getQuestionAnswers', QuestionView.as_view(type='answers'), name='get_question_answer'),
+    url(r'^getQuestionBestAnswers', QuestionView.as_view(type='bestAnswers'), name='get_question_best_answer'),
+    url(r'^submitQuestion', QuestionView.as_view(), name='submit_question'),
+
+    # Answer related url
+    url(r'^getAnswerDetail', AnswerView.as_view(method='get'), name='get_answer_detail_by_id'),
+    url(r'^submitAnswer', AnswerView.as_view(method='submit'), name='submitAnswer'),
+    url(r'^likeAnswer', AnswerView.as_view(method='like'), name='like_answer'),
+    url(r'^dislikeAnswer', AnswerView.as_view(method='dislike'), name='dislike_answer'),
+    url(r'^setBestAnswer', AnswerView.as_view(method='set_best'), name='set_best_answer')
 ]

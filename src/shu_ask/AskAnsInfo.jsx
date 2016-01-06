@@ -3,7 +3,7 @@ const HeadBar = require('./HeadBar.jsx');
 const React =require('react');
 const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
-const {Card, CardActions, CardText, CardTitle, FlatButton, RaisedButton,
+const {Card, CardActions, CardHeader, CardText, FlatButton, RaisedButton,
   Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
 
 const styles = {
@@ -11,15 +11,10 @@ const styles = {
     paddingLeft: 16,
     fontSize: 15
   },
-  cardTitle: {
-    fontSize: 20
-  },
-  hide: {
-    display: 'none'
-  },
-  show: {
-    display: ''
-  }
+  cardHeader: { height: 50 },
+  cardTitle: { fontSize: 20 },
+  hide: { display: 'none' },
+  show: { display: '' }
 };
 
 const QuestionContent = React.createClass({
@@ -78,7 +73,7 @@ const QuestionContent = React.createClass({
     );
     let QuestionContent = (
       <Card>
-        <CardTitle title={question.title} titleStyle={styles.cardTitle} />
+        <CardHeader style={styles.cardHeader} title={question.title} titleStyle={styles.cardTitle} />
         <CardText>
           <div dangerouslySetInnerHTML={{__html:  question.content }} ></div>
         </CardText>
@@ -94,12 +89,6 @@ const QuestionContent = React.createClass({
 });
 
 const AnswerTable = React.createClass({
-  getDefaultProps: function() {
-    return {
-      url: 'getAnswerByQuestionId'
-    }
-  },
-
   getInitialState: function(){
     return {
       disagree: [],
@@ -108,17 +97,18 @@ const AnswerTable = React.createClass({
       answers: [],
       bestAnswers: [],
       bestAnsNum: -1,
-      otherAnsNum: -1
+      allAnsNum: -1
     };
   },
 
   loadAnswersFromServer: function(){
+    let data = {
+      'questionId': this.props.questionId,
+      'type': 'answers'
+    };
     $.ajax({
-      url: this.props.url,
-      data: {
-        'questionId': this.props.questionId,
-        'type': 'answers'
-      },
+      url: 'getQuestionAnswers',
+      data: data,
       dataType: 'json',
       methods: 'get',
       success: function(data) {
@@ -128,33 +118,18 @@ const AnswerTable = React.createClass({
         let t_answer = [];
         let t_bestAnswer = [];
         let t_bestAnsNum = 0;
-        let t_otherAnsNum = 0;
-        for (let obj in data.Data){
-          // console.log(data.Data[obj].is_best);
-          if (data.Data[obj].is_best) {
-            t_bestAnsNum++;
-            t_bestAnswer.push({
-              'answerId': data.Data[obj].answerId,
-              'author': data.Data[obj].name,
-              'time': data.Data[obj].time,
-              'agree': data.Data[obj].agree,
-              'disagree': data.Data[obj].disagree,
-              'is_best': data.Data[obj].is_best,
-              'content': data.Data[obj].content
-            });
-          }
-          else {
-            t_otherAnsNum++;
-            t_answer.push({
-              'answerId': data.Data[obj].answerId,
-              'author': data.Data[obj].name,
-              'time': data.Data[obj].time,
-              'agree': data.Data[obj].agree,
-              'disagree': data.Data[obj].disagree,
-              'is_best': data.Data[obj].is_best,
-              'content': data.Data[obj].content
-            });
-          }
+        let t_allAnsNum = 0;
+        for (let obj in data.Data) {
+          t_allAnsNum++;
+          t_answer.push({
+            'answerId': data.Data[obj].answerId,
+            'author': data.Data[obj].name,
+            'time': data.Data[obj].time,
+            'agree': data.Data[obj].agree,
+            'disagree': data.Data[obj].disagree,
+            'is_best': data.Data[obj].is_best,
+            'content': data.Data[obj].content
+          });
           let id = JSON.parse(data.Data[obj].answerId);
           this.state.isBest[id] = false;
           t_agree.push(false);
@@ -162,9 +137,54 @@ const AnswerTable = React.createClass({
         }
         this.setState({
           answers: t_answer,
+          allAnsNum: t_allAnsNum,
+          agree: t_agree,
+          disagree: t_disagree,
+        });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  loadBestAnswersFromServer: function(){
+    let data = {
+      'questionId': this.props.questionId,
+      'type': 'bestAnswers'
+    };
+    $.ajax({
+      url: 'getQuestionBestAnswers',
+      data: data,
+      dataType: 'json',
+      methods: 'get',
+      success: function(data) {
+        console.log(data);
+        let t_agree = [];
+        let t_disagree = [];
+        let t_answer = [];
+        let t_bestAnswer = [];
+        let t_bestAnsNum = 0;
+        let t_allAnsNum = 0;
+        for (let obj in data.Data) {
+          t_bestAnsNum++;
+          t_bestAnswer.push({
+            'answerId': data.Data[obj].answerId,
+            'author': data.Data[obj].name,
+            'time': data.Data[obj].time,
+            'agree': data.Data[obj].agree,
+            'disagree': data.Data[obj].disagree,
+            'is_best': data.Data[obj].is_best,
+            'content': data.Data[obj].content
+          });
+          let id = JSON.parse(data.Data[obj].answerId);
+          this.state.isBest[id] = false;
+          t_agree.push(false);
+          t_disagree.push(false);
+        }
+        this.setState({
           bestAnswers: t_bestAnswer,
           bestAnsNum: t_bestAnsNum,
-          otherAnsNum: t_otherAnsNum,
           agree: t_agree,
           disagree: t_disagree,
         });
@@ -177,6 +197,7 @@ const AnswerTable = React.createClass({
 
   componentDidMount: function(){
     this.loadAnswersFromServer();
+    this.loadBestAnswersFromServer();
   },
   // TODO update agree, disagree and set_best
   disagreeClick: function(event, id) {
@@ -290,7 +311,7 @@ const AnswerTable = React.createClass({
     let cardtitle = answer.time;
     return (
       <Card key={id}>
-        <CardTitle subtitle={cardtitle} />
+        <CardHeader style={styles.cardHeader} subtitle={cardtitle} />
         <CardActions>
           <FlatButton label={'支持 '+agreeText} onClick={this.agreeClick.bind(this, id)} />
           <FlatButton label={'反对 '+disagreeText} onClick={this.disagreeClick.bind(this, id)} />
@@ -307,9 +328,9 @@ const AnswerTable = React.createClass({
     let answers = this.state.answers.map(this.answerList,this);
     let bestAnswers = this.state.bestAnswers.map(this.answerList,this);
     let bestZero = (this.state.bestAnsNum==0);
-    let ansZero = (this.state.otherAnsNum==0);
+    let ansZero = (this.state.allAnsNum==0);
     let initBestZero = (this.state.bestAnsNum==-1);
-    let initAnsZero = (this.state.otherAnsNum==-1);
+    let initAnsZero = (this.state.allAnsNum==-1);
     return (
       <div>
         <div style={bestZero?styles.hide:styles.show}>

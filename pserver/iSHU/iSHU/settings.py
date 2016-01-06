@@ -121,7 +121,7 @@ LOGGING = {
     },
 
 
-    'filters':{
+    'filters': {
         'require_debug_true':{
             '()': 'django.utils.log.RequireDebugTrue',
         }
