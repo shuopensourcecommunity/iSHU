@@ -16,35 +16,6 @@ def index(request):
 
 @require_http_methods(['POST'])
 def askbar_login(request):
-    """
-
-    Args:
-        request:
-         {
-             username: '13120157',
-             password: 'test-password'
-         }
-
-    Returns:
-        if success：
-        　　　return
-        {
-            "State":"success",
-            "Msg":"",
-            "Data":
-                {
-                    "Guid":"test-guid",
-                    "UserName":"testUsername"
-                }
-        }
-
-        else return
-        {
-            "status" :err.message
-        }
-
-    """
-
     data = {
         'userName': request.POST['username'],
         'Password': request.POST['password']
@@ -56,39 +27,10 @@ def askbar_login(request):
         return JsonResponse({
             "status": e.message
         })
-    finally:
-        return JsonResponse({
-            "status": 'unknown error'
-        })
 
 
 @require_http_methods(['GET'])
 def get_categories(request):
-    """
-    Args:
-        request:
-
-    Returns:
-        if success to get Data, return JsonResponse
-        {
-            "State": "success",
-            "Msg": "",
-            "Data": [
-                "0": {
-                 "ID": 1,
-                 "Name": "招生情况",
-                 "SortID": 1,
-                 "Mid": null
-                },
-                "1": {...}
-        }
-        if any error occurred, return JsonResponse
-        {
-           "State": "error",
-           "Msg": error message
-           "Data": '[]'
-        }
-    """
     try:
         msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Categories").json()
         # and number to head of msg_res['Data']， Number start from 0
@@ -214,44 +156,6 @@ class AnswerView(View):
 
 @require_http_methods(['GET'])
 def get_ask_list(request):
-    """
-    get question list data
-    Args:
-        request:
-            request GET method give to params:
-            {
-              "cid": 1,
-              "page": 1
-            }
-
-            if want all list:
-            {
-              "page": 1
-            }
-    Returns:
-        if success, return
-        {
-            "State": "success",
-            "Msg": "",
-            "Data": [
-                "0":{
-                    "id": 36440,
-                    "title": "求购上大土木系结构力学历年考题",
-                    "price": 0,
-                    "content": "<p>各位大哥大姐&nbsp; 我想问一下有没上大结构力学考研试题&nbsp; 06&nbsp; 07&nbsp; 08 的最好哦&nbsp;&nbsp; 谢谢了</p>",
-                    "answer_number": 1,
-                    "category_id": 1
-                },
-                "1":{...}
-
-        if failed, return
-        {
-            "State": "error",
-            "Msg" : error message
-            "Data": []
-        }
-
-    """
     try:
         data = {
             "cid": request.GET.get('cid', None),
