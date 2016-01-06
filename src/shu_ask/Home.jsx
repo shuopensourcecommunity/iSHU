@@ -200,7 +200,7 @@ const Home = React.createClass({
 								<MenuItem value={0} primaryText="全部板块" href={'/askbar/'} />
                 {
 									this.state.categories.map(category =>
-                  	<MenuItem value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
+                  	<MenuItem key={'cid?'+category.id} value={category.id} primaryText={category.name} href={'/askbar/#/category/'+category.id} />
                 	)
 								}
               </DropDownMenu>
@@ -210,8 +210,8 @@ const Home = React.createClass({
       );
     let categoryId = this.state.categoryId;
     let categoryName = this.state.categoryName;
-    console.log(categoryId);
-		console.log(categoryName);
+    // console.log(categoryId);
+		// console.log(categoryName);
     return (
       <div>
         <HeadBar title='乐乎问吧' />
