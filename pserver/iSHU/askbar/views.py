@@ -23,19 +23,28 @@ def askbar_login(request):
     }
     try:
         res_msg = requests.post('http://api.shu.edu.cn/Mobile/User/LehuUserLogin', data=data).json()
-        guid = res_msg['Data']['Guid']
-        username = res_msg['Data']['UserName']
-        user_id = res_msg['Data']['UserID']
-        request.session[user_id] = {
-            'guid': guid,
-            'username': username,
-            'user_id': user_id
-        }
+        if res_msg['State'] == 'success':
+            guid = res_msg['Data']['Guid']
+            username = res_msg['Data']['UserName']
+            user_id = res_msg['Data']['UserID']
+            request.session['user'] = {
+                'guid': guid,
+                'username': username,
+                'user_id': user_id
+            }
         return JsonResponse(res_msg)
     except AttributeError as e:
         return JsonResponse({
             "status": e.message
         })
+
+
+@require_http_methods(['GET'])
+def askbar_logout(request):
+    request.session.clear()
+    return JsonResponse({
+        'State': 'success'
+    })
 
 
 @require_http_methods(['GET'])
@@ -63,21 +72,29 @@ class QuestionView(View):
     type = ''
 
     def is_owner(self, user_id, question_id):
-        msg_res = requests.get('http://localhost/askbar/getQuestionDetail', params={'questionId': question_id}).json()
-        if msg_res['user_id'] == user_id:
-            return True
-        else:
-            return False
+        user_id = str(user_id)
+        question_id = str(question_id)
+        return user_id == question_id
 
     def get(self, request):
         data = {
             'questionId': request.GET['questionId'],
             'type': self.type
         }
-        user_id = request.session.get('user_id', None)
-        question_id = request.GET['questionId']
+        user_session = request.session.get('user', None)
+        if user_session:
+            user_id = user_session['user_id']
+        else:
+            user_id = None
+
         msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Question", params=data).json()
-        if user_id and self.is_owner(user_id, question_id):
+        if self.type == 'detail':
+            print("detail" + str(msg_res['Data'][u'user_id']))
+            question_owner_id = msg_res['Data'][u'user_id']
+        else:
+            question_owner_id = None
+
+        if user_id and question_owner_id and self.is_owner(user_id, question_owner_id):
             msg_res['is_owner'] = True
         else:
             msg_res['is_owner'] = False

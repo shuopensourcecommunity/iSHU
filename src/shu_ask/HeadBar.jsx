@@ -35,9 +35,26 @@ const HeadBar = React.createClass({
   },
   _handleLog: function() {
   	if (cookie.load('guid')) {
-      cookie.remove('guid');
-      cookie.remove('username');
-      alert('登出成功');
+      $.ajax({
+      url: 'logout',
+      dataType: 'json',
+      method: 'get',
+      success: function(data) {
+        if (data.State=='success') {
+        	cookie.remove('guid');
+            cookie.remove('username');
+            alert('登出成功');
+        	window.location.href="/askbar/";
+      	}
+        else {
+          alert(data.status);
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        alert('登出失败');
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+     });
   	}
   	else {
   		window.location.href="/askbar/#/login";
