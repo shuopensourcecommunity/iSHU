@@ -213,6 +213,7 @@ const AnswerTable = React.createClass({
         guid: cookie.load('guid'),
         answerId: id
       };
+      console.log(data);
       this.state.disagree[id] = true;
       this.state.agree[id] = false;
       $.ajax({
