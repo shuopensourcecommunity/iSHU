@@ -66,7 +66,7 @@ const QuestionContent = React.createClass({
     this.loadQuestionFromServer();
   },
 
-  _handleAsk: function(){
+  _handleAnswer: function(){
     if (cookie.load('username')){
       /*  current user has login */
       let question =this.state;
@@ -85,7 +85,7 @@ const QuestionContent = React.createClass({
           <ToolbarTitle text={tbText} style={styles.tbText} />
         </ToolbarGroup>
         <ToolbarGroup lastChild={true} float="right">
-          <RaisedButton onTouchTap={this._handleAsk} label="我要回答" primary={true}/>
+          <RaisedButton onTouchTap={this._handleAnswer} label="我要回答" primary={true}/>
         </ToolbarGroup>
       </Toolbar>
     );

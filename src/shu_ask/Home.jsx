@@ -7,7 +7,7 @@ const {Link, RouteHandler} = require('react-router');
 const InfiniteScroll = require('react-infinite-scroll')(React);
 const {HardwareKeyboardArrowLeft} = require('../../public/js/svg-icons');
 const {Card, CardTitle, CardText, DropDownMenu, IconButton, IconMenu, MenuItem, FlatButton,
-  Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
+  Toolbar, ToolbarGroup, ToolbarTitle, RaisedButton} = require('material-ui');
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
@@ -170,6 +170,16 @@ const Home = React.createClass({
     this.setState({categoryId: value});
   },
 
+  _handleAsk: function(){
+    if (cookie.load('username')){
+      /*  current user has login */
+      let question =this.state;
+      window.location.href = '#question' ;
+    }else{
+      window.location.href ='#login';
+    }
+  },
+
   render: function() {
     let styles={
       button: {
@@ -201,7 +211,7 @@ const Home = React.createClass({
                   )
                 }
               </DropDownMenu>
-              <FlatButton style={styles.button} linkButton={true} label="提问" href={'/askbar/#/question'} primary={true} />
+              <RaisedButton style={styles.button} onTouchTap={ this._handleAsk } label="提问"  primary={true} />
           </ToolbarGroup>
         </Toolbar>
       );

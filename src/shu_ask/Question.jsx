@@ -3,7 +3,7 @@ require('../../style/css/shu_ask/QuestionAnswer.css');
 const HeadBar = require('./HeadBar.jsx');
 const React = require('react');
 const cookie = require('react-cookie');
-const {FlatButton, SelectField, TextField} = require('material-ui');
+const {FlatButton, SelectField, TextField, MenuItem} = require('material-ui');
 
 const Question = React.createClass({
   getInitialState: function() {
@@ -62,7 +62,7 @@ const Question = React.createClass({
       method: 'post',
       data: data,
       success: function(data) {
-        console.log(data);
+        window.location.href = '#askAnsInfo/' + data.Data ;
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
