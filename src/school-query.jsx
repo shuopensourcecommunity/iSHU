@@ -87,19 +87,17 @@ var QueryTabs = React.createClass({
           </Tab>
           <Tab label="校历查询" value='c'>
             <div className="query-img">
+              <img src='http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarAutumn' alt='autum' height="500px" />
+            </div>
+            <div className="query-img">
+              <img src='http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarWinter' alt='winter' height="500px" />
+            </div>
+            <div className="query-img">
               <img src='http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarSpring' alt='spring' height="500px" />
             </div>
             <div className="query-img">
               <img src='http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarSummer' alt='summer' height="500px" />
             </div>
-
-            <div className="query-img">
-              <img src='http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarAutumn' alt='autum' height="500px" />
-            </div>
-            <div className="query-img">
-              <img src='http://api.shu.edu.cn/Mobile/CampusFile/CampusCalendarWinter' alt='summer' height="500px" />
-            </div>
-
           </Tab>
         </Tabs>
       </div>
