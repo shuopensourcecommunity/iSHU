@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^login', askbar_login, name='askbar_login'),
     url(r'^logout', askbar_logout, name='askbar_logout'),
+    url(r'^isLogin', is_login, name='is_login?'),
     url(r'^categories$', get_categories, name='get_categories'),
     url(r'^getAskList', get_ask_list, name='get_ask_list'),
 

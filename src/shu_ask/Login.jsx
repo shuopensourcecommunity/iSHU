@@ -29,17 +29,21 @@ const LoginForm = React.createClass({
       success: function(data) {
         console.log(data);
         if (data.State=='success') {
-          this.setState({
-            guid: data.Data.Guid,
-            username: data.Data.UserName
-          });
-          cookie.save('username', data.Data.UserName);
-          cookie.save('guid', data.Data.Guid);
-          alert('登录成功');
-          window.location.href="/askbar/";
-        }
+        	this.setState({
+              guid: data.Data.Guid,
+          	  username: data.Data.UserName,
+              user_id: data.Data.UserId
+        	});
+        	cookie.save('username', data.Data.UserName);
+        	cookie.save('guid', data.Data.Guid);
+            cookie.save('user_id', data.Data.UserId);
+          /* TODO to use notification */
+        	alert('登录成功');
+        	window.location.href="/askbar/";
+      	}
         else {
-          alert(data.status);
+          /* TODO to use notification */
+        	alert('登录失败');
         }
       }.bind(this),
       error: function(xhr, status, err) {

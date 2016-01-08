@@ -33,14 +33,14 @@ const AppBar = React.createClass({
       pwd: '',
       status: '请稍等，信息正在空中飞翔。。。',
       realname: '',
-      logStatus: cookie.load('username')?"登出":"登录",
+      logStatus: cookie.load('ishu_username')?"登出":"登录",
       homeData: [
         { title: "校园资讯", img: "/static/style/imgs/school-info.png", linkto: "#info" },
         { title: "校园活动", img: "/static/style/imgs/school-activity.png", linkto: "#activity" },
         { title: "校园查询", img: "/static/style/imgs/school-query.png", linkto: "#query" },
         { title: "校园服务", img: "/static/style/imgs/school-service.png", linkto: "#service" },
         { title: "乐乎问吧", img: "/static/style/imgs/lehu-ask.png", linkto: "#askbar"},
-        { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "#student"},
+        { title: "学生事务", img: "/static/style/imgs/banshi-query.png", linkto: "#student"}
       ]
     }
   },
@@ -53,9 +53,8 @@ const AppBar = React.createClass({
     this.refs.success.show();
     var data={
       'id': this.state.id,
-      'pwd': this.state.pwd,
+      'pwd': this.state.pwd
     };
-    // console.log(data);
     $.ajax({
       url: 'user_login',
       dataType: 'json',
@@ -67,9 +66,9 @@ const AppBar = React.createClass({
         if (t_status == "登录成功") {
           var t_realname = data.realname;
           this.setState({realname: t_realname});
-          cookie.save('username', data.username);
+          cookie.save('ishu_username', data.username);
           this.setState({logStatus: "登出"});
-        };
+        }
       }.bind(this),
       error: function(xhr, status, err) {
         this.setState({status: '登录失败'});
@@ -93,15 +92,13 @@ const AppBar = React.createClass({
     this.setState({pwd: event.target.value});
   },
   _handleLoginLogout: function(){
-    if(cookie.load('username')) {
-      cookie.remove('username');
+    if(cookie.load('ishu_username')) {
+      cookie.remove('ishu_username');
       this.setState({logStatus: "登录"});
-      console.log("123");
     }
     else {
       this.setState({logStatus: "登出"});
       this.setState({showDialogActions: true});
-      console.log("321");
     }
   },
   render: function() {
@@ -155,7 +152,7 @@ const AppBar = React.createClass({
               }
               <Divider />
               <MenuItem
-                primaryText={cookie.load('username')?"登出":"登录"}
+                primaryText={cookie.load('ishu_username')?"登出":"登录"}
                 onTouchTap={this._handleLoginLogout} />
             </IconMenu>} />
         <Dialog

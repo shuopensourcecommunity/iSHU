@@ -3,19 +3,18 @@ require('../../style/css/shu_ask/QuestionAnswer.css');
 const HeadBar = require('./HeadBar.jsx');
 const React = require('react');
 const cookie = require('react-cookie');
-const {Link, RouteHandler} = require('react-router');
-const {Card, CardActions, CardHeader, CardText, Divider, FlatButton, TextField} = require('material-ui');
+const {CardHeader, CardText, Divider, FlatButton, TextField} = require('material-ui');
 
 const styles = {
-  cardTitle: { fontSize: 20 },
-  cardHeader: { height: 50 },
-  answerAction: { textAlign: 'center' },
-  textField: { textAlign: 'left' },
-  textInput: {
-    paddingLeft: 16,
-    paddingRight: 16
-  },
-  floatingLabel: { paddingLeft: 16 },
+	cardTitle: { fontSize: 20 },
+	cardHeader: { height: 50 },
+	answerAction: { textAlign: 'center' },
+	textField: { textAlign: 'left' },
+	textInput: {
+		paddingLeft: 16,
+		paddingRight: 16
+	},
+	floatingLabel: { paddingLeft: 16 }
 };
 
 const Answer = React.createClass({
@@ -37,11 +36,10 @@ const Answer = React.createClass({
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-        console.log(data);
         this.setState({
           qid: data.Data.id,
           qTitle: data.Data.title,
-          qContent: data.Data.content,
+          qContent: data.Data.content
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -71,7 +69,6 @@ const Answer = React.createClass({
       method: 'post',
       data: data,
       success: function(data) {
-        console.log(data);
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());

@@ -5,6 +5,7 @@ const cookie = require('react-cookie');
 const {Link, RouteHandler} = require('react-router');
 const {Card, CardActions, CardHeader, CardText, FlatButton, RaisedButton,
   Toolbar, ToolbarGroup, ToolbarTitle} = require('material-ui');
+const AskBarAuth = require('./authentication.jsx');
 
 const styles = {
   tbText: {
@@ -29,7 +30,7 @@ const QuestionContent = React.createClass({
       userName: '',
       updatedTime: '',
       title: '',
-      content: '',
+      content: ''
     };
   },
 
@@ -42,7 +43,6 @@ const QuestionContent = React.createClass({
       dataType: 'json',
       methods: 'get',
       success: function(data) {
-        console.log(data);
         this.setState({
           answer_number: data.Data.answer_number,
           category_id: data.Data.category_id,
@@ -52,7 +52,7 @@ const QuestionContent = React.createClass({
           userName: data.Data.user_name,
           updatedTime: data.Data.updated_time,
           title: data.Data.title,
-          content: data.Data.content,
+          content: data.Data.content
         });
         is_owner = data.is_owner;
       }.bind(this),
@@ -66,6 +66,16 @@ const QuestionContent = React.createClass({
     this.loadQuestionFromServer();
   },
 
+  _handleAsk: function(){
+    if (cookie.load('username')){
+      /*  current user has login */
+      let question =this.state;
+      window.location.href = '#answer/' + question.id ;
+    }else{
+      window.location.href ='#login';
+    }
+  },
+
   render: function() {
     let question = this.state;
     let tbText = '共 ' + question.answer_number + ' 个回答  赏金 ' + question.price;
@@ -75,7 +85,7 @@ const QuestionContent = React.createClass({
           <ToolbarTitle text={tbText} style={styles.tbText} />
         </ToolbarGroup>
         <ToolbarGroup lastChild={true} float="right">
-          <RaisedButton linkButton={true} href={'/askbar/#/answer/'+question.id} label="我要回答" primary={true} />
+          <RaisedButton onTouchTap={this._handleAsk} label="我要回答" primary={true}/>
         </ToolbarGroup>
       </Toolbar>
     );

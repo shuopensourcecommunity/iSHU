@@ -3,8 +3,7 @@ require('../../style/css/shu_ask/QuestionAnswer.css');
 const HeadBar = require('./HeadBar.jsx');
 const React = require('react');
 const cookie = require('react-cookie');
-const {Link, RouteHandler} = require('react-router');
-const {FlatButton, SelectField, TextField, menuItems, MenuItem} = require('material-ui');
+const {FlatButton, SelectField, TextField} = require('material-ui');
 
 const Question = React.createClass({
   getInitialState: function() {
@@ -51,7 +50,6 @@ const Question = React.createClass({
     this.setState({content: event.target.value});
   },
   handleSubmitQuestion: function() {
-    console.log(cookie.load('guid'));
     let data = {
       'guid': cookie.load('guid'),
       'title': this.state.title,
@@ -135,4 +133,4 @@ const Question = React.createClass({
 
 module.exports = {
   Question: Question
-}
+};

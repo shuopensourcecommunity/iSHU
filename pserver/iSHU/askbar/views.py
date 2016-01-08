@@ -47,6 +47,24 @@ def askbar_logout(request):
     })
 
 
+@require_http_methods(['POST'])
+def is_login(request):
+    try:
+        if request.POST['user'] == request.session['user']:
+            return JsonResponse({
+                'Status': 'success' # user is login
+            })
+        else:
+            return JsonResponse({
+                'Status': 'failed'
+            })
+    except MultiValueDictKeyError as e:
+        return JsonResponse({
+            'Status': 'failed',
+            'Msg': 'params error'
+        })
+
+
 @require_http_methods(['GET'])
 def get_categories(request):
     try:

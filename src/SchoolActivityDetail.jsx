@@ -7,7 +7,6 @@ var { Card, CardTitle, CardText, CardActions, CircularProgress,
       Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
 var AppBar = require('./AppBar.jsx');
 var SchoolDialog = require('./SchoolDialog.jsx');
-var {render} = require('react-dom');
 var InfiniteScroll = require('react-infinite-scroll')(React);
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
@@ -69,11 +68,7 @@ var SchoolActivityDetail= React.createClass({
       else if (detail.ActionType == '3') {ActionType='公益活动'}
       else if (detail.ActionType == '2') {ActionType='比赛活动'}
       else if (detail.ActionType == '1') {ActionType='讲座报告'}
-      else {ActionType='其它'};
-      // console.log(Summary);
-      // var string ='abczxaeib';
-      // string=string.replace("zx","\u000d\u000a");
-      // console.log(this.props.ActionID);
+      else {ActionType='其它'}
       return (
         <div>
           <div className="activity-detail">

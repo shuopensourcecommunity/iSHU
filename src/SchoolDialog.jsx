@@ -17,14 +17,14 @@ var SchoolDialog= React.createClass({
       isJoined: false,
       showDialogActions: false,
       autoHideDuration: 5000,
-      mail: 'Hello!',
-      phone: '123',
-      reason: 'dsf',
-      id: '13121312',
-      pwd: 'J123123dandi',
+      mail: '',
+      phone: '',
+      reason: '',
+      id: '',
+      pwd: '',
       status: '请稍等，信息正在空中飞翔。。。',
       realname: '',
-      username: cookie.load('username'),
+      username: cookie.load('ishu_username')
     };
   },
   _handleSignUpClick: function(){
@@ -36,7 +36,7 @@ var SchoolDialog= React.createClass({
     this.refs.success.show();
     var data={
       'id': this.state.id,
-      'pwd': this.state.pwd,
+      'pwd': this.state.pwd
     };
     $.ajax({
       url: 'user_login',
@@ -51,9 +51,9 @@ var SchoolDialog= React.createClass({
           var t_username = data.username;
           this.setState({realname: t_realname});
           this.setState({username: t_username});
-          cookie.save('username', t_username);
-          this.refs.myAppBarMenu.componentDidMount();
-        };
+          cookie.save('ishu_username', t_username);
+
+        }
       }.bind(this),
       error: function(xhr, status, err) {
         this.setState({status: '登录失败'});
@@ -76,7 +76,7 @@ var SchoolDialog= React.createClass({
       'phone': this.state.phone,
       'mail': this.state.mail,
       'reason': this.state.reason,
-      'username': this.state.username,
+      'username': this.state.username
     };
     $.ajax({
       url: 'apply_for_campus_action',
@@ -88,7 +88,7 @@ var SchoolDialog= React.createClass({
         this.setState({status: t_status});
         if (t_status == '报名成功') {
           this.setState({isJoined: true});
-        };
+        }
       }.bind(this),
       error: function(xhr, status, err) {
         this.setState({status: '报名失败'});
@@ -97,7 +97,7 @@ var SchoolDialog= React.createClass({
     });
   },
   _handleAction: function(event){
-    if (this.state.status == '登录成功') {this.setState({showDialogActions: true});};
+    if (this.state.status == '登录成功') {this.setState({showDialogActions: true});}
     this.refs.success.dismiss();
   },
   // handle TextField onChange
@@ -160,7 +160,7 @@ var SchoolDialog= React.createClass({
         <br />
       </div>
     ];
-    var text = cookie.load('username')? signup:login;
+    var text = cookie.load('ishu_username')? signup:login;
   	return (
   		<div>
         <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} />

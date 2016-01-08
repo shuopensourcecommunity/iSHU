@@ -7,7 +7,6 @@ var { Card, CardTitle, CardText, CardActions, CircularProgress,
   Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
 var AppBar = require('./AppBar.jsx');
 var ActivityDetail = require('./SchoolActivityDetail.jsx');
-var {render} = require('react-dom');
 var InfiniteScroll = require('react-infinite-scroll')(React);
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
@@ -64,7 +63,7 @@ var ActivityMessage = React.createClass({
       </Card>
     )
   }
-})
+});
 // 校园活动列表
 var ActivityTable = React.createClass({
   getInitialState: function() {
@@ -106,7 +105,7 @@ var ActivityTable = React.createClass({
           this.setState({
             messages: t_message,
             pagecount: t_pagecount,
-            current_page: this.state.current_page + 1,
+            current_page: this.state.current_page + 1
           });
           if (this.state.current_page >= this.state.pagecount) {this.setState({ hasMoreMessages:false });};
         }.bind(this),
