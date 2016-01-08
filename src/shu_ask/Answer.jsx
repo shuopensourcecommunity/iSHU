@@ -69,6 +69,7 @@ const Answer = React.createClass({
       method: 'post',
       data: data,
       success: function(data) {
+          window.location.href = '#AskAnsInfo/' + this.props.params.id;
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
