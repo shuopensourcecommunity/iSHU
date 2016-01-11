@@ -47,10 +47,22 @@
     - method: post
     - params: guid, answerId
 
++ 取消赞同：/cancelLikeAnswer
+    - method: post
+    - params: guid, answerId
+
 + 反对：/dislikeAnswer
+    - method: post
+    - params: guid, answerId
+
++ 赞同：/cancelDiskLikeAnswer
     - method: post
     - params: guid, answerId
     
 + 设为最佳： /setBestAnswer
+    - method: post
+    - params: guid, answerId
+
++ 赞同：/cancelSetBestAnswer
     - method: post
     - params: guid, answerId
