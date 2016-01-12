@@ -146,8 +146,8 @@ class AnswerView(View):
     allowed_methods = ['get', 'submit', 'like', 'dislike', 'set_best', 'cancel']
     method = None
     cancel_type = ''
-    def dispatch(self, request, *args, **kwargs):
 
+    def dispatch(self, request, *args, **kwargs):
         if self.method.lower() in self.allowed_methods:
             handler = getattr(self, self.method.lower(), self.http_method_not_allowed)
 

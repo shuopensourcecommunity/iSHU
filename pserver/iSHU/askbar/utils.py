@@ -16,3 +16,7 @@ def strip_tags(raw, space=False):
     if space:
         cooked = re.sub('&nbsp', cooked)
     return cooked
+
+
+class ErrorHandle(object):
+    pass
