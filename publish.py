@@ -25,6 +25,8 @@ def push():
         put('public/*','./public')
         put('templates/*', './templates')
         put('pserver/iSHU/*','./pserver/iSHU')
+        run('rm pserver/iSHU/getData/*.py')
+        run('rm pserver/iSHU/askbar/*.py')
         put('src/progress/*','./src/progress')
 
 

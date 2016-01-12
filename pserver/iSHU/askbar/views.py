@@ -143,9 +143,9 @@ class QuestionView(View):
 
 
 class AnswerView(View):
-    allowed_methods = ['get', 'submit', 'like', 'dislike', 'set_best']
+    allowed_methods = ['get', 'submit', 'like', 'dislike', 'set_best', 'cancel']
     method = None
-
+    cancel_type = ''
     def dispatch(self, request, *args, **kwargs):
 
         if self.method.lower() in self.allowed_methods:
@@ -199,6 +199,15 @@ class AnswerView(View):
             'answerId': request.POST.get('answerId', None)
         }
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Dislike', params=data).json()
+        return JsonResponse(msg_res)
+
+    def cancel(self, request):
+        data = {
+            'guid': request.POST.get('guid', None),
+            'answerId': request.POST.get('answerId', None),
+            'type': self.cancel_type
+        }
+        msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Cancel', params=data).json()
         return JsonResponse(msg_res)
 
     def set_best(self, request):

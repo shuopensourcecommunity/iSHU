@@ -21,5 +21,8 @@ urlpatterns = [
     url(r'^submitAnswer', AnswerView.as_view(method='submit'), name='submitAnswer'),
     url(r'^likeAnswer', AnswerView.as_view(method='like'), name='like_answer'),
     url(r'^dislikeAnswer', AnswerView.as_view(method='dislike'), name='dislike_answer'),
-    url(r'^setBestAnswer', AnswerView.as_view(method='set_best'), name='set_best_answer')
+    url(r'^setBestAnswer', AnswerView.as_view(method='set_best'), name='set_best_answer'),
+    url(r'^cancelLike', AnswerView.as_view(method='cancel', cancel_type='like'), name='cancel_like'),
+    url(r'^cancelDislike', AnswerView.as_view(method='cancel', cancel_type='dislike'), name='cancel_dislike'),
+    url(r'^cancelSetBest', AnswerView.as_view(method='cancel', cancel_type='setBest'), name='cancel_set_best')
 ]
