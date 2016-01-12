@@ -19,11 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 @ensure_csrf_cookie
 def index(request):
-    meta_info = request.META.get('HTTP_USER_AGENT', None)
-    if "QQBrowser" in meta_info:
-        return render(request, 'open_in_browser.html')
-    else:
-        return render(request, "index.html")
+    # meta_info = request.META.get('HTTP_USER_AGENT', None)
+    # if "QQBrowser" in meta_info:
+    #     return render(request, 'open_in_browser.html')
+    # else:
+    return render(request, "index.html")
 
 
 @require_http_methods(['POST'])
