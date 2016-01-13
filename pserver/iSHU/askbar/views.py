@@ -5,16 +5,15 @@ from django.views.decorators.csrf import csrf_protect, csrf_exempt, ensure_csrf_
 from django.views.decorators.http import require_http_methods
 from django.utils.datastructures import MultiValueDictKeyError
 from django.views.generic.base import View
-from functools import wraps
 import requests
-import utils
+from utils import except_handler
 
 @ensure_csrf_cookie
 @require_http_methods('GET')
 def index(request):
     return render(request, 'shu_ask_index.html')
 
-@csrf_exempt
+
 @require_http_methods(['POST'])
 def askbar_login(request):
     data = {
@@ -66,24 +65,12 @@ def is_login(request):
 
 
 @require_http_methods(['GET'])
+@except_handler
 def get_categories(request):
-    try:
-        msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Categories").json()
-        # and number to head of msg_res['Data']， Number start from 0
-        msg_res['Data'] = dict(enumerate(msg_res['Data']))
-        return JsonResponse(msg_res)
-    except MultiValueDictKeyError as e:
-        return JsonResponse({
-            "State": "error",
-            "Msg": e.message,
-            "Data": "[]"
-        })
-    except AttributeError as e:
-        return JsonResponse({
-            "State": "error",
-            "Msg": "server response null",
-            "Data": "[]"
-        })
+    msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/Categories").json()
+    # and number to head of msg_res['Data']， Number start from 0
+    msg_res['Data'] = dict(enumerate(msg_res['Data']))
+    return JsonResponse(msg_res)
 
 
 class QuestionView(View):
@@ -94,6 +81,7 @@ class QuestionView(View):
         question_id = str(question_id)
         return user_id == question_id
 
+    @except_handler
     def get(self, request):
         data = {
             'questionId': request.GET['questionId'],
@@ -117,18 +105,12 @@ class QuestionView(View):
             msg_res['is_owner'] = False
         return JsonResponse(msg_res)
 
+    @except_handler
     def post(self, request):
-        try:
-            guid = request.POST['guid']
-            title = request.POST['title']
-            content = request.POST['content']
-            cid = request.POST['cid']
-        except MultiValueDictKeyError as e:
-            return JsonResponse({
-                'State': 'error',
-                'Msg': 'lack of params'
-            })
-
+        guid = request.POST['guid']
+        title = request.POST['title']
+        content = request.POST['content']
+        cid = request.POST['cid']
         data = {
             'guid': guid,
             'title': title,
@@ -155,36 +137,26 @@ class AnswerView(View):
             handler = self.http_method_not_allowed
         return handler(request, *args, **kwargs)
 
+    @except_handler
     def get(self, request):
-        try:
-            data = {
-                "answerId": request.GET['answerId']
-            }
-            msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', params=data).json()
-            msg_res['Data'] = dict(enumerate(msg_res['Data']))
-            return JsonResponse(msg_res)
-        except MultiValueDictKeyError as e:
-            return JsonResponse({
-                "State": "error",
-                "Msg": e.message,
-                "Data": ""
-            })
+        data = {
+            "answerId": request.GET['answerId']
+        }
+        msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', params=data).json()
+        msg_res['Data'] = dict(enumerate(msg_res['Data']))
+        return JsonResponse(msg_res)
 
+    @except_handler
     def submit(self, request):
-        try:
-            data = {
-                'guid': request.POST['guid'],
-                'content': request.POST['content'],
-                'questionId': request.POST['questionId']
-            }
-            msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', params=data).json()
-            return JsonResponse(msg_res)
-        except MultiValueDictKeyError as e:
-            return JsonResponse({
-                'State': 'error',
-                'Msg': 'params error'
-            })
+        data = {
+            'guid': request.POST['guid'],
+            'content': request.POST['content'],
+            'questionId': request.POST['questionId']
+        }
+        msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Answer', params=data).json()
+        return JsonResponse(msg_res)
 
+    @except_handler
     def like(self, request):
         data = {
             'guid': request.POST['guid'],
@@ -193,6 +165,7 @@ class AnswerView(View):
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Like', params=data).json()
         return JsonResponse(msg_res)
 
+    @except_handler
     def dislike(self, request):
         data = {
             'guid': request.POST.get('guid', None),
@@ -201,6 +174,7 @@ class AnswerView(View):
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Dislike', params=data).json()
         return JsonResponse(msg_res)
 
+    @except_handler
     def cancel(self, request):
         data = {
             'guid': request.POST.get('guid', None),
@@ -210,6 +184,7 @@ class AnswerView(View):
         msg_res = requests.get('http://api.shu.edu.cn/Mobile/Lehu/Cancel', params=data).json()
         return JsonResponse(msg_res)
 
+    @except_handler
     def set_best(self, request):
         data = {
             'guid': request.POST['guid'],
@@ -223,24 +198,12 @@ class AnswerView(View):
 
 
 @require_http_methods(['GET'])
+@except_handler
 def get_ask_list(request):
-    try:
-        data = {
-            "cid": request.GET.get('cid', None),
-            "page": request.GET['page']
-        }
-        msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/AskList", params=data).json()
-        msg_res['Data'] = dict(enumerate(msg_res['Data']))
-        return JsonResponse(msg_res)
-    except MultiValueDictKeyError as e:
-        return JsonResponse({
-            'State': "error",
-            'Msg': e.message,
-            'Data': '[]'
-        })
-    except AttributeError as e:
-        return JsonResponse({
-            'State':  'error',
-            'Msg': 'server response null',
-            'Data': '[]'
-        })
+    data = {
+        "cid": request.GET.get('cid', None),
+        "page": request.GET['page']
+    }
+    msg_res = requests.get("http://api.shu.edu.cn/Mobile/Lehu/AskList", params=data).json()
+    msg_res['Data'] = dict(enumerate(msg_res['Data']))
+    return JsonResponse(msg_res)
