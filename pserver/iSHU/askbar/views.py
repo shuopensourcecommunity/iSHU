@@ -15,28 +15,23 @@ def index(request):
 
 
 @require_http_methods(['POST'])
+@except_handler
 def askbar_login(request):
     data = {
         'userName': request.POST['username'],
         'Password': request.POST['password']
     }
-    try:
-        res_msg = requests.post('http://api.shu.edu.cn/Mobile/User/LehuUserLogin', data=data).json()
-        if res_msg['State'] == 'success':
-            guid = res_msg['Data']['Guid']
-            username = res_msg['Data']['UserName']
-            user_id = res_msg['Data']['UserID']
-            request.session['user'] = {
-                'guid': guid,
-                'username': username,
-                'user_id': user_id
-            }
-        return JsonResponse(res_msg)
-    except AttributeError as e:
-        return JsonResponse({
-            "status": e.message
-        })
-
+    res_msg = requests.post('http://api.shu.edu.cn/Mobile/User/LehuUserLogin', data=data).json()
+    if res_msg['State'] == 'success':
+        guid = res_msg['Data']['Guid']
+        username = res_msg['Data']['UserName']
+        user_id = res_msg['Data']['UserID']
+        request.session['user'] = {
+            'guid': guid,
+            'username': username,
+            'user_id': user_id
+        }
+    return JsonResponse(res_msg)
 
 @require_http_methods(['GET'])
 def askbar_logout(request):
@@ -47,20 +42,15 @@ def askbar_logout(request):
 
 
 @require_http_methods(['POST'])
+@except_handler
 def is_login(request):
-    try:
-        if request.POST['user'] == request.session['user']:
-            return JsonResponse({
-                'Status': 'success' # user is login
-            })
-        else:
-            return JsonResponse({
-                'Status': 'failed'
-            })
-    except MultiValueDictKeyError as e:
+    if request.POST['user'] == request.session['user']:
         return JsonResponse({
-            'Status': 'failed',
-            'Msg': 'params error'
+            'State': 'success' # user is login
+        })
+    else:
+        return JsonResponse({
+            'State': 'failed'
         })
 
 
