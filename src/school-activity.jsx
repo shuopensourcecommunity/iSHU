@@ -6,9 +6,9 @@ var cookie = require('react-cookie');
 var { Card, CardTitle, CardText, CardActions, CircularProgress,
   Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
 var AppBar = require('./AppBar.jsx');
-var ActivityDetail = require('./SchoolActivityDetail.jsx');
 var InfiniteScroll = require('react-infinite-scroll')(React);
 var injectTapEventPlugin = require("react-tap-event-plugin");
+let {Link, RouteHandler} = require('react-router');
 injectTapEventPlugin();
 
 var ActivityMessage = React.createClass({
@@ -18,7 +18,7 @@ var ActivityMessage = React.createClass({
     };
   },
   cardOnClick: function() {
-    this.setState({title_style: !this.state.title_style});
+    window.location.href = '#/activity/' + this.props.message.ActionID;
   },
   render: function() {
     var message = this.props.message;
@@ -49,18 +49,13 @@ var ActivityMessage = React.createClass({
     };
     var title_style = this.state.title_style? styles.title2:styles.title;
     return (
-      <Card initiallyExpanded={false}>
+      <Link to={'/activity/'+this.props.message.ActionID}>
         <CardTitle
           titleStyle={title_style}
           title={message.Title}
-          subtitle={subtitle}
-          actAsExpander={true}
-          showExpandableButton={true}  onClick={this.cardOnClick}>
+          subtitle={subtitle}>
         </CardTitle>
-        <CardText expandable={true}>
-          <ActivityDetail url='messageText' ActionID={message.ActionID}/>
-        </CardText>
-      </Card>
+      </Link>
     )
   }
 });
@@ -135,17 +130,23 @@ var ActivityTable = React.createClass({
 var SchoolActivity= React.createClass({
   getInitialState: function() {
     return {
+      value: 0,
       activityData: [
-        { title: "全部", url: 'get_msg/action/' },
-        { title: "专题活动", url: 'get_msg/special_action/' },
-        { title: "社团活动", url: 'get_msg/club_action/' },
-        { title: "招聘实习", url: 'get_msg/recruit_action/' },
-        { title: "公益活动", url: 'get_msg/public_good_action/' },
-        { title: "比赛活动", url: 'get_msg/competition_action/' },
-        { title: "讲座报告", url: 'get_msg/lecture_action/' }
+        { title: "全部", value: 0, url: 'get_msg/action/'},
+        { title: "专题活动", value: 1, url: 'get_msg/special_action/' },
+        { title: "社团活动", value: 2, url: 'get_msg/club_action/' },
+        { title: "招聘实习", value: 3, url: 'get_msg/recruit_action/' },
+        { title: "公益活动", value: 4, url: 'get_msg/public_good_action/' },
+        { title: "比赛活动", value: 5, url: 'get_msg/competition_action/' },
+        { title: "讲座报告", value: 6, url: 'get_msg/lecture_action/' }
       ]
     };
   },
+
+  handleChange: function(value) {
+    this.setState({value: value});
+  },
+
   render: function(){
     let styles = {
       content: {
@@ -157,21 +158,22 @@ var SchoolActivity= React.createClass({
         width: (screen.width>'560')?'100%':'560px'
       }
     };
-    var active = this.state.activityData[0].url;
     return (
       <div>
         <AppBar title="校园活动" zDepth={0} />
         <div className='activity-tabs'>
           <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
             tabItemContainerStyle={styles.tab}
             contentContainerStyle={styles.content}>
-          {
-            this.state.activityData.map(data =>
-              <Tab label={data.title} onTouchTap={active=data.url} key={data.title}>
-                <ActivityTable url={data.url} active={active}/>
-              </Tab>
-            )
-          }
+            {
+              this.state.activityData.map(data =>
+                <Tab label={data.title} value={data.value} key={data.title}>
+                  <ActivityTable url={data.url} active={data.url}/>
+                </Tab>
+              )
+            }
           </Tabs>
         </div>
       </div>

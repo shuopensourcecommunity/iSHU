@@ -24,16 +24,22 @@ var SchoolDialog= React.createClass({
       pwd: '',
       status: '请稍等，信息正在空中飞翔。。。',
       realname: '',
-      username: cookie.load('ishu_username')
+      username: cookie.load('ishu_username'),
+      snackbarOpen: false
     };
   },
-  _handleSignUpClick: function(){
+  handleBack: function(){
+    window.location.href="#/activity";
+  },
+  handleSignUpClick: function(){
     this.setState({showDialogActions: true});
   },
   _handleLogin: function(){
     this.setState({status: '请稍等，信息正在空中飞翔。。。'});
-    this.setState({showDialogActions: false});
-    this.refs.success.show();
+    this.setState({
+      showDialogActions: false,
+      snackbarOpen: true
+    });
     var data={
       'id': this.state.id,
       'pwd': this.state.pwd
@@ -69,8 +75,10 @@ var SchoolDialog= React.createClass({
   },
   _handleDialogSubmit: function(){
     this.setState({status: '请稍等，信息正在空中飞翔。。。'});
-    this.setState({showDialogActions: false});
-    this.refs.success.show();
+    this.setState({
+      showDialogActions: false,
+      snackbarOpen: true
+    });
     var data={
       'action_id': this.props.ActionID,
       'phone': this.state.phone,
@@ -96,9 +104,9 @@ var SchoolDialog= React.createClass({
       }.bind(this)
     });
   },
-  _handleAction: function(event){
+  handleSnackbar: function(event){
     if (this.state.status == '登录成功') {this.setState({showDialogActions: true});}
-    this.refs.success.dismiss();
+    this.setState({snackbarOpen: false});
   },
   // handle TextField onChange
   phoneHandleChange: function(event) {
@@ -156,14 +164,26 @@ var SchoolDialog= React.createClass({
           floatingLabelText="邮  箱：" type="mail" onChange={this.mailHandleChange}/>
         <br />
         <TextField className="text-field"
-          floatingLabelText="参加理由：" type="text" multiLine="true" onChange={this.reasonHandleChange}/>
+          floatingLabelText="参加理由：" type="text" multiLine={true} onChange={this.reasonHandleChange}/>
         <br />
       </div>
     ];
     var text = cookie.load('ishu_username')? signup:login;
   	return (
   		<div>
-        <RaisedButton label="我要报名" secondary={true} disabled={this.state.isJoined} onTouchTap={this._handleSignUpClick} />
+        <div className="index">
+          <FlatButton
+            label="返回"
+            secondary={true}
+            onTouchTap={this.handleBack} />
+          <FlatButton
+            label="我要报名"
+            primary={true}
+            keyboardFocused={true}
+            disabled={this.state.isJoined}
+            onTouchTap={this.handleSignUpClick} />
+        </div>
+
         <Dialog
             ref="signup"
             title={this.state.username==undefined? "登录":"我要报名"}
@@ -177,14 +197,14 @@ var SchoolDialog= React.createClass({
             {text}
           </Dialog>
           <Snackbar
-            ref="success"
+            open={this.state.snackbarOpen}
             message={this.state.status}
             action="关闭"
             autoHideDuration={this.state.autoHideDuration}
-            onActionTouchTap={this._handleAction}/>
+            onActionTouchTap={this.handleSnackbar}
+            onRequestClose={this.handleSnackbar}/>
       </div>
     );
   }
 });
 module.exports = SchoolDialog;
-

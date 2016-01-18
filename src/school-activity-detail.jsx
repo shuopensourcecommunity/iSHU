@@ -3,16 +3,17 @@ require("../style/css/ishu/Activity.css");
 require("../style/css/ishu/Signup.css");
 var React = require("react");
 var cookie = require('react-cookie');
+var AppBar = require('./AppBar.jsx');
 var { Card, CardTitle, CardText, CardActions, CircularProgress,
       Dialog, FlatButton, RaisedButton, Snackbar, Tabs, Tab, TextField } = require('material-ui');
 var AppBar = require('./AppBar.jsx');
-var SchoolDialog = require('./SchoolDialog.jsx');
+var ActivitySignup = require('./school-activity-signup.jsx');
 var InfiniteScroll = require('react-infinite-scroll')(React);
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
 // 校园活动详情
-var SchoolActivityDetail= React.createClass({
+var SchoolActivityCategory= React.createClass({
   getInitialState: function() {
     return {
       messageText:[],
@@ -21,9 +22,9 @@ var SchoolActivityDetail= React.createClass({
     };
   },
   loadMessageFromServer: function() {
-    // console.log('action_id:'+this.props.ActionID);
+    console.log(this.props.params.id);
     var data = {
-        action_id: this.props.ActionID
+        action_id: this.props.params.id
       };
     setTimeout(function() {
       $.ajax({
@@ -63,7 +64,7 @@ var SchoolActivityDetail= React.createClass({
     var ActivityDetail = this.state.messageText.map(function (detail){
       var ActionType;
       if (detail.ActionType == '6') {ActionType='专题活动'}
-      else if (detail.ActionType == '5') {ActionType='社团活动'} 
+      else if (detail.ActionType == '5') {ActionType='社团活动'}
       else if (detail.ActionType == '4') {ActionType='招聘实习'}
       else if (detail.ActionType == '3') {ActionType='公益活动'}
       else if (detail.ActionType == '2') {ActionType='比赛活动'}
@@ -71,7 +72,8 @@ var SchoolActivityDetail= React.createClass({
       else {ActionType='其它'}
       return (
         <div>
-          <div className="activity-detail">
+          <AppBar title="活动详情" zDepth={0} />
+          <div className="activity-detail" style ={{padding: 24}}>
             <div>
               <p className="inline activity-detail-title">活动类别：</p>
               <p className="inline activity-category" >{ActionType}</p>
@@ -93,12 +95,8 @@ var SchoolActivityDetail= React.createClass({
               <p className="inline activity-detail-title">人数限制：</p>
               <p className="inline activity-number">{detail.Current}/{detail.All}</p>
             </div>
-            <div>
-              <p className="inline activity-detail-title">报名状态：</p>
-              <p className="inline activity-status">{detail.Status}</p>
-            </div>
+            <ActivitySignup ActionID={this.props.ActionID} />
           </div>
-          <SchoolDialog ActionID={this.props.ActionID} />
         </div>
       )
     }.bind(this));
@@ -113,4 +111,4 @@ var SchoolActivityDetail= React.createClass({
   }
 });
 
-module.exports = SchoolActivityDetail;
+module.exports = SchoolActivityCategory;

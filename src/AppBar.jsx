@@ -29,6 +29,7 @@ const AppBar = React.createClass({
       //AppBarTitle: '上海大学',
       showDialogActions: false,
       autoHideDuration: 5000,
+      snackbarOpen: false,
       id: '',
       pwd: '',
       status: '请稍等，信息正在空中飞翔。。。',
@@ -47,7 +48,7 @@ const AppBar = React.createClass({
   componentDidMount: function(){
     //this.setState({AppBarTitle: this.props.title});
   },
-  _handleLogin: function(){
+  handleLogin: function(){
     this.setState({status: '请稍等，信息正在空中飞翔。。。'});
     this.setState({showDialogActions: false});
     this.refs.success.show();
@@ -76,14 +77,14 @@ const AppBar = React.createClass({
       }.bind(this)
     });
   },
-  _handleRequestClose: function(){
+  handleRequestClose: function(){
     this.setState({showDialogActions: false});
   },
-  _handleDialogCancel: function(){
+  handleDialogCancel: function(){
     this.setState({showDialogActions: false});
   },
-  _handleAction: function(event){
-    this.refs.success.dismiss();
+  handleSnackbarRequestClose: function(){
+    this.setState({snackbarOpen: true});
   },
   idHandleChange: function(event) {
     this.setState({id: event.target.value});
@@ -91,7 +92,7 @@ const AppBar = React.createClass({
   pwdHandleChange: function(event) {
     this.setState({pwd: event.target.value});
   },
-  _handleLoginLogout: function(){
+  handleLoginLogout: function(){
     if(cookie.load('ishu_username')) {
       cookie.remove('ishu_username');
       this.setState({logStatus: "登录"});
@@ -106,12 +107,12 @@ const AppBar = React.createClass({
       <FlatButton
         label="取消"
         secondary={true}
-        onTouchTap={this._handleDialogCancel} />,
+        onTouchTap={this.handleDialogCancel} />,
       <FlatButton
         label="登录"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this._handleLogin} />
+        onTouchTap={this.handleLogin} />
     ];
     let styles = {
       content : {
@@ -153,14 +154,14 @@ const AppBar = React.createClass({
               <Divider />
               <MenuItem
                 primaryText={cookie.load('ishu_username')?"登出":"登录"}
-                onTouchTap={this._handleLoginLogout} />
+                onTouchTap={this.handleLoginLogout} />
             </IconMenu>} />
         <Dialog
           title="登录"
           actions={customActions}
           open={this.state.showDialogActions}
           autoScrollBodyContent={true}
-          onRequestClose={this._handleRequestClose}
+          onRequestClose={this.handleRequestClose}
           contentStyle={styles.content}
           style={styles.main}>
           <div className="index">
@@ -179,8 +180,10 @@ const AppBar = React.createClass({
           ref="success"
           message={this.state.status}
           action="关闭"
+          open={this.state.snackbarOpen}
           autoHideDuration={this.state.autoHideDuration}
-          onActionTouchTap={this._handleAction}/>
+          onActionTouchTap={this.handleSnackbarRequestClose}
+          onRequestClose={this.handleSnackbarRequestClose}/>
       </div>
     )
   }
