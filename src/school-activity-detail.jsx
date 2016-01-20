@@ -22,7 +22,6 @@ var SchoolActivityCategory= React.createClass({
     };
   },
   loadMessageFromServer: function() {
-    console.log(this.props.params.id);
     var data = {
         action_id: this.props.params.id
       };
@@ -48,7 +47,6 @@ var SchoolActivityCategory= React.createClass({
             'Time': data.Time,
             'EndTime': data.EndTime,
           });
-          // console.log(t_messageText);
           this.setState({
             messageText: t_messageText,
             hasMoreMessages: false
@@ -95,7 +93,7 @@ var SchoolActivityCategory= React.createClass({
               <p className="inline activity-detail-title">人数限制：</p>
               <p className="inline activity-number">{detail.Current}/{detail.All}</p>
             </div>
-            <ActivitySignup ActionID={this.props.ActionID} />
+            <ActivitySignup ActionID={this.props.params.id} />
           </div>
         </div>
       )

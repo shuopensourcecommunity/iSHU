@@ -170,5 +170,6 @@ def apply_for_campus_action(request):
         'shouJ': request.POST['phone'],
         'youX': request.POST['mail']
     }
+
     res_msg = requests.post(base_url, data=data).json()
     return JsonResponse(res_msg)
